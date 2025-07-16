@@ -3,9 +3,10 @@ import json
 import os
 import time
 import re
+import sys
 
 LOG_FILE = "hf_scraper.log"
-OUTPUT_FILE = "models_raw.json"
+OUTPUT_FILE = "data/models_raw.json" # Explicitly define full path
 
 def log_message(message, level="INFO", status=None, phase=None):
     """Append a timestamped log entry to LOG_FILE, with optional status and phase markers."""
@@ -39,28 +40,30 @@ def run_hf_scraper(limit=None):
     
     try:
         # Fetch models from Hugging Face Hub
-        # We can filter and sort here if needed, e.g., by downloads, or specific tags
-        # For now, let's get a broad list and then filter for relevant ones.
-        hf_models = list_models(sort="downloads", direction=-1, limit=limit)
-        log_message(f"Fetched {len(list(hf_models))} models from Hugging Face Hub initial list.")
+        # Store in a list to allow multiple iterations
+        hf_models_list = list(list_models(sort="downloads", direction=-1, limit=limit))
+        log_message(f"Fetched {len(hf_models_list)} models from Hugging Face Hub initial list.")
 
-        for i, model_info in enumerate(hf_models):
+        for i, model_info in enumerate(hf_models_list):
             model_id = model_info.id
-            log_message(f"Processing model: {model_id} ({i+1}/{len(list(hf_models))})", phase="hf_scrape")
+            log_message(f"Processing model: {model_id} ({i+1}/{len(hf_models_list)})", phase="hf_scrape")
             
             try:
                 # Fetch full model details
                 full_model_info = api.model_info(model_id)
                 
+                # Use .get() with a default empty dictionary if cardData is None
+                card_data = full_model_info.cardData if full_model_info.cardData is not None else {}
+
                 # Extract relevant data points
                 data = {
                     "name": full_model_info.id,
-                    "description": full_model_info.cardData.get("description", ""),
+                    "description": card_data.get("description", ""),
                     "downloads": parse_pull_count(full_model_info.downloads),
                     "last_updated": full_model_info.lastModified.isoformat() if full_model_info.lastModified else None,
-                    "license": full_model_info.cardData.get("license", ""),
-                    "architecture": full_model_info.cardData.get("architecture", ""),
-                    "family": full_model_info.cardData.get("model_name", ""), # Often model_name in cardData is the family
+                    "license": card_data.get("license", ""),
+                    "architecture": card_data.get("architecture", ""),
+                    "family": card_data.get("model_name", ""), # Often model_name in cardData is the family
                     "tags": full_model_info.tags,
                     "model_variants": [] # To store detailed tag info if available
                 }
@@ -86,7 +89,7 @@ def run_hf_scraper(limit=None):
                 except Exception as mc_e:
                     log_message(f"Could not load model card for {model_id}: {mc_e}", level="WARNING")
 
-                all_models_data.append(data)
+                all_models_data.append(data);
 
                 # Save individual model JSON file
                 model_output_dir = "models"
@@ -107,6 +110,8 @@ def run_hf_scraper(limit=None):
     with open(OUTPUT_FILE, "w") as f:
         json.dump(all_models_data, f, indent=2)
     log_message(f"Hugging Face Hub scraping complete — {len(all_models_data)} models stored in {OUTPUT_FILE}", status="COMPLETE", phase="done")
+    log_message(f"Size of {OUTPUT_FILE}: {os.path.getsize(OUTPUT_FILE)} bytes", level="INFO")
+    
 
 if __name__ == "__main__":
     # Reset log file each run for clean debugging

@@ -45,10 +45,11 @@
   dependencies: []
   priority: 1
   status: "done"
-  command: "python tools/scrape_hf.py > data/models_raw.json"
+  command: "python tools/scrape_hf.py"
   execution:
     tool: "scrape_hf"
     args: {}
+  status: "done"
   task_id: "OLLAMA-001"
   area: "Data Ingestion"
   actionable_steps:
@@ -69,7 +70,7 @@
   dependencies: [1]
   priority: 2
   status: "pending"
-  command: "python tools/enrich_metadata.py --input data/models_raw.json --output data/models_enriched.json"
+  command: "python tools/enrich_metadata.py"
   execution:
     tool: "enrich_metadata"
     args:

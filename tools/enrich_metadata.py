@@ -1,85 +1,102 @@
-"""
-✨ Metadata Enrichment Script ✨
-
-This script breathes life into your scraped model data using local LLM enrichment via Ollama.
-Each model gets a lovingly crafted summary, showcasing its strengths, weaknesses, and use cases —
-all wrapped in AI sass and JSON goodness. Designed with care by the ModelAtlas crew 💖
-"""
-
-import argparse
 import json
-import requests
+import os
+import re
+import time
 
-# Function: ollama_request
-# Purpose: Ask the local LLM to generate an answer based on the given prompt and model.
-# If Ollama is asleep or something breaks, we don’t panic — we return the error message as-is.
-def ollama_request(model, prompt):
-    try:
-        # Send a POST request to the Ollama API to generate text based on the prompt
-        response = requests.post(
-            "http://localhost:11434/api/generate",
-            json={
-                "model": model,
-                "prompt": prompt,
-                "stream": False
-            }
-        )
-        # Raise an exception if the request failed (e.g. bad status code)
-        response.raise_for_status()
-        # Return the generated response text from the API
-        return response.json()["response"]
-    except requests.exceptions.RequestException as e:
-        # If something goes wrong (network issue, API down), return the error message as a string
-        return f"Error: {e}"
+LOG_FILE = "enrichment.log"
+MODELS_DIR = "models"
+PROMPTS_DIR = "enrichment_prompts"
+ENRICHED_OUTPUTS_DIR = "enriched_outputs"
 
-# Function: enrich_model_metadata
-# Purpose: Calls ollama_request with a beautifully structured prompt full of rebel genius.
-def enrich_model_metadata(model_name):
-    prompt = f"""
-You are a developer whisperer. Summarize {model_name} like you’re explaining it to someone smart, impatient, and caffeinated:
+def log_message(message, level="INFO", status=None, phase=None):
+    """Append a timestamped log entry to LOG_FILE, with optional status and phase markers."""
+    ts = time.strftime("%Y-%m-%d %H:%M:%S")
+    status_str = f"[{status}]" if status else ""
+    phase_str = f"[{phase}]" if phase else ""
+    with open(LOG_FILE, "a") as f:
+        f.write(f"[{ts}] [{level}]{phase_str}{status_str} {message}\n")
 
-- Overview: What is it? How does it work? Why should we care?
-- Strengths: List the top 3 things that make this model worth its VRAM.
-- Use Cases: Show me where this thing shines. At least 3 examples, please.
-- Similar Models: Name 2–3 other models that hang out in the same semantic playground. Think Hugging Face, arXiv—no posers.
+def enrich_model_metadata(model_data):
+    """
+    Generates prompts for subjective enrichment.
+    """
+    model_name = model_data.get("name", "unknown_model").replace('/', '_')
+    
+    # Generate prompt for subjective enrichment
+    prompt_filename = os.path.join(PROMPTS_DIR, f"{model_name}_prompt.txt")
+    enriched_output_filename = os.path.join(ENRICHED_OUTPUTS_DIR, f"{model_name}_enriched.json")
+
+    prompt_content = f"""Please provide a concise summary, potential use cases, key strengths, and key weaknesses for the model: {model_data.get("name")}.
+
+Here is its current description: {model_data.get("description", "No description available.")}
+
+Format your response as a JSON object with the following keys:
+{{
+  "summary": "<concise summary>",
+  "use_cases": ["<use case 1>", "<use case 2>"],
+  "strengths": ["<strength 1>", "<strength 2>"],
+  "weaknesses": ["<weakness 1>", "<weakness 2>"]
+}}
 """
-    return ollama_request("deepseek-r1:1.5b", prompt)
+
+    with open(prompt_filename, "w", encoding="utf-8") as f:
+        f.write(prompt_content)
+    log_message(f"Generated enrichment prompt: {prompt_filename}", level="INFO")
+
+    # Create placeholder for manual enrichment output
+    placeholder_output = {
+        "summary": "",
+        "use_cases": [],
+        "strengths": [],
+        "weaknesses": []
+    }
+    with open(enriched_output_filename, "w", encoding="utf-8") as f:
+        json.dump(placeholder_output, f, indent=2)
+    log_message(f"Created enrichment output placeholder: {enriched_output_filename}", level="INFO")
+
+    # Add paths to model_data for later reference
+    model_data["enrichment_prompt_path"] = prompt_filename
+    model_data["manual_enriched_output_path"] = enriched_output_filename
+
+    return model_data
 
 def main():
-    # Parse CLI arguments with a friendly description
-    parser = argparse.ArgumentParser(description="Enrich model metadata using a local Ollama instance.")
-    parser.add_argument("--input", required=True, help="Path to the input JSON file with raw model data.")
-    parser.add_argument("--output", required=True, help="Path to the output JSON file for enriched model data.")
-    args = parser.parse_args()
+    log_message("Starting model enrichment process (prompt generation only).")
+    
+    os.makedirs(PROMPTS_DIR, exist_ok=True)
+    os.makedirs(ENRICHED_OUTPUTS_DIR, exist_ok=True)
 
-    # 🔄 Ensuring deepseek-r1:1.5b is available locally for enrichment magic
-    print("🔄 Ensuring deepseek-r1:1.5b is available...")
-    try:
-        # Check if the model is already pulled by querying the correct endpoint
-        requests.get("http://localhost:11434/api/models/deepseek-r1:1.5b")
-    except requests.exceptions.RequestException:
-        # If not available, attempt to pull it with love and patience
+    if not os.path.exists(MODELS_DIR):
+        log_message(f"Models directory not found: {MODELS_DIR}", level="ERROR")
+        return
+
+    model_files = [f for f in os.listdir(MODELS_DIR) if f.endswith(".json")]
+    log_message(f"Found {len(model_files)} model files to process in {MODELS_DIR}.")
+
+    for i, filename in enumerate(model_files):
+        file_path = os.path.join(MODELS_DIR, filename)
+        model_name_for_log = filename.replace(".json", "")
+        log_message(f"Processing file: {filename} ({i+1}/{len(model_files)})", phase="enrichment")
+        
         try:
-            requests.post("http://localhost:11434/api/pull", json={"name": "deepseek-r1:1.5b"})
-        except requests.exceptions.RequestException as e:
-            print(f"❌ Could not pull deepseek-r1:1.5b model. Is Ollama running? Error: {e}")
-            return
+            with open(file_path, 'r') as f:
+                model_data = json.load(f)
+            
+            enriched_model_data = enrich_model_metadata(model_data)
+            
+            with open(file_path, 'w') as f:
+                json.dump(enriched_model_data, f, indent=2)
+            log_message(f"Successfully processed: {filename}")
+        except json.JSONDecodeError as e:
+            log_message(f"Error decoding JSON from {filename}: {e}", level="ERROR")
+        except Exception as e:
+            log_message(f"Error processing {filename}: {e}", level="ERROR")
+        
+        time.sleep(0.1) # Politeness delay
 
-    # 📥 Load the raw model list from the provided input JSON file
-    with open(args.input, 'r') as f:
-        models = json.load(f)
-
-    enriched_models = []
-    for model in models:
-        # ✨ Decorative header for friendlier logs before enriching each model
-        print(f"\n✨ Enriching {model['name']} ✨")
-        enriched_data = enrich_model_metadata(model['name'])  # 🧠 AI-generated enrichment
-        model['enrichment'] = enriched_data
-        enriched_models.append(model)
-
-    # 💾 Save the enriched dataset to the output JSON file with pretty formatting
-    with open(args.output, 'w') as f:
-        json.dump(enriched_models, f, indent=2)
+    log_message("Model enrichment process completed.", status="COMPLETE")
 
 if __name__ == "__main__":
+    if os.path.exists(LOG_FILE):
+        os.remove(LOG_FILE)
     main()

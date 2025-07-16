@@ -1,19 +1,19 @@
-## Cycle 4: Strategic Shift to Hugging Face Hub API
+## Cycle 6: Reverting Enrichment to Prompt Generation Only
 
-**Objective:** Replace brittle web scraping of Ollama.com with a more robust and reliable data acquisition method using the Hugging Face Hub API.
+**Objective:** Simplify the `enrich_metadata.py` script to focus solely on generating prompts for manual LLM enrichment, temporarily removing the `ollama show` integration.
 
 **Rationale:**
-*   Web scraping proved highly fragile due to dynamic content, JS rendering, and potential bot mitigation on Ollama.com.
-*   Hugging Face Hub provides structured, comprehensive model metadata via an official API, eliminating the need for complex HTML parsing.
+*   The `ollama show` integration proved problematic as many Hugging Face models are not locally available via Ollama, leading to numerous 'model not found' errors.
+*   To stabilize the pipeline and allow for focused debugging of Ollama.com web scraping, it's best to separate concerns.
+*   The manual LLM enrichment step remains crucial for subjective insights.
 
 **Actions Taken:**
-1.  Added `huggingface_hub` to `requirements.txt`.
-2.  Created `tools/scrape_hf.py` to leverage `huggingface_hub.list_models` and `api.model_info` for data extraction.
-3.  Updated `tasks.yml` to point Task 1 to `tools/scrape_hf.py`.
+1.  Reverted `tools/enrich_metadata.py` to a version that only generates prompt files in `enrichment_prompts/` and placeholder JSON files in `enriched_outputs/`.
+2.  Removed all `ollama show` related logic from `enrich_metadata.py`.
 
-**Expected Outcome:**
-*   More reliable and faster data acquisition.
-*   Access to richer, structured metadata (downloads, licenses, tags, benchmarks, etc.) directly from the API.
-*   Reduced maintenance overhead due to changes in Ollama.com's UI.
+**Current Status:**
+*   `tools/scrape_hf.py` successfully populates `models/` with base Hugging Face data.
+*   `tools/enrich_metadata.py` now reliably generates prompts and placeholders for manual enrichment.
+*   The next major focus is to refine `tools/scrape_ollama.py` for robustly extracting Ollama.com-specific data.
 
-**Next Step:** Execute `tools/scrape_hf.py` to populate `data/models_raw.json`.
+**Next Step:** Commit and push current changes, then begin refining `tools/scrape_ollama.py`.
