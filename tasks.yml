@@ -1,0 +1,288 @@
+# tasks.yml
+
+# ⚠️ NOTE: This pipeline is designed to push the limits of GitHub Actions — from scraping to LLM enrichment to agent orchestration — within CI/CD constraints.
+# Be bold, but design for constraints: bandwidth, memory, ephemeral compute, and no GPUs.
+
+# jsonschema: |
+#   {
+#     "$schema": "http://json-schema.org/draft-07/schema#",
+#     "type": "array",
+#     "items": {
+#       "type": "object",
+#       "required": ["id","description","dependencies","priority","status","execution"],
+#       "properties": {
+#         "id": {"type": "integer"},
+#         "description": {"type": "string"},
+#         "component": {"type": "string"},
+#         "dependencies": {"type": "array","items": {"type": "integer"}},
+#         "priority": {"type": "integer","minimum": 1, "maximum": 5},
+#         "status": {"type": "string","enum": ["pending","in_progress","done"]},
+#         "command": {"type": ["string", "null"]},
+#         "task_id": {"type": "string"},
+#         "title": {"type": "string"},
+#         "area": {"type": "string"},
+#         "actionable_steps": {"type": "array", "items": {"type": "string"}},
+#         "acceptance_criteria": {"type": "array", "items": {"type": "string"}},
+#         "assigned_to": {"type": ["string", "null"]},
+#         "epic": {"type": "string"},
+#         "execution": {
+#           "type": "object",
+#           "properties": {
+#             "tool": { "type": "string" },
+#             "args": { "type": "object" }
+#           },
+#           "required": ["tool", "args"]
+#         }
+#       }
+#     }
+#   }
+
+
+- id: 1
+  title: "Scrape Ollama for current models"
+  description: "Initial scrape of https://ollama.com/search to populate the raw model catalog."
+  component: "Scraper"
+  dependencies: []
+  priority: 1
+  status: "done"
+  command: "python tools/scrape_ollama.py > data/models_raw.json"
+  execution:
+    tool: "scrape_ollama"
+    args: {}
+  task_id: "OLLAMA-001"
+  area: "Data Ingestion"
+  actionable_steps:
+    - "Access Ollama model list via static or dynamic page scraping"
+    - "Parse model name, version, URL, and brief description"
+    - "Save to models_raw.json"
+  acceptance_criteria:
+    - "At least 100 models parsed and saved"
+    - "No malformed JSON or missing name/version fields"
+  assigned_to: "DataCurator"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "Data Acquisition"
+
+- id: 2
+  title: "Enrich model metadata with LLM"
+  description: "Use prompt engineering to generate model summaries, use cases, strengths, and potential limitations."
+  component: "LLMEnricher"
+  dependencies: [1]
+  priority: 2
+  status: "pending"
+  command: "python tools/enrich_metadata.py --input data/models_raw.json --output data/models_enriched.json"
+  execution:
+    tool: "enrich_metadata"
+    args:
+      input: "data/models_raw.json"
+      output: "data/models_enriched.json"
+  task_id: "OLLAMA-002"
+  area: "Semantic Enrichment"
+  actionable_steps:
+    - "Design prompts to extract developer-friendly model summaries"
+    - "Include comparisons with similar models"
+    - "Extract strengths and weaknesses heuristically"
+  acceptance_criteria:
+    - "Each model in models_enriched.json has summary, strengths, weaknesses, and use_cases"
+    - "Generated content passes hallucination check"
+  assigned_to: "LLMEnricher"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "Metadata Enrichment"
+
+- id: 3
+  title: "Normalize and validate enriched metadata"
+  description: "Standardize license names, architecture types, and deduplicate tags across models."
+  component: "DataCurator"
+  dependencies: [2]
+  priority: 2
+  status: "pending"
+  command: "python tools/normalize_and_validate.py --input data/models_enriched.json --schema schemas/model.schema.json --output data/models_validated.json"
+  execution:
+    tool: "normalize_and_validate"
+    args:
+      input: "data/models_enriched.json"
+      schema: "schemas/model.schema.json"
+      output: "data/models_validated.json"
+  task_id: "OLLAMA-003"
+  area: "Data Quality"
+  actionable_steps:
+    - "Normalize 'MIT'/'mit'/'MIT License' → 'MIT'"
+    - "Ensure every architecture_family uses consistent naming (e.g. 'transformer')"
+    - "Strip whitespace and duplicates from tags"
+  acceptance_criteria:
+    - "All models validate against schema"
+    - "No duplicate or conflicting licenses/architectures"
+  assigned_to: "DataCurator"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "Data Cleaning"
+
+- id: 4
+  title: "Compute model similarity and populate `similar_models`"
+  description: "Embed model summaries and use cosine similarity to find top-N nearest models."
+  component: "SimilarityMapper"
+  dependencies: [3]
+  priority: 3
+  status: "pending"
+  command: "python tools/similarity_mapper.py --input data/models_validated.json --output data/models_similar.json"
+  execution:
+    tool: "similarity_mapper"
+    args:
+      input: "data/models_validated.json"
+      output: "data/models_similar.json"
+  task_id: "OLLAMA-004"
+  area: "Similarity Mapping"
+  actionable_steps:
+    - "Generate vector embeddings for summaries"
+    - "Run pairwise similarity and threshold for closeness"
+    - "Attach top 3 similar models to each model"
+  acceptance_criteria:
+    - "Each model has a similar_models field with 1-5 entries"
+    - "Similarity scores stored or optionally visualized"
+  assigned_to: "SimilarityMapper"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "Model Intelligence"
+
+- id: 5
+  title: "Generate visualizations for dashboard"
+  description: "Produce model filter charts and comparative plots from normalized metadata."
+  component: "VizArchitect"
+  dependencies: [3]
+  priority: 3
+  status: "pending"
+  command: "python tools/gen_viz.py"
+  execution:
+    tool: "gen_viz"
+    args: {}
+  task_id: "OLLAMA-005"
+  area: "Visualization"
+  actionable_steps:
+    - "Generate bar/pie charts for license, size distribution"
+    - "Plot trust score vs downloads, trust vs params"
+    - "Build mock dashboard with `recharts` or `matplotlib`"
+  acceptance_criteria:
+    - "Visuals exist as SVGs or embedded markdown"
+    - "At least 3 plots are usable in README.md"
+  assigned_to: "VizArchitect"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "UX + Output"
+
+- id: 6
+  title: "Synthesize enriched README.md"
+  description: "Summarize the pipeline, provide model selection guidance, include visuals and stats."
+  component: "ReadmeSynthesizer"
+  dependencies: [4, 5]
+  priority: 4
+  status: "pending"
+  command: "python generate_readme.py --input data/models_similar.json --output README.md"
+  execution:
+    tool: "generate_readme"
+    args:
+      input: "data/models_similar.json"
+      output: "README.md"
+  task_id: "OLLAMA-006"
+  area: "Documentation"
+  actionable_steps:
+    - "Write overview, usage, data pipeline explanation"
+    - "Highlight top models with badges"
+    - "Embed charts, model count, trust rankings"
+  acceptance_criteria:
+    - "README.md renders clearly and provides full pipeline overview"
+    - "Includes >3 charts, top-10 table, and usage examples"
+  assigned_to: "ReadmeSynthesizer"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "UX + Output"
+
+- id: 7
+  title: "Deploy API to serve model data"
+  description: "Expose the enriched and validated model data via a simple REST API."
+  component: "APIDeployer"
+  dependencies: [4]
+  priority: 4
+  status: "pending"
+  command: "python tools/serve_api.py"
+  execution:
+    tool: "serve_api"
+    args: {}
+  task_id: "OLLAMA-007"
+  area: "Backend"
+  actionable_steps:
+    - "Design simple GET endpoints for model info and similar models"
+    - "Serve data from models_similar.json"
+    - "Include basic filtering support via query parameters"
+  acceptance_criteria:
+    - "API serves JSON with valid structure"
+    - "Endpoints return data within 200ms for local queries"
+  assigned_to: "APIDeployer"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "API Layer"
+
+- id: 8
+  title: "Integrate with Ollama UI demo"
+  description: "Feed enriched model info and similarity results into the interactive frontend."
+  component: "UIDeveloper"
+  dependencies: [5, 7]
+  priority: 4
+  status: "pending"
+  command: null
+  execution:
+    tool: "integrate_ui"
+    args: {}
+  task_id: "OLLAMA-008"
+  area: "Frontend"
+  actionable_steps:
+    - "Consume REST API and render model metadata"
+    - "Add interactive filters and sorting options"
+    - "Display model lineage or similarity links as graph"
+  acceptance_criteria:
+    - "UI shows complete model metadata"
+    - "Similarity links render on hover or click"
+  assigned_to: "UIDeveloper"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "UX + Output"
+
+- id: 9
+  title: "Agentify pipeline via LangGraph"
+  description: "Break pipeline into LangGraph tasks executed by autonomous agents."
+  component: "AgentOrchestrator"
+  dependencies: [6, 7]
+  priority: 5
+  status: "pending"
+  command: null
+  execution:
+    tool: "agentify_pipeline"
+    args: {}
+  task_id: "OLLAMA-009"
+  area: "Automation"
+  actionable_steps:
+    - "Create nodes for scrape, enrich, validate, map, visualize"
+    - "Integrate with LangGraph or custom orchestrator"
+    - "Include memory passing and failure recovery"
+  acceptance_criteria:
+    - "Agents trigger sequentially or via event hooks"
+    - "Error handling included per step"
+  assigned_to: "AgentOrchestrator"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "Automation Layer"
+
+- id: 10
+  title: "Evaluate and rank models by trust and transparency"
+  description: "Use risk heuristics and download metadata to rank models by transparency and reliability."
+  component: "TrustRanker"
+  dependencies: [3]
+  priority: 3
+  status: "pending"
+  command: "python tools/rank_trust.py"
+  execution:
+    tool: "rank_trust"
+    args: {}
+  task_id: "OLLAMA-010"
+  area: "Model Intelligence"
+  actionable_steps:
+    - "Parse download metrics"
+    - "Apply transparency heuristics from RISK_HEURISTICS.md"
+    - "Calculate composite trust scores"
+  acceptance_criteria:
+    - "Each model has a trust_score"
+    - "Top-10 table appears in README"
+  assigned_to: "TrustRanker"
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  epic: "Metadata Enrichment"
