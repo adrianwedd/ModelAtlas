@@ -1,9 +1,11 @@
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 from bs4 import BeautifulSoup
 import json, sys, re, time, hashlib, os
+import requests # Added requests import
 
 LOG_FILE = "ollama_scraper.log"     # Log file path for audit & debugging
-OUTPUT_FILE = "models_raw.json"     # Output JSON file for scraped models
+OLLAMA_MODELS_DIR = os.path.join("models", "ollama")
+DEBUG_DIR = "ollama_debug_dumps"
 
 def log_message(message, level="INFO", status=None, phase=None):
     """Append a timestamped log entry to LOG_FILE, with optional status and phase markers."""
@@ -31,6 +33,20 @@ def get_hash(text):
     """Compute a 12-character SHA256 hash for change detection."""
     return hashlib.sha256(text.encode()).hexdigest()[:12]
 
+def fetch_manifest(model, tag="latest"):
+    """
+    Fetches the manifest JSON from Ollama's registry API.
+    """
+    url = f"https://registry.ollama.ai/v2/library/{model}/manifests/{tag}"
+    try:
+        log_message(f"Fetching manifest from: {url}", phase="manifest_api")
+        resp = requests.get(url, timeout=30)
+        resp.raise_for_status()
+        return resp.json()
+    except requests.exceptions.RequestException as e:
+        log_message(f"Error fetching manifest for {model}:{tag} from API: {e}", level="ERROR", phase="manifest_api")
+        return None
+
 def scrape_details(page, model_name):
     """
     Scrape metadata from a model's main library page.
@@ -40,10 +56,10 @@ def scrape_details(page, model_name):
     url = f"https://ollama.com/library/{model_name}"
     try:
         log_message(f"Fetching details page: {url}")
-        page.goto(url, wait_until="networkidle", timeout=60000)
-        page.wait_for_timeout(2000) # Give JS time to render
-        page.mouse.wheel(0, 1000) # Simulate scroll
-        time.sleep(1) # Give time after scroll
+        page.goto(url, wait_until="networkidle", timeout=90000) # Increased timeout
+        page.wait_for_timeout(5000) # Give JS more time to render
+        page.mouse.wheel(0, 2000) # Simulate more scrolling
+        time.sleep(2) # Give time after scroll
 
         soup = BeautifulSoup(page.content(), "html.parser")
 
@@ -87,80 +103,37 @@ def scrape_details(page, model_name):
 
     except PlaywrightTimeout as e:
         log_message(f"Timeout on details page for {model_name}: {e}", level="ERROR")
+        page.screenshot(path=os.path.join(DEBUG_DIR, f"{model_name}_details_timeout.png"))
+        with open(os.path.join(DEBUG_DIR, f"{model_name}_details_timeout.html"), "w", encoding="utf-8") as f:
+            f.write(page.content())
     except Exception as e:
         log_message(f"Error scraping details page for {model_name}: {e}", level="ERROR")
 
     return result
 
-def scrape_tags(page, model_name):
+def scrape_ollama_models_from_web(headless=True, debug_model=None):
     """
-    Scrape tag-variant metadata from the '/tags' sub-page.
-    Captures variant id, size, context window, input type, update age, and blob digest.
-    """
-    tags = []
-    url = f"https://ollama.com/library/{model_name}/tags"
-    try:
-        log_message(f"Fetching tags page: {url}")
-        page.goto(url, wait_until="networkidle", timeout=60000)
-        page.wait_for_timeout(2000) # Give JS time to render
-        page.mouse.wheel(0, 1000) # Simulate scroll
-        time.sleep(1) # Give time after scroll
-
-        soup = BeautifulSoup(page.content(), "html.parser")
-
-        # Iterate list items representing each quantized variant
-        for li in soup.select("ul.divide-y > li"):
-            tag_data = {}
-            name_element = li.find("a", class_="group")
-            if name_element:
-                tag_data["name"] = name_element.find("span").text.strip()
-            
-            # Extracting details from the p.text-neutral-500 element
-            info_p = li.find("p", class_=re.compile(r"text-neutral-500"))
-            if info_p:
-                text_content = info_p.get_text(separator=' ', strip=True)
-                
-                # Digest is in a span with class font-mono
-                digest_span = info_p.find("span", class_="font-mono")
-                tag_data["digest"] = digest_span.text.strip() if digest_span else None
-
-                # Extracting other details using more specific regexes on the full text
-                size_match = re.search(r'(\d+\.?\d*GB)', text_content)
-                tag_data["size"] = size_match.group(1) if size_match else None
-
-                context_match = re.search(r'(\d+K context window)', text_content)
-                tag_data["context_window"] = context_match.group(1) if context_match else None
-
-                input_match = re.search(r'(Text|Multimodal) input', text_content)
-                tag_data["input_type"] = input_match.group(1) if input_match else None
-
-                updated_match = re.search(r'(\d+\s(?:day|week|month|year)s?\sago)', text_content)
-                tag_data["last_updated"] = updated_match.group(1) if updated_match else None
-
-            tags.append(tag_data)
-    except PlaywrightTimeout as e:
-        log_message(f"Timeout on tags page for {model_name}: {e}", level="ERROR")
-    except Exception as e:
-        log_message(f"Error scraping tags page for {model_name}: {e}", level="ERROR")
-
-    return tags
-
-def run_scraper(headless=True, debug_model=None):
-    """
-    Orchestrates the scraping flow:
+    Orchestrates the scraping flow for Ollama.com specific data:
       1. Launches browser
       2. Fetches list of model names from /library
       3. Iterates each model:
          - scrapes details page
-         - scrapes tag variants
-      4. Writes output to JSON
+         - fetches manifest from registry API
+      4. Writes output to individual JSON files in models/ollama
     """
     results = []
+    os.makedirs(DEBUG_DIR, exist_ok=True)
+    os.makedirs(OLLAMA_MODELS_DIR, exist_ok=True)
+
     with sync_playwright() as wp:
         browser = wp.chromium.launch(headless=headless, args=["--disable-blink-features=AutomationControlled"])
         page = browser.new_page()
+        
+        # Capture console messages (JS errors, etc.)
+        page.on("console", lambda msg: log_message(f"Browser Console: {msg.text}", level="DEBUG"))
+
         try:
-            log_message("Fetching main library page")
+            log_message("Fetching main library page from Ollama.com")
             page.goto("https://ollama.com/library", wait_until="networkidle", timeout=60000)
             page.wait_for_selector("ul[role=list] > li a", timeout=15000)
 
@@ -172,27 +145,49 @@ def run_scraper(headless=True, debug_model=None):
                 for i in items
                 if i.find("a") and "/library/" in i.find("a")["href"]
             ]
-            log_message(f"Found {len(names)} models")
+            log_message(f"Found {len(names)} models on Ollama.com")
         except Exception as e:
-            log_message(f"Failed to scan library index: {e}", level="ERROR")
+            log_message(f"Failed to scan Ollama.com library index: {e}", level="ERROR")
             names = []
 
         # Filter for debug_model if specified
         if debug_model:
             names = [n for n in names if n == debug_model]
             if not names:
-                log_message(f"Debug model '{debug_model}' not found in initial list.", level="ERROR")
+                log_message(f"Debug model '{debug_model}' not found in Ollama.com initial list.", level="ERROR")
                 return []
 
         # Loop through each model name
         for i, name in enumerate(names):
-            log_message(f"==> Scraping [{i+1}/{len(names)}]: {name}", status=f"{i+1}/{len(names)}", phase="scrape")
+            log_message(f"==> Processing Ollama.com model: {name} ({i+1}/{len(names)})", status=f"{i+1}/{len(names)}", phase="ollama_scrape")
+            
             detail = scrape_details(page, name)
-            detail["tags"] = scrape_tags(page, name)
+            
+            # Fetch manifest for tags and other structured data
+            manifest = fetch_manifest(name)
+            if manifest:
+                tags_data = []
+                for layer in manifest.get("layers", []):
+                    tag_entry = {
+                        "name": layer.get("mediaType", "").split(":")[-1], # Extract tag name from mediaType
+                        "digest": layer.get("digest", ""),
+                        "size": f"{round(layer.get("size", 0) / (1024*1024*1024), 2)}GB" if layer.get("size") else None, # Convert bytes to GB
+                        "media_type": layer.get("mediaType", ""),
+                        "annotations": layer.get("annotations", {})
+                    }
+                    # Attempt to extract context window and input type from annotations or mediaType
+                    if "annotations" in layer and layer["annotations"]:
+                        tag_entry["context_window"] = layer["annotations"].get("ollama.context_window")
+                        tag_entry["input_type"] = layer["annotations"].get("ollama.input_type")
+                        tag_entry["last_updated"] = layer["annotations"].get("ollama.last_modified")
+                    
+                    tags_data.append(tag_entry)
+                detail["tags"] = tags_data
+            else:
+                detail["tags"] = [] # No manifest found
+
             # Save individual model JSON file
-            model_output_dir = "models"
-            os.makedirs(model_output_dir, exist_ok=True)
-            model_file_path = os.path.join(model_output_dir, f"{name}.json")
+            model_file_path = os.path.join(OLLAMA_MODELS_DIR, f"{name.replace('/', '_')}.json")
             with open(model_file_path, "w") as mf:
                 json.dump(detail, mf, indent=2)
             results.append(detail)
@@ -200,10 +195,7 @@ def run_scraper(headless=True, debug_model=None):
 
         browser.close()
 
-    # Save JSON output
-    with open(OUTPUT_FILE, "w") as f:
-        json.dump(results, f, indent=2)
-    log_message(f"Scraping complete — {len(results)} models stored in {OUTPUT_FILE}", status="COMPLETE", phase="done")
+    log_message(f"Ollama.com scraping complete — {len(results)} models stored in {OLLAMA_MODELS_DIR}", status="COMPLETE", phase="done")
 
 if __name__ == "__main__":
     # Reset log file each run for clean debugging
@@ -222,4 +214,4 @@ if __name__ == "__main__":
             debug_model_name = arg.split("=")[1]
             break
 
-    run_scraper(headless=headless_mode, debug_model=debug_model_name)
+    scrape_ollama_models_from_web(headless=headless_mode, debug_model=debug_model_name)

@@ -39,28 +39,50 @@
 
 
 - id: 1
-  title: "Scrape Ollama for current models"
-  description: "Initial scrape of https://ollama.com/search to populate the raw model catalog."
+  title: "Scrape Hugging Face Models"
+  description: "Initial scrape of Hugging Face Hub for model metadata using their API."
   component: "Scraper"
   dependencies: []
   priority: 1
-  status: "done"
+  status: "pending"
   command: "python tools/scrape_hf.py"
   execution:
     tool: "scrape_hf"
     args: {}
-  status: "done"
-  task_id: "OLLAMA-001"
+  task_id: "HF-001"
   area: "Data Ingestion"
   actionable_steps:
-    - "Access Ollama model list via static or dynamic page scraping"
-    - "Parse model name, version, URL, and brief description"
-    - "Save to models_raw.json"
+    - "Use Hugging Face Hub API to list and fetch model details."
+    - "Store each model's data in models/huggingface/."
   acceptance_criteria:
-    - "At least 100 models parsed and saved"
-    - "No malformed JSON or missing name/version fields"
+    - "At least 100 models parsed and saved."
+    - "No malformed JSON or missing name/version fields."
   assigned_to: "DataCurator"
-  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  ci_notes: "⚙️ Optimized for API calls: ensure script handles rate limits, retries, and efficient data parsing."
+  epic: "Data Acquisition"
+
+- id: 1.1
+  title: "Scrape Ollama.com Specific Data"
+  description: "Scrape Ollama.com for data not available on Hugging Face Hub, including run commands and detailed tag info via Registry API."
+  component: "Scraper"
+  dependencies: [1]
+  priority: 1
+  status: "pending"
+  command: "python tools/scrape_ollama.py"
+  execution:
+    tool: "scrape_ollama"
+    args: {}
+  task_id: "OLLAMA-001-WEB"
+  area: "Data Ingestion"
+  actionable_steps:
+    - "Use Playwright to scrape Ollama.com for model details."
+    - "Use Ollama Registry API to fetch detailed tag manifests."
+    - "Store each model's data in models/ollama/."
+  acceptance_criteria:
+    - "All models from Ollama.com indexed."
+    - "Detailed tag info (digest, size, context, input type) extracted."
+  assigned_to: "DataCurator"
+  ci_notes: "⚙️ Optimized for web scraping: ensure robust error handling, screenshots on failure, and console logging."
   epic: "Data Acquisition"
 
 - id: 2
