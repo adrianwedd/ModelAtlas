@@ -9,6 +9,8 @@ import sys
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from common.logging import logger
+
 # Define paths relative to the project root
 ATLAS_CLI_PATH = PROJECT_ROOT / "atlas_cli" / "main.py"
 
@@ -123,13 +125,13 @@ def test_full_trace_execution(sample_input_dir, fixture_tasks_yml, enriched_outp
     try:
         # Execute the CLI command
         result = subprocess.run(command, capture_output=True, text=True, check=True)
-        print("STDOUT:", result.stdout)
-        print("STDERR:", result.stderr)
+        logger.info("STDOUT: %s", result.stdout)
+        logger.info("STDERR: %s", result.stderr)
 
     except subprocess.CalledProcessError as e:
-        print(f"Command failed with exit code {e.returncode}")
-        print("STDOUT:", e.stdout)
-        print("STDERR:", e.stderr)
+        logger.error("Command failed with exit code %s", e.returncode)
+        logger.error("STDOUT: %s", e.stdout)
+        logger.error("STDERR: %s", e.stderr)
         pytest.fail(f"Full trace execution failed: {e}")
 
     # Assert that the output file is created
