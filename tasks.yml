@@ -795,3 +795,20 @@
     - "CI fails on formatting violations"
   task_id: "CI-002"
   epic: "Reliability & CI"
+
+- id: 416
+  title: "Raise error on missing config keys"
+  description: "Update atlas_schemas/config.py to raise a helpful error if required keys are missing."
+  component: "Config"
+  dependencies: [201]
+  priority: 2
+  status: "done"
+  area: "Bugfix"
+  actionable_steps:
+    - "Add validation for required environment variables in Config"
+    - "Write tests for missing key scenarios"
+  acceptance_criteria:
+    - "Config initialization fails with clear error when LLM_API_KEY is absent"
+    - "tests/test_config.py passes"
+  task_id: "CONFIG-002"
+  epic: "Foundational Hardening"
