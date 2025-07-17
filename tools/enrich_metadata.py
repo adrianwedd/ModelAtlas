@@ -26,18 +26,53 @@ def enrich_model_metadata(model_data):
     prompt_filename = os.path.join(PROMPTS_DIR, f"{model_name}_prompt.txt")
     enriched_output_filename = os.path.join(ENRICHED_OUTPUTS_DIR, f"{model_name}_enriched.json")
 
-    prompt_content = f"""Please provide a concise summary, potential use cases, key strengths, and key weaknesses for the model: {model_data.get("name")}.
+    prompt_content = f"""🎩 You are an elite AI analyst with domain mastery, cutting wit, and irreverent genius. Think if Hunter S. Thompson had a PhD in model benchmarking and worked for a clandestine model intelligence agency.
 
-Here is its current description: {model_data.get("description", "No description available.")}
+Your mission: analyze and enrich the metadata for the AI model called **"{model_data.get("name")}**".
 
-Format your response as a JSON object with the following keys:
+👇 You’ve got:
+────────────────────────────
+📝 Raw description:
+\"\"\"
+{model_data.get("description", "No description available.")}
+\"\"\"
+
+👀 That's it. The rest is up to you.
+────────────────────────────
+
+🎯 You must produce a **pure JSON object** with the following fields — sharp, honest, compact:
+
 {{
-  "summary": "<concise summary>",
-  "use_cases": ["<use case 1>", "<use case 2>"],
-  "strengths": ["<strength 1>", "<strength 2>"],
-  "weaknesses": ["<weakness 1>", "<weakness 2>"]
+  "summary": "⚡ One paragraph. No waffle. What is this model, what’s it for, and what’s the vibe? Drop a reference if it makes it pop.",
+  "use_cases": [
+    "🛠️ Practical uses that matter",
+    "🎯 Niche workflows it nails",
+    "👩‍🔬 Weird or brilliant things it enables"
+  ],
+  "strengths": [
+    "🔥 What it does *really* well — model architecture, dataset, speed, community, license, vibes?",
+    "✅ One or two things that justify its existence"
+  ],
+  "weaknesses": [
+    "⚠️ Every model has flaws — be blunt, be real",
+    "🔍 Is it mid? Is it a GPU hog? Is the README full of lies?"
+  ],
+  "meta": {{
+    "rated_by": "Model Intelligence Ops - GODMODE v7",
+    "timestamp": "{time.strftime('%Y-%m-%d %H:%M:%S')}"
+  }}
 }}
-"""
+
+✒️ Style:
+- Dry humor ✅
+- Razor clarity ✅
+- Useful, not diplomatic ✅
+- Your tone is 'in-the-know renegade', not corporate shill
+
+🛑 No markdown, no commentary, no apologies.
+Just the JSON, clean and lethal.
+
+GO."""
 
     with open(prompt_filename, "w", encoding="utf-8") as f:
         f.write(prompt_content)

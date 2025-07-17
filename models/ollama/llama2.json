@@ -1,0 +1,3916 @@
+{
+  "name": "llama2",
+  "description": "Llama 2 is a collection of foundation language models ranging from 7B to 70B parameters.",
+  "pull_count": 3800000,
+  "last_updated": "Dec 27, 2023 9:21 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/jmorganca/ollama/assets/3325447/286e4e13-0b2b-43a4-9b07-23a50d3a3d33\" width=\"360\"/></p>\n<p>Llama 2 is released by Meta Platforms, Inc. This model is trained on 2 trillion tokens, and by default supports a context length of 4096. Llama 2 Chat models are fine-tuned on over 1 million human annotations, and are made for chat.</p>\n<h3>CLI</h3>\n<p>Open the terminal and run <code>ollama run llama2</code></p>\n<h3>API</h3>\n<p>Example using curl:</p>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"llama2\",\n  \"prompt\":\"Why is the sky blue?\"\n }'\n</code></pre>\n<p><a href=\"https://github.com/jmorganca/ollama/blob/main/docs/api.md\" rel=\"nofollow\">API documentation</a></p>\n<h2>Memory requirements</h2>\n<ul>\n<li>7b models generally require at least 8GB of RAM</li>\n<li>13b models generally require at least 16GB of RAM</li>\n<li>70b models generally require at least 64GB of RAM</li>\n</ul>\n<p>If you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.</p>\n<h2>Model variants</h2>\n<p><strong>Chat</strong> is fine-tuned for chat/dialogue use cases. These are the default in Ollama, and for models tagged with -chat in the tags tab.</p>\n<p><em>Example: <code>ollama run llama2</code></em></p>\n<p><strong>Pre-trained</strong> is without the chat fine-tuning. This is tagged as -text in the tags tab.</p>\n<p><em>Example: <code>ollama run llama2:text</code></em></p>\n<p>By default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.</p>\n<h2>References</h2>\n<p><a href=\"https://arxiv.org/abs/2307.09288\" rel=\"nofollow\">Llama 2: Open Foundation and Fine-Tuned Chat Models</a></p>\n<p><a href=\"https://huggingface.co/meta-llama\" rel=\"nofollow\">Meta\u2019s Hugging Face repo</a></p>\n</div>",
+  "page_hash": "bf885c17bb50",
+  "readme_text": "\n\nLlama 2 is released by Meta Platforms, Inc. This model is trained on 2 trillion tokens, and by default supports a context length of 4096. Llama 2 Chat models are fine-tuned on over 1 million human annotations, and are made for chat.\nCLI\nOpen the terminal and run ollama run llama2\nAPI\nExample using curl:\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"llama2\",\n  \"prompt\":\"Why is the sky blue?\"\n }'\n\nAPI documentation\nMemory requirements\n\n7b models generally require at least 8GB of RAM\n13b models generally require at least 16GB of RAM\n70b models generally require at least 64GB of RAM\n\nIf you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.\nModel variants\nChat is fine-tuned for chat/dialogue use cases. These are the default in Ollama, and for models tagged with -chat in the tags tab.\nExample: ollama run llama2\nPre-trained is without the chat fine-tuning. This is tagged as -text in the tags tab.\nExample: ollama run llama2:text\nBy default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.\nReferences\nLlama 2: Open Foundation and Fine-Tuned Chat Models\nMeta\u2019s Hugging Face repo\n",
+  "tags": [
+    {
+      "name": "llama2:latest",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246",
+            "size": 3826781184
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:chat",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246",
+            "size": 3826781184
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:text",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:a37d9fe1fae1affbe3e4a3630c039b6ab066bbd31e53ea0ab8dbe8ddcac49bab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a37d9fe1fae1affbe3e4a3630c039b6ab066bbd31e53ea0ab8dbe8ddcac49bab",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c53bc0d427b680e1d020ad686db1d186f53b1590bee9e10b44656a25e63999c5",
+            "size": 3826780320
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:7b",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246",
+            "size": 3826781184
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:13b",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:be61bcdf308e32bb4d368612a1d7ae40664576e023b0e9feadfc6ae9eaef7917",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:be61bcdf308e32bb4d368612a1d7ae40664576e023b0e9feadfc6ae9eaef7917",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2609048d349e7c70196401be59bea7eb89a968d4642e409b0e798b34403b96c8",
+            "size": 7366808800
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 7.4
+    },
+    {
+      "name": "llama2:70b",
+      "last_updated": "1 year ago",
+      "size": "39GB",
+      "digest": "sha256:7c96b46dca6c82b1e5351d7b58ef3a684ac2b0653446afc6df047899c9b48e77",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7c96b46dca6c82b1e5351d7b58ef3a684ac2b0653446afc6df047899c9b48e77",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:68bbe6dc9cf42eb60c9a7f96137fb8d472f752de6ebf53e9942f267f1a1e2577",
+            "size": 38873223392
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 39.0
+    },
+    {
+      "name": "llama2:7b-chat",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246",
+            "size": 3826781184
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:7b-chat-q2_K",
+      "last_updated": "1 year ago",
+      "size": "2.8GB",
+      "digest": "sha256:ef54b0fa05a277fe7bdbc02fa5e88bd284f964d2e073663c96eae6358dfd68d5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ef54b0fa05a277fe7bdbc02fa5e88bd284f964d2e073663c96eae6358dfd68d5",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f821423c48fec4e0b891e845aeb56182bac3ca4a9a79b5817d7c5bffc810e7a4",
+            "size": 2826914816
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 2.8
+    },
+    {
+      "name": "llama2:7b-chat-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "2.9GB",
+      "digest": "sha256:52970200187dfaedf66225ce15332c41829211af76602ea4d3da40d43e54603b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:52970200187dfaedf66225ce15332c41829211af76602ea4d3da40d43e54603b",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:de618475c4be33ed4f1412a2224ec980bbc5d253336e7b0dd1b29a57b0e8e38f",
+            "size": 2949278720
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 2.9
+    },
+    {
+      "name": "llama2:7b-chat-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "3.3GB",
+      "digest": "sha256:07c4f931bec7419d6a600f9d0f5e20a4ac6832a41f8b88b72b197ca16d8c9c9c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:07c4f931bec7419d6a600f9d0f5e20a4ac6832a41f8b88b72b197ca16d8c9c9c",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:743d1e8e47592e47dab4e291921f8c4a34c9cfe92459aaac74e2f2684766a2b7",
+            "size": 3298978816
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.3
+    },
+    {
+      "name": "llama2:7b-chat-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "3.6GB",
+      "digest": "sha256:a13567244567b0943939c0a6c42fceee9c661d2d61df43376708db7084b613df",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a13567244567b0943939c0a6c42fceee9c661d2d61df43376708db7084b613df",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:55bf6aed3a9d9e91b251b5bec4cd20cfa3ece9c5093cf668dd002d6785ef55de",
+            "size": 3598085120
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.6
+    },
+    {
+      "name": "llama2:7b-chat-q4_0",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246",
+            "size": 3826781184
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:7b-chat-q4_1",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:4a7dfa479e9602246f8c6eb40c2022e2186188d9e03ac3b57e8bf4df0ac7dc7c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4a7dfa479e9602246f8c6eb40c2022e2186188d9e03ac3b57e8bf4df0ac7dc7c",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:59165686e0d2755da659608635bb4f0e37b4720165605b686e88dd341c273026",
+            "size": 4239723520
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 4.2
+    },
+    {
+      "name": "llama2:7b-chat-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "3.9GB",
+      "digest": "sha256:c36470f06b086ed3a20961065938d18b0cdbdef0d13db4bdeb944db4749f1660",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c36470f06b086ed3a20961065938d18b0cdbdef0d13db4bdeb944db4749f1660",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:40dce06a2fe3332168259c6b999272ba09753c5e105d693e375bc8893b30da78",
+            "size": 3857714176
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 3.9
+    },
+    {
+      "name": "llama2:7b-chat-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:5059c4f3244537ff2bd49afac5b9b66c9747699309d249fe5bea4cf16c19f401",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5059c4f3244537ff2bd49afac5b9b66c9747699309d249fe5bea4cf16c19f401",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:bae06f30e41e904f056e5cf81975db6c5e70bc5415c1a7daf8c7be3a158d8ead",
+            "size": 4081978368
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 4.1
+    },
+    {
+      "name": "llama2:7b-chat-q5_0",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "sha256:e88dcf910779a26128ad6208cb56441a9c79b086d1aa28c45e1a582ae8f6a106",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e88dcf910779a26128ad6208cb56441a9c79b086d1aa28c45e1a582ae8f6a106",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:aea0fabafddca5d7b98abe3c660255c484fc44b406a61d51280e36878789945c",
+            "size": 4652665856
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 4.7
+    },
+    {
+      "name": "llama2:7b-chat-q5_1",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "sha256:3819b1508e08387d081060f80e36b2a18fa50b73b08b4bacf761a1f3a9b95d18",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3819b1508e08387d081060f80e36b2a18fa50b73b08b4bacf761a1f3a9b95d18",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0c6ab06a850dc21cde5bfd63877561748c0b2450c3c281c4d6da8a37a20dd805",
+            "size": 5065608192
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 5.1
+    },
+    {
+      "name": "llama2:7b-chat-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "sha256:2620984d8e20ef8f26a730e7aec90cd3920fea1424abb30bfe83bfd0b154d472",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2620984d8e20ef8f26a730e7aec90cd3920fea1424abb30bfe83bfd0b154d472",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:95573ffe6eb1e5d953fbd763929c29854ace5bcad843dba40ecf2a89969eebcf",
+            "size": 4652665856
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 4.7
+    },
+    {
+      "name": "llama2:7b-chat-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.8GB",
+      "digest": "sha256:a6240be7ffbb5e2a719a52dbf392a44294e777e89427e2215aaa1db705a004b0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a6240be7ffbb5e2a719a52dbf392a44294e777e89427e2215aaa1db705a004b0",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b8346d1ab4924122a0180c5a3ec8e7b26b2294af9e89a6e7e5f33bca8cb10673",
+            "size": 4784131072
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 4.8
+    },
+    {
+      "name": "llama2:7b-chat-q6_K",
+      "last_updated": "1 year ago",
+      "size": "5.5GB",
+      "digest": "sha256:6884f57b6df214594941a05ed5dc3fe978f6cc574b19d710ae665da4ca5688e9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6884f57b6df214594941a05ed5dc3fe978f6cc574b19d710ae665da4ca5688e9",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b8aa3e97e78143f9c5d887c74b84e14d46926622e77d9c701b59f097b4e42fa5",
+            "size": 5530168320
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 5.5
+    },
+    {
+      "name": "llama2:7b-chat-q8_0",
+      "last_updated": "1 year ago",
+      "size": "7.2GB",
+      "digest": "sha256:7665deefdcc7d516955cb5609f7dbc15d63ac1edbb7ccc22dcf8a6faa9e02036",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7665deefdcc7d516955cb5609f7dbc15d63ac1edbb7ccc22dcf8a6faa9e02036",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:022a2bdff9ea029c134856fa3bd683f372541e311e0b8ce37b707c8b19af635d",
+            "size": 7162063872
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 7.2
+    },
+    {
+      "name": "llama2:7b-chat-fp16",
+      "last_updated": "1 year ago",
+      "size": "13GB",
+      "digest": "sha256:79fc9e05fcee6100d54bb9388b0c8c687e213fc771c4e3f1bb9f8ed267109d92",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:79fc9e05fcee6100d54bb9388b0c8c687e213fc771c4e3f1bb9f8ed267109d92",
+          "size": 556
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6b0f28ccc604443c1a7cb4ed5f4c3ac0ce8fa9d9b586e0f2c8fb163c752ff441",
+            "size": 13479078880
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 13.0
+    },
+    {
+      "name": "llama2:7b-text",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:a37d9fe1fae1affbe3e4a3630c039b6ab066bbd31e53ea0ab8dbe8ddcac49bab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a37d9fe1fae1affbe3e4a3630c039b6ab066bbd31e53ea0ab8dbe8ddcac49bab",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c53bc0d427b680e1d020ad686db1d186f53b1590bee9e10b44656a25e63999c5",
+            "size": 3826780320
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:7b-text-q2_K",
+      "last_updated": "1 year ago",
+      "size": "2.8GB",
+      "digest": "sha256:df3acc36c9ee3e5147ef8232187bfe7a9bf4e28fa8047ed4ed2bb1f9cad6d28f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:df3acc36c9ee3e5147ef8232187bfe7a9bf4e28fa8047ed4ed2bb1f9cad6d28f",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:49a5682b1469775eeb41bdcd61643496c53f859b74c18d6906212b1fe27d2fa6",
+            "size": 2826913952
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 2.8
+    },
+    {
+      "name": "llama2:7b-text-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "2.9GB",
+      "digest": "sha256:b9666fa6832fd2540ce35a79cf2db032bfdc5383ae286bb78d88936f123ccd4e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b9666fa6832fd2540ce35a79cf2db032bfdc5383ae286bb78d88936f123ccd4e",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e8290431b121afba894cf3bf0ca2b78532ae6d29e685b839c2dc5e7e7b297b90",
+            "size": 2949277856
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 2.9
+    },
+    {
+      "name": "llama2:7b-text-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "3.3GB",
+      "digest": "sha256:93e3b1e835a28684e8966dbefee1ebd8423669f99ea9400b96ecf35f585549bc",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:93e3b1e835a28684e8966dbefee1ebd8423669f99ea9400b96ecf35f585549bc",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5eb183b7c392aead1edd77d411255c843fd7478104d3f7ee4d0a901070942300",
+            "size": 3298977952
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 3.3
+    },
+    {
+      "name": "llama2:7b-text-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "3.6GB",
+      "digest": "sha256:2cc42bf801bae7cd279d30839963bb06e8640664ee25c5e7300403262a7211b6",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2cc42bf801bae7cd279d30839963bb06e8640664ee25c5e7300403262a7211b6",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:98790a16bae0c4f069c989b266a16d97e8218819157de2c8fd648192225e1e43",
+            "size": 3598084256
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 3.6
+    },
+    {
+      "name": "llama2:7b-text-q4_0",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:a37d9fe1fae1affbe3e4a3630c039b6ab066bbd31e53ea0ab8dbe8ddcac49bab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a37d9fe1fae1affbe3e4a3630c039b6ab066bbd31e53ea0ab8dbe8ddcac49bab",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c53bc0d427b680e1d020ad686db1d186f53b1590bee9e10b44656a25e63999c5",
+            "size": 3826780320
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 3.8
+    },
+    {
+      "name": "llama2:7b-text-q4_1",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:0097108385e520746aecdf6e952b91d68766638ed86dd6fff89698d56d3da106",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0097108385e520746aecdf6e952b91d68766638ed86dd6fff89698d56d3da106",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:18925811dc1c5cdf304e652d7949bf227b15bbe8993bd76d3381d0b6fce228a4",
+            "size": 4239722656
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 4.2
+    },
+    {
+      "name": "llama2:7b-text-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "3.9GB",
+      "digest": "sha256:b0b8113b3c9d9dc925019b15dd315b914a98d6f361c9cb9314a1e55a714142b7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b0b8113b3c9d9dc925019b15dd315b914a98d6f361c9cb9314a1e55a714142b7",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4e16968b040e8152fb8bb1fa60b4f801f91f5b95216737e9a6c614dac4508908",
+            "size": 3857713312
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 3.9
+    },
+    {
+      "name": "llama2:7b-text-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f7eeae5b24291277cf9a32ef0f5e42135eab9aaabc70badababd137d4c219bce",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f7eeae5b24291277cf9a32ef0f5e42135eab9aaabc70badababd137d4c219bce",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c16462d95162d9a929c4f5db2c32cbbab464b088e459498419e4f41f8c9d649a",
+            "size": 4081977504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 4.1
+    },
+    {
+      "name": "llama2:7b-text-q5_0",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "sha256:1e0ae31ae2273895090b03ecb306179879062a3cec7b313995643922634b9809",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1e0ae31ae2273895090b03ecb306179879062a3cec7b313995643922634b9809",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:defb76d1c4647569e714f08a62500a1e7946d90c2adf04d9dffee57786dda767",
+            "size": 4652664992
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 4.7
+    },
+    {
+      "name": "llama2:7b-text-q5_1",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "sha256:a5bbc40d6658bcadd37a486fc8bf23e91869ee0b77ddbf5c83ca374032f6e1d8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a5bbc40d6658bcadd37a486fc8bf23e91869ee0b77ddbf5c83ca374032f6e1d8",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:eb3729a06bbd2b899f13b3d28f8ba423a489e42cdfc7293ec51e4c8a699fa929",
+            "size": 5065607328
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 5.1
+    },
+    {
+      "name": "llama2:7b-text-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "sha256:d42ac1b2767003220810b5129eabc72ccd46c107f8bd67d3d94540297ef8285d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d42ac1b2767003220810b5129eabc72ccd46c107f8bd67d3d94540297ef8285d",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b85fb14d717c26aa324fe574aae66ea4341cf8817ff52a85b474414b080f5685",
+            "size": 4652664992
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 4.7
+    },
+    {
+      "name": "llama2:7b-text-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.8GB",
+      "digest": "sha256:53b50df67de26189d152fb3afc6b1c3f822d712d63400aa09d782bcd973ab6f5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:53b50df67de26189d152fb3afc6b1c3f822d712d63400aa09d782bcd973ab6f5",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cdd897a82c65680729dac40fdea0eaa3ac95aa274378aad939264884250c8fca",
+            "size": 4784130208
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 4.8
+    },
+    {
+      "name": "llama2:7b-text-q6_K",
+      "last_updated": "1 year ago",
+      "size": "5.5GB",
+      "digest": "sha256:a8cca6d8ae89f8b6e482f7c8e725d4b6fbf296fa4ea5dc8d1aadfa06cfdee416",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a8cca6d8ae89f8b6e482f7c8e725d4b6fbf296fa4ea5dc8d1aadfa06cfdee416",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:20ce998215fe7aa53950fa6962171a21717eecd7ac66a2df736b263412e944d1",
+            "size": 5530167456
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 5.5
+    },
+    {
+      "name": "llama2:7b-text-q8_0",
+      "last_updated": "1 year ago",
+      "size": "7.2GB",
+      "digest": "sha256:86e2c25c84b8a16d836c919b929be75cadf8b899c8a3b8e18a178be6123bde39",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:86e2c25c84b8a16d836c919b929be75cadf8b899c8a3b8e18a178be6123bde39",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a16534715521500b955425b036b2a5ff84154f511316434e595a38465977bc91",
+            "size": 7162063008
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 7.2
+    },
+    {
+      "name": "llama2:7b-text-fp16",
+      "last_updated": "1 year ago",
+      "size": "13GB",
+      "digest": "sha256:6ec64f6144171adbd6893185075c771804c3e73b50a6f61146ec5a988343cb87",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6ec64f6144171adbd6893185075c771804c3e73b50a6f61146ec5a988343cb87",
+          "size": 408
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:208bd280c2516c5732f2cb3ccd2713d7af6414ae6fdfe430bf01a19e4d8ce510",
+            "size": 13479078016
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 13.0
+    },
+    {
+      "name": "llama2:13b-chat",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:be61bcdf308e32bb4d368612a1d7ae40664576e023b0e9feadfc6ae9eaef7917",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:be61bcdf308e32bb4d368612a1d7ae40664576e023b0e9feadfc6ae9eaef7917",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2609048d349e7c70196401be59bea7eb89a968d4642e409b0e798b34403b96c8",
+            "size": 7366808800
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 7.4
+    },
+    {
+      "name": "llama2:13b-chat-q2_K",
+      "last_updated": "1 year ago",
+      "size": "5.4GB",
+      "digest": "sha256:d2865b9a6f4efc13a127edafefe1b28760e506b8a1b474fb7d1982d7a590cdbf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d2865b9a6f4efc13a127edafefe1b28760e506b8a1b474fb7d1982d7a590cdbf",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b1d234bfdfe3851d12a1ef6cae4cb8c80c9ad7fd00d2b6960df04f9a197c8ec2",
+            "size": 5430322400
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 5.4
+    },
+    {
+      "name": "llama2:13b-chat-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "5.7GB",
+      "digest": "sha256:f3d1d05652aaeaf40544ceee7864d92ad064268047c353abe60cd7f0bb18f341",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f3d1d05652aaeaf40544ceee7864d92ad064268047c353abe60cd7f0bb18f341",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a80e78e8dd7c44f1971f7b4fa40a876c7085de34208b941ead0e6097ded53373",
+            "size": 5659954400
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 5.7
+    },
+    {
+      "name": "llama2:13b-chat-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "6.3GB",
+      "digest": "sha256:5300e4487dbcfcb687faffdd807729bec8a4e934429932917de12efaff121769",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5300e4487dbcfcb687faffdd807729bec8a4e934429932917de12efaff121769",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4a71be7fc19bf096a5e501af7e3ac845df85d5df6ceed1710fc35d009ec00f7f",
+            "size": 6338743520
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 6.3
+    },
+    {
+      "name": "llama2:13b-chat-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "6.9GB",
+      "digest": "sha256:7b5002ddfc75f2def906efd676af97e1dbb83d7318561dda52e81e99c2e05ea7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7b5002ddfc75f2def906efd676af97e1dbb83d7318561dda52e81e99c2e05ea7",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6e7a2e9d7ce74d6f2ddbc77422a8412f8cdd73f0f9d7d20cf843522ee85339d1",
+            "size": 6930533600
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 6.9
+    },
+    {
+      "name": "llama2:13b-chat-q4_0",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:be61bcdf308e32bb4d368612a1d7ae40664576e023b0e9feadfc6ae9eaef7917",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:be61bcdf308e32bb4d368612a1d7ae40664576e023b0e9feadfc6ae9eaef7917",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2609048d349e7c70196401be59bea7eb89a968d4642e409b0e798b34403b96c8",
+            "size": 7366808800
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 7.4
+    },
+    {
+      "name": "llama2:13b-chat-q4_1",
+      "last_updated": "1 year ago",
+      "size": "8.2GB",
+      "digest": "sha256:9eceb217c5293fd9c2ce2a16931a89f3610b55c4a129215effcbae4af3b38989",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9eceb217c5293fd9c2ce2a16931a89f3610b55c4a129215effcbae4af3b38989",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b8a500ff79b876276fe48fee1a39db60c502aa2be31da7dddeae9fd874c36c4f",
+            "size": 8170034400
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 8.2
+    },
+    {
+      "name": "llama2:13b-chat-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:4aa78d5f85506c68dc936678b9aca77193832d5b5db102200b0c48579924e2be",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4aa78d5f85506c68dc936678b9aca77193832d5b5db102200b0c48579924e2be",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8f6b81a239071ae25ba341afea85292486aece317a2a16040fc83bd0620f2085",
+            "size": 7415305440
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 7.4
+    },
+    {
+      "name": "llama2:13b-chat-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "7.9GB",
+      "digest": "sha256:b09edefd2cc92b489a9c3e89fdf2fca0924882fb670ba4d430cdfad1d91c9110",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b09edefd2cc92b489a9c3e89fdf2fca0924882fb670ba4d430cdfad1d91c9110",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:eb8190dc9b0010e229c30f89edb2cca8ba2ddc719af31dd39888d5038430541f",
+            "size": 7866930400
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 7.9
+    },
+    {
+      "name": "llama2:13b-chat-q5_0",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:3383984da46095b4009b8199ed1cea0400e27a44248ba576c1c2e69e41ac5595",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3383984da46095b4009b8199ed1cea0400e27a44248ba576c1c2e69e41ac5595",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5e39d42cef0b0226fdfb2fdd735655f5fd8d8fa1c1569670212ac3e3138d982a",
+            "size": 8973260000
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 9.0
+    },
+    {
+      "name": "llama2:13b-chat-q5_1",
+      "last_updated": "1 year ago",
+      "size": "9.8GB",
+      "digest": "sha256:5717469777554010dd84669e1d74b553938657eea227cd6bebf820ea48efca4c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5717469777554010dd84669e1d74b553938657eea227cd6bebf820ea48efca4c",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fa45a93f059cba701f4ccc2b6dc64a5f3ca012a63667184fa3c3b7c8637735a0",
+            "size": 9776485600
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 9.8
+    },
+    {
+      "name": "llama2:13b-chat-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:36bf41e3a431344f80e933ae7ad7d95e7aa93d232691a8f020344ba3760c4e9d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:36bf41e3a431344f80e933ae7ad7d95e7aa93d232691a8f020344ba3760c4e9d",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:236a04ce701687b6ed394398d41e448b3215c8634cda58d5bd95e7110c0ce82e",
+            "size": 8973260000
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 9.0
+    },
+    {
+      "name": "llama2:13b-chat-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "9.2GB",
+      "digest": "sha256:1b9dc97e4194ca63f321919063055262d478c2a1464d31ed492d2331047c3e55",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1b9dc97e4194ca63f321919063055262d478c2a1464d31ed492d2331047c3e55",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c11c6af908ad6a3d79ad038c2eee51c860ab19264f92f938e4af08c28dfe1442",
+            "size": 9230898400
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 9.2
+    },
+    {
+      "name": "llama2:13b-chat-q6_K",
+      "last_updated": "1 year ago",
+      "size": "11GB",
+      "digest": "sha256:a009cd23f06102027ac872fed980a36653787b4c92e4f51784ee0430b78d572b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a009cd23f06102027ac872fed980a36653787b4c92e4f51784ee0430b78d572b",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1b1c394bb63bd56aded3dfba48ba6fb45eeab0e206136388a558dc00cf4907db",
+            "size": 10680114400
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 11.0
+    },
+    {
+      "name": "llama2:13b-chat-q8_0",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:c8c5f455644b4ef064b6d4c24dc13d623f52bfa1a05c6124ff9fec085373f97c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c8c5f455644b4ef064b6d4c24dc13d623f52bfa1a05c6124ff9fec085373f97c",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:15bb8a8d94e38759a43668f214aaf98de0e5f2536bc5d88fa35564380d07566e",
+            "size": 13832293600
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 14.0
+    },
+    {
+      "name": "llama2:13b-chat-fp16",
+      "last_updated": "1 year ago",
+      "size": "26GB",
+      "digest": "sha256:55ea7838577ac69882c5b4ffa36e0de5d9885c09b5fe2c817199e680ed70886f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:55ea7838577ac69882c5b4ffa36e0de5d9885c09b5fe2c817199e680ed70886f",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6181f947dff92ff6266a40102d69a957cdfc5c8f2515498c8c3bb532ce48c4e3",
+            "size": 26034277536
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 26.0
+    },
+    {
+      "name": "llama2:13b-text",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:be397aec11453f59720f641a640d1a094f46c145e3bfae916f90d0b4cb3bdcaf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:be397aec11453f59720f641a640d1a094f46c145e3bfae916f90d0b4cb3bdcaf",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a42778cb06767fb6e35349a21c2f4616c6e9b31e4091547678dcea140cabe147",
+            "size": 7366807936
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 7.4
+    },
+    {
+      "name": "llama2:13b-text-q2_K",
+      "last_updated": "1 year ago",
+      "size": "5.4GB",
+      "digest": "sha256:a1dc27eb318ce39efc28c988eb72b0f0f9b60f22c847f2ca604fafa0b1cbecf0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a1dc27eb318ce39efc28c988eb72b0f0f9b60f22c847f2ca604fafa0b1cbecf0",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1681de2e489044d7791854ba09e1392376f26f91d559556e58333df44dc5f6c9",
+            "size": 5430321536
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 5.4
+    },
+    {
+      "name": "llama2:13b-text-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "5.7GB",
+      "digest": "sha256:a5424b3577ec1b5ed410219de0e29c28253d9bc7c49fac3a8e25f656147cbd10",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a5424b3577ec1b5ed410219de0e29c28253d9bc7c49fac3a8e25f656147cbd10",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d71d1a623d5cbcd20f588fcc69c225c6f95c6449fc02c2849e3e52d821f7b17a",
+            "size": 5659953536
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 5.7
+    },
+    {
+      "name": "llama2:13b-text-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "6.3GB",
+      "digest": "sha256:ac0d2681915f658f808ebba1aab8bfbf049c85c812349af1cf9665c9010bf81c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ac0d2681915f658f808ebba1aab8bfbf049c85c812349af1cf9665c9010bf81c",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:92e38f50fb55516d34751828cfe816f0f2aa3e4cb6b60b94de569bdd5e9411f0",
+            "size": 6338742656
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 6.3
+    },
+    {
+      "name": "llama2:13b-text-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "6.9GB",
+      "digest": "sha256:c56fdeca2dec17e38181b27ab04730fb92c93a5e7d09c86cd4da87f0be3a30e3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c56fdeca2dec17e38181b27ab04730fb92c93a5e7d09c86cd4da87f0be3a30e3",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:11ded6fb4b3c5fc64802557acf2678629e0d07eacaa71accff029f7b3131efb8",
+            "size": 6930532736
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 6.9
+    },
+    {
+      "name": "llama2:13b-text-q4_0",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:be397aec11453f59720f641a640d1a094f46c145e3bfae916f90d0b4cb3bdcaf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:be397aec11453f59720f641a640d1a094f46c145e3bfae916f90d0b4cb3bdcaf",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a42778cb06767fb6e35349a21c2f4616c6e9b31e4091547678dcea140cabe147",
+            "size": 7366807936
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 7.4
+    },
+    {
+      "name": "llama2:13b-text-q4_1",
+      "last_updated": "1 year ago",
+      "size": "8.2GB",
+      "digest": "sha256:64f0942d629d57a4993c493d58c416aecb58cddb80b2fbf04954709c8eb00d13",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:64f0942d629d57a4993c493d58c416aecb58cddb80b2fbf04954709c8eb00d13",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b5073cd9c1018094e123b997cb7eb4e76e12ef42be49eda0b71b4c9c192ba5d7",
+            "size": 8170033536
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 8.2
+    },
+    {
+      "name": "llama2:13b-text-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:93426769fdf396373530c422fe0cbe516fa3ad081497d7adae0106aca738a6d2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:93426769fdf396373530c422fe0cbe516fa3ad081497d7adae0106aca738a6d2",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1e8ca8d86f9ce2bf1bc499062fa17b0c088708caae84203abe5a16cde95638b6",
+            "size": 7415304576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 7.4
+    },
+    {
+      "name": "llama2:13b-text-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "7.9GB",
+      "digest": "sha256:59114356c385d603bf2491ea8a851e4def579d48291c5fa93c48f3510c366d46",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:59114356c385d603bf2491ea8a851e4def579d48291c5fa93c48f3510c366d46",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d3103263089f95b51ccf4912313b0278b64b7661ee88e47178b43f0c00ad88fb",
+            "size": 7866929536
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 7.9
+    },
+    {
+      "name": "llama2:13b-text-q5_0",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:c4ac624ea134f25e2e2d72c116001de1a3476426611019fc6d21b833fdf1d29c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c4ac624ea134f25e2e2d72c116001de1a3476426611019fc6d21b833fdf1d29c",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f6cf6465c023f3614add7fa14cb1d867c2ea6116af958360dff9512b049af9c7",
+            "size": 8973259136
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 9.0
+    },
+    {
+      "name": "llama2:13b-text-q5_1",
+      "last_updated": "1 year ago",
+      "size": "9.8GB",
+      "digest": "sha256:e025a9fe34fba5fb3d85767df4460fcae0d3d3f65af01a3f572150b796ea5144",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e025a9fe34fba5fb3d85767df4460fcae0d3d3f65af01a3f572150b796ea5144",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:439dd980e1e3e7dee18075ce1617a8b8d258a0771849c1cb0e2c9fcff5189ccf",
+            "size": 9776484736
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 9.8
+    },
+    {
+      "name": "llama2:13b-text-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:2dd62b9a414f9c4cc47dc3f66cccbf48a77cb15487d4abc9a7fba849b84797c4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2dd62b9a414f9c4cc47dc3f66cccbf48a77cb15487d4abc9a7fba849b84797c4",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:bd7224883eb4d24d1ed1a539fbfbd28f84e93ec241c10d00a65141f91feb6377",
+            "size": 8973259136
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 9.0
+    },
+    {
+      "name": "llama2:13b-text-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "9.2GB",
+      "digest": "sha256:536934a3b09ba492492bf8af2679368496a8ba000b473d7dd81fe56d2394eb23",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:536934a3b09ba492492bf8af2679368496a8ba000b473d7dd81fe56d2394eb23",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4ce1ff98ec47736586dfb3a2d303b1aaaa21fb049c6eea633b16fb82a27899dc",
+            "size": 9230897536
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 9.2
+    },
+    {
+      "name": "llama2:13b-text-q6_K",
+      "last_updated": "1 year ago",
+      "size": "11GB",
+      "digest": "sha256:e16d6a28ab22fb56ee026019aee81be9b1290c985fe2e57f775f4267f1df1a3f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e16d6a28ab22fb56ee026019aee81be9b1290c985fe2e57f775f4267f1df1a3f",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:94f136871f1f2bb1c6ab7b46c3516375d70960e8e49c5e8ec6ede4f653374488",
+            "size": 10680113536
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 11.0
+    },
+    {
+      "name": "llama2:13b-text-q8_0",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:0770e9fc4d462c945dccc79db5c58dbf261868ba557268152680eac9f9bd9aad",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0770e9fc4d462c945dccc79db5c58dbf261868ba557268152680eac9f9bd9aad",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:aecb0800eb47779688ef434e9694e7e712231b5034bf322349df8571058ca8d7",
+            "size": 13832292736
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 14.0
+    },
+    {
+      "name": "llama2:13b-text-fp16",
+      "last_updated": "1 year ago",
+      "size": "26GB",
+      "digest": "sha256:a944fd61afa95a6f391e4ce1d6d98b531415a933bf32e5fea6d25b3a9b9b3e75",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a944fd61afa95a6f391e4ce1d6d98b531415a933bf32e5fea6d25b3a9b9b3e75",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:501884dd9d17575ef5badc2063dc919ef08b5669c89a8b76697bccf6ded69f09",
+            "size": 26034276704
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 26.0
+    },
+    {
+      "name": "llama2:70b-chat",
+      "last_updated": "1 year ago",
+      "size": "39GB",
+      "digest": "sha256:7c96b46dca6c82b1e5351d7b58ef3a684ac2b0653446afc6df047899c9b48e77",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7c96b46dca6c82b1e5351d7b58ef3a684ac2b0653446afc6df047899c9b48e77",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:68bbe6dc9cf42eb60c9a7f96137fb8d472f752de6ebf53e9942f267f1a1e2577",
+            "size": 38873223392
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 39.0
+    },
+    {
+      "name": "llama2:70b-chat-q2_K",
+      "last_updated": "1 year ago",
+      "size": "29GB",
+      "digest": "sha256:85fb28087328b9a7a461d5fc75d553b5e75c71028fa7663fff960aebbcc95b19",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:85fb28087328b9a7a461d5fc75d553b5e75c71028fa7663fff960aebbcc95b19",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:787b477a4b662833d6b921867b35c3780d38269578fc919f5da02f4a812c0635",
+            "size": 29280227552
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 29.0
+    },
+    {
+      "name": "llama2:70b-chat-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "30GB",
+      "digest": "sha256:b24969051a5ba96b1a1724cb3bcaf4e5bf59dfe3f791d0e06399341e6443bb04",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b24969051a5ba96b1a1724cb3bcaf4e5bf59dfe3f791d0e06399341e6443bb04",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e1d60a836eff3d0a6510c201523c477a7e6861accef62b6c5db7a5318f10262d",
+            "size": 29920268512
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 30.0
+    },
+    {
+      "name": "llama2:70b-chat-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "33GB",
+      "digest": "sha256:09e9b2493d97f4282bc139edf373453d8e37803149049eeddf51c4e2f73636f9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:09e9b2493d97f4282bc139edf373453d8e37803149049eeddf51c4e2f73636f9",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d9164b0cec19e3006be7b6862c58bbb69e43b9d859b91b4156fb2df1282ce63d",
+            "size": 33187631328
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 33.0
+    },
+    {
+      "name": "llama2:70b-chat-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "36GB",
+      "digest": "sha256:d868719e3cb1a5a0fd9297633659523e61258442614588c5cd71a03783488116",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d868719e3cb1a5a0fd9297633659523e61258442614588c5cd71a03783488116",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:10bf2807882daa4486016c398a8394112abb6784fb61eadc07c5e61ee80cec5a",
+            "size": 36148809952
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 36.0
+    },
+    {
+      "name": "llama2:70b-chat-q4_0",
+      "last_updated": "1 year ago",
+      "size": "39GB",
+      "digest": "sha256:7c96b46dca6c82b1e5351d7b58ef3a684ac2b0653446afc6df047899c9b48e77",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7c96b46dca6c82b1e5351d7b58ef3a684ac2b0653446afc6df047899c9b48e77",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:68bbe6dc9cf42eb60c9a7f96137fb8d472f752de6ebf53e9942f267f1a1e2577",
+            "size": 38873223392
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 39.0
+    },
+    {
+      "name": "llama2:70b-chat-q4_1",
+      "last_updated": "1 year ago",
+      "size": "43GB",
+      "digest": "sha256:4e58c507a9aa50679657c00fd70be3ebd4e779d00cc42f9f634638399abc4a66",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4e58c507a9aa50679657c00fd70be3ebd4e779d00cc42f9f634638399abc4a66",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:53d7b16e0c37bc986f54d0821c461710a3d848ea9363feeadc2d9ce5b5011d36",
+            "size": 43167797472
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 43.0
+    },
+    {
+      "name": "llama2:70b-chat-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "39GB",
+      "digest": "sha256:66c8e2c25121bce76641f5aa33e43b51135f49575492b0de71b280ce3c8a7c7f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:66c8e2c25121bce76641f5aa33e43b51135f49575492b0de71b280ce3c8a7c7f",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a131761a89863303b17c2dfe4da06b44886a6ddc3f42faafef0c4f3aba171135",
+            "size": 39074549984
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 39.0
+    },
+    {
+      "name": "llama2:70b-chat-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "41GB",
+      "digest": "sha256:c2941c6328d42cb6791a7b35a386963979c9b83e718c4dc8aeed27cc246ae4f5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c2941c6328d42cb6791a7b35a386963979c9b83e718c4dc8aeed27cc246ae4f5",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:51ba7f65a1080165773ce297abb57c71b754f623e0e4bcba9dffd38ddfd62edb",
+            "size": 41423884512
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 41.0
+    },
+    {
+      "name": "llama2:70b-chat-q5_0",
+      "last_updated": "1 year ago",
+      "size": "47GB",
+      "digest": "sha256:262276b5db7d7769f38c9f543d8b969d73dad0173d9b3f49e9142ae20ad7cb86",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:262276b5db7d7769f38c9f543d8b969d73dad0173d9b3f49e9142ae20ad7cb86",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a3e3ba1f2e4b39e47bb374e6cd489260e9f9e4b1b24a2fd08131446a9cfde75a",
+            "size": 47462371552
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 47.0
+    },
+    {
+      "name": "llama2:70b-chat-q5_1",
+      "last_updated": "1 year ago",
+      "size": "52GB",
+      "digest": "sha256:a38da066b89be6ab6dd20e9292714ad58caf94e6bd7c182c89ba1ad0e9d7a95a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a38da066b89be6ab6dd20e9292714ad58caf94e6bd7c182c89ba1ad0e9d7a95a",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:db91628fb54c060f98aea2284025f22c06ac915c32a4cfe05885b47005904cdc",
+            "size": 51756945632
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 52.0
+    },
+    {
+      "name": "llama2:70b-chat-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "47GB",
+      "digest": "sha256:3c670d346109194ac121fa783cbef1112ea08c010e2d352f828b8aab16969b5e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3c670d346109194ac121fa783cbef1112ea08c010e2d352f828b8aab16969b5e",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:27a77f656e290d683c3732e6e41fc791c59149535477b02bcdf6da1fa4fc6f58",
+            "size": 47462371552
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 47.0
+    },
+    {
+      "name": "llama2:70b-chat-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "49GB",
+      "digest": "sha256:cb0628281bde9cfa05f4c4260f48f24b28f5fd6c07dd145a6101eee587cfcbdc",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:cb0628281bde9cfa05f4c4260f48f24b28f5fd6c07dd145a6101eee587cfcbdc",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:87c4dbd6b40da90bfb4b0663af9f4f21b32bf245364d8a8f13b328c2c395261d",
+            "size": 48754741472
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 49.0
+    },
+    {
+      "name": "llama2:70b-chat-q6_K",
+      "last_updated": "1 year ago",
+      "size": "57GB",
+      "digest": "sha256:fc1b1a3b764b7421686b1f3b2fc017d27a52cdc6160c17a399433fbbd55cc8a2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fc1b1a3b764b7421686b1f3b2fc017d27a52cdc6160c17a399433fbbd55cc8a2",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b45176d6499360b32c2910d50d744140b0d44c160357248adb3127b6d315fc38",
+            "size": 56588341472
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 57.0
+    },
+    {
+      "name": "llama2:70b-chat-q8_0",
+      "last_updated": "1 year ago",
+      "size": "73GB",
+      "digest": "sha256:e871a652a5cb8b6c1894a477abc28cff49e293a8ffb7513beaa7e27ea5da0b8c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e871a652a5cb8b6c1894a477abc28cff49e293a8ffb7513beaa7e27ea5da0b8c",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:74c6ae82dc53632aa51fecde73fceed0b16fe012d260fb8c4911732c0668d7cd",
+            "size": 73293304032
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 73.0
+    },
+    {
+      "name": "llama2:70b-chat-fp16",
+      "last_updated": "1 year ago",
+      "size": "138GB",
+      "digest": "sha256:bf7881dfe4c8079a29689e2851289a6b7012a1311345eacd60227185341727b0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:bf7881dfe4c8079a29689e2851289a6b7012a1311345eacd60227185341727b0",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:465e0ec37bd29c1a6f79e5922c378d7c55123bea78f59d663181d722c216eee0",
+            "size": 137957675200
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988",
+            "size": 59
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6",
+            "size": 91
+          }
+        ]
+      },
+      "size_gb": 138.0
+    },
+    {
+      "name": "llama2:70b-text",
+      "last_updated": "1 year ago",
+      "size": "39GB",
+      "digest": "sha256:fd58eea3f29390a4a41b3cce1392c92ee173b92ea2ef73710c904e2d01dfbcab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fd58eea3f29390a4a41b3cce1392c92ee173b92ea2ef73710c904e2d01dfbcab",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:106909eedf535e0c9c749dd8ffee0919cefb06729bb18f8fd466fad5c92d9739",
+            "size": 38873222528
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 39.0
+    },
+    {
+      "name": "llama2:70b-text-q2_K",
+      "last_updated": "1 year ago",
+      "size": "29GB",
+      "digest": "sha256:d2f4499d47de00eed0fb84538570c75d70c3c0bd98d0970c34698b115c000a3c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d2f4499d47de00eed0fb84538570c75d70c3c0bd98d0970c34698b115c000a3c",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:01df34d30a02a6b8dee2d9a834dda3f5555ef8a6fdd50efff4de49426d47780b",
+            "size": 29280226688
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 29.0
+    },
+    {
+      "name": "llama2:70b-text-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "30GB",
+      "digest": "sha256:b39b80abbcad3b9bfe84a64da6ddf8aa05fde2f2e53a995f54dde2007cca8e42",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b39b80abbcad3b9bfe84a64da6ddf8aa05fde2f2e53a995f54dde2007cca8e42",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fd82b93138ad98d9aacca1fb422153d1b54d691dc0bc7834f897cbd37473c711",
+            "size": 29920267648
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 30.0
+    },
+    {
+      "name": "llama2:70b-text-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "33GB",
+      "digest": "sha256:0463238bfc457f31d80f3a0bc0d4e871f1dae693e52cb27368b5530db2f700a4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0463238bfc457f31d80f3a0bc0d4e871f1dae693e52cb27368b5530db2f700a4",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e1db3db4ab587d64e10d60fa705f2b682fb44d0caaf62a7aa578b9154bb9b417",
+            "size": 33187630464
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 33.0
+    },
+    {
+      "name": "llama2:70b-text-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "36GB",
+      "digest": "sha256:33a9e2c8b2a3a98c4331ca4bc5f7a73cf09417ab956beeb9047b71f57b5a4927",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:33a9e2c8b2a3a98c4331ca4bc5f7a73cf09417ab956beeb9047b71f57b5a4927",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6b7b51000bf8da382e0299178653fed8db4ca50a542cfcac95d74d2ddf649c6a",
+            "size": 36148809088
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 36.0
+    },
+    {
+      "name": "llama2:70b-text-q4_0",
+      "last_updated": "1 year ago",
+      "size": "39GB",
+      "digest": "sha256:fd58eea3f29390a4a41b3cce1392c92ee173b92ea2ef73710c904e2d01dfbcab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fd58eea3f29390a4a41b3cce1392c92ee173b92ea2ef73710c904e2d01dfbcab",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:106909eedf535e0c9c749dd8ffee0919cefb06729bb18f8fd466fad5c92d9739",
+            "size": 38873222528
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 39.0
+    },
+    {
+      "name": "llama2:70b-text-q4_1",
+      "last_updated": "1 year ago",
+      "size": "43GB",
+      "digest": "sha256:1b7c1011342de89534853e87fea10d3da6d4b20375de0b8f3a041d56a68b818b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1b7c1011342de89534853e87fea10d3da6d4b20375de0b8f3a041d56a68b818b",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:744a2978411e7082f2976b788d9ac8ff7a214ea94559fe1cb728278019ba5247",
+            "size": 43167796608
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 43.0
+    },
+    {
+      "name": "llama2:70b-text-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "39GB",
+      "digest": "sha256:69fe73f42f06d3a0b7c5d583a300600d120220288c9603fe7362727accc48e5a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:69fe73f42f06d3a0b7c5d583a300600d120220288c9603fe7362727accc48e5a",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:78a263f5721f3b35760d2d61a35ccc1bcc79579f13f76cdf72eb8b30346dead1",
+            "size": 39074549120
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 39.0
+    },
+    {
+      "name": "llama2:70b-text-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "41GB",
+      "digest": "sha256:e9324f22f2f27b67f6a7f6d4920bfe801c4445a09f4c3306723d1c8ff6bf0370",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e9324f22f2f27b67f6a7f6d4920bfe801c4445a09f4c3306723d1c8ff6bf0370",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:afa2c21cdf179a22a8b2d2e4a0f95890caf6f36bde36b4008a9489353211faec",
+            "size": 41423883648
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 41.0
+    },
+    {
+      "name": "llama2:70b-text-q5_0",
+      "last_updated": "1 year ago",
+      "size": "47GB",
+      "digest": "sha256:7371d31f327c810f7ec52b62bdeef3bb1c14290376d89cf947b2ad8b86d08d88",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7371d31f327c810f7ec52b62bdeef3bb1c14290376d89cf947b2ad8b86d08d88",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d56c221b512d409149bf44090c185f8fac988d71006bc431d31e4db8d854e2df",
+            "size": 47462370688
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 47.0
+    },
+    {
+      "name": "llama2:70b-text-q5_1",
+      "last_updated": "1 year ago",
+      "size": "52GB",
+      "digest": "sha256:5985a7b98dc99a66c8a881368e6663503bcf986f14391b13274dea6f056cff14",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5985a7b98dc99a66c8a881368e6663503bcf986f14391b13274dea6f056cff14",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0d18eb99f123109d89c83564facfb3c60846818cb5995e4103ec9171ad62a2b3",
+            "size": 51756944768
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 52.0
+    },
+    {
+      "name": "llama2:70b-text-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "47GB",
+      "digest": "sha256:46e38f9a50d3fc22d9f0f10a00c844cbde520f60cf836e82dac2416264bce69e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:46e38f9a50d3fc22d9f0f10a00c844cbde520f60cf836e82dac2416264bce69e",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d4995573fd5277ef21ed72c50a6477037b047cf278b90f7640a83f225363f367",
+            "size": 47462370688
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 47.0
+    },
+    {
+      "name": "llama2:70b-text-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "49GB",
+      "digest": "sha256:e3a54e65354cd1b6f6f83416d2344645690a5e312282fc52e2cd4b9dc86bfcde",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e3a54e65354cd1b6f6f83416d2344645690a5e312282fc52e2cd4b9dc86bfcde",
+          "size": 412
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c3f01a3bb49104c325c6aeed2f2f084c7e5f05a69c965667f83314f34eccf5ea",
+            "size": 48754740608
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 49.0
+    },
+    {
+      "name": "llama2:70b-text-q6_K",
+      "last_updated": "1 year ago",
+      "size": "57GB",
+      "digest": "sha256:49eaf6e58df2dfac870ef077f2c33cd92e3f076151efa65932f101522c5a8d4f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:49eaf6e58df2dfac870ef077f2c33cd92e3f076151efa65932f101522c5a8d4f",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4acb87ad91355afbf60f1ca1e0a70aabe1dba8e85118bd8f02377578c15ca622",
+            "size": 56588340608
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 57.0
+    },
+    {
+      "name": "llama2:70b-text-q8_0",
+      "last_updated": "1 year ago",
+      "size": "73GB",
+      "digest": "sha256:d9260e00407d0556843f25776163db0d4cba9d898ef0df6d140e66941a552ac9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d9260e00407d0556843f25776163db0d4cba9d898ef0df6d140e66941a552ac9",
+          "size": 410
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:98224fc729176205a2767cc89ba751fb754bc08405ecca22ec926eb255ea1c47",
+            "size": 73293303168
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 73.0
+    },
+    {
+      "name": "llama2:70b-text-fp16",
+      "last_updated": "1 year ago",
+      "size": "138GB",
+      "digest": "sha256:0db2007a4b424914fa29d57c2bc05f53fa6c7028fb9c3e6fb9298e564129c4ff",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0db2007a4b424914fa29d57c2bc05f53fa6c7028fb9c3e6fb9298e564129c4ff",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a2862d3c338703517b1132e4f9b2aac5e926343588bbe205c3a35c672f2e1f36",
+            "size": 137957674336
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b",
+            "size": 7020
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d",
+            "size": 4766
+          }
+        ]
+      },
+      "size_gb": 138.0
+    }
+  ],
+  "annotations": {
+    "ollama.input_type": "chat"
+  },
+  "architecture": "Llama",
+  "family": "Llama",
+  "inferred_topics": [
+    "chatbot",
+    "conversational AI"
+  ]
+}

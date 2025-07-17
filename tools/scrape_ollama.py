@@ -47,10 +47,106 @@ def fetch_manifest(model, tag="latest"):
         log_message(f"Error fetching manifest for {model}:{tag} from API: {e}", level="ERROR", phase="manifest_api")
         return None
 
+def scrape_tags_page(page, model_name):
+    """
+    Scrapes the tags page for a given model to extract version information.
+    """
+    url = f"https://ollama.com/library/{model_name}/tags"
+    tags_data = []
+    try:
+        log_message(f"Fetching tags page: {url}")
+        page.goto(url, wait_until="networkidle", timeout=60000)
+        soup = BeautifulSoup(page.content(), "html.parser")
+
+        tag_items = soup.select("div.group.px-4.py-3")
+        log_message(f"Found {len(tag_items)} tag items on the page.")
+
+        for item in tag_items:
+            # Prioritize desktop view as it has cleaner data
+            desktop_view = item.find("div", class_=lambda c: c and "md:flex" in c.split())
+            
+            tag_name = ""
+            size = ""
+            digest = ""
+            last_updated = ""
+
+            if desktop_view:
+                tag_name_element = desktop_view.find('a')
+                tag_name = tag_name_element.get_text(strip=True) if tag_name_element else ''
+
+                size_element = desktop_view.find("p", class_="col-span-2")
+                size = size_element.get_text(strip=True) if size_element else ""
+
+                details_div = desktop_view.find("div", class_="flex text-neutral-500 text-xs items-center")
+                if details_div:
+                    digest_element = details_div.find("span", class_="font-mono")
+                    digest = digest_element.get_text(strip=True) if digest_element else ""
+                    
+                    last_updated_text = details_div.get_text(strip=True)
+                    last_updated_match = re.search(r'·\s*(.*)', last_updated_text)
+                    if last_updated_match:
+                        last_updated = last_updated_match.group(1).strip()
+            else:
+                # Fallback to mobile view
+                mobile_view = item.find("a", class_=lambda c: c and "md:hidden" in c.split())
+                if mobile_view:
+                    tag_name_element = mobile_view.find("span", class_="group-hover:underline")
+                    tag_name = tag_name_element.get_text(strip=True) if tag_name_element else ''
+                    
+                    details_text = mobile_view.get_text(separator=' ', strip=True)
+                    
+                    size_match = re.search(r'•\s*([\d.]+\s*(?:GB|MB|KB))', details_text)
+                    size = size_match.group(1) if size_match else ''
+
+                    digest_match = re.search(r'([a-f0-9]{12})', details_text)
+                    digest = digest_match.group(1) if digest_match else ''
+
+                    last_updated_match = re.search(r'•\s*(.+ago)', details_text)
+                    last_updated = last_updated_match.group(1) if last_updated_match else ''
+
+            if not tag_name:
+                continue
+
+            api_tag = tag_name.split(':')[-1] if ':' in tag_name else tag_name
+
+            tag_entry = {
+                "name": tag_name,
+                "last_updated": last_updated,
+                "size": size.replace('•','').strip(),
+                "digest": digest,
+                "manifest": None
+            }
+
+            try:
+                manifest = fetch_manifest(model_name, api_tag)
+                if manifest:
+                    tag_entry["manifest"] = manifest
+                    if manifest.get("config"):
+                        tag_entry["digest"] = manifest.get("config", {}).get("digest")
+
+                    # Extract context_window and input_type from manifest layers
+                    for layer in manifest.get("layers", []):
+                        layer["mediaType"] = normalize_layer_media_type(layer["mediaType"])
+                        if layer.get("annotations"):
+                            if "ollama.context_window" in layer["annotations"]:
+                                tag_entry["context_window"] = layer["annotations"]["ollama.context_window"]
+                            if "ollama.input_type" in layer["annotations"]:
+                                tag_entry["input_type"] = layer["annotations"]["ollama.input_type"]
+
+            except Exception as e:
+                log_message(f"Error fetching manifest for {api_tag}: {e}", level="ERROR")
+
+            tags_data.append(tag_entry)
+
+    except Exception as e:
+        log_message(f"Error scraping tags page for {model_name}: {e}", level="ERROR")
+        
+    return tags_data
+
 def scrape_details(page, model_name):
     """
     Scrape metadata from a model's main library page.
-    Fields captured include description, license, pull counts, architecture and freshness hash.
+    Fields captured include description, license, pull counts, architecture, freshness hash, and full README content.
     """
     result = {"name": model_name}
     url = f"https://ollama.com/library/{model_name}"
@@ -90,6 +186,7 @@ def scrape_details(page, model_name):
 
         # Simple search in the README area for architecture and family info
         prose = soup.find("div", class_="prose")
+        result["readme_html"] = str(prose) if prose else ""
         content_txt = prose.get_text(" ") if prose else ""
         m_arch = re.search(r'architecture:\s*([\w\-]+)', content_txt, re.IGNORECASE)
         if m_arch:
@@ -101,6 +198,14 @@ def scrape_details(page, model_name):
         # Add a snapshot hash of the current HTML to detect changes
         result["page_hash"] = get_hash(soup.prettify())
 
+        # Extract full README content
+        prose_element = soup.find("div", class_="prose")
+        if prose_element:
+            result["readme_html"] = str(prose_element)
+            result["readme_text"] = prose_element.get_text()
+        else:
+            result["readme_html"] = ""
+            result["readme_text"] = ""
     except PlaywrightTimeout as e:
         log_message(f"Timeout on details page for {model_name}: {e}", level="ERROR")
         page.screenshot(path=os.path.join(DEBUG_DIR, f"{model_name}_details_timeout.png"))
@@ -110,6 +215,272 @@ def scrape_details(page, model_name):
         log_message(f"Error scraping details page for {model_name}: {e}", level="ERROR")
 
     return result
+
+def enrich_model_data(detail):
+    """
+    Enriches the model data by parsing annotations and README content.
+    """
+    # Backfill missing annotations from README
+    if "ollama.context_window" not in detail.get("annotations", {}) and "readme_text" in detail:
+        match = re.search(r'context window(?: of)? (\d+K?)\b', detail["readme_text"], re.IGNORECASE)
+        if match:
+            if "annotations" not in detail:
+                detail["annotations"] = {}
+            detail["annotations"]["ollama.context_window"] = match.group(1)
+            
+    if "ollama.input_type" not in detail.get("annotations", {}) and "readme_text" in detail:
+        if re.search(r'\bchat\b', detail["readme_text"], re.IGNORECASE):
+            if "annotations" not in detail:
+                detail["annotations"] = {}
+            detail["annotations"]["ollama.input_type"] = "chat"
+        elif re.search(r'\bcode\b', detail["readme_text"], re.IGNORECASE):
+            if "annotations" not in detail:
+                detail["annotations"] = {}
+            detail["annotations"]["ollama.input_type"] = "code"
+        elif re.search(r'\btext\b', detail["readme_text"], re.IGNORECASE):
+            if "annotations" not in detail:
+                detail["annotations"] = {}
+            detail["annotations"]["ollama.input_type"] = "text"
+
+    return detail
+
+    return detail
+
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
+
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
+
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
+
+def classify_with_llm(text):
+    """
+    Placeholder for LLM-based classification of text.
+    In a real scenario, this would call an LLM API to infer topics/capabilities.
+    """
+    # Simulate LLM output for demonstration
+    if "chat" in text.lower():
+        return ["chatbot", "conversational AI"]
+    elif "code" in text.lower():
+        return ["code generation", "programming"]
+    else:
+        return ["general purpose"]
+
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
+
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
+
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
+
+def classify_with_llm(text):
+    """
+    Placeholder for LLM-based classification of text.
+    In a real scenario, this would call an LLM API to infer topics/capabilities.
+    """
+    # Simulate LLM output for demonstration
+    if "chat" in text.lower():
+        return ["chatbot", "conversational AI"]
+    elif "code" in text.lower():
+        return ["code generation", "programming"]
+    else:
+        return ["general purpose"]
+
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
+
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
+
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
+
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
+
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
+
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
+
+
 
 def scrape_ollama_models_from_web(headless=True, debug_model=None):
     """
@@ -163,28 +534,14 @@ def scrape_ollama_models_from_web(headless=True, debug_model=None):
             
             detail = scrape_details(page, name)
             
-            # Fetch manifest for tags and other structured data
-            manifest = fetch_manifest(name)
-            if manifest:
-                tags_data = []
-                for layer in manifest.get("layers", []):
-                    tag_entry = {
-                        "name": layer.get("mediaType", "").split(":")[-1], # Extract tag name from mediaType
-                        "digest": layer.get("digest", ""),
-                        "size": f"{round(layer.get("size", 0) / (1024*1024*1024), 2)}GB" if layer.get("size") else None, # Convert bytes to GB
-                        "media_type": layer.get("mediaType", ""),
-                        "annotations": layer.get("annotations", {})
-                    }
-                    # Attempt to extract context window and input type from annotations or mediaType
-                    if "annotations" in layer and layer["annotations"]:
-                        tag_entry["context_window"] = layer["annotations"].get("ollama.context_window")
-                        tag_entry["input_type"] = layer["annotations"].get("ollama.input_type")
-                        tag_entry["last_updated"] = layer["annotations"].get("ollama.last_modified")
-                    
-                    tags_data.append(tag_entry)
-                detail["tags"] = tags_data
-            else:
-                detail["tags"] = [] # No manifest found
+            # Scrape the tags page for version info
+            detail["tags"] = scrape_tags_page(page, name)
+
+            # Enrich the model data
+            detail = enrich_model_data(detail)
+
+            # Post-process the model data
+            detail = post_process_model_data(detail)
 
             # Save individual model JSON file
             model_file_path = os.path.join(OLLAMA_MODELS_DIR, f"{name.replace('/', '_')}.json")
