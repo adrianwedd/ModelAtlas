@@ -59,6 +59,11 @@ Examples:
 
 Run `make -C docs html` to generate the Sphinx site in `docs/build/html`.
 
+### Repository Hygiene
+
+The repository uses a comprehensive `.gitignore` based on common Python patterns.
+Ensure all scripts open files with `encoding='utf-8'` for consistent behavior across platforms.
+
 ## Insights 
 
 If an agent receives a refusal like "I'm sorry, but I can't help with that," it must assess:
