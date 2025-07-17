@@ -1,14 +1,18 @@
-from huggingface_hub import list_models, HfApi, ModelCard, hf_hub_download
+from huggingface_hub import list_models, HfApi, ModelCard
 import json
 import os
 import time
 import re
 import sys
+from pathlib import Path
+import requests_cache
 
 from atlas_schemas.config import settings
 
+# HTTP request cache
 LOG_FILE = settings.LOG_FILE
 MODELS_DIR = settings.MODELS_DIR
+CACHE_PATH = Path(settings.PROJECT_ROOT / ".cache" / "http")
 # OUTPUT_FILE = "data/models_raw.json" # Removed, as we're saving individual files
 
 def log_message(message, level="INFO", status=None, phase=None):
@@ -35,7 +39,11 @@ def parse_pull_count(s):
     except:
         return 0  # fallback to zero on parse failure
 
-def execute_hf_scraper(limit=None):
+def execute_hf_scraper(limit=None, use_cache=True):
+    if use_cache:
+        CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        requests_cache.install_cache(str(CACHE_PATH))
+
     api = HfApi()
     all_models_data = []
     
@@ -116,9 +124,17 @@ def execute_hf_scraper(limit=None):
     log_message(f"Hugging Face Hub scraping complete — {len(all_models_data)} models stored in {hf_models_output_dir}", status="COMPLETE", phase="done")
 
 if __name__ == "__main__":
-    L116: # Reset log file each trace for clean debugging
+    # Reset log file each trace for clean debugging
     if os.path.exists(LOG_FILE):
         os.remove(LOG_FILE)
     
-    # Example usage: scrape top 100 models
-    execute_hf_scraper(limit=100)
+    use_cache = "--no-cache" not in sys.argv
+    limit = 100
+    for arg in sys.argv:
+        if arg.startswith("--limit="):
+            try:
+                limit = int(arg.split("=")[1])
+            except ValueError:
+                pass
+
+    execute_hf_scraper(limit=limit, use_cache=use_cache)

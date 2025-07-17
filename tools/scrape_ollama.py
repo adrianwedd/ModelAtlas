@@ -1,13 +1,16 @@
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 from bs4 import BeautifulSoup
 import json, sys, re, time, hashlib, os
-import requests # Added requests import
+import requests
+from pathlib import Path
+import requests_cache
 
 from atlas_schemas.config import settings
 
 LOG_FILE = settings.LOG_FILE
-OLLAMA_MODELS_DIR = settings.OLLAMA_MODELS_DIR
+OLLAMA_MODELS_DIR = settings.MODELS_DIR / "ollama"
 DEBUG_DIR = settings.DEBUG_DIR
+CACHE_PATH = Path(settings.PROJECT_ROOT / ".cache" / "http")
 
 LAYER_MEDIA_TYPE_MAP = {
     "application/vnd.ollama.image.model": "Model Weights",
@@ -374,7 +377,7 @@ def enrich_model_data(detail):
 
 
 
-def scrape_ollama_models_from_web(headless=True, debug_model=None):
+def scrape_ollama_models_from_web(headless=True, debug_model=None, use_cache=True):
     """
     Orchestrates the scraping flow for Ollama.com specific data:
       1. Launches browser
@@ -384,6 +387,10 @@ def scrape_ollama_models_from_web(headless=True, debug_model=None):
          - fetches manifest from registry API
       4. Writes output to individual JSON files in models/ollama
     """
+    if use_cache:
+        CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        requests_cache.install_cache(str(CACHE_PATH))
+
     results = []
     os.makedirs(DEBUG_DIR, exist_ok=True)
     os.makedirs(OLLAMA_MODELS_DIR, exist_ok=True)
@@ -482,6 +489,7 @@ if __name__ == "__main__":
     
     headless_mode = True
     debug_model_name = None
+    use_cache = "--no-cache" not in sys.argv
 
     if "--headless=false" in sys.argv:
         headless_mode = False
@@ -492,4 +500,4 @@ if __name__ == "__main__":
             debug_model_name = arg.split("=")[1]
             break
 
-    scrape_ollama_models_from_web(headless=headless_mode, debug_model=debug_model_name)
+    scrape_ollama_models_from_web(headless=headless_mode, debug_model=debug_model_name, use_cache=use_cache)

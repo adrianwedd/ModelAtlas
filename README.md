@@ -138,6 +138,8 @@ tracepoint gemma:2b --lineage
 cd dashboards && npm run dev
 ```
 
+All HTTP requests made by the scrapers are cached in `.cache/http.sqlite` by default. Use `--no-cache` to disable caching.
+
 ## 📦 Git LFS Setup
 
 This repository uses [Git LFS](https://git-lfs.com/) to version large JSON artifacts. Run the following commands after cloning:
