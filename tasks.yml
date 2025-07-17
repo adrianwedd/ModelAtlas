@@ -41,6 +41,7 @@
   acceptance_criteria:
     - "All models from Ollama.com indexed."
     - "Detailed tag info (digest, size, context, input type) extracted."
+    - "No malformed JSON or missing name/version fields."
   assigned_to: "DataCurator"
   ci_notes: "⚙️ Optimized for web scraping: ensure robust error handling, screenshots on failure, and console logging."
   epic: "Data Acquisition"
@@ -485,3 +486,90 @@
   dependencies: []
   priority: 2
   status: "done"
+- id: 101
+  title: "Establish Single Source of Truth for Data Schemas"
+  description: "Refactor the entire codebase to use a centralized set of Pydantic models for all data structures, eliminating hand-rolled dicts and making schema.md obsolete."
+  component: "Core Architecture"
+  dependencies: []
+  priority: 1
+  status: "pending"
+  area: "Refactor"
+  actionable_steps:
+    - "Create a new top-level `atlas_schemas` directory."
+    - "Define Pydantic models for `TraceableItem`, `PipelineConfig`, and all other core types."
+    - "Replace all dictionary manipulations in `recursor`, `trustforge`, and `atlas_cli` with these models."
+    - "Remove the static `schema.md` file."
+  acceptance_criteria:
+    - "No module manually defines the shape of pipeline data."
+    - "All data passed between `recursor` and `trustforge` is an instance of a Pydantic model from `atlas_schemas`."
+  epic: "Foundational Hardening"
+- id: 102
+  title: "Unify Project Terminology"
+  description: "Decide on and enforce a single, canonical term for a pipeline execution across the entire repository (code, docs, CLI)."
+  component: "DX"
+  dependencies: []
+  priority: 1
+  status: "pending"
+  area: "Consistency"
+  actionable_steps:
+    - "Declare 'Trace' as the official term in a new `CONTRIBUTING.md` lexicon."
+    - "Grep the codebase for 'job', 'run', 'workflow', 'pipeline' and replace with 'trace'."
+    - "Update all user-facing strings in `atlas_cli`."
+    - "Update all log messages."
+    - "Update the README and all other documentation."
+  acceptance_criteria:
+    - "The term 'job' no longer appears in the codebase outside of historical changelogs."
+    - "The primary CLI command is `atlas trace ...`."
+  epic: "Foundational Hardening"
+- id: 201
+  title: "Implement Centralized Configuration"
+  description: "Refactor configuration management to use a single, unified `Config` object loaded from a `.env` file."
+  component: "Core Architecture"
+  dependencies: [101]
+  priority: 2
+  status: "pending"
+  area: "Refactor"
+  actionable_steps:
+    - "Create `atlas_schemas/config.py` with a Pydantic-based settings management class."
+    - "Ensure it loads configuration from a `.env` file and has sane defaults."
+    - "Refactor all modules to import and use this config object."
+    - "Remove all other configuration files and `os.environ` calls."
+  acceptance_criteria:
+    - "A single `.env.example` file exists at the project root."
+    - "`config.json` and other ad-hoc config files are deleted."
+  epic: "Foundational Hardening"
+- id: 301
+  title: "Create Master Integration Test"
+  description: "Build a single, comprehensive integration test that runs the entire pipeline from a sample input file to a final output file."
+  component: "Testing"
+  dependencies: [101, 201]
+  priority: 3
+  status: "pending"
+  area: "Testing"
+  actionable_steps:
+    - "Create a `tests/integration` directory."
+    - "Add `test_full_trace.py`."
+    - "Create fixture data (`sample_input.jsonl`) and a fixture `tasks.yml`."
+    - "The test should invoke the `atlas_cli` as a subprocess or library call and run a full trace."
+    - "Assert that the output file is created and its content is valid."
+  acceptance_criteria:
+    - "Running `pytest` executes a full, end-to-end trace of the system."
+    - "The test is integrated into the CI pipeline."
+  epic: "Reliability & CI"
+- id: 401
+  title: "Overhaul README.md for GODMODE Tier"
+  description: "Rewrite the README to be world-class, inspiring, and immediately useful for new contributors and potential users."
+  component: "Documentation"
+  dependencies: [102]
+  priority: 4
+  status: "pending"
+  area: "DX"
+  actionable_steps:
+    - "Add a project logo/banner and professional badges."
+    - "Write a strong, benefit-oriented one-line description."
+    - "Add a 'Get Started in 60 Seconds' section with copy-pasteable commands."
+    - "Embed a diagram of the high-level architecture."
+    - "Ensure tone is confident and visionary."
+  acceptance_criteria:
+    - "A new developer can understand the project's purpose and run it locally in under a minute from the README alone."
+  epic: "Onboarding & Polish
