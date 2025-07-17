@@ -5,3 +5,4 @@
 - Created `.markdownlint.yaml` to silence length and spacing rules.
 - Updated tasks.yml status to `done`.
 - Documented Git LFS workaround for CI runners.
+
