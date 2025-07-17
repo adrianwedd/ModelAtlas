@@ -16,7 +16,7 @@ def load_models():
     if not os.path.exists(CATALOG_PATH):
         console.print(f"[bold red]Catalog not found at {CATALOG_PATH}.[/]")
         return []
-    with open(CATALOG_PATH) as f:
+    with open(CATALOG_PATH, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 def search_models(query, top_k=5):
