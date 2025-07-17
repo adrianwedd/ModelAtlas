@@ -10,6 +10,7 @@ import httpx
 from bs4 import BeautifulSoup
 
 from atlas_schemas.config import settings
+from common.logging import logger
 
 LOG_FILE = settings.LOG_FILE
 OLLAMA_MODELS_DIR = settings.MODELS_DIR / "ollama"
@@ -27,12 +28,6 @@ LICENSE_MAP = {
     "apache-2.0": "Apache-2.0",
 }
 
-def log_message(message, level="INFO", status=None, phase=None):
-    ts = time.strftime("%Y-%m-%d %H:%M:%S")
-    status_str = f"[{status}]" if status else ""
-    phase_str = f"[{phase}]" if phase else ""
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(f"[{ts}] [{level}]{phase_str}{status_str} {message}\n")
 
 def parse_pull_count(s: str | None) -> int:
     if not s:
@@ -62,19 +57,19 @@ def normalize_license(license_str: str) -> str | None:
     return LICENSE_MAP.get(license_str, license_str)
 
 async def fetch(client: httpx.AsyncClient, url: str) -> str:
-    log_message(f"Fetching: {url}")
+    logger.info("Fetching: %s", url)
     resp = await client.get(url, timeout=30)
     resp.raise_for_status()
     return resp.text
 
 async def fetch_json(client: httpx.AsyncClient, url: str) -> dict | None:
-    log_message(f"Fetching JSON: {url}")
+    logger.info("Fetching JSON: %s", url)
     try:
         resp = await client.get(url, timeout=30)
         resp.raise_for_status()
         return resp.json()
     except httpx.HTTPError as e:
-        log_message(f"Error fetching {url}: {e}", level="ERROR")
+        logger.error("Error fetching %s: %s", url, e)
         return None
 
 async def fetch_manifest(client: httpx.AsyncClient, model: str, tag: str = "latest") -> dict | None:
@@ -135,7 +130,7 @@ async def scrape_tags_page(client: httpx.AsyncClient, model_name: str) -> list[d
                     if "ollama.input_type" in layer["annotations"] and not tag_entry.get("model_type"):
                         tag_entry["model_type"] = layer["annotations"]["ollama.input_type"]
         tags_data.append(tag_entry)
-    log_message(f"Found {len(tags_data)} tag items on the page.")
+    logger.info("Found %s tag items on the page.", len(tags_data))
     return tags_data
 
 async def scrape_details(client: httpx.AsyncClient, model_name: str) -> dict:
@@ -179,22 +174,22 @@ async def fetch_model_list(client: httpx.AsyncClient) -> list[str]:
         for i in items
         if i.find("a") and "/library/" in i.find("a")["href"]
     ]
-    log_message(f"Found {len(names)} models on Ollama.com")
+    logger.info("Found %s models on Ollama.com", len(names))
     return names
 
 async def process_model(client: httpx.AsyncClient, name: str, semaphore: asyncio.Semaphore) -> dict | None:
     async with semaphore:
-        log_message(f"==> Processing Ollama.com model: {name}", status=name, phase="ollama_scrape")
+        logger.info("==> Processing Ollama.com model: %s", name)
         model_file_path = OLLAMA_MODELS_DIR / f"{name.replace('/', '_')}.json"
         existing = {}
         if model_file_path.exists():
             existing = json.loads(model_file_path.read_text(encoding="utf-8"))
         detail = await scrape_details(client, name)
         if existing.get("page_hash") == detail.get("page_hash"):
-            log_message(f"Page hash for {name} matches existing data. Skipping detailed scrape.", phase="ollama_scrape")
+            logger.info("Page hash for %s matches existing data. Skipping detailed scrape.", name)
             data = existing
         else:
-            log_message(f"Page hash for {name} changed or no existing data. Performing full scrape.", phase="ollama_scrape")
+            logger.info("Page hash for %s changed or no existing data. Performing full scrape.", name)
             tags = await scrape_tags_page(client, name)
             detail["tags"] = tags
             data = detail
@@ -210,12 +205,12 @@ async def scrape_ollama_models(concurrency: int = 5, debug_model: str | None = N
         if debug_model:
             names = [n for n in names if n == debug_model]
             if not names:
-                log_message(f"Debug model '{debug_model}' not found in Ollama.com initial list.", level="ERROR")
+                logger.error("Debug model '%s' not found in Ollama.com initial list.", debug_model)
                 return []
         semaphore = asyncio.Semaphore(concurrency)
         tasks = [process_model(client, n, semaphore) for n in names]
         results = [r for r in await asyncio.gather(*tasks) if r]
-    log_message(f"Ollama.com scraping complete — {len(results)} models stored in {OLLAMA_MODELS_DIR}", status="COMPLETE", phase="done")
+    logger.info("Ollama.com scraping complete — %s models stored in %s", len(results), OLLAMA_MODELS_DIR)
     return results
 
 if __name__ == "__main__":

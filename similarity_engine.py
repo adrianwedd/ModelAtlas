@@ -7,6 +7,8 @@ import json
 import numpy as np
 from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass
+
+from common.logging import logger
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import re
@@ -284,12 +286,12 @@ if __name__ == "__main__":
     # Find similar models
     similar = engine.find_similar_models('llama3:8b')
     for sim in similar:
-        print(f"{sim.model_b}: {sim.similarity_score:.3f} ({sim.confidence})")
-        print(f"  Reasons: {', '.join(sim.similarity_reasons)}")
+        logger.info("%s: %.3f (%s)", sim.model_b, sim.similarity_score, sim.confidence)
+        logger.info("  Reasons: %s", ', '.join(sim.similarity_reasons))
     
     # Detect duplicates
     duplicates = engine.detect_duplicates()
-    print(f"\nFound {len(duplicates)} potential duplicates")
+    logger.info("Found %s potential duplicates", len(duplicates))
     
     # Generate graph data
     graph = engine.generate_similarity_graph()
