@@ -32,7 +32,7 @@ flowchart TD
 
 - **Ollama Scraper**: Harvests raw model data, including tags, manifests, and configuration files.
 - **RECURSOR-1**: Normalizes fields, infers missing data, and leverages LLMs for comprehensive enrichment.
-- **TrustForge**: Computes trust scores by fusing heuristic metrics from multiple data sources.
+- **TrustForge**: Computes trust scores by fusing heuristic metrics from multiple data sources and now runs automatically inside the enrichment pipeline.
 - **TracePoint**: Tracks enrichment lineage, prompt decision paths, and source deltas for transparent provenance.
 - **AtlasView**: A web-based dashboard enabling search, filtering, comparative analysis, and visual audits.
 
@@ -126,11 +126,8 @@ modelatlas/
 ## 🧪 Example Commands
 
 ```bash
-# Enrich all scraped models recursively
+# Run enrichment pipeline (includes trust scoring)
 python enrich/main.py
-
-# Compute trust scores for all models
-python trustforge/score.py
 
 # Perform semantic search for multilingual open-license models
 atlas search "multilingual open license"
