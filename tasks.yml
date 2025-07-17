@@ -155,7 +155,7 @@
   component: "ReadmeSynthesizer"
   dependencies: [4, 5]
   priority: 4
-  status: "pending"
+  status: "done"
   command: "python generate_readme.py --input data/models_similar.json --output README.md"
   execution:
     tool: "generate_readme"
@@ -181,7 +181,7 @@
   component: "APIDeployer"
   dependencies: [4]
   priority: 4
-  status: "pending"
+  status: "done"
   command: "python tools/serve_api.py"
   execution:
     tool: "serve_api"
@@ -717,7 +717,7 @@
   component: "Config"
   dependencies: []
   priority: 2
-  status: "pending"
+  status: "done"
   area: "Refactor"
   actionable_steps:
     - "Add PLAYWRIGHT_BROWSERS_PATH, OPENAI_API_KEY placeholders"
