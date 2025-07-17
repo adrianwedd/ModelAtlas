@@ -43,7 +43,7 @@ This document outlines the phased development plan for the **ModelAtlas** projec
 ### Phase 4: Continuous Intelligence
 - [ ] Automate data refresh via GitHub Actions on schedule.
 - [ ] Archive historical trends and changelogs.
-- [ ] Run regressions to track model drift or updates.
+- [ ] Execute regressions to track model drift or updates.
 
 ## 🛠 Toolchain
 

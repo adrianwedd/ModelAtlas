@@ -1,6 +1,6 @@
 # Data Schema Overview
 
-The enrichment pipeline outputs model metadata that conforms to a simple JSON schema.
+The enrichment trace outputs model metadata that conforms to a simple JSON schema.
 
 Key fields include:
 

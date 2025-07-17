@@ -1,8 +1,8 @@
-# Contributing to Ollama Intelligence Pipeline
+# Contributing to ModelAtlas
 
 ## Getting Started
 1. Fork the repository
-2. Clone locally: `git clone https://github.com/youruser/ollama-pipeline.git`
+2. Clone locally: `git clone https://github.com/youruser/ModelAtlas.git`
 3. Install dependencies: `pip install -r requirements.txt`
 4. Install Playwright browsers: `playwright install`
 
@@ -11,6 +11,11 @@
 - **Enrichment**: `enrich_models.py`
 - **Visuals**: `generate_visuals.py`
 - **README**: `generate_readme.py`
+
+## Terminology Lexicon
+To maintain consistency and clarity across the project, please adhere to the following terminology:
+
+- **Trace**: The canonical term for a single, end-to-end execution of the trace, from data ingestion to final output. This replaces terms like 'job', 'run', 'workflow', or 'pipeline' when referring to a complete execution.
 
 ## Architecture & Style
 - Follow PEP8 for Python

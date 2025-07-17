@@ -474,7 +474,7 @@ def scrape_ollama_models_from_web(headless=True, debug_model=None):
     log_message(f"Ollama.com scraping complete — {len(results)} models stored in {OLLAMA_MODELS_DIR}", status="COMPLETE", phase="done")
 
 if __name__ == "__main__":
-    # Reset log file each run for clean debugging
+    # Reset log file each trace for clean debugging
     if os.path.exists(LOG_FILE):
         os.remove(LOG_FILE)
     

@@ -23,7 +23,7 @@
 
 - id: 1.1
   title: "Scrape Ollama.com Specific Data"
-  description: "Scrape Ollama.com for data not available on Hugging Face Hub, including run commands and detailed tag info via Registry API."
+  description: "Scrape Ollama.com for data not available on Hugging Face Hub, including execution commands and detailed tag info via Registry API."
   component: "Scraper"
   dependencies: [1]
   priority: 1
@@ -151,7 +151,7 @@
 
 - id: 6
   title: "Synthesize enriched README.md"
-  description: "Summarize the pipeline, provide model selection guidance, include visuals and stats."
+  description: "Summarize the trace, provide model selection guidance, include visuals and stats."
   component: "ReadmeSynthesizer"
   dependencies: [4, 5]
   priority: 4
@@ -165,11 +165,11 @@
   task_id: "OLLAMA-006"
   area: "Documentation"
   actionable_steps:
-    - "Write overview, usage, data pipeline explanation"
+    - "Write overview, usage, data trace explanation"
     - "Highlight top models with badges"
     - "Embed charts, model count, trust rankings"
   acceptance_criteria:
-    - "README.md renders clearly and provides full pipeline overview"
+    - "README.md renders clearly and provides full trace overview"
     - "Includes >3 charts, top-10 table, and usage examples"
   assigned_to: "ReadmeSynthesizer"
   ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
@@ -224,15 +224,15 @@
   epic: "UX + Output"
 
 - id: 9
-  title: "Agentify pipeline via LangGraph"
-  description: "Break pipeline into LangGraph tasks executed by autonomous agents."
+  title: "Agentify trace via LangGraph"
+  description: "Break trace into LangGraph tasks executed by autonomous agents."
   component: "AgentOrchestrator"
   dependencies: [6, 7]
   priority: 5
   status: "pending"
   command: null
   execution:
-    tool: "agentify_pipeline"
+    tool: "agentify_trace"
     args: {}
   task_id: "OLLAMA-009"
   area: "Automation"
@@ -297,7 +297,7 @@
 
 - id: 12
   title: "Automated Schema Validation Regression Suite"
-  description: "Run a CI job to validate all current and future model outputs against model.schema.json."
+  description: "Execute a CI trace to validate all current and future model outputs against model.schema.json."
   component: "Validator"
   dependencies: [3]
   priority: 2
@@ -321,9 +321,9 @@
   ci_notes: "🧪 Schema guardrail for metadata integrity"
   epic: "Review & Validation"
 - id: 13
-  title: "Integrate TrustForge in pipeline"
+  title: "Integrate TrustForge in trace"
   description: "Remove hardcoded logic and wire TrustForge into enrich/main.py; update README and tasks.yml accordingly."
-  component: "Pipeline"
+  component: "Trace"
   dependencies: [3]
   priority: 3
   status: "done"
@@ -385,16 +385,16 @@
   status: "pending"
 
 - id: 21
-  title: "Refactor enrich/main.py into pluggable pipeline orchestrator"
+  title: "Refactor enrich/main.py into pluggable trace orchestrator"
   description: "Load stages from tasks.yml so recursor and trustforge can be swapped."
-  component: "Pipeline"
+  component: "Trace"
   dependencies: [13, 16]
   priority: 4
   status: "pending"
 
 - id: 22
   title: "Introduce test suite"
-  description: "Set up pytest and add initial coverage for enrichment pipeline."
+  description: "Set up pytest and add initial coverage for enrichment trace."
   component: "Testing"
   dependencies: []
   priority: 3
@@ -496,16 +496,16 @@
   area: "Refactor"
   actionable_steps:
     - "Created a new top-level `atlas_schemas` directory."
-    - "Defined Pydantic models for `TraceableItem`, `Model`, and `PipelineConfig`."
+    - "Defined Pydantic models for `TraceableItem`, `Model`, and `TraceConfig`."
     - "Replaced dictionary manipulations in `enrich/main.py` and `trustforge/score.py` with Pydantic models."
     - "Removed the static `schema.md` file (if it existed)."
   acceptance_criteria:
-    - "No module manually defines the shape of pipeline data."
+    - "No module manually defines the shape of trace data."
     - "All data passed between `recursor` and `trustforge` is an instance of a Pydantic model from `atlas_schemas`."
   epic: "Foundational Hardening"
 - id: 102
   title: "Unify Project Terminology"
-  description: "Decide on and enforce a single, canonical term for a pipeline execution across the entire repository (code, docs, CLI)."
+  description: "Decide on and enforce a single, canonical term for a trace execution across the entire repository (code, docs, CLI)."
   component: "DX"
   dependencies: []
   priority: 1
@@ -518,7 +518,7 @@
     - "Update all log messages."
     - "Update the README and all other documentation."
   acceptance_criteria:
-    - "The term 'job' no longer appears in the codebase outside of historical changelogs."
+    - "The term 'trace' no longer appears in the codebase outside of historical changelogs."
     - "The primary CLI command is `atlas trace ...`."
   epic: "Foundational Hardening"
 - id: 201
@@ -540,7 +540,7 @@
   epic: "Foundational Hardening"
 - id: 301
   title: "Create Master Integration Test"
-  description: "Build a single, comprehensive integration test that runs the entire pipeline from a sample input file to a final output file."
+  description: "Build a single, comprehensive integration test that runs the entire trace from a sample input file to a final output file."
   component: "Testing"
   dependencies: [101, 201]
   priority: 3
@@ -550,11 +550,11 @@
     - "Create a `tests/integration` directory."
     - "Add `test_full_trace.py`."
     - "Create fixture data (`sample_input.jsonl`) and a fixture `tasks.yml`."
-    - "The test should invoke the `atlas_cli` as a subprocess or library call and run a full trace."
+    - "The test should invoke the `atlas_cli` as a subprocess or library call and execute a full trace."
     - "Assert that the output file is created and its content is valid."
   acceptance_criteria:
-    - "Running `pytest` executes a full, end-to-end trace of the system."
-    - "The test is integrated into the CI pipeline."
+    - "Executing `pytest` executes a full, end-to-end trace of the system."
+    - "The test is integrated into the CI trace."
   epic: "Reliability & CI"
 - id: 401
   title: "Overhaul README.md for GODMODE Tier"

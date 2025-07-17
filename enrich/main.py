@@ -1,4 +1,4 @@
-"""Simple enrichment pipeline that merges manual metadata and computes trust scores."""
+"""Simple enrichment trace that merges manual metadata and computes trust scores."""
 
 import glob
 import json

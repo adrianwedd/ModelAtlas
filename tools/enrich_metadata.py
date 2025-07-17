@@ -48,7 +48,7 @@ Your mission: analyze and enrich the metadata for the AI model called **"{model_
   "summary": "⚡ One paragraph. No waffle. What is this model, what’s it for, and what’s the vibe? Drop a reference if it makes it pop.",
   "use_cases": [
     "🛠️ Practical uses that matter",
-    "🎯 Niche workflows it nails",
+    "🎯 Niche traces it nails",
     "👩‍🔬 Weird or brilliant things it enables"
   ],
   "strengths": [

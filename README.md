@@ -17,7 +17,7 @@ Crafted for researchers, engineers, analysts, and agentic systems alike, it seam
 
 ```mermaid
 flowchart TD
-  subgraph Pipeline [ModelAtlas Enrichment Pipeline]
+  subgraph Trace [ModelAtlas Enrichment Trace]
     A[🌐 Ollama Scraper<br/>Collects raw metadata from Ollama.com] --> B[📦 Raw Model Data]
     B --> C[🧠 RECURSOR-1<br/>Recursive Enrichment Agent]
     C --> D[📝 Enriched JSON Records]
@@ -32,7 +32,7 @@ flowchart TD
 
 - **Ollama Scraper**: Harvests raw model data, including tags, manifests, and configuration files.
 - **RECURSOR-1**: Normalizes fields, infers missing data, and leverages LLMs for comprehensive enrichment.
-- **TrustForge**: Computes trust scores by fusing heuristic metrics from multiple data sources and now runs automatically inside the enrichment pipeline.
+- **TrustForge**: Computes trust scores by fusing heuristic metrics from multiple data sources and now runs automatically inside the enrichment trace.
 - **TracePoint**: Tracks enrichment lineage, prompt decision paths, and source deltas for transparent provenance.
 - **AtlasView**: A web-based dashboard enabling search, filtering, comparative analysis, and visual audits.
 
@@ -125,7 +125,7 @@ modelatlas/
 ## 🧪 Example Commands
 
 ```bash
-# Run enrichment pipeline (includes trust scoring)
+# Run enrichment trace (includes trust scoring)
 python enrich/main.py
 
 # Perform semantic search for multilingual open-license models
@@ -158,10 +158,10 @@ cd dashboards && npm run dev
 | Documentation File    | Purpose                                         |
 |----------------------|------------------------------------------------|
 | `AGENTS.md`          | Details on enrichment agents, memory, and state logic |
-| `tasks.yml`          | Canonical task graph defining enrichment workflows |
+| `tasks.yml`          | Canonical task graph defining enrichment traces |
 | `naming.md`          | Naming philosophy and conventions |
 | `schema.md`          | Data schema specification for enriched model entries |
-| `usage_examples.md`  | Real-world CLI workflows and usage patterns |
+| `usage_examples.md`  | Real-world CLI traces and usage patterns |
 | `PHASE_2_DESIGN.md`  | Design notes on manifest decoding, tag repair, and scoring implementation |
 
 ⸻

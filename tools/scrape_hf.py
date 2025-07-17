@@ -32,7 +32,7 @@ def parse_pull_count(s):
     except:
         return 0  # fallback to zero on parse failure
 
-def run_hf_scraper(limit=None):
+def execute_hf_scraper(limit=None):
     api = HfApi()
     all_models_data = []
     
@@ -113,9 +113,9 @@ def run_hf_scraper(limit=None):
     log_message(f"Hugging Face Hub scraping complete — {len(all_models_data)} models stored in {hf_models_output_dir}", status="COMPLETE", phase="done")
 
 if __name__ == "__main__":
-    # Reset log file each run for clean debugging
+    L116: # Reset log file each trace for clean debugging
     if os.path.exists(LOG_FILE):
         os.remove(LOG_FILE)
     
     # Example usage: scrape top 100 models
-    run_hf_scraper(limit=100)
+    execute_hf_scraper(limit=100)

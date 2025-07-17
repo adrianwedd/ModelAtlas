@@ -1,5 +1,5 @@
 """
-Model Similarity Engine for Ollama Intelligence Pipeline
+Model Similarity Engine for Ollama Intelligence Trace
 Calculates semantic similarity between models using multiple approaches
 """
 

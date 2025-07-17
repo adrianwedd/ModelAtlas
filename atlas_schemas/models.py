@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 from typing import Optional, Dict, Any, List
 
 class TraceableItem(BaseModel):
-    """Represents a single item that flows through the pipeline with provenance."""
+    """Represents a single item that flows through the trace with provenance."""
     id: str
     content: str
     # Add other common fields that all traceable items should have
@@ -28,11 +28,11 @@ class Model(BaseModel):
     quality_score: Dict[str, Any] = Field(default_factory=dict)
     trust_score: Optional[float] = None
 
-class PipelineConfig(BaseModel):
-    """Represents the configuration for a pipeline run."""
+class TraceConfig(BaseModel):
+    """Represents the configuration for a trace."""
     name: str
     stages: List[Dict[str, Any]] = Field(default_factory=list)
-    # Add other pipeline-specific configurations
+    # Add other trace-specific configurations
     output_dir: Optional[str] = None
 
 # You can add more models here as needed, e.g., for specific enrichment outputs
