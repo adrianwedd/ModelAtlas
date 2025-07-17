@@ -100,7 +100,6 @@ modelatlas/
 │   ├── schema.md
 │   ├── usage_examples.md
 │   └── PHASE_2_DESIGN.md
-├── ROADMAP.md
 ├── AGENTS.md
 ├── tasks.yml
 ├── README.md
@@ -160,10 +159,9 @@ cd dashboards && npm run dev
 |----------------------|------------------------------------------------|
 | `AGENTS.md`          | Details on enrichment agents, memory, and state logic |
 | `tasks.yml`          | Canonical task graph defining enrichment workflows |
-| `naming.md`          | Naming philosophy and conventions               |
+| `naming.md`          | Naming philosophy and conventions |
 | `schema.md`          | Data schema specification for enriched model entries |
-| `usage_examples.md`   | Real-world CLI workflows and usage patterns     |
-| `ROADMAP.md`         | Vision, milestones, and iteration plans          |
+| `usage_examples.md`  | Real-world CLI workflows and usage patterns |
 | `PHASE_2_DESIGN.md`  | Design notes on manifest decoding, tag repair, and scoring implementation |
 
 ⸻
