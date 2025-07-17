@@ -366,7 +366,7 @@
   component: "CLI"
   dependencies: []
   priority: 3
-  status: "pending"
+  status: "in-progress"
 
 - id: 19
   title: "Improve README Quick Start and diagrams"
@@ -544,14 +544,12 @@
   component: "Testing"
   dependencies: [101, 201]
   priority: 3
-  status: "pending"
+  status: "in-progress"
   area: "Testing"
   actionable_steps:
-    - "Create a `tests/integration` directory."
-    - "Add `test_full_trace.py`."
-    - "Create fixture data (`sample_input.jsonl`) and a fixture `tasks.yml`."
-    - "The test should invoke the `atlas_cli` as a subprocess or library call and execute a full trace."
-    - "Assert that the output file is created and its content is valid."
+    - "Created a `tests/integration` directory."
+    - "Added `test_full_trace.py` with basic CLI invocation and output validation."
+    - "Next: Integrate actual pipeline logic into `atlas_cli/main.py` and expand `test_full_trace.py` to cover it."
   acceptance_criteria:
     - "Executing `pytest` executes a full, end-to-end trace of the system."
     - "The test is integrated into the CI trace."
