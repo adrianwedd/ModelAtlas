@@ -4,9 +4,12 @@ import json
 import os
 import sys
 from io import StringIO
+from pathlib import Path
 
-# Add the tools directory to the path so we can import scrape_ollama
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Add repo root and tools directory to the path so we can import scrape_ollama
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, ROOT_DIR)
+sys.path.insert(0, os.path.join(ROOT_DIR, 'tools'))
 import scrape_ollama
 
 class TestScrapeOllama(unittest.TestCase):
@@ -22,15 +25,18 @@ class TestScrapeOllama(unittest.TestCase):
         scrape_ollama.OLLAMA_MODELS_DIR = self.test_ollama_models_dir
         scrape_ollama.DEBUG_DIR = self.test_debug_dir
         scrape_ollama.LOG_FILE = "test_ollama_scraper.log"
+        scrape_ollama.CACHE_PATH = Path("test_http_cache")
 
-        # Use settings for consistency
-        scrape_ollama.settings.OLLAMA_MODELS_DIR = Path(self.test_ollama_models_dir)
+        scrape_ollama.settings.MODELS_DIR = Path(".")
         scrape_ollama.settings.DEBUG_DIR = Path(self.test_debug_dir)
         scrape_ollama.settings.LOG_FILE = Path("test_ollama_scraper.log")
+        scrape_ollama.settings.PROJECT_ROOT = Path(".")
 
         # Clear log file before each test
         if os.path.exists(scrape_ollama.LOG_FILE):
             os.remove(scrape_ollama.LOG_FILE)
+        if os.path.exists("test_http_cache.sqlite"):
+            os.remove("test_http_cache.sqlite")
 
     def tearDown(self):
         # Clean up temporary directories and files

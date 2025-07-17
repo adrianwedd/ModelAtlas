@@ -87,6 +87,7 @@ To ensure "granularity, God-mode logging, and recursive agent intelligence" acro
 
 1.  **Fetch:** Agents will use `playwright` to programmatically access and retrieve the raw HTML content of target web pages. This ensures handling of dynamically loaded content.
     *   **Logging:** For every page fetch, log the `fetched_url`, `timestamp`, and `HTTP status` to a dedicated log file (e.g., `ollama_scraper.log`).
+    *   **Caching:** HTTP responses are cached in `.cache/http.sqlite` via `requests-cache`. Use the `--no-cache` flag to disable.
 
 2.  **Parse:** Agents will use `BeautifulSoup` to parse the fetched HTML content, extracting structured data based on predefined CSS selectors and regular expressions. This step will involve:
     *   Identifying model listings on search/library pages.
