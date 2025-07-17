@@ -23,13 +23,17 @@ app = typer.Typer(help="ModelAtlas CLI")
 console = Console()
 
 
-@app.command()
+@app.command(help="Run the enrichment and trust score trace.")
 def trace(
     input: Optional[Path] = typer.Option(None, help="Input file path"),
     output: Optional[Path] = typer.Option(None, help="Output file path"),
     tasks_yml: Optional[Path] = typer.Option(None, help="Tasks YAML file path"),
 ) -> None:
-    """Run the enrichment and trust score trace."""
+    """Run the enrichment and trust score trace.
+
+    Examples:
+        python -m atlas_cli.main trace --input models --output result.json
+    """
     tasks_file_path = tasks_yml if tasks_yml else PROJECT_ROOT / "tasks.yml"
     if not tasks_file_path.exists():
         logger.error("tasks.yml not found at %s", tasks_file_path)
@@ -60,9 +64,13 @@ def trace(
     logger.info("Trace execution complete.")
 
 
-@app.command()
+@app.command(help="Bootstrap local environment by creating a .env file.")
 def init() -> None:
-    """Bootstrap local environment by creating a .env file."""
+    """Bootstrap local environment by creating a .env file.
+
+    Example:
+        python -m atlas_cli.main init
+    """
     env_path = PROJECT_ROOT / ".env"
     example_path = PROJECT_ROOT / ".env.example"
     if env_path.exists():
