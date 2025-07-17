@@ -19,6 +19,8 @@ python enrich/main.py
 python -m atlas_cli search "llama"
 ```
 
+Run `make test-deps` if you need all packages for the test suite.
+
 `enrich/main.py` runs the enrichment trace, and CLI commands reside in the `atlas_cli/` package.
 
 ⸻
