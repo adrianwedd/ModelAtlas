@@ -7,8 +7,8 @@
 4. Install Playwright browsers: `playwright install`
 
 ## Development
-- **Scraper**: `scrape_models.py`
-- **Enrichment**: `enrich_models.py`
+- **Scraper**: `python tools/scrape_hf.py` or `python tools/scrape_ollama.py`
+- **Enrichment**: `python enrich/main.py`
 - **Visuals**: `generate_visuals.py`
 - **README**: `generate_readme.py`
 
@@ -24,8 +24,11 @@ To maintain consistency and clarity across the project, please adhere to the fol
 
 ## Pull Requests
 - Write tests for new features
-- Update `CHANGELOG.md`
 - Tag maintainers for review
+- Use the provided pull request template
+
+## Issues
+Please open bug reports and feature requests using the templates in `.github/ISSUE_TEMPLATE/`.
 
 ## Running Tests
 Run `pytest` from the repository root. Ensure the dependencies in requirements.txt are installed and browsers are set up via `playwright install`.
