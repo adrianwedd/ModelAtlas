@@ -101,7 +101,7 @@ def log_message(message, level="INFO", status=None, phase=None):
     ts = time.strftime("%Y-%m-%d %H:%M:%S")
     status_str = f"[{status}]" if status else ""
     phase_str = f"[{phase}]" if phase else ""
-    with open(LOG_FILE, "a") as f:
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(f"[{ts}] [{level}]{phase_str}{status_str} {message}\n")
 
 def parse_pull_count(s):
@@ -435,7 +435,7 @@ def scrape_ollama_models_from_web(headless=True, debug_model=None):
 
             # Save individual model JSON file
             model_file_path = os.path.join(OLLAMA_MODELS_DIR, f"{name.replace('/', '_')}.json")
-            with open(model_file_path, "w") as mf:
+            with open(model_file_path, "w", encoding="utf-8") as mf:
                 json.dump(detail, mf, indent=2)
             results.append(detail)
             time.sleep(0.3)  # politeness delay
