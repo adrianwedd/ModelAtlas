@@ -744,3 +744,21 @@
   task_id: "REPO-002"
   epic: "Foundational Hardening"
 
+- id: 412
+  title: "Add Git LFS support"
+  description: "Install Git LFS and track data directories."
+  component: "Repo"
+  dependencies: []
+  priority: 2
+  status: "done"
+  area: "Automation"
+  actionable_steps:
+    - "Run `git lfs install` in repository"
+    - "Track data/ and enriched_outputs/ via .gitattributes"
+    - "Document setup in README"
+  acceptance_criteria:
+    - "Large artifacts stored via Git LFS"
+    - "README explains how to install Git LFS"
+  task_id: "REPO-003"
+  epic: "Foundational Hardening"
+
