@@ -35,17 +35,30 @@ def merge_enrichment(model: Model) -> Model:
     return model
 
 
-def main() -> None:
+def compute_and_merge_trust_scores(input_dir: Path, output_file: Path, enriched_outputs_dir: Path) -> None:
     models: List[Model] = []
-    for path in glob.glob(str(settings.MODELS_DIR / "*.json")):
+    for path in glob.glob(str(input_dir / "*.json")):
         model = load_model(path)
-        model = merge_enrichment(model)
+        model = merge_enrichment(model, enriched_outputs_dir)
         model.trust_score = compute_score(model)
         models.append(model)
 
-    with open(settings.PROJECT_ROOT / settings.OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump([model.model_dump() for model in models], f, indent=2)
 
+def merge_enrichment(model: Model, enriched_outputs_dir: Path) -> Model:
+    name = model.name.replace("/", "_")
+    enriched_path = enriched_outputs_dir / f"{name}_enriched.json"
+    if enriched_path.exists():
+        try:
+            with open(enriched_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            model_dict = model.model_dump()
+            model_dict.update(data)
+            return Model(**model_dict)
+        except Exception:
+            pass
+    return model
 
-if __name__ == "__main__":
-    main()
+
+# Removed if __name__ == "__main__" block

@@ -1,6 +1,16 @@
 import argparse
 import sys
 import json
+import yaml
+from pathlib import Path
+
+# Add the project root to sys.path to enable imports from atlas_schemas
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from atlas_schemas.config import settings
+from enrich.main import run_enrichment_trace
+from trustforge.score import compute_and_merge_trust_scores
 
 def main():
     parser = argparse.ArgumentParser(description="ModelAtlas CLI")
@@ -10,30 +20,41 @@ def main():
 
     args = parser.parse_args()
 
-    # Placeholder for actual logic
     print(f"Input: {args.input}")
     print(f"Output: {args.output}")
     print(f"Tasks YML: {args.tasks_yml}")
 
-    # Simulate some processing and output creation with valid JSON
-    if args.output:
-        # Read input (assuming JSONL for now)
-        input_data = []
-        if args.input:
-            with open(args.input, "r") as f:
-                for line in f:
-                    input_data.append(json.loads(line))
+    # Load tasks from tasks.yml
+    tasks_file_path = Path(args.tasks_yml) if args.tasks_yml else PROJECT_ROOT / "tasks.yml"
+    if not tasks_file_path.exists():
+        print(f"Error: tasks.yml not found at {tasks_file_path}")
+        sys.exit(1)
 
-        # Simulate processing: just add a new field to each item
-        processed_data = []
-        for item in input_data:
-            item["processed"] = True
-            processed_data.append(item)
+    with open(tasks_file_path, "r") as f:
+        tasks = yaml.safe_load(f)
 
-        # Write valid JSONL output
-        with open(args.output, "w") as f:
-            for item in processed_data:
-                f.write(json.dumps(item) + "\n")
+    # Convert input/output paths to Path objects
+    input_path = Path(args.input) if args.input else settings.MODELS_DIR
+    output_path = Path(args.output) if args.output else (settings.PROJECT_ROOT / settings.OUTPUT_FILE)
+
+    # Simple orchestration based on task IDs (this will be expanded)
+    for task in tasks:
+        if task["id"] == 2: # Enrich model metadata with LLM (now run_enrichment_trace)
+            print(f"Executing Task {task["id"]}: {task["title"]}")
+            run_enrichment_trace(
+                input_dir=input_path,
+                output_file=output_path,
+                enriched_outputs_dir=settings.ENRICHED_OUTPUTS_DIR
+            )
+        elif task["id"] == 10: # Evaluate and rank models by trust and transparency (now compute_and_merge_trust_scores)
+            print(f"Executing Task {task["id"]}: {task["title"]}")
+            compute_and_merge_trust_scores(
+                input_dir=input_path, # Assuming models are in MODELS_DIR
+                output_file=output_path, # Overwriting for simplicity
+                enriched_outputs_dir=settings.ENRICHED_OUTPUTS_DIR
+            )
+
+    print("Trace execution complete.")
 
 if __name__ == "__main__":
     main()

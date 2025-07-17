@@ -13,15 +13,13 @@ from atlas_schemas.models import Model
 from atlas_schemas.config import settings
 
 
-
 def load_base_model(path: str) -> Model:
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
         return Model(**data)
 
-
-def load_manual_enrichment(name: str) -> Dict:
-    enriched_path = settings.ENRICHED_OUTPUTS_DIR / f"{name}_enriched.json"
+def load_manual_enrichment(name: str, enriched_outputs_dir: Path) -> Dict:
+    enriched_path = enriched_outputs_dir / f"{name}_enriched.json"
     if enriched_path.exists():
         try:
             with open(enriched_path, "r", encoding="utf-8") as f:
@@ -30,22 +28,19 @@ def load_manual_enrichment(name: str) -> Dict:
             pass
     return {}
 
-
-def main() -> None:
+def run_enrichment_trace(input_dir: Path, output_file: Path, enriched_outputs_dir: Path) -> None:
     models: List[Model] = []
-    for path in glob.glob(str(settings.MODELS_DIR / "*.json")):
+    for path in glob.glob(str(input_dir / "*.json")):
         base = load_base_model(path)
         name_slug = base.name.replace("/", "_")
-        enrichment = load_manual_enrichment(name_slug)
+        enrichment = load_manual_enrichment(name_slug, enriched_outputs_dir)
         base_dict = base.model_dump() # Convert to dict for update
         base_dict.update(enrichment)
         updated_model = Model(**base_dict) # Re-instantiate Model with updated data
         updated_model.trust_score = compute_score(updated_model)
         models.append(updated_model)
 
-    with open(settings.PROJECT_ROOT / settings.OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump([model.model_dump() for model in models], f, indent=2)
 
-
-if __name__ == "__main__":
-    main()
+# Removed if __name__ == "__main__" block
