@@ -11,6 +11,16 @@ Crafted for researchers, engineers, analysts, and agentic systems alike, it seam
 
 > 💡 *Trust. Trace. Transform.*
 
+## ⚡ Quick Start
+
+```bash
+pip install -r requirements.txt && playwright install
+python enrich/main.py
+python -m atlas_cli search "llama"
+```
+
+`enrich/main.py` runs the enrichment trace, and CLI commands reside in the `atlas_cli/` package.
+
 ⸻
 
 ## 🧠 System Overview
