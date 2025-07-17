@@ -69,6 +69,21 @@ The repository uses a comprehensive `.gitignore` based on common Python patterns
 Ensure all scripts open files with `encoding='utf-8'` for consistent behavior across platforms.
 Install dependencies with `pip install -r requirements.txt && playwright install` before running the examples.
 
+### Git LFS Workaround
+
+CI runners lack Git LFS objects, so cloned repositories may show hundreds of
+modified files in `data/` and `enriched_outputs/`. Run `git lfs install` and set
+`GIT_LFS_SKIP_SMUDGE=1` before cloning to avoid pulling large artifacts.
+After checkout, mark these paths with:
+
+```bash
+git update-index --skip-worktree data/**
+git update-index --skip-worktree enriched_outputs/**
+```
+
+This silences status noise. Long term we should host large artifacts externally
+(for example S3 or HuggingFace Datasets) and keep only pointers to stable
+releases in this repo.
 
 ## Insights 
 

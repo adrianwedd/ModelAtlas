@@ -4,3 +4,4 @@
 - Documented `enrich/main.py` as the enrichment entry point and `atlas_cli` package for CLI.
 - Created `.markdownlint.yaml` to silence length and spacing rules.
 - Updated tasks.yml status to `done`.
+- Documented Git LFS workaround for CI runners.
