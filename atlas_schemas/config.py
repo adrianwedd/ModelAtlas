@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
+from typing import Optional
 
 class Config(BaseSettings):
     """Centralized configuration for the ModelAtlas project."""
