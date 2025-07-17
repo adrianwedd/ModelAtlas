@@ -1,8 +1,12 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load enriched metadata
 df = pd.read_json('models_enriched.json')
+
+# Ensure output directory exists
+os.makedirs("charts", exist_ok=True)
 
 # 1. Bar chart: Architecture counts
 arch_counts = df['architecture'].value_counts()
