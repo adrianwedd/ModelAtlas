@@ -22,6 +22,8 @@ To maintain consistency and clarity across the project, please adhere to the fol
 - Follow PEP8 for Python
 - Use Jinja2 for templating
 - Ensure JSON schema compliance
+- The repository includes a `.editorconfig` file. Configure your editor to honor
+  it so all files are saved as UTF-8 and end with a newline.
 
 ## Pull Requests
 - Write tests for new features
