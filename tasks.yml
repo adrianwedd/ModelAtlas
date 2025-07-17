@@ -319,3 +319,138 @@
   assigned_to: "ValidatorBot"
   ci_notes: "🧪 Schema guardrail for metadata integrity"
   epic: "Review & Validation"
+- id: 13
+  title: "Integrate TrustForge in pipeline"
+  description: "Remove hardcoded logic and wire TrustForge into enrich/main.py; update README and tasks.yml accordingly."
+  component: "Pipeline"
+  dependencies: [3]
+  priority: 3
+  status: "pending"
+
+- id: 14
+  title: "Standardize RECURSOR naming"
+  description: "Use a single term across docs and code (e.g., RECURSOR-1 vs RecursiveEnrichmentProcessor)."
+  component: "Docs+Code"
+  dependencies: []
+  priority: 2
+  status: "pending"
+
+- id: 15
+  title: "Implement end-to-end provenance tracing"
+  description: "Extend tracepoint module so data can be followed from Ollama output to AtlasView."
+  component: "Traceability"
+  dependencies: [13]
+  priority: 3
+  status: "pending"
+
+- id: 16
+  title: "Create shared validation/serialization library"
+  description: "Deduplicate logic from recursor and trustforge into a common module."
+  component: "Core"
+  dependencies: []
+  priority: 3
+  status: "pending"
+
+- id: 17
+  title: "Expand .gitignore"
+  description: "Add typical Python ignores: __pycache__, *.pyc, *.egg-info, *.code-workspace, etc."
+  component: "Repo"
+  dependencies: []
+  priority: 2
+  status: "pending"
+
+- id: 18
+  title: "Refactor atlas_cli using Typer or Click"
+  description: "Break monolithic main.py into modular commands and subcommands."
+  component: "CLI"
+  dependencies: []
+  priority: 3
+  status: "pending"
+
+- id: 19
+  title: "Improve README Quick Start and diagrams"
+  description: "Add concise setup instructions and regenerate visuals."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "pending"
+
+- id: 20
+  title: "Ensure trailing newlines and add pre-commit check"
+  description: "Fix missing newline endings in docs and enforce via pre-commit."
+  component: "Repo"
+  dependencies: []
+  priority: 2
+  status: "pending"
+
+- id: 21
+  title: "Refactor enrich/main.py into pluggable pipeline orchestrator"
+  description: "Load stages from tasks.yml so recursor and trustforge can be swapped."
+  component: "Pipeline"
+  dependencies: [13, 16]
+  priority: 4
+  status: "pending"
+
+- id: 22
+  title: "Introduce test suite"
+  description: "Set up pytest and add initial coverage for enrichment pipeline."
+  component: "Testing"
+  dependencies: []
+  priority: 3
+  status: "pending"
+
+- id: 23
+  title: "Create schemas/types.py for unified data schema"
+  description: "Centralize all data structures and validation in schemas/."
+  component: "Core"
+  dependencies: [16]
+  priority: 3
+  status: "pending"
+
+- id: 24
+  title: "Implement Traceability mixin"
+  description: "Allow recursor and trustforge to automatically log provenance metadata."
+  component: "Traceability"
+  dependencies: [15]
+  priority: 3
+  status: "pending"
+
+- id: 25
+  title: "Add pre-commit hooks"
+  description: "Run black, isort, and generate_readme.py on each commit."
+  component: "Repo"
+  dependencies: [20]
+  priority: 2
+  status: "pending"
+
+- id: 26
+  title: "Agentic tasks.yml patcher"
+  description: "Build GPT-4o agent to modify tasks.yml based on natural language requests."
+  component: "Automation"
+  dependencies: []
+  priority: 4
+  status: "pending"
+
+- id: 27
+  title: "Add --agent-mode to CLI"
+  description: "Output structured JSON for easier chaining by agents."
+  component: "CLI"
+  dependencies: [18]
+  priority: 3
+  status: "pending"
+
+- id: 28
+  title: "Self-healing documentation action"
+  description: "GitHub Action updates README/docs when code changes."
+  component: "Automation"
+  dependencies: [19]
+  priority: 4
+  status: "pending"
+
+- id: 29
+  title: "Cyberpunk CLI embellishments"
+  description: "Use rich for styled output and a 'TRUTH FORGED' banner on completion."
+  component: "CLI"
+  dependencies: [18]
+  priority: 3
+  status: "pending"
