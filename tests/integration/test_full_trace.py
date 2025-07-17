@@ -117,9 +117,10 @@ def test_full_trace_execution(sample_input_dir, fixture_tasks_yml, enriched_outp
     command = [
         "python",
         str(ATLAS_CLI_PATH),
+        "trace",
         "--input", str(sample_input_dir),
         "--output", str(output_file),
-        "--tasks_yml", str(fixture_tasks_yml)
+        "--tasks-yml", str(fixture_tasks_yml)
     ]
 
     try:

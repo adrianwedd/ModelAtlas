@@ -10,7 +10,9 @@ import httpx
 from bs4 import BeautifulSoup
 
 from atlas_schemas.config import settings
-from common.logging import logger
+from common.logging import logger, LOG_FORMAT
+from logging.handlers import RotatingFileHandler
+import logging
 
 LOG_FILE = settings.LOG_FILE
 OLLAMA_MODELS_DIR = settings.MODELS_DIR / "ollama"
@@ -199,6 +201,14 @@ async def process_model(client: httpx.AsyncClient, name: str, semaphore: asyncio
 async def scrape_ollama_models(concurrency: int = 5, debug_model: str | None = None) -> list[dict]:
     os.makedirs(OLLAMA_MODELS_DIR, exist_ok=True)
     os.makedirs(DEBUG_DIR, exist_ok=True)
+    for handler in list(logger.handlers):
+        if isinstance(handler, RotatingFileHandler):
+            logger.removeHandler(handler)
+    file_handler = RotatingFileHandler(
+        LOG_FILE, maxBytes=1_000_000, backupCount=3, encoding="utf-8"
+    )
+    file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
+    logger.addHandler(file_handler)
     results = []
     async with httpx.AsyncClient() as client:
         names = await fetch_model_list(client)
