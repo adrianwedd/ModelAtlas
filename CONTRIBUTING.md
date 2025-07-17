@@ -3,8 +3,9 @@
 ## Getting Started
 1. Fork the repository
 2. Clone locally: `git clone https://github.com/youruser/ModelAtlas.git`
-3. Install dependencies: `pip install -r requirements.txt`
+3. Install dependencies: `pip install -r requirements.txt` (includes packages like `playwright`, `beautifulsoup4`, and `requests` used by the test suite)
 4. Install Playwright browsers: `playwright install`
+5. Optionally run `make test-deps` to perform both steps at once
 
 ## Development
 - **Scraper**: `python tools/scrape_hf.py` or `python tools/scrape_ollama.py`

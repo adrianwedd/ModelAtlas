@@ -11,6 +11,12 @@ pip install -r requirements.txt
 playwright install
 ```
 
+You can also run the helper target to perform both steps:
+
+```bash
+make test-deps
+```
+
 Then execute the suite quietly with:
 
 ```bash
