@@ -11,6 +11,11 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, ROOT_DIR)
 sys.path.insert(0, os.path.join(ROOT_DIR, 'tools'))
 
+# Ensure required config keys for tests
+os.environ.setdefault("LLM_API_KEY", "dummy")
+os.environ.setdefault("HUGGING_FACE_API_KEY", "dummy")
+os.environ.setdefault("OPENAI_API_KEY", "dummy")
+
 import scrape_ollama
 
 @pytest.mark.asyncio
