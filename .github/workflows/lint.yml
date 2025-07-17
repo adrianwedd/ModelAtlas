@@ -1,0 +1,26 @@
+name: Lint
+
+on:
+  workflow_call:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install black isort flake8
+      - name: Run black
+        run: black --check .
+      - name: Run isort
+        run: isort --check .
+      - name: Run flake8
+        run: flake8
