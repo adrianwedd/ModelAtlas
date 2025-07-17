@@ -5,7 +5,9 @@ import os
 import re
 import time
 
-LOG_FILE = "enrichment.log"
+from atlas_schemas.config import settings
+
+LOG_FILE = settings.LOG_FILE
 MODELS_DIR = "models"
 PROMPTS_DIR = "enrichment_prompts"
 ENRICHED_OUTPUTS_DIR = "enriched_outputs"

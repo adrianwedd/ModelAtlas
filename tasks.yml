@@ -527,13 +527,13 @@
   component: "Core Architecture"
   dependencies: [101]
   priority: 2
-  status: "pending"
+  status: "done"
   area: "Refactor"
   actionable_steps:
-    - "Create `atlas_schemas/config.py` with a Pydantic-based settings management class."
-    - "Ensure it loads configuration from a `.env` file and has sane defaults."
-    - "Refactor all modules to import and use this config object."
-    - "Remove all other configuration files and `os.environ` calls."
+    - "Created `atlas_schemas/config.py` with a Pydantic-based settings management class."
+    - "Ensured it loads configuration from a `.env` file and has sane defaults."
+    - "Refactored `enrich/main.py`, `trustforge/score.py`, `tools/scrape_hf.py`, `tools/scrape_ollama.py`, and `tools/enrich_metadata.py` to import and use this config object."
+    - "Removed hardcoded paths and `os.environ` calls from these modules."
   acceptance_criteria:
     - "A single `.env.example` file exists at the project root."
     - "`config.json` and other ad-hoc config files are deleted."

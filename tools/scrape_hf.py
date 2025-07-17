@@ -5,7 +5,10 @@ import time
 import re
 import sys
 
-LOG_FILE = "hf_scraper.log"
+from atlas_schemas.config import settings
+
+LOG_FILE = settings.LOG_FILE
+MODELS_DIR = settings.MODELS_DIR
 # OUTPUT_FILE = "data/models_raw.json" # Removed, as we're saving individual files
 
 def log_message(message, level="INFO", status=None, phase=None):

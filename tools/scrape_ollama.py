@@ -3,9 +3,11 @@ from bs4 import BeautifulSoup
 import json, sys, re, time, hashlib, os
 import requests # Added requests import
 
-LOG_FILE = "ollama_scraper.log"     # Log file path for audit & debugging
-OLLAMA_MODELS_DIR = os.path.join("models", "ollama")
-DEBUG_DIR = "ollama_debug_dumps"
+from atlas_schemas.config import settings
+
+LOG_FILE = settings.LOG_FILE
+OLLAMA_MODELS_DIR = settings.OLLAMA_MODELS_DIR
+DEBUG_DIR = settings.DEBUG_DIR
 
 LAYER_MEDIA_TYPE_MAP = {
     "application/vnd.ollama.image.model": "Model Weights",
