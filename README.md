@@ -138,6 +138,17 @@ tracepoint gemma:2b --lineage
 cd dashboards && npm run dev
 ```
 
+## 📦 Git LFS Setup
+
+This repository uses [Git LFS](https://git-lfs.com/) to version large JSON artifacts. Run the following commands after cloning:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+All files in `data/` and `enriched_outputs/` are tracked via LFS, so new assets in these directories are stored automatically.
+
 ⸻
 
 ## 🚀 Naming Subsystem
