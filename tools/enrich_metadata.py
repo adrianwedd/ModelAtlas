@@ -1,3 +1,5 @@
+"""Script to generate enrichment prompts and placeholders for AI model metadata, facilitating subjective analysis and manual enrichment."""
+
 import json
 import os
 import re
@@ -13,7 +15,7 @@ def log_message(message, level="INFO", status=None, phase=None):
     ts = time.strftime("%Y-%m-%d %H:%M:%S")
     status_str = f"[{status}]" if status else ""
     phase_str = f"[{phase}]" if phase else ""
-    with open(LOG_FILE, "a") as f:
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(f"[{ts}] [{level}]{phase_str}{status_str} {message}\n")
 
 def enrich_model_metadata(model_data):
@@ -50,15 +52,15 @@ Your mission: analyze and enrich the metadata for the AI model called **"{model_
     "👩‍🔬 Weird or brilliant things it enables"
   ],
   "strengths": [
-    "🔥 What it does *really* well — model architecture, dataset, speed, community, license, vibes?",
+    "🔥 What it does *really* well — model architecture, dataset, speed, community, license, vibes?",  # strengths details
     "✅ One or two things that justify its existence"
   ],
   "weaknesses": [
-    "⚠️ Every model has flaws — be blunt, be real",
+    "⚠️ Every model has flaws — be blunt, be real",  # weaknesses details
     "🔍 Is it mid? Is it a GPU hog? Is the README full of lies?"
   ],
   "meta": {{
-    "rated_by": "Model Intelligence Ops - GODMODE v7",
+    "rated_by": "Model Intelligence Ops - GODMODE v7",  # metadata info
     "timestamp": "{time.strftime('%Y-%m-%d %H:%M:%S')}"
   }}
 }}
@@ -98,13 +100,28 @@ GO."""
 def main():
     log_message("Starting model enrichment process (prompt generation only).")
     
-    os.makedirs(PROMPTS_DIR, exist_ok=True)
-    os.makedirs(ENRICHED_OUTPUTS_DIR, exist_ok=True)
+    # Ensure prompt directory exists
+    try:
+        os.makedirs(PROMPTS_DIR, exist_ok=True)
+        log_message(f"Ensured prompts directory exists: {PROMPTS_DIR}")
+    except Exception as e:
+        log_message(f"Failed to create prompts directory {PROMPTS_DIR}: {e}", level="ERROR")
+        return
 
+    # Ensure enriched outputs directory exists
+    try:
+        os.makedirs(ENRICHED_OUTPUTS_DIR, exist_ok=True)
+        log_message(f"Ensured enriched outputs directory exists: {ENRICHED_OUTPUTS_DIR}")
+    except Exception as e:
+        log_message(f"Failed to create enriched outputs directory {ENRICHED_OUTPUTS_DIR}: {e}", level="ERROR")
+        return
+
+    # Check if models directory exists
     if not os.path.exists(MODELS_DIR):
         log_message(f"Models directory not found: {MODELS_DIR}", level="ERROR")
         return
 
+    # List all model JSON files to process
     model_files = [f for f in os.listdir(MODELS_DIR) if f.endswith(".json")]
     log_message(f"Found {len(model_files)} model files to process in {MODELS_DIR}.")
 
@@ -114,14 +131,18 @@ def main():
         log_message(f"Processing file: {filename} ({i+1}/{len(model_files)})", phase="enrichment")
         
         try:
-            with open(file_path, 'r') as f:
+            with open(file_path, 'r', encoding="utf-8") as f:
                 model_data = json.load(f)
             
             enriched_model_data = enrich_model_metadata(model_data)
             
-            with open(file_path, 'w') as f:
-                json.dump(enriched_model_data, f, indent=2)
-            log_message(f"Successfully processed: {filename}")
+            # Write back enriched model data safely
+            try:
+                with open(file_path, 'w', encoding="utf-8") as f:
+                    json.dump(enriched_model_data, f, indent=2)
+                log_message(f"Successfully processed: {filename}")
+            except Exception as e:
+                log_message(f"Error writing enriched data to {filename}: {e}", level="ERROR")
         except json.JSONDecodeError as e:
             log_message(f"Error decoding JSON from {filename}: {e}", level="ERROR")
         except Exception as e:

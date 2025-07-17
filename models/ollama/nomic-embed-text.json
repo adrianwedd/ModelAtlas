@@ -1,30 +1,184 @@
 {
   "name": "nomic-embed-text",
   "description": "A high-performing open embedding model with a large token context window.",
-  "pull_count": 32900000,
+  "pull_count": 33000000,
   "last_updated": "Feb 21, 2024 5:26 PM UTC",
-  "page_hash": "e00be590d936",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img alt=\"nomic_logo\" src=\"https://github.com/ollama/ollama/assets/251292/bf242e43-3c1a-4590-887d-abcab76cb304\"/></p>\n<blockquote>\n<p>Note: this model requires Ollama 0.1.26 or later. <a href=\"https://ollama.com/download\" rel=\"nofollow\">Download it here</a>. It can only be used to generate embeddings.</p>\n</blockquote>\n<p><code>nomic-embed-text</code> is a large context length text encoder that surpasses OpenAI <code>text-embedding-ada-002</code> and <code>text-embedding-3-small</code> performance on short and long context tasks.</p>\n<h2>Usage</h2>\n<p>This model is an embedding model, meaning it can only be used to generate embeddings.</p>\n<h3>REST API</h3>\n<pre><code>curl http://localhost:11434/api/embeddings -d '{\n  \"model\": \"nomic-embed-text\",\n  \"prompt\": \"The sky is blue because of Rayleigh scattering\"\n}'\n</code></pre>\n<h3>Python library</h3>\n<pre><code>ollama.embeddings(model='nomic-embed-text', prompt='The sky is blue because of rayleigh scattering')\n</code></pre>\n<h3>Javascript library</h3>\n<pre><code>ollama.embeddings({ model: 'nomic-embed-text', prompt: 'The sky is blue because of rayleigh scattering' })\n</code></pre>\n<h2>References</h2>\n<p><a href=\"https://huggingface.co/nomic-ai/nomic-embed-text-v1.5\" rel=\"nofollow\">HuggingFace</a></p>\n<p><a href=\"https://blog.nomic.ai/posts/nomic-embed-text-v1\" rel=\"nofollow\">Blog Post</a></p>\n</div>",
+  "page_hash": "e9d452b75986",
+  "readme_text": "\n\n\nNote: this model requires Ollama 0.1.26 or later. Download it here. It can only be used to generate embeddings.\n\nnomic-embed-text is a large context length text encoder that surpasses OpenAI text-embedding-ada-002 and text-embedding-3-small performance on short and long context tasks.\nUsage\nThis model is an embedding model, meaning it can only be used to generate embeddings.\nREST API\ncurl http://localhost:11434/api/embeddings -d '{\n  \"model\": \"nomic-embed-text\",\n  \"prompt\": \"The sky is blue because of Rayleigh scattering\"\n}'\n\nPython library\nollama.embeddings(model='nomic-embed-text', prompt='The sky is blue because of rayleigh scattering')\n\nJavascript library\nollama.embeddings({ model: 'nomic-embed-text', prompt: 'The sky is blue because of rayleigh scattering' })\n\nReferences\nHuggingFace\nBlog Post\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6",
-      "size": "0.26GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "nomic-embed-text:latest",
+      "last_updated": "1 year ago",
+      "size": "274MB",
+      "digest": "sha256:31df23ea7daa448f9ccdbbcecce6c14689c8552222b80defd3830707c0139d4f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:31df23ea7daa448f9ccdbbcecce6c14689c8552222b80defd3830707c0139d4f",
+          "size": 420
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6",
+            "size": 274290656
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ce4a164fc04605703b485251fe9f1a181688ba0eb6badb80cc6335c0de17ca0d",
+            "size": 17
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "nomic-bert",
+        "model_families": [
+          "nomic-bert"
+        ],
+        "model_type": "137M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:ce4a164fc04605703b485251fe9f1a181688ba0eb6badb80cc6335c0de17ca0d"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "137M",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "nomic-embed-text:v1.5",
+      "last_updated": "1 year ago",
+      "size": "274MB",
+      "digest": "sha256:31df23ea7daa448f9ccdbbcecce6c14689c8552222b80defd3830707c0139d4f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:31df23ea7daa448f9ccdbbcecce6c14689c8552222b80defd3830707c0139d4f",
+          "size": 420
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6",
+            "size": 274290656
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ce4a164fc04605703b485251fe9f1a181688ba0eb6badb80cc6335c0de17ca0d",
+            "size": 17
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "nomic-bert",
+        "model_families": [
+          "nomic-bert"
+        ],
+        "model_type": "137M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:ce4a164fc04605703b485251fe9f1a181688ba0eb6badb80cc6335c0de17ca0d"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "137M",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:ce4a164fc04605703b485251fe9f1a181688ba0eb6badb80cc6335c0de17ca0d",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "nomic-embed-text:137m-v1.5-fp16",
+      "last_updated": "1 year ago",
+      "size": "274MB",
+      "digest": "sha256:31df23ea7daa448f9ccdbbcecce6c14689c8552222b80defd3830707c0139d4f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:31df23ea7daa448f9ccdbbcecce6c14689c8552222b80defd3830707c0139d4f",
+          "size": 420
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6",
+            "size": 274290656
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ce4a164fc04605703b485251fe9f1a181688ba0eb6badb80cc6335c0de17ca0d",
+            "size": 17
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "nomic-bert",
+        "model_families": [
+          "nomic-bert"
+        ],
+        "model_type": "137M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:ce4a164fc04605703b485251fe9f1a181688ba0eb6badb80cc6335c0de17ca0d"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "137M",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "text"
+  },
+  "quality_score": {
+    "fields_filled": 9,
+    "total_possible": 15,
+    "completeness": 0.6
+  }
 }

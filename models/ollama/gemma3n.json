@@ -1,30 +1,531 @@
 {
   "name": "gemma3n",
   "description": "Gemma 3n models are designed for efficient execution on everyday devices such as laptops, tablets or phones.",
-  "pull_count": 175900,
+  "pull_count": 177400,
   "last_updated": "Jun 27, 2025 5:02 AM UTC",
-  "page_hash": "c640613f9aa9",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"/assets/library/gemma3n/440e8da2-ddf4-482f-a341-4eeb3c08a332\" width=\"320\"/></p>\n<p>Gemma 3n models are designed for efficient execution on everyday devices such as laptops, tablets or phones. These models were trained with data in over 140 spoken languages.</p>\n<p>Gemma 3n models use selective parameter activation technology to reduce resource requirements. This technique allows the models to operate at an effective size of 2B and 4B parameters, which is lower than the total number of parameters they contain.</p>\n<h2>Models</h2>\n<h3>Effective 2B</h3>\n<pre><code>ollama run gemma3n:e2b\n</code></pre>\n<h3>Effective 4B</h3>\n<pre><code>ollama run gemma3n:e4b\n</code></pre>\n<h2>Evaluation</h2>\n<p>Model evaluation metrics and results.</p>\n<h3>Benchmark Results</h3>\n<p>These models were evaluated at full precision (float32) against a large\ncollection of different datasets and metrics to cover different aspects of\ncontent generation. Evaluation results marked with <strong>IT</strong> are for\ninstruction-tuned models. Evaluation results marked with <strong>PT</strong> are for\npre-trained models. The models available on Ollama are instruction-tuned models.</p>\n<p><img alt=\"lm arena\" src=\"/assets/library/gemma3n/b131b187-c935-4310-931b-439ce30533fd\"/></p>\n<h4>Reasoning and factuality</h4>\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>Metric</th>\n<th>n-shot</th>\n<th align=\"center\">E2B PT</th>\n<th align=\"center\">E4B PT</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1905.07830\" rel=\"nofollow\">HellaSwag</a></td>\n<td>Accuracy</td>\n<td>10-shot</td>\n<td align=\"center\">72.2</td>\n<td align=\"center\">78.6</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1905.10044\" rel=\"nofollow\">BoolQ</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">76.4</td>\n<td align=\"center\">81.6</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1911.11641\" rel=\"nofollow\">PIQA</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">78.9</td>\n<td align=\"center\">81.0</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1904.09728\" rel=\"nofollow\">SocialIQA</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">48.8</td>\n<td align=\"center\">50.0</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1705.03551\" rel=\"nofollow\">TriviaQA</a></td>\n<td>Accuracy</td>\n<td>5-shot</td>\n<td align=\"center\">60.8</td>\n<td align=\"center\">70.2</td>\n</tr>\n<tr>\n<td><a href=\"https://github.com/google-research-datasets/natural-questions\" rel=\"nofollow\">Natural Questions</a></td>\n<td>Accuracy</td>\n<td>5-shot</td>\n<td align=\"center\">15.5</td>\n<td align=\"center\">20.9</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1911.01547\" rel=\"nofollow\">ARC-c</a></td>\n<td>Accuracy</td>\n<td>25-shot</td>\n<td align=\"center\">51.7</td>\n<td align=\"center\">61.6</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1911.01547\" rel=\"nofollow\">ARC-e</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">75.8</td>\n<td align=\"center\">81.6</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1907.10641\" rel=\"nofollow\">WinoGrande</a></td>\n<td>Accuracy</td>\n<td>5-shot</td>\n<td align=\"center\">66.8</td>\n<td align=\"center\">71.7</td>\n</tr>\n<tr>\n<td><a href=\"https://paperswithcode.com/dataset/bbh\" rel=\"nofollow\">BIG-Bench Hard</a></td>\n<td>Accuracy</td>\n<td>few-shot</td>\n<td align=\"center\">44.3</td>\n<td align=\"center\">52.9</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/1903.00161\" rel=\"nofollow\">DROP</a></td>\n<td>Token F1 score</td>\n<td>1-shot</td>\n<td align=\"center\">53.9</td>\n<td align=\"center\">60.8</td>\n</tr>\n</tbody>\n</table>\n<h4>Multilingual</h4>\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>Metric</th>\n<th>n-shot</th>\n<th align=\"center\">E2B IT</th>\n<th align=\"center\">E4B IT</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2210.03057\" rel=\"nofollow\">MGSM</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">53.1</td>\n<td align=\"center\">60.7</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2502.12404v1\" rel=\"nofollow\">WMT24++</a> (ChrF)</td>\n<td>Character-level F-score</td>\n<td>0-shot</td>\n<td align=\"center\">42.7</td>\n<td align=\"center\">50.1</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2411.19799\" rel=\"nofollow\">Include</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">38.6</td>\n<td align=\"center\">57.2</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2009.03300\" rel=\"nofollow\">MMLU</a> (ProX)</td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">8.1</td>\n<td align=\"center\">19.9</td>\n</tr>\n<tr>\n<td><a href=\"https://huggingface.co/datasets/openai/MMMLU\" rel=\"nofollow\">OpenAI MMLU</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">22.3</td>\n<td align=\"center\">35.6</td>\n</tr>\n<tr>\n<td><a href=\"https://huggingface.co/datasets/CohereLabs/Global-MMLU\" rel=\"nofollow\">Global-MMLU</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">55.1</td>\n<td align=\"center\">60.3</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2502.21228\" rel=\"nofollow\">ECLeKTic</a></td>\n<td>ECLeKTic score</td>\n<td>0-shot</td>\n<td align=\"center\">2.5</td>\n<td align=\"center\">1.9</td>\n</tr>\n</tbody>\n</table>\n<h4>STEM and code</h4>\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>Metric</th>\n<th>n-shot</th>\n<th align=\"center\">E2B IT</th>\n<th align=\"center\">E4B IT</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2311.12022\" rel=\"nofollow\">GPQA</a> Diamond</td>\n<td>RelaxedAccuracy/accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">24.8</td>\n<td align=\"center\">23.7</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2403.07974\" rel=\"nofollow\">LiveCodeBench</a> v5</td>\n<td>pass@1</td>\n<td>0-shot</td>\n<td align=\"center\">18.6</td>\n<td align=\"center\">25.7</td>\n</tr>\n<tr>\n<td>Codegolf v2.2</td>\n<td>pass@1</td>\n<td>0-shot</td>\n<td align=\"center\">11.0</td>\n<td align=\"center\">16.8</td>\n</tr>\n<tr>\n<td><a href=\"https://www.vals.ai/benchmarks/aime-2025-05-09\" rel=\"nofollow\">AIME 2025</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">6.7</td>\n<td align=\"center\">11.6</td>\n</tr>\n</tbody>\n</table>\n<h4>Additional benchmarks</h4>\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>Metric</th>\n<th>n-shot</th>\n<th align=\"center\">E2B IT</th>\n<th align=\"center\">E4B IT</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2009.03300\" rel=\"nofollow\">MMLU</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">60.1</td>\n<td align=\"center\">64.9</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2108.07732\" rel=\"nofollow\">MBPP</a></td>\n<td>pass@1</td>\n<td>3-shot</td>\n<td align=\"center\">56.6</td>\n<td align=\"center\">63.6</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2107.03374\" rel=\"nofollow\">HumanEval</a></td>\n<td>pass@1</td>\n<td>0-shot</td>\n<td align=\"center\">66.5</td>\n<td align=\"center\">75.0</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2403.07974\" rel=\"nofollow\">LiveCodeBench</a></td>\n<td>pass@1</td>\n<td>0-shot</td>\n<td align=\"center\">13.2</td>\n<td align=\"center\">13.2</td>\n</tr>\n<tr>\n<td>HiddenMath</td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">27.7</td>\n<td align=\"center\">37.7</td>\n</tr>\n<tr>\n<td><a href=\"https://huggingface.co/datasets/CohereForAI/Global-MMLU-Lite\" rel=\"nofollow\">Global-MMLU-Lite</a></td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">59.0</td>\n<td align=\"center\">64.5</td>\n</tr>\n<tr>\n<td><a href=\"https://arxiv.org/abs/2009.03300\" rel=\"nofollow\">MMLU</a> (Pro)</td>\n<td>Accuracy</td>\n<td>0-shot</td>\n<td align=\"center\">40.5</td>\n<td align=\"center\">50.6</td>\n</tr>\n</tbody>\n</table>\n<h2>Usage and Limitations</h2>\n<p>These models have certain limitations that users should be aware of.</p>\n<h3>Intended Usage</h3>\n<p>Open generative models have a wide range of applications across various\nindustries and domains. The following list of potential uses is not\ncomprehensive. The purpose of this list is to provide contextual information\nabout the possible use-cases that the model creators considered as part of model\ntraining and development.</p>\n<ul>\n<li>Content Creation and Communication\n\n<ul>\n<li><strong>Text Generation</strong>: Generate creative text formats such as\npoems, scripts, code, marketing copy, and email drafts.</li>\n<li><strong>Chatbots and Conversational AI</strong>: Power conversational\ninterfaces for customer service, virtual assistants, or interactive\napplications.</li>\n<li><strong>Text Summarization</strong>: Generate concise summaries of a text\ncorpus, research papers, or reports.</li>\n<li><strong>Image Data Extraction</strong>: Extract, interpret, and summarize\nvisual data for text communications.</li>\n<li><strong>Audio Data Extraction</strong>: Transcribe spoken language, translate speech\nto text in other languages, and analyze sound-based data.</li>\n</ul></li>\n<li>Research and Education\n\n<ul>\n<li><strong>Natural Language Processing (NLP) and generative model\nResearch</strong>: These models can serve as a foundation for researchers to\nexperiment with generative models and NLP techniques, develop\nalgorithms, and contribute to the advancement of the field.</li>\n<li><strong>Language Learning Tools</strong>: Support interactive language\nlearning experiences, aiding in grammar correction or providing writing\npractice.</li>\n<li><strong>Knowledge Exploration</strong>: Assist researchers in exploring large\nbodies of data by generating summaries or answering questions about\nspecific topics.</li>\n</ul></li>\n</ul>\n<h2>Ethics and Safety</h2>\n<p>Ethics and safety evaluation approach and results.</p>\n<h3>Evaluation Approach</h3>\n<p>Our evaluation methods include structured evaluations and internal red-teaming\ntesting of relevant content policies. Red-teaming was conducted by a number of\ndifferent teams, each with different goals and human evaluation metrics. These\nmodels were evaluated against a number of different categories relevant to\nethics and safety, including:</p>\n<ul>\n<li><strong>Child Safety</strong>: Evaluation of text-to-text and image to text prompts\ncovering child safety policies, including child sexual abuse and\nexploitation.</li>\n<li><strong>Content Safety:</strong> Evaluation of text-to-text and image to text prompts\ncovering safety policies including, harassment, violence and gore, and hate\nspeech.</li>\n<li><strong>Representational Harms</strong>: Evaluation of text-to-text and image to text\nprompts covering safety policies including bias, stereotyping, and harmful\nassociations or inaccuracies.</li>\n</ul>\n<p>In addition to development level evaluations, we conduct \u201cassurance\nevaluations\u201d which are our \u2018arms-length\u2019 internal evaluations for responsibility\ngovernance decision making. They are conducted separately from the model\ndevelopment team, to inform decision making about release. High level findings\nare fed back to the model team, but prompt sets are held-out to prevent\noverfitting and preserve the results\u2019 ability to inform decision making. Notable\nassurance evaluation results are reported to our Responsibility &amp; Safety Council\nas part of release review.</p>\n<h3>Evaluation Results</h3>\n<p>For all areas of safety testing, we saw safe levels of performance across the\ncategories of child safety, content safety, and representational harms relative\nto previous Gemma models. All testing was conducted without safety filters to\nevaluate the model capabilities and behaviors. For text-to-text,  image-to-text,\nand audio-to-text, and across all model sizes, the model produced minimal policy\nviolations, and showed significant improvements over previous Gemma models\u2019\nperformance with respect to high severity violations. A limitation of our\nevaluations was they included primarily English language prompts.</p>\n</div>",
+  "page_hash": "36d592a8d8b2",
+  "readme_text": "\n\nGemma 3n models are designed for efficient execution on everyday devices such as laptops, tablets or phones. These models were trained with data in over 140 spoken languages.\nGemma 3n models use selective parameter activation technology to reduce resource requirements. This technique allows the models to operate at an effective size of 2B and 4B parameters, which is lower than the total number of parameters they contain.\nModels\nEffective 2B\nollama run gemma3n:e2b\n\nEffective 4B\nollama run gemma3n:e4b\n\nEvaluation\nModel evaluation metrics and results.\nBenchmark Results\nThese models were evaluated at full precision (float32) against a large\ncollection of different datasets and metrics to cover different aspects of\ncontent generation. Evaluation results marked with IT are for\ninstruction-tuned models. Evaluation results marked with PT are for\npre-trained models. The models available on Ollama are instruction-tuned models.\n\nReasoning and factuality\n\n\n\nBenchmark\nMetric\nn-shot\nE2B PT\nE4B PT\n\n\n\n\nHellaSwag\nAccuracy\n10-shot\n72.2\n78.6\n\n\nBoolQ\nAccuracy\n0-shot\n76.4\n81.6\n\n\nPIQA\nAccuracy\n0-shot\n78.9\n81.0\n\n\nSocialIQA\nAccuracy\n0-shot\n48.8\n50.0\n\n\nTriviaQA\nAccuracy\n5-shot\n60.8\n70.2\n\n\nNatural Questions\nAccuracy\n5-shot\n15.5\n20.9\n\n\nARC-c\nAccuracy\n25-shot\n51.7\n61.6\n\n\nARC-e\nAccuracy\n0-shot\n75.8\n81.6\n\n\nWinoGrande\nAccuracy\n5-shot\n66.8\n71.7\n\n\nBIG-Bench Hard\nAccuracy\nfew-shot\n44.3\n52.9\n\n\nDROP\nToken F1 score\n1-shot\n53.9\n60.8\n\n\n\nMultilingual\n\n\n\nBenchmark\nMetric\nn-shot\nE2B IT\nE4B IT\n\n\n\n\nMGSM\nAccuracy\n0-shot\n53.1\n60.7\n\n\nWMT24++ (ChrF)\nCharacter-level F-score\n0-shot\n42.7\n50.1\n\n\nInclude\nAccuracy\n0-shot\n38.6\n57.2\n\n\nMMLU (ProX)\nAccuracy\n0-shot\n8.1\n19.9\n\n\nOpenAI MMLU\nAccuracy\n0-shot\n22.3\n35.6\n\n\nGlobal-MMLU\nAccuracy\n0-shot\n55.1\n60.3\n\n\nECLeKTic\nECLeKTic score\n0-shot\n2.5\n1.9\n\n\n\nSTEM and code\n\n\n\nBenchmark\nMetric\nn-shot\nE2B IT\nE4B IT\n\n\n\n\nGPQA Diamond\nRelaxedAccuracy/accuracy\n0-shot\n24.8\n23.7\n\n\nLiveCodeBench v5\npass@1\n0-shot\n18.6\n25.7\n\n\nCodegolf v2.2\npass@1\n0-shot\n11.0\n16.8\n\n\nAIME 2025\nAccuracy\n0-shot\n6.7\n11.6\n\n\n\nAdditional benchmarks\n\n\n\nBenchmark\nMetric\nn-shot\nE2B IT\nE4B IT\n\n\n\n\nMMLU\nAccuracy\n0-shot\n60.1\n64.9\n\n\nMBPP\npass@1\n3-shot\n56.6\n63.6\n\n\nHumanEval\npass@1\n0-shot\n66.5\n75.0\n\n\nLiveCodeBench\npass@1\n0-shot\n13.2\n13.2\n\n\nHiddenMath\nAccuracy\n0-shot\n27.7\n37.7\n\n\nGlobal-MMLU-Lite\nAccuracy\n0-shot\n59.0\n64.5\n\n\nMMLU (Pro)\nAccuracy\n0-shot\n40.5\n50.6\n\n\n\nUsage and Limitations\nThese models have certain limitations that users should be aware of.\nIntended Usage\nOpen generative models have a wide range of applications across various\nindustries and domains. The following list of potential uses is not\ncomprehensive. The purpose of this list is to provide contextual information\nabout the possible use-cases that the model creators considered as part of model\ntraining and development.\n\nContent Creation and Communication\n\n\nText Generation: Generate creative text formats such as\npoems, scripts, code, marketing copy, and email drafts.\nChatbots and Conversational AI: Power conversational\ninterfaces for customer service, virtual assistants, or interactive\napplications.\nText Summarization: Generate concise summaries of a text\ncorpus, research papers, or reports.\nImage Data Extraction: Extract, interpret, and summarize\nvisual data for text communications.\nAudio Data Extraction: Transcribe spoken language, translate speech\nto text in other languages, and analyze sound-based data.\n\nResearch and Education\n\n\nNatural Language Processing (NLP) and generative model\nResearch: These models can serve as a foundation for researchers to\nexperiment with generative models and NLP techniques, develop\nalgorithms, and contribute to the advancement of the field.\nLanguage Learning Tools: Support interactive language\nlearning experiences, aiding in grammar correction or providing writing\npractice.\nKnowledge Exploration: Assist researchers in exploring large\nbodies of data by generating summaries or answering questions about\nspecific topics.\n\n\nEthics and Safety\nEthics and safety evaluation approach and results.\nEvaluation Approach\nOur evaluation methods include structured evaluations and internal red-teaming\ntesting of relevant content policies. Red-teaming was conducted by a number of\ndifferent teams, each with different goals and human evaluation metrics. These\nmodels were evaluated against a number of different categories relevant to\nethics and safety, including:\n\nChild Safety: Evaluation of text-to-text and image to text prompts\ncovering child safety policies, including child sexual abuse and\nexploitation.\nContent Safety: Evaluation of text-to-text and image to text prompts\ncovering safety policies including, harassment, violence and gore, and hate\nspeech.\nRepresentational Harms: Evaluation of text-to-text and image to text\nprompts covering safety policies including bias, stereotyping, and harmful\nassociations or inaccuracies.\n\nIn addition to development level evaluations, we conduct \u201cassurance\nevaluations\u201d which are our \u2018arms-length\u2019 internal evaluations for responsibility\ngovernance decision making. They are conducted separately from the model\ndevelopment team, to inform decision making about release. High level findings\nare fed back to the model team, but prompt sets are held-out to prevent\noverfitting and preserve the results\u2019 ability to inform decision making. Notable\nassurance evaluation results are reported to our Responsibility & Safety Council\nas part of release review.\nEvaluation Results\nFor all areas of safety testing, we saw safe levels of performance across the\ncategories of child safety, content safety, and representational harms relative\nto previous Gemma models. All testing was conducted without safety filters to\nevaluate the model capabilities and behaviors. For text-to-text,  image-to-text,\nand audio-to-text, and across all model sizes, the model produced minimal policy\nviolations, and showed significant improvements over previous Gemma models\u2019\nperformance with respect to high severity violations. A limitation of our\nevaluations was they included primarily English language prompts.\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:38e8dcc30df4eb0e29eaf5c74ba6ce3f2cd66badad50768fc14362acfb8b8cb6",
-      "size": "7.03GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "gemma3n:latest",
+      "last_updated": "2 weeks ago",
+      "size": "7.5GB",
+      "digest": "sha256:8eac5d7750c5bd24a9c556890ecb08ff749fefb7c4952b8962c5e7835aef21be",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8eac5d7750c5bd24a9c556890ecb08ff749fefb7c4952b8962c5e7835aef21be",
+          "size": 491
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:38e8dcc30df4eb0e29eaf5c74ba6ce3f2cd66badad50768fc14362acfb8b8cb6",
+            "size": 7547579904
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "6.9B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:38e8dcc30df4eb0e29eaf5c74ba6ce3f2cd66badad50768fc14362acfb8b8cb6",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "6.9B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "gemma3n:e2b",
+      "last_updated": "2 weeks ago",
+      "size": "5.6GB",
+      "digest": "sha256:a3e66f51d60b50e078c14748a9226ae8aee621026109ab364b8ab2917e3c95ab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a3e66f51d60b50e078c14748a9226ae8aee621026109ab364b8ab2917e3c95ab",
+          "size": 417
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3839a254cf2d00b208c6e2524c129e4438f9d106bba4c3fbc12b631f519d1de1",
+            "size": 5621607424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "4.5B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3839a254cf2d00b208c6e2524c129e4438f9d106bba4c3fbc12b631f519d1de1",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "4.5B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "gemma3n:e4b",
+      "last_updated": "2 weeks ago",
+      "size": "7.5GB",
+      "digest": "sha256:8eac5d7750c5bd24a9c556890ecb08ff749fefb7c4952b8962c5e7835aef21be",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8eac5d7750c5bd24a9c556890ecb08ff749fefb7c4952b8962c5e7835aef21be",
+          "size": 491
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:38e8dcc30df4eb0e29eaf5c74ba6ce3f2cd66badad50768fc14362acfb8b8cb6",
+            "size": 7547579904
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "6.9B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:38e8dcc30df4eb0e29eaf5c74ba6ce3f2cd66badad50768fc14362acfb8b8cb6",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "6.9B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "gemma3n:e2b-it-q4_K_M",
+      "last_updated": "2 weeks ago",
+      "size": "5.6GB",
+      "digest": "sha256:a3e66f51d60b50e078c14748a9226ae8aee621026109ab364b8ab2917e3c95ab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a3e66f51d60b50e078c14748a9226ae8aee621026109ab364b8ab2917e3c95ab",
+          "size": 417
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3839a254cf2d00b208c6e2524c129e4438f9d106bba4c3fbc12b631f519d1de1",
+            "size": 5621607424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "4.5B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3839a254cf2d00b208c6e2524c129e4438f9d106bba4c3fbc12b631f519d1de1",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "4.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "gemma3n:e2b-it-q8_0",
+      "last_updated": "2 weeks ago",
+      "size": "6.6GB",
+      "digest": "sha256:3a8c37ed7e3e1402dd2d8f96377c2fea03d7beb4c32f9f41f174599e950db6e1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3a8c37ed7e3e1402dd2d8f96377c2fea03d7beb4c32f9f41f174599e950db6e1",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f3eb53195ff47800610b10e63231f8d3c7d494842a91e1f547e84f6304fba441",
+            "size": 6639418368
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363,
+            "from": "gemma3n:e2b-it-fp16"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "4.5B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f3eb53195ff47800610b10e63231f8d3c7d494842a91e1f547e84f6304fba441",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "4.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "gemma3n:e2b-it-fp16",
+      "last_updated": "2 weeks ago",
+      "size": "8.9GB",
+      "digest": "sha256:e62aabdaf38193f17100a56075152297a89f572320275dbec6c4a12884706477",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e62aabdaf38193f17100a56075152297a89f572320275dbec6c4a12884706477",
+          "size": 414
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ada5eb64a106b49ce8afd9719e29692c00d535d66096cc7f1999285f15dab173",
+            "size": 8929148896
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "4.5B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ada5eb64a106b49ce8afd9719e29692c00d535d66096cc7f1999285f15dab173",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "4.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "gemma3n:e4b-it-q4_K_M",
+      "last_updated": "2 weeks ago",
+      "size": "7.5GB",
+      "digest": "sha256:8eac5d7750c5bd24a9c556890ecb08ff749fefb7c4952b8962c5e7835aef21be",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8eac5d7750c5bd24a9c556890ecb08ff749fefb7c4952b8962c5e7835aef21be",
+          "size": 491
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:38e8dcc30df4eb0e29eaf5c74ba6ce3f2cd66badad50768fc14362acfb8b8cb6",
+            "size": 7547579904
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "6.9B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:38e8dcc30df4eb0e29eaf5c74ba6ce3f2cd66badad50768fc14362acfb8b8cb6",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "6.9B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "gemma3n:e4b-it-q8_0",
+      "last_updated": "2 weeks ago",
+      "size": "9.5GB",
+      "digest": "sha256:5a7082b197144c603c31c6e86b2f48b1ed6591266e3b3bbc36ba9b500e4a7190",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5a7082b197144c603c31c6e86b2f48b1ed6591266e3b3bbc36ba9b500e4a7190",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c8057f14c8692dbe7253f4aae18acd091cdf73ce0fc7f2118a9700ad1c0cfc0e",
+            "size": 9515445760
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363,
+            "from": "gemma3n:e4b-it-fp16"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "6.9B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c8057f14c8692dbe7253f4aae18acd091cdf73ce0fc7f2118a9700ad1c0cfc0e",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "6.9B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "gemma3n:e4b-it-fp16",
+      "last_updated": "2 weeks ago",
+      "size": "14GB",
+      "digest": "sha256:84485dc8507f116fb08c2c046b31d9281db3b5d212af5b7ca9e3e1d48db64f56",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:84485dc8507f116fb08c2c046b31d9281db3b5d212af5b7ca9e3e1d48db64f56",
+          "size": 414
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e4e9439b8ee5aa6213d487a6780c0618fe971e0582e11b7cc3741a1230205644",
+            "size": 13750405088
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "size": 358
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9",
+            "size": 8363
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma3n",
+        "model_families": [
+          "gemma3n"
+        ],
+        "model_type": "6.9B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e4e9439b8ee5aa6213d487a6780c0618fe971e0582e11b7cc3741a1230205644",
+            "sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+            "sha256:1adbfec9dcf025cbf301c072f3847527468dcfa399da7491ee4a1c9e9f1b33e9"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "6.9B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "code"
+  },
+  "quality_score": {
+    "fields_filled": 15,
+    "total_possible": 27,
+    "completeness": 0.56
+  }
 }
