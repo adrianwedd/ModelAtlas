@@ -2,30 +2,516 @@
   "name": "granite3.2",
   "description": "Granite-3.2 is a family of long-context AI models from IBM Granite fine-tuned for thinking capabilities.",
   "license": "Sizes",
-  "pull_count": 115000,
+  "pull_count": 115100,
   "last_updated": "Feb 26, 2025 5:48 AM UTC",
-  "page_hash": "a164bf77f229",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"/assets/library/granite3.2/90c5e567-0004-425c-a17a-1b846c2b5d3d\" width=\"600\"/></p>\n<p>Granite-3.2 is a family of long-context AI models fine-tuned for thinking capabilities. Built on top of Granite-3.1, it has been trained using a mix of permissively licensed open-source datasets and internally generated synthetic data designed for reasoning tasks. The models allow controllability of its thinking capability, ensuring it is applied only when required.</p>\n<ul>\n<li><strong>Developers:</strong> Granite Team, IBM</li>\n<li><strong>Website</strong>: <a href=\"https://www.ibm.com/granite/docs/\" rel=\"nofollow\">Granite Docs</a></li>\n<li><strong>Release Date</strong>: February 26th, 2025</li>\n<li><strong>License:</strong> <a href=\"https://www.apache.org/licenses/LICENSE-2.0\" rel=\"nofollow\">Apache 2.0</a></li>\n</ul>\n<p><strong>Sizes</strong></p>\n<p>The models are available in two parameter sizes, 2B and 8B:</p>\n<pre><code>ollama run granite3.2:2b\n</code></pre>\n<pre><code>ollama run granite3.2:8b\n</code></pre>\n<p><strong>Supported Languages:</strong>\nEnglish, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, and Chinese. However, users may finetune this Granite model for languages beyond these 12 languages.</p>\n<p><strong>Intended Use:</strong>\nThese models are designed to handle general instruction-following tasks and can be integrated into AI assistants across various domains, including business applications.</p>\n<p><strong>Capabilities</strong></p>\n<ul>\n<li><strong>Thinking</strong></li>\n<li>Summarization</li>\n<li>Text classification</li>\n<li>Text extraction</li>\n<li>Question-answering</li>\n<li>Retrieval Augmented Generation (RAG)</li>\n<li>Code related tasks</li>\n<li>Function-calling tasks</li>\n<li>Multilingual dialog use cases</li>\n<li>Long-context tasks including long document/meeting summarization, long document QA, etc.</li>\n</ul>\n<p><strong>Thinking</strong></p>\n<p>To enable thinking, add a message with <code>\"role\": \"control\"</code> and set <code>\"content\"</code> to <code>\"thinking\"</code>. For example:</p>\n<pre><code>{\n    \"messages\": [\n        {\"role\": \"control\", \"content\": \"thinking\"},\n        {\"role\": \"user\", \"content\": \"How do I get to the airport if my car won't start?\"}\n    ]\n}\n</code></pre>\n<h2>References</h2>\n<p><a href=\"https://www.ibm.com/granite\" rel=\"nofollow\">Website</a></p>\n</div>",
+  "page_hash": "49406e0f973e",
+  "readme_text": "\n\nGranite-3.2 is a family of long-context AI models fine-tuned for thinking capabilities. Built on top of Granite-3.1, it has been trained using a mix of permissively licensed open-source datasets and internally generated synthetic data designed for reasoning tasks. The models allow controllability of its thinking capability, ensuring it is applied only when required.\n\nDevelopers: Granite Team, IBM\nWebsite: Granite Docs\nRelease Date: February 26th, 2025\nLicense: Apache 2.0\n\nSizes\nThe models are available in two parameter sizes, 2B and 8B:\nollama run granite3.2:2b\n\nollama run granite3.2:8b\n\nSupported Languages:\nEnglish, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, and Chinese. However, users may finetune this Granite model for languages beyond these 12 languages.\nIntended Use:\nThese models are designed to handle general instruction-following tasks and can be integrated into AI assistants across various domains, including business applications.\nCapabilities\n\nThinking\nSummarization\nText classification\nText extraction\nQuestion-answering\nRetrieval Augmented Generation (RAG)\nCode related tasks\nFunction-calling tasks\nMultilingual dialog use cases\nLong-context tasks including long document/meeting summarization, long document QA, etc.\n\nThinking\nTo enable thinking, add a message with \"role\": \"control\" and set \"content\" to \"thinking\". For example:\n{\n    \"messages\": [\n        {\"role\": \"control\", \"content\": \"thinking\"},\n        {\"role\": \"user\", \"content\": \"How do I get to the airport if my car won't start?\"}\n    ]\n}\n\nReferences\nWebsite\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:59c55d0e7b6a16d103f324fe4d2cc83843936e1ac65e93b632b6dc577d732630",
-      "size": "4.6GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "granite3.2:latest",
+      "last_updated": "4 months ago",
+      "size": "4.9GB",
+      "digest": "sha256:de1951f52363cf7485e5e7808b2cbae27eeb1396f21a644696b9cc42e271066d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:de1951f52363cf7485e5e7808b2cbae27eeb1396f21a644696b9cc42e271066d",
+          "size": 417
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:59c55d0e7b6a16d103f324fe4d2cc83843936e1ac65e93b632b6dc577d732630",
+            "size": 4942859552
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:59c55d0e7b6a16d103f324fe4d2cc83843936e1ac65e93b632b6dc577d732630",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "granite3.2:2b",
+      "last_updated": "4 months ago",
+      "size": "1.5GB",
+      "digest": "sha256:2b0d9e8b9a1837494d23e48244a060c44e93f775599f473d69ca92c8e34ebde2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2b0d9e8b9a1837494d23e48244a060c44e93f775599f473d69ca92c8e34ebde2",
+          "size": 417
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:36c09b22ee395b0a80053af776e65d8c34cc38ee47eb1d842c2578f0dacd10d4",
+            "size": 1545296256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:36c09b22ee395b0a80053af776e65d8c34cc38ee47eb1d842c2578f0dacd10d4",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "granite3.2:8b",
+      "last_updated": "4 months ago",
+      "size": "4.9GB",
+      "digest": "sha256:de1951f52363cf7485e5e7808b2cbae27eeb1396f21a644696b9cc42e271066d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:de1951f52363cf7485e5e7808b2cbae27eeb1396f21a644696b9cc42e271066d",
+          "size": 417
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:59c55d0e7b6a16d103f324fe4d2cc83843936e1ac65e93b632b6dc577d732630",
+            "size": 4942859552
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:59c55d0e7b6a16d103f324fe4d2cc83843936e1ac65e93b632b6dc577d732630",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3.2:2b-instruct-q4_K_M",
+      "last_updated": "4 months ago",
+      "size": "1.5GB",
+      "digest": "sha256:2b0d9e8b9a1837494d23e48244a060c44e93f775599f473d69ca92c8e34ebde2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2b0d9e8b9a1837494d23e48244a060c44e93f775599f473d69ca92c8e34ebde2",
+          "size": 417
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:36c09b22ee395b0a80053af776e65d8c34cc38ee47eb1d842c2578f0dacd10d4",
+            "size": 1545296256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:36c09b22ee395b0a80053af776e65d8c34cc38ee47eb1d842c2578f0dacd10d4",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3.2:2b-instruct-q8_0",
+      "last_updated": "4 months ago",
+      "size": "2.7GB",
+      "digest": "sha256:fc84369d972bcdde048da7af9a4f638150acde340ee3855a89394913a49375d1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fc84369d972bcdde048da7af9a4f638150acde340ee3855a89394913a49375d1",
+          "size": 415
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:447d11cf0c1a3bb246e05a5d57a757e35e671329a897f59a64ad4d94ff0217a8",
+            "size": 2694111040
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:447d11cf0c1a3bb246e05a5d57a757e35e671329a897f59a64ad4d94ff0217a8",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3.2:2b-instruct-fp16",
+      "last_updated": "4 months ago",
+      "size": "5.1GB",
+      "digest": "sha256:b2ea5cd8bbe403a37b616eb257ddcf64e37ab58f126092aac77be44816026332",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b2ea5cd8bbe403a37b616eb257ddcf64e37ab58f126092aac77be44816026332",
+          "size": 414
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1fc7a5403f05708350f9c981ca9b078a3984237590bfc0b56476afa2ea7503bf",
+            "size": 5069141440,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-1fc7a5403f05708350f9c981ca9b078a3984237590bfc0b56476afa2ea7503bf"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1fc7a5403f05708350f9c981ca9b078a3984237590bfc0b56476afa2ea7503bf",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3.2:8b-instruct-q4_K_M",
+      "last_updated": "4 months ago",
+      "size": "4.9GB",
+      "digest": "sha256:de1951f52363cf7485e5e7808b2cbae27eeb1396f21a644696b9cc42e271066d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:de1951f52363cf7485e5e7808b2cbae27eeb1396f21a644696b9cc42e271066d",
+          "size": 417
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:59c55d0e7b6a16d103f324fe4d2cc83843936e1ac65e93b632b6dc577d732630",
+            "size": 4942859552
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:59c55d0e7b6a16d103f324fe4d2cc83843936e1ac65e93b632b6dc577d732630",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3.2:8b-instruct-q8_0",
+      "last_updated": "4 months ago",
+      "size": "8.7GB",
+      "digest": "sha256:a873d4fd9ebd7be7b3c6bb66486c8712b77877876ac35e125639f32a456ad16e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a873d4fd9ebd7be7b3c6bb66486c8712b77877876ac35e125639f32a456ad16e",
+          "size": 415
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:660e78a480a97cc99babb2ee38d7078b1851cae3801c76a0a04282dced9ea645",
+            "size": 8684247232
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:660e78a480a97cc99babb2ee38d7078b1851cae3801c76a0a04282dced9ea645",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3.2:8b-instruct-fp16",
+      "last_updated": "4 months ago",
+      "size": "16GB",
+      "digest": "sha256:6977da1075ef3ae214490a93217cbe6f2ce652859ef0ef2cbeeca7a1d8fc09a3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6977da1075ef3ae214490a93217cbe6f2ce652859ef0ef2cbeeca7a1d8fc09a3",
+          "size": 414
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2feccae02d6350dfa9e712386148766042a49fcc13607dbbf24afd204213b74b",
+            "size": 16344106432,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-2feccae02d6350dfa9e712386148766042a49fcc13607dbbf24afd204213b74b"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "size": 5987
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f",
+            "size": 11331
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2feccae02d6350dfa9e712386148766042a49fcc13607dbbf24afd204213b74b",
+            "sha256:3e7ca51acd6e3529b39be5dcc8ac3847a7c4b066f841ef618dd868edfaa85fc3",
+            "sha256:2e68075caee4c571d43cb9d8d636415d8fe0fe59f695370cf56bc9f872f1ff3f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "code"
+  },
+  "quality_score": {
+    "fields_filled": 16,
+    "total_possible": 27,
+    "completeness": 0.59
+  }
 }

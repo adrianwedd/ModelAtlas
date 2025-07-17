@@ -1,30 +1,2564 @@
 {
   "name": "wizard-vicuna-uncensored",
   "description": "Wizard Vicuna Uncensored is a 7B, 13B, and 30B parameter model based on Llama 2 uncensored by Eric Hartford.",
-  "pull_count": 218400,
+  "pull_count": 218500,
   "last_updated": "Oct 28, 2023 5:20 PM UTC",
-  "page_hash": "ab89ccf42854",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p>Wizard Vicuna Uncensored is a 7B, 13B, and 30B parameter model based on Llama 2 uncensored by Eric Hartford. The models were trained against LLaMA-7B with a subset of the dataset, responses that contained alignment / moralizing were removed.</p>\n<h2>Get started with Wizard Vicuna Uncensored</h2>\n<p>The model used in the example below is the Wizard Vicuna Uncensored model, with 7b parameters, which is a general-use model.</p>\n<h3>API</h3>\n<ol>\n<li>Start Ollama server (Run <code>ollama serve</code>)</li>\n<li>Run the model</li>\n</ol>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"wizard-vicuna-uncensored\",\n  \"prompt\":\"Who made Rose promise that she would never let go?\"\n }'\n</code></pre>\n<h3>CLI</h3>\n<ol>\n<li>Install Ollama</li>\n<li>Open the terminal and run <code>ollama run wizard-vicuna-uncensored</code></li>\n</ol>\n<p>Note: The <code>ollama run</code> command performs an <code>ollama pull</code> if the model is not already downloaded. To download the model without running it, use <code>ollama pull wizard-vicuna-uncensored</code></p>\n<h2>Memory requirements</h2>\n<ul>\n<li>7b models generally require at least 8GB of RAM</li>\n<li>13b models generally require at least 16GB of RAM</li>\n<li>30b models generally require at least 32GB of RAM</li>\n</ul>\n<p>If you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.</p>\n<h2>Model variants</h2>\n<p>By default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.</p>\n<table>\n<thead>\n<tr>\n<th><strong>Aliases</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>latest, 7b, 7b-q4_0</td>\n</tr>\n<tr>\n<td>13b, 13b-q4_0</td>\n</tr>\n<tr>\n<td>30b, 30b-q4_0</td>\n</tr>\n</tbody>\n</table>\n<h2>Model source</h2>\n<p><strong>Wizard Vicuna Uncensored source on Ollama</strong></p>\n<p>7b parameters original source:\n <a href=\"https://huggingface.co/ehartford/Wizard-Vicuna-7B-Uncensored\" rel=\"nofollow\">Eric Hartford</a></p>\n<p>13b parameters original source:\n <a href=\"https://huggingface.co/ehartford/Wizard-Vicuna-13B-Uncensored\" rel=\"nofollow\">Eric Hartford</a></p>\n<p>30b parameters original source:\n <a href=\"https://huggingface.co/ehartford/Wizard-Vicuna-30B-Uncensored\" rel=\"nofollow\">Eric Hartford</a></p>\n</div>",
+  "page_hash": "f7151cda7e03",
+  "readme_text": "\nWizard Vicuna Uncensored is a 7B, 13B, and 30B parameter model based on Llama 2 uncensored by Eric Hartford. The models were trained against LLaMA-7B with a subset of the dataset, responses that contained alignment / moralizing were removed.\nGet started with Wizard Vicuna Uncensored\nThe model used in the example below is the Wizard Vicuna Uncensored model, with 7b parameters, which is a general-use model.\nAPI\n\nStart Ollama server (Run ollama serve)\nRun the model\n\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"wizard-vicuna-uncensored\",\n  \"prompt\":\"Who made Rose promise that she would never let go?\"\n }'\n\nCLI\n\nInstall Ollama\nOpen the terminal and run ollama run wizard-vicuna-uncensored\n\nNote: The ollama run command performs an ollama pull if the model is not already downloaded. To download the model without running it, use ollama pull wizard-vicuna-uncensored\nMemory requirements\n\n7b models generally require at least 8GB of RAM\n13b models generally require at least 16GB of RAM\n30b models generally require at least 32GB of RAM\n\nIf you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.\nModel variants\nBy default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.\n\n\n\nAliases\n\n\n\n\nlatest, 7b, 7b-q4_0\n\n\n13b, 13b-q4_0\n\n\n30b, 30b-q4_0\n\n\n\nModel source\nWizard Vicuna Uncensored source on Ollama\n7b parameters original source:\n Eric Hartford\n13b parameters original source:\n Eric Hartford\n30b parameters original source:\n Eric Hartford\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:f47cca377d2b489281f447a8f4897ca7f3ef7b87f061d4c75c2c3ee90f324230",
-      "size": "3.56GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "wizard-vicuna-uncensored:latest",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:ac42ba9a63eb4973722b81e51c459b9a7efff480b2fdb575b368945ca498fea7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ac42ba9a63eb4973722b81e51c459b9a7efff480b2fdb575b368945ca498fea7",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f47cca377d2b489281f447a8f4897ca7f3ef7b87f061d4c75c2c3ee90f324230",
+            "size": 3825807040
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f47cca377d2b489281f447a8f4897ca7f3ef7b87f061d4c75c2c3ee90f324230",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "wizard-vicuna-uncensored:7b",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:ac42ba9a63eb4973722b81e51c459b9a7efff480b2fdb575b368945ca498fea7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ac42ba9a63eb4973722b81e51c459b9a7efff480b2fdb575b368945ca498fea7",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f47cca377d2b489281f447a8f4897ca7f3ef7b87f061d4c75c2c3ee90f324230",
+            "size": 3825807040
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f47cca377d2b489281f447a8f4897ca7f3ef7b87f061d4c75c2c3ee90f324230",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "wizard-vicuna-uncensored:13b",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:dc674789367b08ef6f9f3059ece3fc531ab3bf94574bc36bdb889893fca53498",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:dc674789367b08ef6f9f3059ece3fc531ab3bf94574bc36bdb889893fca53498",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1fa5433f7f976911dddd6e97eda93885af20386fd9ac6b18a73a937af6205100",
+            "size": 7365834624
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1fa5433f7f976911dddd6e97eda93885af20386fd9ac6b18a73a937af6205100",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "sha256:0f27b88821556142b4eac8ed9204050bdcad2142e22f385fc7fe4bce54b965c2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0f27b88821556142b4eac8ed9204050bdcad2142e22f385fc7fe4bce54b965c2",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:06de597291b824c541015ba9d759cbcd915bccdb48a7217066562b4f38501282",
+            "size": 18355967392
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:06de597291b824c541015ba9d759cbcd915bccdb48a7217066562b4f38501282",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q2_K",
+      "last_updated": "1 year ago",
+      "size": "2.8GB",
+      "digest": "sha256:3e40b38cee60f9783e0c2cf7bfa795ba88c24dbc24593dbe1cd4c84421c26ebf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3e40b38cee60f9783e0c2cf7bfa795ba88c24dbc24593dbe1cd4c84421c26ebf",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:31321c052a73d35d2f58201f85661f28ba7f3b146af99812bd10330f1d1e8f7b",
+            "size": 2825940672
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q2_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:31321c052a73d35d2f58201f85661f28ba7f3b146af99812bd10330f1d1e8f7b",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "2.9GB",
+      "digest": "sha256:6256692758ddc5e376131dd14e058048ec5cea5df51d84f09c5bc2593646f72d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6256692758ddc5e376131dd14e058048ec5cea5df51d84f09c5bc2593646f72d",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5d7bc2340e1981d6eabc5eaa36155ae4cd85f41f0bf488f4f7f7a841171ee901",
+            "size": 2948304576
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q3_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5d7bc2340e1981d6eabc5eaa36155ae4cd85f41f0bf488f4f7f7a841171ee901",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "3.3GB",
+      "digest": "sha256:ac36bde1b605878ab17b3e6c9e5aec9349a3ec26ffde59775a3347ff34ee6744",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ac36bde1b605878ab17b3e6c9e5aec9349a3ec26ffde59775a3347ff34ee6744",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fb1903221b77bb0ac76561e8823e97a5fc6c014d0c96f960461e84afec1047ff",
+            "size": 3298004672
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q3_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fb1903221b77bb0ac76561e8823e97a5fc6c014d0c96f960461e84afec1047ff",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "3.6GB",
+      "digest": "sha256:f6fe557594f33448275351fda8119a7ab93a1b30fc1ae7e0b728504e4bc29e23",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f6fe557594f33448275351fda8119a7ab93a1b30fc1ae7e0b728504e4bc29e23",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c3a01c485c3932abddede886f5e6212067d2b822aed87d9c3fc9e5b4b00f96b2",
+            "size": 3597110976
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q3_K_L",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c3a01c485c3932abddede886f5e6212067d2b822aed87d9c3fc9e5b4b00f96b2",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q4_0",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:ac42ba9a63eb4973722b81e51c459b9a7efff480b2fdb575b368945ca498fea7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ac42ba9a63eb4973722b81e51c459b9a7efff480b2fdb575b368945ca498fea7",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f47cca377d2b489281f447a8f4897ca7f3ef7b87f061d4c75c2c3ee90f324230",
+            "size": 3825807040
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f47cca377d2b489281f447a8f4897ca7f3ef7b87f061d4c75c2c3ee90f324230",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q4_1",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:c876eec430568dd4885656cd0b7c2f26f2c51cd3764166aa5cb3115dab869a36",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c876eec430568dd4885656cd0b7c2f26f2c51cd3764166aa5cb3115dab869a36",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c9fdc4992268f06486db12dbdd03a4f16c12d65a0bef83bceb9df99887f349aa",
+            "size": 4238749376
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c9fdc4992268f06486db12dbdd03a4f16c12d65a0bef83bceb9df99887f349aa",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "3.9GB",
+      "digest": "sha256:7d4586f4270197749f63f333cc436d33a68da261677441f9837afd937e0ae4ff",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7d4586f4270197749f63f333cc436d33a68da261677441f9837afd937e0ae4ff",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0427ba409ac23dec9335e5485d28079270c561a12c10690ee252dde6f435c971",
+            "size": 3856740032
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q4_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0427ba409ac23dec9335e5485d28079270c561a12c10690ee252dde6f435c971",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:648ef11f76c7b905600e8a178e9ca12989d847fac4e7526915bfc79997e689a0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:648ef11f76c7b905600e8a178e9ca12989d847fac4e7526915bfc79997e689a0",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6739b3a1512affca82dc6a4575ecca0d44cd3c4b39ca3d0bf62f8d08b24c3b9e",
+            "size": 4081004224
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q4_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:6739b3a1512affca82dc6a4575ecca0d44cd3c4b39ca3d0bf62f8d08b24c3b9e",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q5_0",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "sha256:7df6b8104fec7cf6e6b3e96691ab3271e87e64038458969fdcda7b93f5b7a5be",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7df6b8104fec7cf6e6b3e96691ab3271e87e64038458969fdcda7b93f5b7a5be",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3b45549967c7dd826acb99d990df710dc2b4a9f8898f8a7b5bca06feaa6934d1",
+            "size": 4651691712
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3b45549967c7dd826acb99d990df710dc2b4a9f8898f8a7b5bca06feaa6934d1",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q5_1",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "sha256:9166dc0e35e7e26220e5c44cc9399ad7e1ce8ee2492f74f02b04de6cf6e50f4b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9166dc0e35e7e26220e5c44cc9399ad7e1ce8ee2492f74f02b04de6cf6e50f4b",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:9f609bf81fca59fdd318cca939ffbba555c26642e76a5c45e217bbfef2149a29",
+            "size": 5064634048
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:9f609bf81fca59fdd318cca939ffbba555c26642e76a5c45e217bbfef2149a29",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "sha256:33667dc1620112ed0f1d0e1a424b98e60db5278656edebd7a14ebce70a113878",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:33667dc1620112ed0f1d0e1a424b98e60db5278656edebd7a14ebce70a113878",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:373800135fc844a534473da7e717424d9e9e27898a9330e28aeb1a25d4c7f876",
+            "size": 4651691712
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q5_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:373800135fc844a534473da7e717424d9e9e27898a9330e28aeb1a25d4c7f876",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.8GB",
+      "digest": "sha256:6496ead29e7906eb2c3748b4ba7dc1ce81e2641f02965fc444b6895b188fbf36",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6496ead29e7906eb2c3748b4ba7dc1ce81e2641f02965fc444b6895b188fbf36",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:49de4ebd89afd9e147e48fff8fcda7b27c7026440cc44559296cfc56b474dada",
+            "size": 4783156928
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q5_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:49de4ebd89afd9e147e48fff8fcda7b27c7026440cc44559296cfc56b474dada",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q6_K",
+      "last_updated": "1 year ago",
+      "size": "5.5GB",
+      "digest": "sha256:ab46a1baac3b224fd44d7db72f309d8de86042a900fb6aa022fead7c8787cc79",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ab46a1baac3b224fd44d7db72f309d8de86042a900fb6aa022fead7c8787cc79",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a1736fc49c7cecba34495afe85d21df3a1812f43afdfb9fde9032e621702355d",
+            "size": 5529194176
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q6_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a1736fc49c7cecba34495afe85d21df3a1812f43afdfb9fde9032e621702355d",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-q8_0",
+      "last_updated": "1 year ago",
+      "size": "7.2GB",
+      "digest": "sha256:7bbf25c93f3c1fb6b19c6f99049636e0b7cfd71e48a8c7038a06521536850c15",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7bbf25c93f3c1fb6b19c6f99049636e0b7cfd71e48a8c7038a06521536850c15",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:739ae25e5cd1a0389795e2de7b5be5c896804cddecebaa57e2cd3a580be666ca",
+            "size": 7161089728
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "Q8_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:739ae25e5cd1a0389795e2de7b5be5c896804cddecebaa57e2cd3a580be666ca",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:7b-fp16",
+      "last_updated": "1 year ago",
+      "size": "13GB",
+      "digest": "sha256:20d11a1496ed01af66529c1c811b68f8b8b1f2e6d8fcd49199e640e94c10f110",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:20d11a1496ed01af66529c1c811b68f8b8b1f2e6d8fcd49199e640e94c10f110",
+          "size": 380
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:32e05af5cbdcf62eb154f9cb5b138853e9f208447362ff5055e074f4bee6e661",
+            "size": 13478104736
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "7B",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:32e05af5cbdcf62eb154f9cb5b138853e9f208447362ff5055e074f4bee6e661",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q2_K",
+      "last_updated": "1 year ago",
+      "size": "5.4GB",
+      "digest": "sha256:d702697c38d673d41bb978ecfa8e0859a28137675c31d6587f99ecff84c59c48",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d702697c38d673d41bb978ecfa8e0859a28137675c31d6587f99ecff84c59c48",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b3c1b0cbef0ef743a8332c811e648cfcc53be378bd426519ced2073b8fa5f878",
+            "size": 5429348224
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q2_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:b3c1b0cbef0ef743a8332c811e648cfcc53be378bd426519ced2073b8fa5f878",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "5.7GB",
+      "digest": "sha256:d34ca37ad5c5e98676645080dee3094453f86fd4d1eb3e80da23827648986f5d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d34ca37ad5c5e98676645080dee3094453f86fd4d1eb3e80da23827648986f5d",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1ccf8a2815ef88c22ce9ca78392b4af692e5fae3ee5a99980df7690c4673666d",
+            "size": 5658980224
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q3_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1ccf8a2815ef88c22ce9ca78392b4af692e5fae3ee5a99980df7690c4673666d",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "6.3GB",
+      "digest": "sha256:e07f3a8bb4b693270020d9bf6a5a65c2f7ed73519dab5d6de0a0e9acee1cceca",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e07f3a8bb4b693270020d9bf6a5a65c2f7ed73519dab5d6de0a0e9acee1cceca",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:accbe19b980dd162737a67eeb494c0fd76f1101d320032298f19075c2c910a71",
+            "size": 6337769344
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q3_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:accbe19b980dd162737a67eeb494c0fd76f1101d320032298f19075c2c910a71",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "6.9GB",
+      "digest": "sha256:8fec5ffa8e75544cbabd019f9ed75d276f109d8b9bd4c921ca12b88f76420551",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8fec5ffa8e75544cbabd019f9ed75d276f109d8b9bd4c921ca12b88f76420551",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a180eba2a81334889dcea3e698266372f7009f0f7c6e670820e2ebe5c463eed3",
+            "size": 6929559424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q3_K_L",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a180eba2a81334889dcea3e698266372f7009f0f7c6e670820e2ebe5c463eed3",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q4_0",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:dc674789367b08ef6f9f3059ece3fc531ab3bf94574bc36bdb889893fca53498",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:dc674789367b08ef6f9f3059ece3fc531ab3bf94574bc36bdb889893fca53498",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1fa5433f7f976911dddd6e97eda93885af20386fd9ac6b18a73a937af6205100",
+            "size": 7365834624
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1fa5433f7f976911dddd6e97eda93885af20386fd9ac6b18a73a937af6205100",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q4_1",
+      "last_updated": "1 year ago",
+      "size": "8.2GB",
+      "digest": "sha256:7e1157f1639f75f73576080ec93faf8f432f3b13c69faa96ec3544e4187996b6",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7e1157f1639f75f73576080ec93faf8f432f3b13c69faa96ec3544e4187996b6",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ba66d7dc85f9e49b4c1ee54791099d0747f2b98cd460ff1a48273d5b6c9394d3",
+            "size": 8169060224
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ba66d7dc85f9e49b4c1ee54791099d0747f2b98cd460ff1a48273d5b6c9394d3",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:260eca2fe1db6ef0d38dcaca8ce6532dd99a8e5317de58ad971946384e06f663",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:260eca2fe1db6ef0d38dcaca8ce6532dd99a8e5317de58ad971946384e06f663",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:210db37cb52055861bab3f302cacdebf5a59968233acce8d2d1ccc54c5810149",
+            "size": 7414331264
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:210db37cb52055861bab3f302cacdebf5a59968233acce8d2d1ccc54c5810149",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "7.9GB",
+      "digest": "sha256:674fa210267f85d04f4331fc5c1618aac9d76de37e82b5868911d0e7482b2ef7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:674fa210267f85d04f4331fc5c1618aac9d76de37e82b5868911d0e7482b2ef7",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5313569b9a38df7ae5fcd392ba93ecb7a9baf73f08a5c26c80d91a234c8f7dd2",
+            "size": 7865956224
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5313569b9a38df7ae5fcd392ba93ecb7a9baf73f08a5c26c80d91a234c8f7dd2",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q5_0",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:29533e8d9c06cf4a58249ad54d9fce0c325ed2e70b36d45604533a05360ca1d2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:29533e8d9c06cf4a58249ad54d9fce0c325ed2e70b36d45604533a05360ca1d2",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1b3b3c5fdd89fa26db70dfcd553e060827221f6b9329e39b5f0e67d61ec110aa",
+            "size": 8972285824
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1b3b3c5fdd89fa26db70dfcd553e060827221f6b9329e39b5f0e67d61ec110aa",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q5_1",
+      "last_updated": "1 year ago",
+      "size": "9.8GB",
+      "digest": "sha256:d695801b7ff190eb29778749a66709d788580d0e6dfa6c1544e66e6883fd7053",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d695801b7ff190eb29778749a66709d788580d0e6dfa6c1544e66e6883fd7053",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:22e62a3682cf587651b89027be3aa9aef6947e15f4ee44bf980f66ce70f47b58",
+            "size": 9775511424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:22e62a3682cf587651b89027be3aa9aef6947e15f4ee44bf980f66ce70f47b58",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:07abd236fd5ece8dea0f890960bbc951310332f88096f31a56e0e335caf9152b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:07abd236fd5ece8dea0f890960bbc951310332f88096f31a56e0e335caf9152b",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8aa7f2e0c74c772741779372dafb3f4848e3252b711f96bbfeb3a366fa6a3913",
+            "size": 8972285824
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8aa7f2e0c74c772741779372dafb3f4848e3252b711f96bbfeb3a366fa6a3913",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "9.2GB",
+      "digest": "sha256:981f34d19016d86a6ae37fe23da6306e0a53ba0a70466b3f13349bec5aaefbe7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:981f34d19016d86a6ae37fe23da6306e0a53ba0a70466b3f13349bec5aaefbe7",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:35fd0daaabf20919537901659c812fba10df82894bf9a8389997861cebf293e7",
+            "size": 9229924224
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:35fd0daaabf20919537901659c812fba10df82894bf9a8389997861cebf293e7",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q6_K",
+      "last_updated": "1 year ago",
+      "size": "11GB",
+      "digest": "sha256:a619020b5c7a0f8cf98d74cc65c112b688505101b9c5fd4844d5336f78c03757",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a619020b5c7a0f8cf98d74cc65c112b688505101b9c5fd4844d5336f78c03757",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f6e37dbef5feec9c773dbd3dddafbae4c626a449e3b4f37018884d4171a4194c",
+            "size": 10679140224
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q6_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f6e37dbef5feec9c773dbd3dddafbae4c626a449e3b4f37018884d4171a4194c",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-q8_0",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:ec65c19153c50940c8dedddb0b1ad42e2c75afc898d656b21b773a656debe0ea",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ec65c19153c50940c8dedddb0b1ad42e2c75afc898d656b21b773a656debe0ea",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e5db15e69cfadadfbd3bde45be11d0d2268663b90789af89cc99b4d19e91b8ef",
+            "size": 13831319424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q8_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e5db15e69cfadadfbd3bde45be11d0d2268663b90789af89cc99b4d19e91b8ef",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:13b-fp16",
+      "last_updated": "1 year ago",
+      "size": "26GB",
+      "digest": "sha256:7085fa12c9957040d7ff0b03190110bd793963962189444a75e5c60d132110ad",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7085fa12c9957040d7ff0b03190110bd793963962189444a75e5c60d132110ad",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:da3b0f80757f532e5a77fe40c690829ad57e1e032a4292a6b1217bed75eaa428",
+            "size": 26033303392
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:da3b0f80757f532e5a77fe40c690829ad57e1e032a4292a6b1217bed75eaa428",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q2_K",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:2089ee13377ad5371e978011a5d06a7bd7747a0e25145620d0982a4ece23743e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2089ee13377ad5371e978011a5d06a7bd7747a0e25145620d0982a4ece23743e",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e3734b4a9910c18702b5a145c51c0b2ae55447779d90fd5e76663f33699659a9",
+            "size": 13502545312
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q2_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e3734b4a9910c18702b5a145c51c0b2ae55447779d90fd5e76663f33699659a9",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:68af8d7d8a78143e74c400a3585b45d095d9d224dcc40d4dc89e3c42eba0c426",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:68af8d7d8a78143e74c400a3585b45d095d9d224dcc40d4dc89e3c42eba0c426",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f01697b3b9a116fdd1fed8cf6f151f078f1f104f02924fcbe3d54ece84bed5f3",
+            "size": 14064112032
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q3_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f01697b3b9a116fdd1fed8cf6f151f078f1f104f02924fcbe3d54ece84bed5f3",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "16GB",
+      "digest": "sha256:e153a6a89c483d02b68177c4244b4d59fe106a5acf0066022c25fc63a8aa86b5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e153a6a89c483d02b68177c4244b4d59fe106a5acf0066022c25fc63a8aa86b5",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:33c60e909e1e095ae9dee3730ae84b75de476e618084b0f93d142fa37b4ce681",
+            "size": 15761551776
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q3_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:33c60e909e1e095ae9dee3730ae84b75de476e618084b0f93d142fa37b4ce681",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "17GB",
+      "digest": "sha256:6280cf5f3d70623483c18c8aa4a85e761f23a6c07ae00afb08b3dc5f385ca84f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6280cf5f3d70623483c18c8aa4a85e761f23a6c07ae00afb08b3dc5f385ca84f",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:96a18d3bb1cf7465905e99339aadf52f002f16472006b5cc5636df7f7dea2cc1",
+            "size": 17279758752
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q3_K_L",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:96a18d3bb1cf7465905e99339aadf52f002f16472006b5cc5636df7f7dea2cc1",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q4_0",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "sha256:0f27b88821556142b4eac8ed9204050bdcad2142e22f385fc7fe4bce54b965c2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0f27b88821556142b4eac8ed9204050bdcad2142e22f385fc7fe4bce54b965c2",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:06de597291b824c541015ba9d759cbcd915bccdb48a7217066562b4f38501282",
+            "size": 18355967392
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:06de597291b824c541015ba9d759cbcd915bccdb48a7217066562b4f38501282",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q4_1",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "sha256:780374e5a729e7bbf96dceea23d5c1410f147801d1ef672abe6aba28ed406cad",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:780374e5a729e7bbf96dceea23d5c1410f147801d1ef672abe6aba28ed406cad",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2256356159ad9a00356be0ffe562c34e45bab7680e6b3445c81be622442f2321",
+            "size": 20375664032
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2256356159ad9a00356be0ffe562c34e45bab7680e6b3445c81be622442f2321",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "sha256:95869547bf4db36ebd99a6ace778da7c055082805308e1c5e4b2d9d30af8f040",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:95869547bf4db36ebd99a6ace778da7c055082805308e1c5e4b2d9d30af8f040",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:948da2ee42ae2aafb3d408879a15c0e0cef05071d4d04a36222290efded49e26",
+            "size": 18437756320
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q4_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:948da2ee42ae2aafb3d408879a15c0e0cef05071d4d04a36222290efded49e26",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "sha256:b349b8578f4f5a7f16b3af217108c45bdf49e46d1cde1292d2071f60ae37af38",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b349b8578f4f5a7f16b3af217108c45bdf49e46d1cde1292d2071f60ae37af38",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:dfc912304908707f94033e1e489c7e10950736afbbd1133025f14f94e49a77e3",
+            "size": 19621139872
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q4_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:dfc912304908707f94033e1e489c7e10950736afbbd1133025f14f94e49a77e3",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q5_0",
+      "last_updated": "1 year ago",
+      "size": "22GB",
+      "digest": "sha256:526631ab7b17b2a4d0d5d7b1587455fe47e0f70466a401d95457c613c872bb22",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:526631ab7b17b2a4d0d5d7b1587455fe47e0f70466a401d95457c613c872bb22",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:50a413090bac4d65dcbc1f7e166f360f5e11d6509365d734b6ca21b07ce702ee",
+            "size": 22395360672
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:50a413090bac4d65dcbc1f7e166f360f5e11d6509365d734b6ca21b07ce702ee",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q5_1",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:fcc2c4a879b86b7094464e68f1f7a3ccd83c7771e01a3efde0c9d7e2234a4703",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fcc2c4a879b86b7094464e68f1f7a3ccd83c7771e01a3efde0c9d7e2234a4703",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c178ffbd0354e02e158992b2c4de111ca3c27f7e0e8099b357f425263324a1f2",
+            "size": 24415057312
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c178ffbd0354e02e158992b2c4de111ca3c27f7e0e8099b357f425263324a1f2",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "22GB",
+      "digest": "sha256:8ac4e4149bd3c3b90a559527c82ce94a30593bc31bd3916de1f77373b021900f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8ac4e4149bd3c3b90a559527c82ce94a30593bc31bd3916de1f77373b021900f",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e42439091a6c570b08d39f6811c262c2a555213bcb603650b0375c0e97c55c9e",
+            "size": 22395360672
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q5_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e42439091a6c570b08d39f6811c262c2a555213bcb603650b0375c0e97c55c9e",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "sha256:c4c2b65331ba2736ed906b9ff1ecfb7b921531dfc3b7c4420116613fa3465c75",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c4c2b65331ba2736ed906b9ff1ecfb7b921531dfc3b7c4420116613fa3465c75",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1a640cd4d69a5260bcc807a531f82ddb3890ebf49bc2a323e60a9290547135c1",
+            "size": 23047116160
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q5_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1a640cd4d69a5260bcc807a531f82ddb3890ebf49bc2a323e60a9290547135c1",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q6_K",
+      "last_updated": "1 year ago",
+      "size": "27GB",
+      "digest": "sha256:c147f766830ade5b6c5d754165a05afdc72703d7bbfe49b21d5baf3eb52ced8e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c147f766830ade5b6c5d754165a05afdc72703d7bbfe49b21d5baf3eb52ced8e",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cfa972aba866bb9534870104441ffe8e410fe9b4a5a294246e531a43f5dc80fe",
+            "size": 26687216032
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q6_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cfa972aba866bb9534870104441ffe8e410fe9b4a5a294246e531a43f5dc80fe",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-q8_0",
+      "last_updated": "1 year ago",
+      "size": "35GB",
+      "digest": "sha256:b5c8c9a7f12c51a89cde195e82390f28a6bc7e44ef375d42307bbe52101c1c87",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b5c8c9a7f12c51a89cde195e82390f28a6bc7e44ef375d42307bbe52101c1c87",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:253ff82e39796be49adf918552d2bc6268d0684aa15378c332b5cb6bd8d31ef5",
+            "size": 34565124512
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "Q8_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:253ff82e39796be49adf918552d2bc6268d0684aa15378c332b5cb6bd8d31ef5",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "wizard-vicuna-uncensored:30b-fp16",
+      "last_updated": "1 year ago",
+      "size": "65GB",
+      "digest": "sha256:51b18887a89febb26bcfb9d4e08aaa9b52e7ad7d3e65ea3901afc8d95bc06dd7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:51b18887a89febb26bcfb9d4e08aaa9b52e7ad7d3e65ea3901afc8d95bc06dd7",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:bd334bbcf7f9e716e810a3b706ef58b6878472f71e3c769f3ccb691b5fd93603",
+            "size": 65060254048
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "30B",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:bd334bbcf7f9e716e810a3b706ef58b6878472f71e3c769f3ccb691b5fd93603",
+            "sha256:b1571c5cbd28576136449e2fe27b3a4375d861a9c77696d1bb2ba49d2ead80cb",
+            "sha256:d14264189a8aef72eb89b322adc7380afcda48b8815e37d0459736a26cb1434e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "30B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "quality_score": {
+    "fields_filled": 55,
+    "total_possible": 107,
+    "completeness": 0.51
+  }
 }

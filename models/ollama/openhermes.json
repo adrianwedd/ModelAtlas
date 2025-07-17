@@ -1,30 +1,1944 @@
 {
   "name": "openhermes",
   "description": "OpenHermes 2.5 is a 7B model fine-tuned by Teknium on Mistral with fully open datasets.",
-  "pull_count": 164600,
+  "pull_count": 164700,
   "last_updated": "Dec 29, 2023 9:45 PM UTC",
-  "page_hash": "c279e640747e",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/jmorganca/ollama/assets/3325447/abc656b5-6d3b-47ef-8d1c-c0445f780168\" width=\"320\"/></p>\n<p>Open Hermes 2 a Mistral 7B fine-tuned with fully open datasets. Matching 70B models on benchmarks, this model has strong multi-turn chat skills and system prompt capabilities. In total, the model was trained on 900,000 instructions, and surpasses all previous versions of Nous-Hermes 13B and below.</p>\n<h3>Versions</h3>\n<table>\n<thead>\n<tr>\n<th>Tag</th>\n<th>Date</th>\n<th>Notes</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>v2.5</code> <code>latest</code></td>\n<td>11/02/2023</td>\n<td>Added ~100k examples of Code Instructions</td>\n</tr>\n<tr>\n<td><code>v2</code></td>\n<td>10/16/2023</td>\n<td>Initial release of Open Hermes 2</td>\n</tr>\n</tbody>\n</table>\n<h2>Usage</h2>\n<h3>CLI</h3>\n<pre><code>ollama run openhermes\n</code></pre>\n<h3>API</h3>\n<p>Example:</p>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"openhermes\",\n  \"prompt\": \"Here is a story about llamas eating grass\"\n}'\n</code></pre>\n<h2>References</h2>\n<p><a href=\"https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
+  "page_hash": "a519689637e3",
+  "readme_text": "\n\nOpen Hermes 2 a Mistral 7B fine-tuned with fully open datasets. Matching 70B models on benchmarks, this model has strong multi-turn chat skills and system prompt capabilities. In total, the model was trained on 900,000 instructions, and surpasses all previous versions of Nous-Hermes 13B and below.\nVersions\n\n\n\nTag\nDate\nNotes\n\n\n\n\nv2.5 latest\n11/02/2023\nAdded ~100k examples of Code Instructions\n\n\nv2\n10/16/2023\nInitial release of Open Hermes 2\n\n\n\nUsage\nCLI\nollama run openhermes\n\nAPI\nExample:\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"openhermes\",\n  \"prompt\": \"Here is a story about llamas eating grass\"\n}'\n\nReferences\nHugging Face\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
-      "size": "3.83GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "openhermes:latest",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "size": 4108928000
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "openhermes:v2",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f652e6024f06e7b80c295215061f8d3d93ce6477df733cbed33f7e56f2048e63",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f652e6024f06e7b80c295215061f8d3d93ce6477df733cbed33f7e56f2048e63",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f5531a9e2625a0ae0509f57933895c0db9617c5313ae0c8b7b257982eb30a134",
+            "size": 4108928000
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f5531a9e2625a0ae0509f57933895c0db9617c5313ae0c8b7b257982eb30a134",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "openhermes:v2.5",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "size": 4108928000
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q2_K",
+      "last_updated": "1 year ago",
+      "size": "3.1GB",
+      "digest": "sha256:275a3f41150e29df75e4aa9947d359fa45d48bd695f537cab045f3f4b76b6004",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:275a3f41150e29df75e4aa9947d359fa45d48bd695f537cab045f3f4b76b6004",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e9d2f0b868fd21f7720f05132fd2f14b3e5ea28a2ccde47a6fa6ff5ae479fc68",
+            "size": 3083107456
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e9d2f0b868fd21f7720f05132fd2f14b3e5ea28a2ccde47a6fa6ff5ae479fc68",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "3.2GB",
+      "digest": "sha256:16ad41dd89143085d70a54483f42567fa2fd4d8eb4e37a5c90506cb4a2d0698f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:16ad41dd89143085d70a54483f42567fa2fd4d8eb4e37a5c90506cb4a2d0698f",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c025261d5ad50519a63eb6017fdcae9c01d8cc2b0c9d3bcb5ab6edf9184e59e8",
+            "size": 3164577728
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c025261d5ad50519a63eb6017fdcae9c01d8cc2b0c9d3bcb5ab6edf9184e59e8",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "3.5GB",
+      "digest": "sha256:f3a6a7d020b4200754b4021255bb3a18f9bf7fa893d28440f00a7d2db1ea22ca",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f3a6a7d020b4200754b4021255bb3a18f9bf7fa893d28440f00a7d2db1ea22ca",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:740ca875e94071e2afa32445a457a8fdc33e3cdc1cf8dfc894b2566ad46057c9",
+            "size": 3518996416
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:740ca875e94071e2afa32445a457a8fdc33e3cdc1cf8dfc894b2566ad46057c9",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:e3243eba423080d0986a93f66100f6542e260a583c1c34be43321f8bfe162530",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e3243eba423080d0986a93f66100f6542e260a583c1c34be43321f8bfe162530",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:7fb961d9eb5c5fe03e3e47efa65bd05fad9d21e168cdc9105500d520ce188784",
+            "size": 3822034880
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:7fb961d9eb5c5fe03e3e47efa65bd05fad9d21e168cdc9105500d520ce188784",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q4_0",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f652e6024f06e7b80c295215061f8d3d93ce6477df733cbed33f7e56f2048e63",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f652e6024f06e7b80c295215061f8d3d93ce6477df733cbed33f7e56f2048e63",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f5531a9e2625a0ae0509f57933895c0db9617c5313ae0c8b7b257982eb30a134",
+            "size": 4108928000
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f5531a9e2625a0ae0509f57933895c0db9617c5313ae0c8b7b257982eb30a134",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q4_1",
+      "last_updated": "1 year ago",
+      "size": "4.6GB",
+      "digest": "sha256:032e907afb9b6b6d06b911a728308eb29ac637f115e3dde70ce7baa133825d18",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:032e907afb9b6b6d06b911a728308eb29ac637f115e3dde70ce7baa133825d18",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:993551b99fa96153b9bf08312cbbc8375a71bec463a6b91546e0beeabda3852c",
+            "size": 4553328128
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:993551b99fa96153b9bf08312cbbc8375a71bec463a6b91546e0beeabda3852c",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:d42840b0ff02f65a01b8b5bbcf4d9d7187dc08c3cd4882021d02862cc8092b46",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d42840b0ff02f65a01b8b5bbcf4d9d7187dc08c3cd4882021d02862cc8092b46",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8cf189f44a89f59868e6b66d80346e4d79a8f54c5843706f7392d19be4312c9e",
+            "size": 4140385280
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8cf189f44a89f59868e6b66d80346e4d79a8f54c5843706f7392d19be4312c9e",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.4GB",
+      "digest": "sha256:9ea2359e812d01f71c1904d8f1c3e12762edada97fb1d45e6d6a37a77da579f0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9ea2359e812d01f71c1904d8f1c3e12762edada97fb1d45e6d6a37a77da579f0",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:64df2d0dfd0b5a43acd24da1015c1db4ae27a7edc2b70888fa3d9c61be218c95",
+            "size": 4368450560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:64df2d0dfd0b5a43acd24da1015c1db4ae27a7edc2b70888fa3d9c61be218c95",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q5_0",
+      "last_updated": "1 year ago",
+      "size": "5.0GB",
+      "digest": "sha256:1bbb5f31412d54062734d7e86080eb32df1f99595d6e7405a319b1c2492ccfef",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1bbb5f31412d54062734d7e86080eb32df1f99595d6e7405a319b1c2492ccfef",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f6b40d1c4890f451657a499595a8ad85608965bcf25f227cd79853662161c45c",
+            "size": 4997728256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f6b40d1c4890f451657a499595a8ad85608965bcf25f227cd79853662161c45c",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q5_1",
+      "last_updated": "1 year ago",
+      "size": "5.4GB",
+      "digest": "sha256:8aecd50aac2e9a0f1ad43eb1f17ea5dd011b1d04f6624c1f2a420d4cac53e93e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8aecd50aac2e9a0f1ad43eb1f17ea5dd011b1d04f6624c1f2a420d4cac53e93e",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ce39fbb5cd7b0d8c19ec3f51d271eda47135cbcfd57ab0493a471c94bceab1a3",
+            "size": 5442128384
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ce39fbb5cd7b0d8c19ec3f51d271eda47135cbcfd57ab0493a471c94bceab1a3",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "5.0GB",
+      "digest": "sha256:69ba850af61fb428d50e13aaa478ecf901774c83ce681505ab1d13a92c49b780",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:69ba850af61fb428d50e13aaa478ecf901774c83ce681505ab1d13a92c49b780",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ffe6331c1f70a74dabadc47cb9180796d13e03df15ebf3f80fc495a1f95ea93c",
+            "size": 4997728256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ffe6331c1f70a74dabadc47cb9180796d13e03df15ebf3f80fc495a1f95ea93c",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "sha256:77442da90fe32402fa9d5954a71d18f33c2de0e4d5ab8b9d499e143a210037b3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:77442da90fe32402fa9d5954a71d18f33c2de0e4d5ab8b9d499e143a210037b3",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8cf1554b6555f41a813875fc233779398319b02c876f9970039b9985aa5dc248",
+            "size": 5131421696
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8cf1554b6555f41a813875fc233779398319b02c876f9970039b9985aa5dc248",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q6_K",
+      "last_updated": "1 year ago",
+      "size": "5.9GB",
+      "digest": "sha256:2d19ebe7ac42a2293d8a8d633382a06fce05d4a55303c210bb2632e7b22434be",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2d19ebe7ac42a2293d8a8d633382a06fce05d4a55303c210bb2632e7b22434be",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:89174d06d3f46f878986c966297becaa56f0015d32b9e3e2924bb6e571788764",
+            "size": 5942078528
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:89174d06d3f46f878986c966297becaa56f0015d32b9e3e2924bb6e571788764",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-q8_0",
+      "last_updated": "1 year ago",
+      "size": "7.7GB",
+      "digest": "sha256:b6b176a187e88f37773e6f6c6dc194703b79cf5e0a596ac88e38820439d95e1e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b6b176a187e88f37773e6f6c6dc194703b79cf5e0a596ac88e38820439d95e1e",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:278d66ded47e380c7618ecd4e2ae48fd2542f2fb11cf49ba9ae6904a76f1016b",
+            "size": 7695875008
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:278d66ded47e380c7618ecd4e2ae48fd2542f2fb11cf49ba9ae6904a76f1016b",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2-fp16",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:3e7086b5a86bc2c9457f5ab52ecba5d1f109968f6414a405e2ba107c7ee1e9fe",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3e7086b5a86bc2c9457f5ab52ecba5d1f109968f6414a405e2ba107c7ee1e9fe",
+          "size": 408
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8d0067eff440632f34d8425cc4beab368b41da4b816fec3e41b21e264b034208",
+            "size": 14484764576
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8d0067eff440632f34d8425cc4beab368b41da4b816fec3e41b21e264b034208",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q2_K",
+      "last_updated": "1 year ago",
+      "size": "3.1GB",
+      "digest": "sha256:7d5ba2551f9a95449ffb1a16d9a5dba315a63f6c413775a42e25a27c5bade41f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7d5ba2551f9a95449ffb1a16d9a5dba315a63f6c413775a42e25a27c5bade41f",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ab773ef4aa447e6f6f0262763826da613008e2cb86a5fcb4c8c28916ead48ef3",
+            "size": 3083107456
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ab773ef4aa447e6f6f0262763826da613008e2cb86a5fcb4c8c28916ead48ef3",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "3.2GB",
+      "digest": "sha256:aa06118b4364c77ad54ae18eb7f4c3194b185d4320906bfff756eb29e855a5f5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:aa06118b4364c77ad54ae18eb7f4c3194b185d4320906bfff756eb29e855a5f5",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1c3d21337715b783fcfac20ffb9d9daca392d4b66232f0f3b302609e98d639d6",
+            "size": 3164577728
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1c3d21337715b783fcfac20ffb9d9daca392d4b66232f0f3b302609e98d639d6",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "3.5GB",
+      "digest": "sha256:7f35d9c95b85f444fac9b8ce316e0152d10040cdfcf04000a1ef4ea90412ebcd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7f35d9c95b85f444fac9b8ce316e0152d10040cdfcf04000a1ef4ea90412ebcd",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:18d52e73aa135d72b66b5bfcb66b1937ed48a093202e6b2264df28ce367e513e",
+            "size": 3518996416
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:18d52e73aa135d72b66b5bfcb66b1937ed48a093202e6b2264df28ce367e513e",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "sha256:6b3bbcdedffa58661ba88e24b0e7f9fe9ee58fd4e6fe082010bafb3446823db2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6b3bbcdedffa58661ba88e24b0e7f9fe9ee58fd4e6fe082010bafb3446823db2",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e6d4e23956746b2e166f21818d200a39c51376eb4efdd63c4c46904d98b3779d",
+            "size": 3822034880
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e6d4e23956746b2e166f21818d200a39c51376eb4efdd63c4c46904d98b3779d",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q4_0",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "size": 4108928000
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q4_1",
+      "last_updated": "1 year ago",
+      "size": "4.6GB",
+      "digest": "sha256:2a01f92529bc40f8f49ee657643a311c78ccb1b11358fcbd8b2efee977609f87",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2a01f92529bc40f8f49ee657643a311c78ccb1b11358fcbd8b2efee977609f87",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:19382d2f660db64e27855f45d60946c3126eeb03863ff0dcca90948268108971",
+            "size": 4553328128
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:19382d2f660db64e27855f45d60946c3126eeb03863ff0dcca90948268108971",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:fb6cfb5b11ad227de83c481c1c9eda55098cde33f9a935e3feea40b5d8ce4198",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fb6cfb5b11ad227de83c481c1c9eda55098cde33f9a935e3feea40b5d8ce4198",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3ff3d8374ac4d0de8013d6173dfd7e5e0ae3f1d12b9b5e154db78fcffc4891ad",
+            "size": 4140385280
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3ff3d8374ac4d0de8013d6173dfd7e5e0ae3f1d12b9b5e154db78fcffc4891ad",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "4.4GB",
+      "digest": "sha256:700fdefa0ecfffb27fe82a52f41c86e449b711f182b1dc0eafa4b26ec9892dc1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:700fdefa0ecfffb27fe82a52f41c86e449b711f182b1dc0eafa4b26ec9892dc1",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:79e5ebcfa4cc893bbcf1ee9eb28628c5ae08e73be309351648d2b8ff34e2d2b4",
+            "size": 4368450560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:79e5ebcfa4cc893bbcf1ee9eb28628c5ae08e73be309351648d2b8ff34e2d2b4",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q5_0",
+      "last_updated": "1 year ago",
+      "size": "5.0GB",
+      "digest": "sha256:2f36936a53bacfec4982afc22647936b79e6cde2a59b93d1f30a8c16de6938c0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2f36936a53bacfec4982afc22647936b79e6cde2a59b93d1f30a8c16de6938c0",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3874c50380bc78ea2d155029cf8497748e6315f1656b4d726d26be258f70c525",
+            "size": 4997728256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3874c50380bc78ea2d155029cf8497748e6315f1656b4d726d26be258f70c525",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q5_1",
+      "last_updated": "1 year ago",
+      "size": "5.4GB",
+      "digest": "sha256:74e157ac5daf53b540868c70ff988131e7ba8453be34e437821a5f7f1f9d5f4a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:74e157ac5daf53b540868c70ff988131e7ba8453be34e437821a5f7f1f9d5f4a",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:36376e9a4a156fddb2dc83618562ee57146b25fd398669bb223d801b300d3f6d",
+            "size": 5442128384
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:36376e9a4a156fddb2dc83618562ee57146b25fd398669bb223d801b300d3f6d",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "5.0GB",
+      "digest": "sha256:357cd3a86d0f4f72bd39e57934f9d72afe73df1db887802effcb1ff26321d8c4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:357cd3a86d0f4f72bd39e57934f9d72afe73df1db887802effcb1ff26321d8c4",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0abfbe1d35f15c5b9aed9011b4307125a8e45aab0852db274fc86e76602c1424",
+            "size": 4997728256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0abfbe1d35f15c5b9aed9011b4307125a8e45aab0852db274fc86e76602c1424",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "sha256:12359cb5a36bf7827df7d88594c6f4dea5b6c45d010c61d759b55de99f0da135",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:12359cb5a36bf7827df7d88594c6f4dea5b6c45d010c61d759b55de99f0da135",
+          "size": 411
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:824008810c3484debd710c26ed79fa51a94bd5d3e2e97f5bbcee3d79fe86ae4e",
+            "size": 5131421696
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:824008810c3484debd710c26ed79fa51a94bd5d3e2e97f5bbcee3d79fe86ae4e",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q6_K",
+      "last_updated": "1 year ago",
+      "size": "5.9GB",
+      "digest": "sha256:3f3d608d3e014ce64b9e51a821e8743bcc613daf26795ed997998829b6976263",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3f3d608d3e014ce64b9e51a821e8743bcc613daf26795ed997998829b6976263",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3060842df43b68b2d909e1f14e43f87189fc93f6cbc0e8f8f6288a76e4f32ac9",
+            "size": 5942078528
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3060842df43b68b2d909e1f14e43f87189fc93f6cbc0e8f8f6288a76e4f32ac9",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-q8_0",
+      "last_updated": "1 year ago",
+      "size": "7.7GB",
+      "digest": "sha256:6ec72033a31fbf94002b0fb5bf782d3724f41eb36a64a7fc9855a5d16acece0f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6ec72033a31fbf94002b0fb5bf782d3724f41eb36a64a7fc9855a5d16acece0f",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:04cca77c521bc41ff9a6638f1d747f17d98e4acb88ec0205cca30093fae7ec48",
+            "size": 7695875008
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:04cca77c521bc41ff9a6638f1d747f17d98e4acb88ec0205cca30093fae7ec48",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-mistral-v2.5-fp16",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:918f5a70e609c07db60c5966a60f94c0cf68c4c7ab1b0cc1377eea5b5b5aa06b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:918f5a70e609c07db60c5966a60f94c0cf68c4c7ab1b0cc1377eea5b5b5aa06b",
+          "size": 408
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:13f50cd3872ab5a6384fb24706055dd624013b3ef6c0e13cec515c0bce6c054b",
+            "size": 14484764576
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:13f50cd3872ab5a6384fb24706055dd624013b3ef6c0e13cec515c0bce6c054b",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-v2",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f652e6024f06e7b80c295215061f8d3d93ce6477df733cbed33f7e56f2048e63",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f652e6024f06e7b80c295215061f8d3d93ce6477df733cbed33f7e56f2048e63",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f5531a9e2625a0ae0509f57933895c0db9617c5313ae0c8b7b257982eb30a134",
+            "size": 4108928000
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f5531a9e2625a0ae0509f57933895c0db9617c5313ae0c8b7b257982eb30a134",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "openhermes:7b-v2.5",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f2b9e27bfbdad457e83d18a0d39ed8d76d55b4b4ab51f68de7167b194526d9e7",
+          "size": 409
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "size": 4108928000
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:54ee2a70d129a43adbd70825646b5f95ca48eb413c57a67a19d7910e34b54315",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "chat"
+  },
+  "quality_score": {
+    "fields_filled": 41,
+    "total_possible": 79,
+    "completeness": 0.52
+  }
 }

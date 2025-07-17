@@ -3,28 +3,237 @@
   "description": "State-of-the-art large embedding model from mixedbread.ai",
   "pull_count": 4200000,
   "last_updated": "May 6, 2024 11:36 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<h2>mxbai-embed-large</h2>\n<p><img src=\"https://github.com/ollama/ollama/assets/251292/215cfb6a-8efa-4e9b-824d-e5f466b58c49\"/></p>\n<p>As of March 2024, this model archives SOTA performance for Bert-large sized models on the MTEB. It outperforms commercial models like OpenAIs <code>text-embedding-3-large</code> model and matches the performance of model 20x its size.</p>\n<p><code>mxbai-embed-large</code> was trained with no overlap of the MTEB data, which indicates that the model generalizes well across several domains, tasks and text length.</p>\n<h2>Usage</h2>\n<h3>REST API</h3>\n<pre><code>curl http://localhost:11434/api/embeddings -d '{\n  \"model\": \"mxbai-embed-large\",\n  \"prompt\": \"Represent this sentence for searching relevant passages: The sky is blue because of Rayleigh scattering\"\n}'\n</code></pre>\n<h3>Python library</h3>\n<pre><code>ollama.embeddings(model='mxbai-embed-large', prompt='Represent this sentence for searching relevant passages: The sky is blue because of Rayleigh scattering')\n</code></pre>\n<h3>Javascript library</h3>\n<pre><code>ollama.embeddings({ model: 'mxbai-embed-large', prompt: 'Represent this sentence for searching relevant passages:  The sky is blue because of Rayleigh scattering' })\n</code></pre>\n<h2>References</h2>\n<p><a href=\"https://www.mixedbread.ai/blog/mxbai-embed-large-v1\" rel=\"nofollow\">Blog post</a></p>\n<p><a href=\"https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
   "page_hash": "ff872cbb8774",
+  "readme_text": "\nmxbai-embed-large\n\nAs of March 2024, this model archives SOTA performance for Bert-large sized models on the MTEB. It outperforms commercial models like OpenAIs text-embedding-3-large model and matches the performance of model 20x its size.\nmxbai-embed-large was trained with no overlap of the MTEB data, which indicates that the model generalizes well across several domains, tasks and text length.\nUsage\nREST API\ncurl http://localhost:11434/api/embeddings -d '{\n  \"model\": \"mxbai-embed-large\",\n  \"prompt\": \"Represent this sentence for searching relevant passages: The sky is blue because of Rayleigh scattering\"\n}'\n\nPython library\nollama.embeddings(model='mxbai-embed-large', prompt='Represent this sentence for searching relevant passages: The sky is blue because of Rayleigh scattering')\n\nJavascript library\nollama.embeddings({ model: 'mxbai-embed-large', prompt: 'Represent this sentence for searching relevant passages:  The sky is blue because of Rayleigh scattering' })\n\nReferences\nBlog post\nHugging Face\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
-      "size": "0.62GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "mxbai-embed-large:latest",
+      "last_updated": "1 year ago",
+      "size": "670MB",
+      "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+          "size": 408
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "size": 669603712
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089",
+            "size": 16
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "mxbai-embed-large:v1",
+      "last_updated": "1 year ago",
+      "size": "670MB",
+      "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+          "size": 408
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "size": 669603712
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089",
+            "size": 16
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "mxbai-embed-large:335m",
+      "last_updated": "1 year ago",
+      "size": "670MB",
+      "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+          "size": 408
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "size": 669603712
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089",
+            "size": 16
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "mxbai-embed-large:335m-v1-fp16",
+      "last_updated": "1 year ago",
+      "size": "670MB",
+      "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:38badd946f91096f47f2f84de521ca1ef8ba233625c312163d0ad9e9d253cdda",
+          "size": 408
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "size": 669603712
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089",
+            "size": 16
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:819c2adf5ce6df2b6bd2ae4ca90d2a69f060afeb438d0c171db57daa02e39c3d",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:b837481ff8556a29d9bb27ac280c23495a491e7268d8f043f2e617f7f795d089"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "text"
+  },
+  "quality_score": {
+    "fields_filled": 10,
+    "total_possible": 17,
+    "completeness": 0.59
+  }
 }

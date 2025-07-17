@@ -1,23 +1,803 @@
 {
   "name": "snowflake-arctic-embed",
   "description": "A suite of text embedding models by Snowflake, optimized for performance.",
-  "pull_count": 759600,
+  "pull_count": 759700,
   "last_updated": "Apr 16, 2024 4:06 PM UTC",
-  "page_hash": "16b4bfaed9d7",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/ollama/ollama/assets/251292/115f484a-1911-46e9-902f-65a70f84e1d0\" width=\"320\"/></p>\n<p><code>snowflake-arctic-embed</code> is a suite of text embedding models that focuses on creating high-quality retrieval models optimized for performance.</p>\n<p>The models are trained by leveraging existing open-source text representation models, such as bert-base-uncased, and are trained in a multi-stage pipeline to optimize their retrieval performance.</p>\n<p>This model is available in 5 parameter sizes:</p>\n<ul>\n<li><code>snowflake-arctic-embed:335m</code> (default)</li>\n<li><code>snowflake-arctic-embed:137m</code></li>\n<li><code>snowflake-arctic-embed:110m</code></li>\n<li><code>snowflake-arctic-embed:33m</code></li>\n<li><code>snowflake-arctic-embed:22m</code></li>\n</ul>\n<h2>Reference</h2>\n<p><a href=\"https://www.snowflake.com/blog/introducing-snowflake-arctic-embed-snowflakes-state-of-the-art-text-embedding-family-of-models/\" rel=\"nofollow\">Blog Post</a></p>\n<p><a href=\"https://huggingface.co/Snowflake\" rel=\"nofollow\">HuggingFace</a></p>\n</div>",
+  "page_hash": "82563513da53",
+  "readme_text": "\n\nsnowflake-arctic-embed is a suite of text embedding models that focuses on creating high-quality retrieval models optimized for performance.\nThe models are trained by leveraging existing open-source text representation models, such as bert-base-uncased, and are trained in a multi-stage pipeline to optimize their retrieval performance.\nThis model is available in 5 parameter sizes:\n\nsnowflake-arctic-embed:335m (default)\nsnowflake-arctic-embed:137m\nsnowflake-arctic-embed:110m\nsnowflake-arctic-embed:33m\nsnowflake-arctic-embed:22m\n\nReference\nBlog Post\nHuggingFace\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
-      "size": "0.62GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "snowflake-arctic-embed:latest",
+      "last_updated": "1 year ago",
+      "size": "669MB",
+      "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+          "size": 334
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "size": 669481504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "snowflake-arctic-embed:l",
+      "last_updated": "1 year ago",
+      "size": "669MB",
+      "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+          "size": 334
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "size": 669481504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:m",
+      "last_updated": "1 year ago",
+      "size": "219MB",
+      "digest": "sha256:2d68f215f07aec0fefc9ab910dc38337f965ba5c1efb7cb0658cbe6a4279a286",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2d68f215f07aec0fefc9ab910dc38337f965ba5c1efb7cb0658cbe6a4279a286",
+          "size": 334
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a0161942122c78867159cab13fc83be9bd0e1d769f005b486ff7c074cf92f0ad",
+            "size": 218667776
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "109M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a0161942122c78867159cab13fc83be9bd0e1d769f005b486ff7c074cf92f0ad",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "109M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:s",
+      "last_updated": "1 year ago",
+      "size": "67MB",
+      "digest": "sha256:1a653a579cf460f35e45227d5301f4bcb7529e614c41e759c9cedd322a12d186",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1a653a579cf460f35e45227d5301f4bcb7529e614c41e759c9cedd322a12d186",
+          "size": 333
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3ff46f5b6ce48a6540e1a534db2d7b579d0e251d69abf75fae08cbc03eb3f20b",
+            "size": 67185920
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "33M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3ff46f5b6ce48a6540e1a534db2d7b579d0e251d69abf75fae08cbc03eb3f20b",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "33M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:xs",
+      "last_updated": "1 year ago",
+      "size": "46MB",
+      "digest": "sha256:2977e9705f4b122813b1aeb50fc0c6563113da0b626f540c3daa8149827e30d3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2977e9705f4b122813b1aeb50fc0c6563113da0b626f540c3daa8149827e30d3",
+          "size": 333
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a83b0493f894772b41e5cfe3e6effc288a94d300cfbbeb900891f8377f358bbf",
+            "size": 45827008
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "23M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a83b0493f894772b41e5cfe3e6effc288a94d300cfbbeb900891f8377f358bbf",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "23M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:22m",
+      "last_updated": "1 year ago",
+      "size": "46MB",
+      "digest": "sha256:2977e9705f4b122813b1aeb50fc0c6563113da0b626f540c3daa8149827e30d3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2977e9705f4b122813b1aeb50fc0c6563113da0b626f540c3daa8149827e30d3",
+          "size": 333
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a83b0493f894772b41e5cfe3e6effc288a94d300cfbbeb900891f8377f358bbf",
+            "size": 45827008
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "23M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a83b0493f894772b41e5cfe3e6effc288a94d300cfbbeb900891f8377f358bbf",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "23M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:33m",
+      "last_updated": "1 year ago",
+      "size": "67MB",
+      "digest": "sha256:1a653a579cf460f35e45227d5301f4bcb7529e614c41e759c9cedd322a12d186",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1a653a579cf460f35e45227d5301f4bcb7529e614c41e759c9cedd322a12d186",
+          "size": 333
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3ff46f5b6ce48a6540e1a534db2d7b579d0e251d69abf75fae08cbc03eb3f20b",
+            "size": 67185920
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "33M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3ff46f5b6ce48a6540e1a534db2d7b579d0e251d69abf75fae08cbc03eb3f20b",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "33M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:110m",
+      "last_updated": "1 year ago",
+      "size": "219MB",
+      "digest": "sha256:2d68f215f07aec0fefc9ab910dc38337f965ba5c1efb7cb0658cbe6a4279a286",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2d68f215f07aec0fefc9ab910dc38337f965ba5c1efb7cb0658cbe6a4279a286",
+          "size": 334
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a0161942122c78867159cab13fc83be9bd0e1d769f005b486ff7c074cf92f0ad",
+            "size": 218667776
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "109M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a0161942122c78867159cab13fc83be9bd0e1d769f005b486ff7c074cf92f0ad",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "109M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:137m",
+      "last_updated": "1 year ago",
+      "size": "274MB",
+      "digest": "sha256:7424a767001b30ba43a4533f9fca07d1bc30dea2ea42677488a0cea8d6c063ef",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7424a767001b30ba43a4533f9fca07d1bc30dea2ea42677488a0cea8d6c063ef",
+          "size": 346
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4c5716ded514a70491f8fe29d33fe7787f2b4802db38b5df53e68cb1a108882f",
+            "size": 274177792
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "nomic-bert",
+        "model_families": [
+          "nomic-bert"
+        ],
+        "model_type": "137M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4c5716ded514a70491f8fe29d33fe7787f2b4802db38b5df53e68cb1a108882f",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "137M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:335m",
+      "last_updated": "1 year ago",
+      "size": "669MB",
+      "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+          "size": 334
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "size": 669481504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:22m-xs-fp16",
+      "last_updated": "1 year ago",
+      "size": "46MB",
+      "digest": "sha256:2977e9705f4b122813b1aeb50fc0c6563113da0b626f540c3daa8149827e30d3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2977e9705f4b122813b1aeb50fc0c6563113da0b626f540c3daa8149827e30d3",
+          "size": 333
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a83b0493f894772b41e5cfe3e6effc288a94d300cfbbeb900891f8377f358bbf",
+            "size": 45827008
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "23M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a83b0493f894772b41e5cfe3e6effc288a94d300cfbbeb900891f8377f358bbf",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "23M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:33m-s-fp16",
+      "last_updated": "1 year ago",
+      "size": "67MB",
+      "digest": "sha256:1a653a579cf460f35e45227d5301f4bcb7529e614c41e759c9cedd322a12d186",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1a653a579cf460f35e45227d5301f4bcb7529e614c41e759c9cedd322a12d186",
+          "size": 333
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3ff46f5b6ce48a6540e1a534db2d7b579d0e251d69abf75fae08cbc03eb3f20b",
+            "size": 67185920
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "33M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3ff46f5b6ce48a6540e1a534db2d7b579d0e251d69abf75fae08cbc03eb3f20b",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "33M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:110m-m-fp16",
+      "last_updated": "1 year ago",
+      "size": "219MB",
+      "digest": "sha256:2d68f215f07aec0fefc9ab910dc38337f965ba5c1efb7cb0658cbe6a4279a286",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2d68f215f07aec0fefc9ab910dc38337f965ba5c1efb7cb0658cbe6a4279a286",
+          "size": 334
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a0161942122c78867159cab13fc83be9bd0e1d769f005b486ff7c074cf92f0ad",
+            "size": 218667776
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "109M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a0161942122c78867159cab13fc83be9bd0e1d769f005b486ff7c074cf92f0ad",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "109M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:137m-m-long-fp16",
+      "last_updated": "1 year ago",
+      "size": "274MB",
+      "digest": "sha256:7424a767001b30ba43a4533f9fca07d1bc30dea2ea42677488a0cea8d6c063ef",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7424a767001b30ba43a4533f9fca07d1bc30dea2ea42677488a0cea8d6c063ef",
+          "size": 346
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4c5716ded514a70491f8fe29d33fe7787f2b4802db38b5df53e68cb1a108882f",
+            "size": 274177792
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "nomic-bert",
+        "model_families": [
+          "nomic-bert"
+        ],
+        "model_type": "137M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4c5716ded514a70491f8fe29d33fe7787f2b4802db38b5df53e68cb1a108882f",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "137M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:335m-l-fp16",
+      "last_updated": "1 year ago",
+      "size": "669MB",
+      "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e3cf59cee284e8da7cbedeb99ec764520822478c65516b177295961c5b9c09d8",
+          "size": 334
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "size": 669481504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "bert",
+        "model_families": [
+          "bert"
+        ],
+        "model_type": "334M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fb3b66c7bdf6dabbb2edbc22627f4cb2df021c9e9545b54feafd8a7c09fe8ec5",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "334M",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "snowflake-arctic-embed:m-long",
+      "last_updated": "1 year ago",
+      "size": "274MB",
+      "digest": "sha256:7424a767001b30ba43a4533f9fca07d1bc30dea2ea42677488a0cea8d6c063ef",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7424a767001b30ba43a4533f9fca07d1bc30dea2ea42677488a0cea8d6c063ef",
+          "size": 346
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4c5716ded514a70491f8fe29d33fe7787f2b4802db38b5df53e68cb1a108882f",
+            "size": 274177792
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "nomic-bert",
+        "model_families": [
+          "nomic-bert"
+        ],
+        "model_type": "137M",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4c5716ded514a70491f8fe29d33fe7787f2b4802db38b5df53e68cb1a108882f",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "137M",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "text"
+  },
+  "quality_score": {
+    "fields_filled": 22,
+    "total_possible": 41,
+    "completeness": 0.54
+  }
 }
