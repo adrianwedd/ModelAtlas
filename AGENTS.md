@@ -10,7 +10,7 @@ Use it to:
 🔗 Related Files:
 - [`PLAN.md`](PLAN.md): Strategic goals and phase design.
 - [`tasks.yml`](tasks.yml): Task backlog for agents.
-- [`HUMANS.md`](HUMANS.md): Notes for human collaborators.
+- [`HUMANS.md`](HUMANS.md): Paradigm shift memo and collaborator notes.
 
 ## Agent Task List
 
