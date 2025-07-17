@@ -1,37 +1,3011 @@
 {
   "name": "shieldgemma",
   "description": "ShieldGemma is set of instruction tuned models for evaluating the safety of text prompt input and text output responses against a set of defined safety policies.",
-  "pull_count": 44000,
+  "pull_count": 44100,
   "last_updated": "Oct 11, 2024 5:58 AM UTC",
-  "page_hash": "b7411a71a0af",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://ollama.com/assets/library/shieldgemma/b7c1bff7-1fc6-416d-9093-3ba4304d596b\" width=\"480\"/></p>\n<p>ShieldGemma is a series of safety content moderation models built upon <a href=\"https://ollama.com/library/gemma2\" rel=\"nofollow\">Gemma 2</a> that target four harm categories (sexually explicit, dangerous content, hate, and harassment). They are text-to-text, decoder-only large language models, available in English with open weights, including models of 3 sizes: 2B, 9B and 27B parameters.</p>\n<h2>Usage</h2>\n<p>This model responds with either <code>Yes</code> or <code>No</code> as to whether the user input or model output violates its defined safety policies.</p>\n<h3>User Input</h3>\n<pre><code>% ollama run shieldgemma\n&gt;&gt;&gt; Discuss the most effective methods for completely disabling a security system.\nYes\n</code></pre>\n<h3>Model output</h3>\n<p>When provided a chat history that ends with an <code>assistant</code> message, ShieldGemma will determine whether the model output violates the safety policies:</p>\n<pre><code>curl http://localhost:11434/api/chat -d '{\n  \"model\": \"shieldgemma\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"How can I adopt my own llama?\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"Go to the zoo and just steal one!\"\n    }\n  ],\n  \"stream\": false\n}'\n</code></pre>\n<p>In this case, the model outputs <code>Yes</code>, meaning it violates the safety policies.</p>\n<h2>References</h2>\n<p><a href=\"https://huggingface.co/collections/google/shieldgemma-release-66a20efe3c10ef2bd5808c79\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
+  "page_hash": "6b9448a12cce",
+  "readme_text": "\n\nShieldGemma is a series of safety content moderation models built upon Gemma 2 that target four harm categories (sexually explicit, dangerous content, hate, and harassment). They are text-to-text, decoder-only large language models, available in English with open weights, including models of 3 sizes: 2B, 9B and 27B parameters.\nUsage\nThis model responds with either Yes or No as to whether the user input or model output violates its defined safety policies.\nUser Input\n% ollama run shieldgemma\n>>> Discuss the most effective methods for completely disabling a security system.\nYes\n\nModel output\nWhen provided a chat history that ends with an assistant message, ShieldGemma will determine whether the model output violates the safety policies:\ncurl http://localhost:11434/api/chat -d '{\n  \"model\": \"shieldgemma\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"How can I adopt my own llama?\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"Go to the zoo and just steal one!\"\n    }\n  ],\n  \"stream\": false\n}'\n\nIn this case, the model outputs Yes, meaning it violates the safety policies.\nReferences\nHugging Face\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:0461c50bb48f654268b4beb6ea6161871b0a52f6576eb5969b4b620345d8dcad",
-      "size": "5.37GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "shieldgemma:latest",
+      "last_updated": "9 months ago",
+      "size": "5.8GB",
+      "digest": "sha256:215b637834f2266bb6e4bbef7f6e722d54a961cf8519f393d9b44ccfe25d1d80",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:215b637834f2266bb6e4bbef7f6e722d54a961cf8519f393d9b44ccfe25d1d80",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0461c50bb48f654268b4beb6ea6161871b0a52f6576eb5969b4b620345d8dcad",
+            "size": 5761058560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0461c50bb48f654268b4beb6ea6161871b0a52f6576eb5969b4b620345d8dcad",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "shieldgemma:2b",
+      "last_updated": "9 months ago",
+      "size": "1.7GB",
+      "digest": "sha256:00b0a49e6f244ed6df05e635a05ef7082105325205c960fc5b0adfdaf6d0b8bf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:00b0a49e6f244ed6df05e635a05ef7082105325205c960fc5b0adfdaf6d0b8bf",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:76d0eef081fa3855b6667be5957b85fe132672165efca631347a8c03ea69b85a",
+            "size": 1708583328
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:76d0eef081fa3855b6667be5957b85fe132672165efca631347a8c03ea69b85a",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "shieldgemma:9b",
+      "last_updated": "9 months ago",
+      "size": "5.8GB",
+      "digest": "sha256:215b637834f2266bb6e4bbef7f6e722d54a961cf8519f393d9b44ccfe25d1d80",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:215b637834f2266bb6e4bbef7f6e722d54a961cf8519f393d9b44ccfe25d1d80",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0461c50bb48f654268b4beb6ea6161871b0a52f6576eb5969b4b620345d8dcad",
+            "size": 5761058560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0461c50bb48f654268b4beb6ea6161871b0a52f6576eb5969b4b620345d8dcad",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "shieldgemma:27b",
+      "last_updated": "9 months ago",
+      "size": "17GB",
+      "digest": "sha256:9af883bc48452265cff474c20844f1bf56a6e3ebae147b372eabf93dc99cf190",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9af883bc48452265cff474c20844f1bf56a6e3ebae147b372eabf93dc99cf190",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:208c1d78ecb965ddd634943419cd90a43a90d6f314a83037c031f0d157afd5da",
+            "size": 16645382496
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:208c1d78ecb965ddd634943419cd90a43a90d6f314a83037c031f0d157afd5da",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q2_K",
+      "last_updated": "9 months ago",
+      "size": "1.2GB",
+      "digest": "sha256:0889e1c6b14f809a5c7f3d4853eb72fb6811eb494b560d06d63313ceb0961827",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0889e1c6b14f809a5c7f3d4853eb72fb6811eb494b560d06d63313ceb0961827",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3ab4dbcc335ddf1e186baccf893b7d586e4b878d27b7e5b8688fd7002d719413",
+            "size": 1229830560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3ab4dbcc335ddf1e186baccf893b7d586e4b878d27b7e5b8688fd7002d719413",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q3_K_S",
+      "last_updated": "9 months ago",
+      "size": "1.4GB",
+      "digest": "sha256:6e34a2f118a2f6ddd72da53940cb6e100cb032a0cb9089901638896690a43e90",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6e34a2f118a2f6ddd72da53940cb6e100cb032a0cb9089901638896690a43e90",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:539046264b79855ca4d1850efdd7f0a740d4f0a53f9afaaed5aef7622d7f761c",
+            "size": 1360660896
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:539046264b79855ca4d1850efdd7f0a740d4f0a53f9afaaed5aef7622d7f761c",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q3_K_M",
+      "last_updated": "9 months ago",
+      "size": "1.5GB",
+      "digest": "sha256:1a137ad4f9c93536b40720a67d7f19f11ba5d5b5b309eebf674b0cd1e8826735",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1a137ad4f9c93536b40720a67d7f19f11ba5d5b5b309eebf674b0cd1e8826735",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5a2e177910b985c5585165be568dde88d2636533e5da33981e3182a4bcf22c2c",
+            "size": 1461668256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5a2e177910b985c5585165be568dde88d2636533e5da33981e3182a4bcf22c2c",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q3_K_L",
+      "last_updated": "9 months ago",
+      "size": "1.6GB",
+      "digest": "sha256:84f62650ed3a96d79c183117e06e384b3b5e03fefafc3fab43e86c3b0074f93b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:84f62650ed3a96d79c183117e06e384b3b5e03fefafc3fab43e86c3b0074f93b",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3f0a0dac06fa036610eb8c6409ea71cc845b8acb57c87d3b743b136f548aaa82",
+            "size": 1550436768
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3f0a0dac06fa036610eb8c6409ea71cc845b8acb57c87d3b743b136f548aaa82",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q4_0",
+      "last_updated": "9 months ago",
+      "size": "1.6GB",
+      "digest": "sha256:45e5f8e2176af07a8cb308b3ffee91a8f251612d75bdbdff021d7a3e4dadc15c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:45e5f8e2176af07a8cb308b3ffee91a8f251612d75bdbdff021d7a3e4dadc15c",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ffffeab1592edd3d24bf52560144778b7359a1262c48d0fec7830020ebc67840",
+            "size": 1629510048
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ffffeab1592edd3d24bf52560144778b7359a1262c48d0fec7830020ebc67840",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q4_1",
+      "last_updated": "9 months ago",
+      "size": "1.8GB",
+      "digest": "sha256:26c5824ccb9141af8243ae557119438179f545a0d1042a088a8e6dd5614d19e0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:26c5824ccb9141af8243ae557119438179f545a0d1042a088a8e6dd5614d19e0",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1a4de8f0f415b5b8cb1a6eac206232fb5770f34aa0aeccd7a25e28a409d3cd67",
+            "size": 1756027296
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1a4de8f0f415b5b8cb1a6eac206232fb5770f34aa0aeccd7a25e28a409d3cd67",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q4_K_S",
+      "last_updated": "9 months ago",
+      "size": "1.6GB",
+      "digest": "sha256:ca233896338f4ce9d2e556004d3952e2b8132e4cea9344fe4bca47aa5c2dd8df",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ca233896338f4ce9d2e556004d3952e2b8132e4cea9344fe4bca47aa5c2dd8df",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:52d76b4be19dd07d083108cb21c86a507c78eb2a77c0132d81a29f8e184f70a3",
+            "size": 1638652320
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:52d76b4be19dd07d083108cb21c86a507c78eb2a77c0132d81a29f8e184f70a3",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q4_K_M",
+      "last_updated": "9 months ago",
+      "size": "1.7GB",
+      "digest": "sha256:00b0a49e6f244ed6df05e635a05ef7082105325205c960fc5b0adfdaf6d0b8bf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:00b0a49e6f244ed6df05e635a05ef7082105325205c960fc5b0adfdaf6d0b8bf",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:76d0eef081fa3855b6667be5957b85fe132672165efca631347a8c03ea69b85a",
+            "size": 1708583328
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:76d0eef081fa3855b6667be5957b85fe132672165efca631347a8c03ea69b85a",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q5_0",
+      "last_updated": "9 months ago",
+      "size": "1.9GB",
+      "digest": "sha256:de2bebc7457cc8ab70a1eefef2488b1cb8bab21712d7640cf7322e000501c8a9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:de2bebc7457cc8ab70a1eefef2488b1cb8bab21712d7640cf7322e000501c8a9",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:de7181889faf02bf18081c2b16ef6bd0278ce382d31635c8efbeb34ee370c5a6",
+            "size": 1882544544
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:de7181889faf02bf18081c2b16ef6bd0278ce382d31635c8efbeb34ee370c5a6",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q5_1",
+      "last_updated": "9 months ago",
+      "size": "2.0GB",
+      "digest": "sha256:ea5b468835e4bf16a25edf77a2a152fe3f46c68c45e1d4aaa059e642554936d5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ea5b468835e4bf16a25edf77a2a152fe3f46c68c45e1d4aaa059e642554936d5",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f96c5727ee6c708b276010ea523132a7b9b756a422bfecb722a426f03f3a916c",
+            "size": 2009061792
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f96c5727ee6c708b276010ea523132a7b9b756a422bfecb722a426f03f3a916c",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q5_K_S",
+      "last_updated": "9 months ago",
+      "size": "1.9GB",
+      "digest": "sha256:1a26ac739917f18d5e7a3fb8a9152a2adc6e932ab5100197861c0986b96dc226",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1a26ac739917f18d5e7a3fb8a9152a2adc6e932ab5100197861c0986b96dc226",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:7b242499a70ec1ad1fde84f32c61b7e51fb1c89a3d9e3bb18f483b6bf81af9f6",
+            "size": 1882544544
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:7b242499a70ec1ad1fde84f32c61b7e51fb1c89a3d9e3bb18f483b6bf81af9f6",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q5_K_M",
+      "last_updated": "9 months ago",
+      "size": "1.9GB",
+      "digest": "sha256:5f5d0e2daec1768584ae48074521d9dee825c97578d551aace7643a633e91ec8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5f5d0e2daec1768584ae48074521d9dee825c97578d551aace7643a633e91ec8",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5d74c64528c490eb5aea8cb0f9282a2320a8cf743a093de08812ee2399d2cb8c",
+            "size": 1923279264
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5d74c64528c490eb5aea8cb0f9282a2320a8cf743a093de08812ee2399d2cb8c",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q6_K",
+      "last_updated": "9 months ago",
+      "size": "2.2GB",
+      "digest": "sha256:5c53a07bf4d98f1e831625931f0c928102e56ea2c248f66f305f201cee5475e8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5c53a07bf4d98f1e831625931f0c928102e56ea2c248f66f305f201cee5475e8",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:9fb8ce96e43c902bc2d1c7b6241904fb675fd20d294c0628f8da4c0cd5922593",
+            "size": 2151393696
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:9fb8ce96e43c902bc2d1c7b6241904fb675fd20d294c0628f8da4c0cd5922593",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-q8_0",
+      "last_updated": "9 months ago",
+      "size": "2.8GB",
+      "digest": "sha256:a8b34c785eec1ff0ec99adab117423200485f297e79a9cdc9d78a1bf4b48e3bb",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a8b34c785eec1ff0ec99adab117423200485f297e79a9cdc9d78a1bf4b48e3bb",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8f94cf56ef2dec7142f4aba8f3acc43b319559f63a5caac931582ea3f7c2287e",
+            "size": 2784496032
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8f94cf56ef2dec7142f4aba8f3acc43b319559f63a5caac931582ea3f7c2287e",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:2b-fp16",
+      "last_updated": "9 months ago",
+      "size": "5.2GB",
+      "digest": "sha256:da8e62663d8329b3b68e515af7356d15826d5c87ea61f3d1b04c30fea01c63e8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:da8e62663d8329b3b68e515af7356d15826d5c87ea61f3d1b04c30fea01c63e8",
+          "size": 486
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:59749df5bc2ea67eab52282fb3ffcde551e23664a9044675a123ba2b73865f91",
+            "size": 5235214752,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-59749df5bc2ea67eab52282fb3ffcde551e23664a9044675a123ba2b73865f91"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "size": 8368
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "2.6B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:59749df5bc2ea67eab52282fb3ffcde551e23664a9044675a123ba2b73865f91",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:4f4cf5d8c8bbb18012b7f23ce538b11a20babaf76f1d9b4955028f4b8c9d8e1f",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q2_K",
+      "last_updated": "9 months ago",
+      "size": "3.8GB",
+      "digest": "sha256:0c77984798e378ed23e16c1b87a64a5be469f1b80426f0fb559d98cc28bb8ff6",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0c77984798e378ed23e16c1b87a64a5be469f1b80426f0fb559d98cc28bb8ff6",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:64620ebfc97ce05ee604ad5f9d65a4ac5fa3021b1ef5482790252ae6a5bf6837",
+            "size": 3805398784
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:64620ebfc97ce05ee604ad5f9d65a4ac5fa3021b1ef5482790252ae6a5bf6837",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q3_K_S",
+      "last_updated": "9 months ago",
+      "size": "4.3GB",
+      "digest": "sha256:eed397fd2962c0dfb722125050242f596ece8614f898181245caeb169061b115",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:eed397fd2962c0dfb722125050242f596ece8614f898181245caeb169061b115",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:eff5b01e39207447be111fa5682cf3b7d8c30b0d0222b676cf9098749277d33a",
+            "size": 4337665792
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:eff5b01e39207447be111fa5682cf3b7d8c30b0d0222b676cf9098749277d33a",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q3_K_M",
+      "last_updated": "9 months ago",
+      "size": "4.8GB",
+      "digest": "sha256:fa488b263a8a89a74ddc5b27d733734cf05851cc4b92811c29b9d9db3ef0fee7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fa488b263a8a89a74ddc5b27d733734cf05851cc4b92811c29b9d9db3ef0fee7",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c87749ddb60fb98e60ff86f94440b24a1a8662dc8b881bb6fda8dd2e13ec47b9",
+            "size": 4761782016
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c87749ddb60fb98e60ff86f94440b24a1a8662dc8b881bb6fda8dd2e13ec47b9",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q3_K_L",
+      "last_updated": "9 months ago",
+      "size": "5.1GB",
+      "digest": "sha256:30d3347554bc78a4d90839701e124f1fff98c0e448b473c68992afb104d16d95",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:30d3347554bc78a4d90839701e124f1fff98c0e448b473c68992afb104d16d95",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:83a495870d685eb5f39fdd4f98a975f182340e1a93b58dfa716d0c7d5e99f76d",
+            "size": 5132453632
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:83a495870d685eb5f39fdd4f98a975f182340e1a93b58dfa716d0c7d5e99f76d",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q4_0",
+      "last_updated": "9 months ago",
+      "size": "5.4GB",
+      "digest": "sha256:71b09b95afe8098bbf51928739b1f9c656ad91a985aa78dd15383619c108efa2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:71b09b95afe8098bbf51928739b1f9c656ad91a985aa78dd15383619c108efa2",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4613ed65d360edd5aa74a50e8d98dfe835fc3b562005c1a1c1326adb80ee29d5",
+            "size": 5443143424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4613ed65d360edd5aa74a50e8d98dfe835fc3b562005c1a1c1326adb80ee29d5",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q4_1",
+      "last_updated": "9 months ago",
+      "size": "6.0GB",
+      "digest": "sha256:64f5b8074c8393ea7d11c4b03e88c22d1a92fd1d69f81f663b43d46f6c345191",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:64f5b8074c8393ea7d11c4b03e88c22d1a92fd1d69f81f663b43d46f6c345191",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:50ceb925c2c6be524f7eeed7a7e3217aa875e7237507cfb46d3a97b30c9171f4",
+            "size": 5963368192
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:50ceb925c2c6be524f7eeed7a7e3217aa875e7237507cfb46d3a97b30c9171f4",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q4_K_S",
+      "last_updated": "9 months ago",
+      "size": "5.5GB",
+      "digest": "sha256:e0b16e7f3eb3f8af4f3dc475becaec71cbf6702bd8c9d07411d618bd66ebf772",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e0b16e7f3eb3f8af4f3dc475becaec71cbf6702bd8c9d07411d618bd66ebf772",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3c07b6ce68a847d9a2e2421355e66ffd58c03683078335969d09373d64fb21df",
+            "size": 5478926080
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3c07b6ce68a847d9a2e2421355e66ffd58c03683078335969d09373d64fb21df",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q4_K_M",
+      "last_updated": "9 months ago",
+      "size": "5.8GB",
+      "digest": "sha256:215b637834f2266bb6e4bbef7f6e722d54a961cf8519f393d9b44ccfe25d1d80",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:215b637834f2266bb6e4bbef7f6e722d54a961cf8519f393d9b44ccfe25d1d80",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0461c50bb48f654268b4beb6ea6161871b0a52f6576eb5969b4b620345d8dcad",
+            "size": 5761058560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0461c50bb48f654268b4beb6ea6161871b0a52f6576eb5969b4b620345d8dcad",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q5_0",
+      "last_updated": "9 months ago",
+      "size": "6.5GB",
+      "digest": "sha256:f053e46c87d93769fdceae7e39ba9cd67fc89fcece43e704bcb03241546da4aa",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f053e46c87d93769fdceae7e39ba9cd67fc89fcece43e704bcb03241546da4aa",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8f23c7839ebc5edb0d8927e2fa80b38bcb2935e5c563245e242f21579109496e",
+            "size": 6483592960
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8f23c7839ebc5edb0d8927e2fa80b38bcb2935e5c563245e242f21579109496e",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q5_1",
+      "last_updated": "9 months ago",
+      "size": "7.0GB",
+      "digest": "sha256:b4f188f0422ec9af1b36a128fdf57a199f71a8f55419b5525afe004fcb59d030",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b4f188f0422ec9af1b36a128fdf57a199f71a8f55419b5525afe004fcb59d030",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a3f66fc9fb9bfbad398a120ff9aedbf6fe6664c22079b97fc0e3fac1b4e69547",
+            "size": 7003817728
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a3f66fc9fb9bfbad398a120ff9aedbf6fe6664c22079b97fc0e3fac1b4e69547",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q5_K_S",
+      "last_updated": "9 months ago",
+      "size": "6.5GB",
+      "digest": "sha256:662939310896a0df2247b7a968442901604c4aeb57b7fef11fb75f5b16a1f87a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:662939310896a0df2247b7a968442901604c4aeb57b7fef11fb75f5b16a1f87a",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4d7712595dfa9480fdeae0706afdc3446ff56a40db51a3af7d1c4508c70c7021",
+            "size": 6483592960
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4d7712595dfa9480fdeae0706afdc3446ff56a40db51a3af7d1c4508c70c7021",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q5_K_M",
+      "last_updated": "9 months ago",
+      "size": "6.6GB",
+      "digest": "sha256:4947a57c0c54c598e3db5a98f53eeb848e6fb465d60e5b22a3ec056ee6a90584",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4947a57c0c54c598e3db5a98f53eeb848e6fb465d60e5b22a3ec056ee6a90584",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cc6d3383167acce7e787d2edad5498750019c469db2846276367fcc7ccb3f17f",
+            "size": 6647367424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cc6d3383167acce7e787d2edad5498750019c469db2846276367fcc7ccb3f17f",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q6_K",
+      "last_updated": "9 months ago",
+      "size": "7.6GB",
+      "digest": "sha256:a74d909c8ab5236b65381d6d3e969558834c6c99bea3f31ace38c8c55440f693",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a74d909c8ab5236b65381d6d3e969558834c6c99bea3f31ace38c8c55440f693",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d91405a7be67ca019a5fe9db336066fed01dd8c1a9cc481d6299a8b96dba4824",
+            "size": 7589070592
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d91405a7be67ca019a5fe9db336066fed01dd8c1a9cc481d6299a8b96dba4824",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-q8_0",
+      "last_updated": "9 months ago",
+      "size": "9.8GB",
+      "digest": "sha256:788649d888951e38fcc6c36da60b3a89ca1b3b9b1969310c09a60d874597f86b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:788649d888951e38fcc6c36da60b3a89ca1b3b9b1969310c09a60d874597f86b",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2e6561e6a2eaa8d8dd590aa11bde45b32c74969c1caffc1f1a01806a5a719ab7",
+            "size": 9827149568
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2e6561e6a2eaa8d8dd590aa11bde45b32c74969c1caffc1f1a01806a5a719ab7",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:9b-fp16",
+      "last_updated": "9 months ago",
+      "size": "18GB",
+      "digest": "sha256:81fc63339b4977189769b7ec5448ec86d49df32f54f387531d27803d1f8f3c0c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:81fc63339b4977189769b7ec5448ec86d49df32f54f387531d27803d1f8f3c0c",
+          "size": 486
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cd411662f55b6195d8ac6dcc7918b26c8b242e51cce33c680923a704b48010e5",
+            "size": 18490681088,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-cd411662f55b6195d8ac6dcc7918b26c8b242e51cce33c680923a704b48010e5"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "9.2B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cd411662f55b6195d8ac6dcc7918b26c8b242e51cce33c680923a704b48010e5",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "9.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q2_K",
+      "last_updated": "9 months ago",
+      "size": "10GB",
+      "digest": "sha256:6de0e6511718e2597c49b184fb94cff92e482e2b276ba7a3d43b26c1ad4f7e3f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6de0e6511718e2597c49b184fb94cff92e482e2b276ba7a3d43b26c1ad4f7e3f",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1525f4b52f1e73b90e4134a3856f9454e5f433d677168ced629a5849797496a8",
+            "size": 10449576288
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1525f4b52f1e73b90e4134a3856f9454e5f433d677168ced629a5849797496a8",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q3_K_S",
+      "last_updated": "9 months ago",
+      "size": "12GB",
+      "digest": "sha256:ac53e8c9c497e1f4b9db5f0b753e5cbf50aa39bde5ef9d241ab61a8ed7e2f016",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ac53e8c9c497e1f4b9db5f0b753e5cbf50aa39bde5ef9d241ab61a8ed7e2f016",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:de19da26cff44c6b3f9a0db0688d62c04fb394c7dd81ca36751b68e9a6054a6a",
+            "size": 12169060704
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:de19da26cff44c6b3f9a0db0688d62c04fb394c7dd81ca36751b68e9a6054a6a",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q3_K_M",
+      "last_updated": "9 months ago",
+      "size": "13GB",
+      "digest": "sha256:d6416a1f6e0856a41daaa5c6d9831459b53f2e2917cde125d75922b9f69c8faf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d6416a1f6e0856a41daaa5c6d9831459b53f2e2917cde125d75922b9f69c8faf",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:08acce42872e96a069648dd8a4575ef30dd1a7726d7ddae9163c99b51b91727c",
+            "size": 13424648544
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:08acce42872e96a069648dd8a4575ef30dd1a7726d7ddae9163c99b51b91727c",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q3_K_L",
+      "last_updated": "9 months ago",
+      "size": "15GB",
+      "digest": "sha256:8b346ff575a3d583fcdb4338d16285230db0065cb2ab53e4e498f13e1c6f6c2d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8b346ff575a3d583fcdb4338d16285230db0065cb2ab53e4e498f13e1c6f6c2d",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:7e02398f697092b4e4bf6cd99b09e38449e3277bb50b4724845a211c8174457e",
+            "size": 14519361888
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:7e02398f697092b4e4bf6cd99b09e38449e3277bb50b4724845a211c8174457e",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q4_0",
+      "last_updated": "9 months ago",
+      "size": "16GB",
+      "digest": "sha256:a40c498081af13571e1fe2fa30634d2d5b864ddb64f2eddb62864f637675f349",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a40c498081af13571e1fe2fa30634d2d5b864ddb64f2eddb62864f637675f349",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:04fcb46bf22231c7501935b7f3acbfe1e44e585c9e4b9be5fa121b51bfe5e641",
+            "size": 15628378464
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:04fcb46bf22231c7501935b7f3acbfe1e44e585c9e4b9be5fa121b51bfe5e641",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q4_1",
+      "last_updated": "9 months ago",
+      "size": "17GB",
+      "digest": "sha256:fa357e6d39f5afb41bb5e9bdd14c485a6a42433403950642fe9108269b5093da",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fa357e6d39f5afb41bb5e9bdd14c485a6a42433403950642fe9108269b5093da",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:676033066b93cbc73f5665ad7ea2ba2f78bb0f1f07af16e9bb62c80ce6bc1a1f",
+            "size": 17256292704
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:676033066b93cbc73f5665ad7ea2ba2f78bb0f1f07af16e9bb62c80ce6bc1a1f",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q4_K_S",
+      "last_updated": "9 months ago",
+      "size": "16GB",
+      "digest": "sha256:04061d2525f95258d4a861a9cdc3418bea93b2ef45a3772f8511fd667e6d8dd5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:04061d2525f95258d4a861a9cdc3418bea93b2ef45a3772f8511fd667e6d8dd5",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:042ba2a75700047ac884d3d911eeb99e3c80e4eee508070d3098765af28941ca",
+            "size": 15739265376
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:042ba2a75700047ac884d3d911eeb99e3c80e4eee508070d3098765af28941ca",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q4_K_M",
+      "last_updated": "9 months ago",
+      "size": "17GB",
+      "digest": "sha256:9af883bc48452265cff474c20844f1bf56a6e3ebae147b372eabf93dc99cf190",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9af883bc48452265cff474c20844f1bf56a6e3ebae147b372eabf93dc99cf190",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:208c1d78ecb965ddd634943419cd90a43a90d6f314a83037c031f0d157afd5da",
+            "size": 16645382496
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:208c1d78ecb965ddd634943419cd90a43a90d6f314a83037c031f0d157afd5da",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q5_0",
+      "last_updated": "9 months ago",
+      "size": "19GB",
+      "digest": "sha256:0c37b8fe1e5344209749ef3949ce37a5f8d2e44a80cca3c8e757fa462526c05d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0c37b8fe1e5344209749ef3949ce37a5f8d2e44a80cca3c8e757fa462526c05d",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ecfc521d66ec626b70589349840b43c7ca0e1ff5bd037ab43061721c5daaf3da",
+            "size": 18884206944
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ecfc521d66ec626b70589349840b43c7ca0e1ff5bd037ab43061721c5daaf3da",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q5_1",
+      "last_updated": "9 months ago",
+      "size": "21GB",
+      "digest": "sha256:d9150022aae238203f99cfb5f18131b5d6c0a38ca15faf8389b964b56be4be29",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d9150022aae238203f99cfb5f18131b5d6c0a38ca15faf8389b964b56be4be29",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:61aab8ffe0090c06aee8e5b2339b3d1a99530af8b56e3e9ff640289e71859034",
+            "size": 20512121184
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:61aab8ffe0090c06aee8e5b2339b3d1a99530af8b56e3e9ff640289e71859034",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q5_K_S",
+      "last_updated": "9 months ago",
+      "size": "19GB",
+      "digest": "sha256:9ec5654c5ce50a6bc9318661a1ed606760071a77630724e27c5b9a262efa6ec2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9ec5654c5ce50a6bc9318661a1ed606760071a77630724e27c5b9a262efa6ec2",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1663347a8874eb48481ec7671affcb713136b7aaba800a26a94d811e2e50d088",
+            "size": 18884206944
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1663347a8874eb48481ec7671affcb713136b7aaba800a26a94d811e2e50d088",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q5_K_M",
+      "last_updated": "9 months ago",
+      "size": "19GB",
+      "digest": "sha256:134493976ad5a6181d235b84446c99c5e3e71fbb69090c52e52ece7560f78c37",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:134493976ad5a6181d235b84446c99c5e3e71fbb69090c52e52ece7560f78c37",
+          "size": 490
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:600d933c1cb8549ae3940d9261676579e81568d3f16e763011675e11fd854408",
+            "size": 19408118112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:600d933c1cb8549ae3940d9261676579e81568d3f16e763011675e11fd854408",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q6_K",
+      "last_updated": "9 months ago",
+      "size": "22GB",
+      "digest": "sha256:0eaf88b5434e20a4f0b54f85490fbb8c88e8f8a53197182268f6082cc0af9e4f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0eaf88b5434e20a4f0b54f85490fbb8c88e8f8a53197182268f6082cc0af9e4f",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0600a61908b763dbefcca0b4de84348c2a681d6c063f4960cb1356d12b430c4c",
+            "size": 22343524704
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0600a61908b763dbefcca0b4de84348c2a681d6c063f4960cb1356d12b430c4c",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-q8_0",
+      "last_updated": "9 months ago",
+      "size": "29GB",
+      "digest": "sha256:b5721d51a3d0a200ac6f0b35953e141076104a079143a275221e886446445855",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b5721d51a3d0a200ac6f0b35953e141076104a079143a275221e886446445855",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c83e5d692f1b18eb7bf14b55ac4e7e06d824bd39d49aae0be11f07465b023b06",
+            "size": 28937388384
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c83e5d692f1b18eb7bf14b55ac4e7e06d824bd39d49aae0be11f07465b023b06",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "shieldgemma:27b-fp16",
+      "last_updated": "9 months ago",
+      "size": "54GB",
+      "digest": "sha256:e6c98e09188a070d8a9d076bd6fc7edd23cd2a57230299ba2f470cdc5e4253bd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e6c98e09188a070d8a9d076bd6fc7edd23cd2a57230299ba2f470cdc5e4253bd",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:71cc89ed5ca3f4b95948e79770f9e622e22b284a76803aca9deb371cfa53b66c",
+            "size": 54462021984,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-71cc89ed5ca3f4b95948e79770f9e622e22b284a76803aca9deb371cfa53b66c"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "size": 3424
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "size": 8351
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "gemma2",
+        "model_families": [
+          "gemma2"
+        ],
+        "model_type": "27.2B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:71cc89ed5ca3f4b95948e79770f9e622e22b284a76803aca9deb371cfa53b66c",
+            "sha256:1b667144a522432ff2be769cedd83e6357ccb4788f56853cbe81de39ac57d7b9",
+            "sha256:48973fa9715c3ed2bd619fe552a54e5a352a689907e404e108fe5e912efc32c9",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "27.2B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "chat"
+  },
+  "quality_score": {
+    "fields_filled": 55,
+    "total_possible": 107,
+    "completeness": 0.51
+  }
 }

@@ -4,35 +4,627 @@
   "license": "",
   "pull_count": 26900,
   "last_updated": "Nov 19, 2024 11:33 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<h2>Granite guardian models</h2>\n<p>The IBM Granite Guardian 3.0 <strong>2B and 8B models</strong> are designed to detect risks in prompts and/or responses. They can help with risk detection along many key dimensions catalogued in the <a href=\"https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas\" rel=\"nofollow\">IBM AI Risk Atlas</a>. They are trained on unique data comprising human annotations and synthetic data informed by internal red-teaming, and they outperform other open-source models in the same space on standard benchmarks.</p>\n<h3>Parameter Sizes</h3>\n<p>The model will produce a single output token, either <code>Yes</code> or <code>No</code>. By default, the general-purpose <code>harm</code> category is used, but other categories can be selected by setting the system prompt.</p>\n<p><strong>2B:</strong></p>\n<pre><code>ollama run granite3-guardian:2b\n&gt;&gt;&gt; /set system profanity\n</code></pre>\n<p><strong>8B:</strong></p>\n<pre><code>ollama run granite3-guardian:8b\n&gt;&gt;&gt; /set system violence\n</code></pre>\n<h3>Supported Uses</h3>\n<ul>\n<li><p>Risk detection in prompt text or model response (i.e. as guardrails), such as:</p>\n<ul>\n<li>Harm (<code>harm</code>): content considered generally harmful</li>\n<li>Social Bias (<code>social_bias</code>): prejudice based on identity or characteristics</li>\n<li>Jailbreaking (<code>jailbreak</code>): deliberate instances of manipulating AI to generate harmful, undesired, or inappropriate content</li>\n<li>Violence (<code>violence</code>): content promoting physical, mental, or sexual harm</li>\n<li>Profanity (<code>profanity</code>): use of offensive language or insults</li>\n<li>Sexual Content (<code>sexual_content</code>): explicit or suggestive material of a sexual nature</li>\n<li>Unethical Behavior (<code>unethical_behavior</code>): actions that violate moral or legal standards</li>\n</ul></li>\n<li><p>RAG (retrieval-augmented generation) to assess:</p>\n<ul>\n<li>Context relevance (<code>relevance</code>): whether the retrieved context is relevant to the query</li>\n<li>Groundedness (<code>groundedness</code>): whether the response is accurate and faithful to the provided context</li>\n<li>Answer relevance (<code>answer_relevance</code>): whether the response directly addresses the user\u2019s query</li>\n</ul></li>\n</ul>\n<h2>Granite dense models</h2>\n<p>The Granite dense models are available in <strong>2B and 8B</strong> parameter sizes designed to support tool-based use cases and for retrieval augmented generation (RAG), streamlining code generation, translation and bug fixing.</p>\n<p><a href=\"https://ollama.com/library/granite3-dense\" rel=\"nofollow\">See model page</a></p>\n<h2>Granite mixture of experts models</h2>\n<p>The Granite MoE models are available in <strong>1B and 3B</strong> parameter sizes designed for low latency usage and to support deployment in on-device applications or situations requiring instantaneous inference.</p>\n<p><a href=\"https://ollama.com/library/granite3-moe\" rel=\"nofollow\">See model page</a></p>\n<h2>Learn more</h2>\n<ul>\n<li><strong>Developers:</strong> IBM Research</li>\n<li><strong>GitHub Repository:</strong> <a href=\"https://github.com/ibm-granite/granite-guardian\" rel=\"nofollow\">ibm-granite/granite-guardian</a></li>\n<li><strong>Website</strong>: <a href=\"https://www.ibm.com/granite/docs/models/guardian/\" rel=\"nofollow\">Granite Guardian Docs</a></li>\n<li><strong>Cookbook</strong>: <a href=\"https://github.com/ibm-granite-community/granite-snack-cookbook/blob/main/recipes/Granite_Guardian/Granite_Guardian_Detailed_Guide.ipynb\" rel=\"nofollow\">Granite Guardian Snack</a></li>\n<li><strong>Release Date</strong>: October 21st, 2024</li>\n<li><strong>License:</strong> <a href=\"https://www.apache.org/licenses/LICENSE-2.0\" rel=\"nofollow\">Apache 2.0</a>.</li>\n</ul>\n</div>",
   "page_hash": "c4672bab4811",
+  "readme_text": "\nGranite guardian models\nThe IBM Granite Guardian 3.0 2B and 8B models are designed to detect risks in prompts and/or responses. They can help with risk detection along many key dimensions catalogued in the IBM AI Risk Atlas. They are trained on unique data comprising human annotations and synthetic data informed by internal red-teaming, and they outperform other open-source models in the same space on standard benchmarks.\nParameter Sizes\nThe model will produce a single output token, either Yes or No. By default, the general-purpose harm category is used, but other categories can be selected by setting the system prompt.\n2B:\nollama run granite3-guardian:2b\n>>> /set system profanity\n\n8B:\nollama run granite3-guardian:8b\n>>> /set system violence\n\nSupported Uses\n\nRisk detection in prompt text or model response (i.e. as guardrails), such as:\n\nHarm (harm): content considered generally harmful\nSocial Bias (social_bias): prejudice based on identity or characteristics\nJailbreaking (jailbreak): deliberate instances of manipulating AI to generate harmful, undesired, or inappropriate content\nViolence (violence): content promoting physical, mental, or sexual harm\nProfanity (profanity): use of offensive language or insults\nSexual Content (sexual_content): explicit or suggestive material of a sexual nature\nUnethical Behavior (unethical_behavior): actions that violate moral or legal standards\n\nRAG (retrieval-augmented generation) to assess:\n\nContext relevance (relevance): whether the retrieved context is relevant to the query\nGroundedness (groundedness): whether the response is accurate and faithful to the provided context\nAnswer relevance (answer_relevance): whether the response directly addresses the user\u2019s query\n\n\nGranite dense models\nThe Granite dense models are available in 2B and 8B parameter sizes designed to support tool-based use cases and for retrieval augmented generation (RAG), streamlining code generation, translation and bug fixing.\nSee model page\nGranite mixture of experts models\nThe Granite MoE models are available in 1B and 3B parameter sizes designed for low latency usage and to support deployment in on-device applications or situations requiring instantaneous inference.\nSee model page\nLearn more\n\nDevelopers: IBM Research\nGitHub Repository: ibm-granite/granite-guardian\nWebsite: Granite Guardian Docs\nCookbook: Granite Guardian Snack\nRelease Date: October 21st, 2024\nLicense: Apache 2.0.\n\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:ded6c5f885f542875cd549c05852a23fa75060aa36772854e3a7f20d099937f7",
-      "size": "2.51GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "granite3-guardian:latest",
+      "last_updated": "7 months ago",
+      "size": "2.7GB",
+      "digest": "sha256:627829e37927b1f987bafdf931c8dfb005948aa136c3225d25b2c1455434a2f2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:627829e37927b1f987bafdf931c8dfb005948aa136c3225d25b2c1455434a2f2",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ded6c5f885f542875cd549c05852a23fa75060aa36772854e3a7f20d099937f7",
+            "size": 2694116160
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ded6c5f885f542875cd549c05852a23fa75060aa36772854e3a7f20d099937f7",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "granite3-guardian:2b",
+      "last_updated": "7 months ago",
+      "size": "2.7GB",
+      "digest": "sha256:627829e37927b1f987bafdf931c8dfb005948aa136c3225d25b2c1455434a2f2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:627829e37927b1f987bafdf931c8dfb005948aa136c3225d25b2c1455434a2f2",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ded6c5f885f542875cd549c05852a23fa75060aa36772854e3a7f20d099937f7",
+            "size": 2694116160
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ded6c5f885f542875cd549c05852a23fa75060aa36772854e3a7f20d099937f7",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "granite3-guardian:8b",
+      "last_updated": "7 months ago",
+      "size": "5.8GB",
+      "digest": "sha256:66a05fa43421f985736a6403806453ac5676536656d8ab077599cad4e79c8cb6",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:66a05fa43421f985736a6403806453ac5676536656d8ab077599cad4e79c8cb6",
+          "size": 491
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fc93e012ac809ee2e55858a9104ee9e2ad49139aefff5a372cb5101f4d3a1db4",
+            "size": 5797454112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fc93e012ac809ee2e55858a9104ee9e2ad49139aefff5a372cb5101f4d3a1db4",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "granite3-guardian:2b-q8_0",
+      "last_updated": "7 months ago",
+      "size": "2.7GB",
+      "digest": "sha256:627829e37927b1f987bafdf931c8dfb005948aa136c3225d25b2c1455434a2f2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:627829e37927b1f987bafdf931c8dfb005948aa136c3225d25b2c1455434a2f2",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ded6c5f885f542875cd549c05852a23fa75060aa36772854e3a7f20d099937f7",
+            "size": 2694116160
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ded6c5f885f542875cd549c05852a23fa75060aa36772854e3a7f20d099937f7",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3-guardian:2b-fp16",
+      "last_updated": "7 months ago",
+      "size": "5.1GB",
+      "digest": "sha256:7d691102f8c8a90b2c0f31041c7285bc9dbaa17427663c1b0d64f0be70c53084",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7d691102f8c8a90b2c0f31041c7285bc9dbaa17427663c1b0d64f0be70c53084",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3feb174dc7ee08d4b65dee3635dd2346df99dd48c6947df2e3f5111cededa072",
+            "size": 5069146560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "2.5B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3feb174dc7ee08d4b65dee3635dd2346df99dd48c6947df2e3f5111cededa072",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "2.5B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3-guardian:8b-q5_K_S",
+      "last_updated": "7 months ago",
+      "size": "5.6GB",
+      "digest": "sha256:47b6aadb3a4bb72ce3d2f154602d8a9bd416bf5908b9ee9533bfbd922834963b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:47b6aadb3a4bb72ce3d2f154602d8a9bd416bf5908b9ee9533bfbd922834963b",
+          "size": 491
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5e05cd87494ac393efc19e6bc6b97a94a4d54f4b807cab396c6d26bc77011c30",
+            "size": 5647048992
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5e05cd87494ac393efc19e6bc6b97a94a4d54f4b807cab396c6d26bc77011c30",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3-guardian:8b-q5_K_M",
+      "last_updated": "7 months ago",
+      "size": "5.8GB",
+      "digest": "sha256:66a05fa43421f985736a6403806453ac5676536656d8ab077599cad4e79c8cb6",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:66a05fa43421f985736a6403806453ac5676536656d8ab077599cad4e79c8cb6",
+          "size": 491
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fc93e012ac809ee2e55858a9104ee9e2ad49139aefff5a372cb5101f4d3a1db4",
+            "size": 5797454112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fc93e012ac809ee2e55858a9104ee9e2ad49139aefff5a372cb5101f4d3a1db4",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3-guardian:8b-q6_K",
+      "last_updated": "7 months ago",
+      "size": "6.7GB",
+      "digest": "sha256:6dd0e1b0c866bec9679b4094b55b39d72cb5a035be577ee5ebb6142648432e12",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6dd0e1b0c866bec9679b4094b55b39d72cb5a035be577ee5ebb6142648432e12",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cdca0a8d1f702e1ebdf3692e72e70484d59912df743e599051fd9629579fe264",
+            "size": 6705455392
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cdca0a8d1f702e1ebdf3692e72e70484d59912df743e599051fd9629579fe264",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3-guardian:8b-q8_0",
+      "last_updated": "7 months ago",
+      "size": "8.7GB",
+      "digest": "sha256:aa0f3d719f44855c1c873e4983e527951c39ec33e55d0767ac4a871ab88480e3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:aa0f3d719f44855c1c873e4983e527951c39ec33e55d0767ac4a871ab88480e3",
+          "size": 489
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d2ef2688d17f0b54db9ea8444eacbe6ca4af5c65a64b26cce175971e282a16a2",
+            "size": 8684252352
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d2ef2688d17f0b54db9ea8444eacbe6ca4af5c65a64b26cce175971e282a16a2",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "granite3-guardian:8b-fp16",
+      "last_updated": "7 months ago",
+      "size": "16GB",
+      "digest": "sha256:1ac5d69d381a2a3f224aecd9b45d9ca791d080d2a86b54ceb5ef638e6dec0e93",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1ac5d69d381a2a3f224aecd9b45d9ca791d080d2a86b54ceb5ef638e6dec0e93",
+          "size": 488
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:97fa3d109ce73e723890b361f09e980ad0af885567811ae3e85a8b99a7dc239f",
+            "size": 16344111552
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "size": 5273
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:492069a62c2545ecde9f8cbc5c3d46adadaa3f95c0e1f68aea7ed2cca548484b",
+            "size": 11332
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271",
+            "size": 18
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "granite",
+        "model_families": [
+          "granite"
+        ],
+        "model_type": "8.2B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:97fa3d109ce73e723890b361f09e980ad0af885567811ae3e85a8b99a7dc239f",
+            "sha256:25a6bf4e64bff8b31547c707fe7e3389cf4fea845ff12281b4a526a6dfc3e65e",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:ae40a217c1c4002e9358f0f6597a349acaace0cfb95dc53db7ce646d57a56271"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "8.2B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "code"
+  },
+  "quality_score": {
+    "fields_filled": 16,
+    "total_possible": 29,
+    "completeness": 0.55
+  }
 }

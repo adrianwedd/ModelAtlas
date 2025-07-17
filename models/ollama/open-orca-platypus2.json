@@ -3,28 +3,901 @@
   "description": "Merge of the Open Orca OpenChat model and the Garage-bAInd Platypus 2 model. Designed for chat and code generation.",
   "pull_count": 25700,
   "last_updated": "Oct 29, 2023 7:52 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://user-images.githubusercontent.com/633681/262757252-66e5d8a6-40d8-4cd8-b4b9-30d3f7dc1466.png\"/></p>\n<p>The OpenOrca Platypus2 model is a 13 billion parameter model which is a merge of the OpenOrca OpenChat model and the Garage-bAInd Platypus2-13B model which are both fine tunings of the Llama 2 model. It is designed to be a general-use model that can be used for chat, text generation, and code generation.</p>\n<h2>Get started with OpenOrca Platypus 2</h2>\n<p>The model used in the example below is the OpenOrca Platypus 2 model, with 13b parameters, which is a general-use model.</p>\n<h3>API</h3>\n<ol>\n<li>Start Ollama server (Run <code>ollama serve</code>)</li>\n<li>Run the model</li>\n</ol>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"open-orca-platypus2\",\n  \"prompt\":\"Tell me a joke about ropes.\"\n }'\n</code></pre>\n<h3>CLI</h3>\n<ol>\n<li>Install Ollama</li>\n<li>Open the terminal and run <code>ollama run open-orca-platypus2</code></li>\n</ol>\n<p>Note: The <code>ollama run</code> command performs an <code>ollama pull</code> if the model is not already downloaded. To download the model without running it, use <code>ollama pull open-orca-platypus2</code></p>\n<h2>Memory requirements</h2>\n<ul>\n<li>13b models generally require at least 16GB of RAM</li>\n</ul>\n<p>If you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.</p>\n<h2>Model variants</h2>\n<p>By default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.</p>\n<table>\n<thead>\n<tr>\n<th><strong>Aliases</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>latest, 13b, 13b-q4_0</td>\n</tr>\n</tbody>\n</table>\n<h2>Model source</h2>\n<p><strong>OpenOrca Platypus 2 source on Ollama</strong></p>\n<p>13b parameters source:\n <a href=\"https://huggingface.co/Open-Orca/OpenOrca-Platypus2-13B\" rel=\"nofollow\">OpenOrca</a></p>\n<h2>References</h2>\n<p><a href=\"https://arxiv.org/abs/2308.07317\" rel=\"nofollow\">Platypus: Quick, Cheap, and Powerful Refinement of LLMs</a></p>\n</div>",
   "page_hash": "b76e9584d7b1",
+  "readme_text": "\n\nThe OpenOrca Platypus2 model is a 13 billion parameter model which is a merge of the OpenOrca OpenChat model and the Garage-bAInd Platypus2-13B model which are both fine tunings of the Llama 2 model. It is designed to be a general-use model that can be used for chat, text generation, and code generation.\nGet started with OpenOrca Platypus 2\nThe model used in the example below is the OpenOrca Platypus 2 model, with 13b parameters, which is a general-use model.\nAPI\n\nStart Ollama server (Run ollama serve)\nRun the model\n\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"open-orca-platypus2\",\n  \"prompt\":\"Tell me a joke about ropes.\"\n }'\n\nCLI\n\nInstall Ollama\nOpen the terminal and run ollama run open-orca-platypus2\n\nNote: The ollama run command performs an ollama pull if the model is not already downloaded. To download the model without running it, use ollama pull open-orca-platypus2\nMemory requirements\n\n13b models generally require at least 16GB of RAM\n\nIf you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.\nModel variants\nBy default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.\n\n\n\nAliases\n\n\n\n\nlatest, 13b, 13b-q4_0\n\n\n\nModel source\nOpenOrca Platypus 2 source on Ollama\n13b parameters source:\n OpenOrca\nReferences\nPlatypus: Quick, Cheap, and Powerful Refinement of LLMs\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:08cd160ff5865e9c9c048f0f0b679bdfb8be3e269c94e0127024e9f072c0cb44",
-      "size": "6.86GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "open-orca-platypus2:latest",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:7b46220cda329d8468df7c5f382dfb995317994e5e690d4066257a2c9dcd41e3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7b46220cda329d8468df7c5f382dfb995317994e5e690d4066257a2c9dcd41e3",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:08cd160ff5865e9c9c048f0f0b679bdfb8be3e269c94e0127024e9f072c0cb44",
+            "size": 7365848864
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:08cd160ff5865e9c9c048f0f0b679bdfb8be3e269c94e0127024e9f072c0cb44",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "open-orca-platypus2:13b",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:7b46220cda329d8468df7c5f382dfb995317994e5e690d4066257a2c9dcd41e3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7b46220cda329d8468df7c5f382dfb995317994e5e690d4066257a2c9dcd41e3",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:08cd160ff5865e9c9c048f0f0b679bdfb8be3e269c94e0127024e9f072c0cb44",
+            "size": 7365848864
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:08cd160ff5865e9c9c048f0f0b679bdfb8be3e269c94e0127024e9f072c0cb44",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "open-orca-platypus2:13b-q2_K",
+      "last_updated": "1 year ago",
+      "size": "5.4GB",
+      "digest": "sha256:98024a73017757e57fe421510287493496dd9a4a2367a5788ec7e3e82b8b69ab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:98024a73017757e57fe421510287493496dd9a4a2367a5788ec7e3e82b8b69ab",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:472ac797e9dde724bb62bfe46a27c864e18d667bed1a297f3fa7bde1864c9554",
+            "size": 5429360064
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q2_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:472ac797e9dde724bb62bfe46a27c864e18d667bed1a297f3fa7bde1864c9554",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "5.7GB",
+      "digest": "sha256:b7b73ca88850680d4d20e56d9989ffc6d52dd69fa255d55b23339e9e2276d8d2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b7b73ca88850680d4d20e56d9989ffc6d52dd69fa255d55b23339e9e2276d8d2",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6d93dd3380a1409f04333575d84fb853c005508f0cb44fce5106fac39645e28e",
+            "size": 5658993120
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q3_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:6d93dd3380a1409f04333575d84fb853c005508f0cb44fce5106fac39645e28e",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "6.3GB",
+      "digest": "sha256:4e9d3afc0b42842d2e836e00b2677b4a3c949dd27c741815e62b19dbe262332c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4e9d3afc0b42842d2e836e00b2677b4a3c949dd27c741815e62b19dbe262332c",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b3dd9beca1b610a55f6073dacf7fff2f628133b92acdec7597f1da3d313eef2b",
+            "size": 6337782240
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q3_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:b3dd9beca1b610a55f6073dacf7fff2f628133b92acdec7597f1da3d313eef2b",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "6.9GB",
+      "digest": "sha256:b516b6b67a0b6e4c50ce74b09b92649191f7def4ca06ad4181073629a5976688",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b516b6b67a0b6e4c50ce74b09b92649191f7def4ca06ad4181073629a5976688",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3f85b62275f62e67f2eda3acd5ca83bfa4c49d32c636a5861c5a23d7ae19f99c",
+            "size": 6929572320
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q3_K_L",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3f85b62275f62e67f2eda3acd5ca83bfa4c49d32c636a5861c5a23d7ae19f99c",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q4_0",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:7b46220cda329d8468df7c5f382dfb995317994e5e690d4066257a2c9dcd41e3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7b46220cda329d8468df7c5f382dfb995317994e5e690d4066257a2c9dcd41e3",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:08cd160ff5865e9c9c048f0f0b679bdfb8be3e269c94e0127024e9f072c0cb44",
+            "size": 7365848864
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:08cd160ff5865e9c9c048f0f0b679bdfb8be3e269c94e0127024e9f072c0cb44",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q4_1",
+      "last_updated": "1 year ago",
+      "size": "8.2GB",
+      "digest": "sha256:c2f4787f0ad6a9d7edc8b65addca0425fc13e38ed44760f64cbd54a7ed4c442e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c2f4787f0ad6a9d7edc8b65addca0425fc13e38ed44760f64cbd54a7ed4c442e",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b5b5129a95290f2d5642971301a521b3e46b56fc6b7c2440ce9fe965e4d12e8a",
+            "size": 8169075104
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:b5b5129a95290f2d5642971301a521b3e46b56fc6b7c2440ce9fe965e4d12e8a",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "sha256:5eeeaa97781deaf3457a042c66328d2bcdbadf8b1b3a506f05327c62eaebda97",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5eeeaa97781deaf3457a042c66328d2bcdbadf8b1b3a506f05327c62eaebda97",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e61d88109f83436e453de1ccc28bf9b0440671f5264d925492a3a3f987aa4ab5",
+            "size": 7414345504
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e61d88109f83436e453de1ccc28bf9b0440671f5264d925492a3a3f987aa4ab5",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "7.9GB",
+      "digest": "sha256:17cea14d189abe4e261805e7092a5631a116092fe31caced95590f97c334a501",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:17cea14d189abe4e261805e7092a5631a116092fe31caced95590f97c334a501",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4b78d63a12f19f310584d6eaeafe99496268b204654d4eae9de863c88ef29eca",
+            "size": 7865970464
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q4_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4b78d63a12f19f310584d6eaeafe99496268b204654d4eae9de863c88ef29eca",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q5_0",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:a45cba3995f14ba51b14ab0015652fcd32bb0f18ec56a61f2ef3e664424c8b2e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a45cba3995f14ba51b14ab0015652fcd32bb0f18ec56a61f2ef3e664424c8b2e",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d409182dd049086e4d23eed132e5a09989a5af97d6068c352bc56fcc97f3d138",
+            "size": 8972301344
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d409182dd049086e4d23eed132e5a09989a5af97d6068c352bc56fcc97f3d138",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q5_1",
+      "last_updated": "1 year ago",
+      "size": "9.8GB",
+      "digest": "sha256:d11b1f4fae7c61c6788cdb63f332a7bb46c5da78defd046d01392553632c6da6",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d11b1f4fae7c61c6788cdb63f332a7bb46c5da78defd046d01392553632c6da6",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2869ec57db426c9f271d0ab6bdebafe758b8b6c815e881a674194e5d4a46aaec",
+            "size": 9775527584
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2869ec57db426c9f271d0ab6bdebafe758b8b6c815e881a674194e5d4a46aaec",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "sha256:f9cb7eace455e5206816ab3c4e2c688e975fa6d140860a63917c750b698fbfeb",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f9cb7eace455e5206816ab3c4e2c688e975fa6d140860a63917c750b698fbfeb",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2d8ed0fb81ad708d1b89a4a7fe28b2e2be6561e715bf1e1ba4508fe41e7a4a21",
+            "size": 8972301344
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_K_S",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2d8ed0fb81ad708d1b89a4a7fe28b2e2be6561e715bf1e1ba4508fe41e7a4a21",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "9.2GB",
+      "digest": "sha256:3a2cb4135ae7d68277c8a0750284b578602a5139dda10e9f8d4c517e6374198e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3a2cb4135ae7d68277c8a0750284b578602a5139dda10e9f8d4c517e6374198e",
+          "size": 384
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fcf5810fa407e3da0b82dfd198529ed87de5324fbb089ef62c784e14676387bb",
+            "size": 9229939744
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q5_K_M",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fcf5810fa407e3da0b82dfd198529ed87de5324fbb089ef62c784e14676387bb",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q6_K",
+      "last_updated": "1 year ago",
+      "size": "11GB",
+      "digest": "sha256:c01444c60ab7b123621119423834e5b450e95e9db004abfdaf8281c667786240",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c01444c60ab7b123621119423834e5b450e95e9db004abfdaf8281c667786240",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8d9e512da43669d53650ca34522bef2d4812afa44501ea3125dff73ceab75d52",
+            "size": 10679157120
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q6_K",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8d9e512da43669d53650ca34522bef2d4812afa44501ea3125dff73ceab75d52",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-q8_0",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:83dcde1d8707db393facb550d702cbbde0397304c3e464124f31bb9c2fcdee36",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:83dcde1d8707db393facb550d702cbbde0397304c3e464124f31bb9c2fcdee36",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d0e8d7a57227829d775df12a84eccf112ee688b72d9a89110cd603b6bbb41da3",
+            "size": 13831341248
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "Q8_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d0e8d7a57227829d775df12a84eccf112ee688b72d9a89110cd603b6bbb41da3",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "open-orca-platypus2:13b-fp16",
+      "last_updated": "1 year ago",
+      "size": "26GB",
+      "digest": "sha256:28d79987718fc528b2bef8dd4bab8651e43167e4652c0056aa6c3159dc70c235",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:28d79987718fc528b2bef8dd4bab8651e43167e4652c0056aa6c3159dc70c235",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1e2631d9affa41fdf08609b311c50290d9ebdeaba161d760ac259861b970632c",
+            "size": 26033344416
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "size": 63
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b",
+            "size": 45
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_type": "13B",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1e2631d9affa41fdf08609b311c50290d9ebdeaba161d760ac259861b970632c",
+            "sha256:7bf57aba0a70a8ca877dd7037b27eb94652de95579ce8557fc152e6c86caec53",
+            "sha256:55540d7c14b7ce8b173fba41f5eb03cd0505198f3640f8585804b250ad2cdf9b"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "13B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "chat"
+  },
+  "quality_score": {
+    "fields_filled": 23,
+    "total_possible": 43,
+    "completeness": 0.53
+  }
 }

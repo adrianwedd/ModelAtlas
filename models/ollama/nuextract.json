@@ -4,35 +4,1054 @@
   "license": "Hugging Face",
   "pull_count": 30800,
   "last_updated": "Jul 22, 2024 11:54 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<h3>Structure Extraction Model by NuMind \ud83d\udd25</h3>\n<p>NuExtract is a version of phi-3-mini, fine-tuned on a private high-quality synthetic dataset for information extraction. To use the model, provide an input text (less than 2000 tokens) and a JSON template describing the information you need to extract.</p>\n<p>Note: This model is purely extractive, so all text output by the model is present as is in the original text. You can also provide an example of output formatting to help the model understand your task more precisely.</p>\n<h2>Usage</h2>\n<h3>Prompt Format</h3>\n<p>This model works best when using a specific prompt format to extract text:</p>\n<pre><code>### Template:\n{\n    \"Model\": {\n        \"Name\": \"\",\n        \"Number of parameters\": \"\",\n    },\n    \"Usage\": {\n        \"Use case\": [],\n        \"Licence\": \"\"\n    }\n}\n### Example:\n{\n    \"Model\": {\n        \"Name\": \"Llama3\",\n        \"Number of parameters\": \"8 billion\",\n    },\n    \"Usage\": {\n        \"Use case\":[\n\t\t\t\"chat\",\n\t\t\t\"code completion\"\n\t\t],\n        \"Licence\": \"Meta Llama3\"\n    }\n}\n### Text:\nWe introduce Mistral 7B, a 7\u2013billion-parameter language model engineered for superior performance and efficiency. Mistral 7B outperforms the best open 13B model (Llama 2) across all evaluated benchmarks, and the best released 34B model (Llama 1) in reasoning, mathematics, and code generation. Our model leverages grouped-query attention (GQA) for faster inference, coupled with sliding window attention (SWA) to effectively handle sequences of arbitrary length with a reduced inference cost. We also provide a model fine-tuned to follow instructions, Mistral 7B \u2013 Instruct, that surpasses Llama 2 13B \u2013 chat model both on human and automated benchmarks. Our models are released under the Apache 2.0 license. \n\nCode: https://github.com/mistralai/mistral-src \nWebpage: https://mistral.ai/news/announcing-mistral-7b/\n</code></pre>\n<h3>References</h3>\n<p><a href=\"https://huggingface.co/numind/NuExtract\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
   "page_hash": "6ab3905888a7",
+  "readme_text": "\nStructure Extraction Model by NuMind \ud83d\udd25\nNuExtract is a version of phi-3-mini, fine-tuned on a private high-quality synthetic dataset for information extraction. To use the model, provide an input text (less than 2000 tokens) and a JSON template describing the information you need to extract.\nNote: This model is purely extractive, so all text output by the model is present as is in the original text. You can also provide an example of output formatting to help the model understand your task more precisely.\nUsage\nPrompt Format\nThis model works best when using a specific prompt format to extract text:\n### Template:\n{\n    \"Model\": {\n        \"Name\": \"\",\n        \"Number of parameters\": \"\",\n    },\n    \"Usage\": {\n        \"Use case\": [],\n        \"Licence\": \"\"\n    }\n}\n### Example:\n{\n    \"Model\": {\n        \"Name\": \"Llama3\",\n        \"Number of parameters\": \"8 billion\",\n    },\n    \"Usage\": {\n        \"Use case\":[\n\t\t\t\"chat\",\n\t\t\t\"code completion\"\n\t\t],\n        \"Licence\": \"Meta Llama3\"\n    }\n}\n### Text:\nWe introduce Mistral 7B, a 7\u2013billion-parameter language model engineered for superior performance and efficiency. Mistral 7B outperforms the best open 13B model (Llama 2) across all evaluated benchmarks, and the best released 34B model (Llama 1) in reasoning, mathematics, and code generation. Our model leverages grouped-query attention (GQA) for faster inference, coupled with sliding window attention (SWA) to effectively handle sequences of arbitrary length with a reduced inference cost. We also provide a model fine-tuned to follow instructions, Mistral 7B \u2013 Instruct, that surpasses Llama 2 13B \u2013 chat model both on human and automated benchmarks. Our models are released under the Apache 2.0 license. \n\nCode: https://github.com/mistralai/mistral-src \nWebpage: https://mistral.ai/news/announcing-mistral-7b/\n\nReferences\nHugging Face\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:2fbe5c091143c1641e22e79e2ee0264b047fc5c538da826842de9a74c29ec715",
-      "size": "2.03GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "nuextract:latest",
+      "last_updated": "11 months ago",
+      "size": "2.2GB",
+      "digest": "sha256:c7804f858f086fa016cc678ee35d6183c4f3d83b9531caee89ee20056b62b2a8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c7804f858f086fa016cc678ee35d6183c4f3d83b9531caee89ee20056b62b2a8",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2fbe5c091143c1641e22e79e2ee0264b047fc5c538da826842de9a74c29ec715",
+            "size": 2176176256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2fbe5c091143c1641e22e79e2ee0264b047fc5c538da826842de9a74c29ec715",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "nuextract:3.8b",
+      "last_updated": "11 months ago",
+      "size": "2.2GB",
+      "digest": "sha256:c7804f858f086fa016cc678ee35d6183c4f3d83b9531caee89ee20056b62b2a8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c7804f858f086fa016cc678ee35d6183c4f3d83b9531caee89ee20056b62b2a8",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2fbe5c091143c1641e22e79e2ee0264b047fc5c538da826842de9a74c29ec715",
+            "size": 2176176256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2fbe5c091143c1641e22e79e2ee0264b047fc5c538da826842de9a74c29ec715",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "nuextract:3.8b-q2_K",
+      "last_updated": "11 months ago",
+      "size": "1.4GB",
+      "digest": "sha256:77bc181eaee3428b7c4171304be90224f39dab8ce7ea6254ecb295d9a51c3544",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:77bc181eaee3428b7c4171304be90224f39dab8ce7ea6254ecb295d9a51c3544",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4e0298d1fb18a61bf1822b0d50659a7dc95ac72783ead172172923c6eb457175",
+            "size": 1416203392
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4e0298d1fb18a61bf1822b0d50659a7dc95ac72783ead172172923c6eb457175",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "nuextract:3.8b-q3_K_S",
+      "last_updated": "11 months ago",
+      "size": "1.7GB",
+      "digest": "sha256:741b2c60c3825bf392290cc354f58b19d09b062cafc0f81cadb976956ea0ba30",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:741b2c60c3825bf392290cc354f58b19d09b062cafc0f81cadb976956ea0ba30",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:dd1873ac12798a940807e3113222822790cb6e85ba9a8c24f685b3a4fae00cc1",
+            "size": 1681797760
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:dd1873ac12798a940807e3113222822790cb6e85ba9a8c24f685b3a4fae00cc1",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q3_K_M",
+      "last_updated": "11 months ago",
+      "size": "2.0GB",
+      "digest": "sha256:b406cc42b213ca4b2952576338da9248cf35f984363fe663b9ba69da7ac2066a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b406cc42b213ca4b2952576338da9248cf35f984363fe663b9ba69da7ac2066a",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1d50d7a4e9ae095e084a34006ef040c446e138635249ca3dc50508b087bdd144",
+            "size": 1955476096
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1d50d7a4e9ae095e084a34006ef040c446e138635249ca3dc50508b087bdd144",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q3_K_L",
+      "last_updated": "11 months ago",
+      "size": "2.1GB",
+      "digest": "sha256:bad3998ed35869edef4b6fe5487b2bd33e6030ae2a2bc398162da1551618f1c0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:bad3998ed35869edef4b6fe5487b2bd33e6030ae2a2bc398162da1551618f1c0",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c386d730533136e7218c2999ca2bbd15920a5c1b380fe9d6de92d443118784d6",
+            "size": 2087596672
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c386d730533136e7218c2999ca2bbd15920a5c1b380fe9d6de92d443118784d6",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q4_0",
+      "last_updated": "11 months ago",
+      "size": "2.2GB",
+      "digest": "sha256:c7804f858f086fa016cc678ee35d6183c4f3d83b9531caee89ee20056b62b2a8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c7804f858f086fa016cc678ee35d6183c4f3d83b9531caee89ee20056b62b2a8",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2fbe5c091143c1641e22e79e2ee0264b047fc5c538da826842de9a74c29ec715",
+            "size": 2176176256
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2fbe5c091143c1641e22e79e2ee0264b047fc5c538da826842de9a74c29ec715",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q4_1",
+      "last_updated": "11 months ago",
+      "size": "2.4GB",
+      "digest": "sha256:03d8d602dc6c2c625263e54ae81ef463c814bbb8de768f802f2261e10f707414",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:03d8d602dc6c2c625263e54ae81ef463c814bbb8de768f802f2261e10f707414",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cad8cc79d6c5dc9acf423998e1c81f5d732824aba5d4bf92a25f968bdd23cb1e",
+            "size": 2408824960
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cad8cc79d6c5dc9acf423998e1c81f5d732824aba5d4bf92a25f968bdd23cb1e",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q4_K_S",
+      "last_updated": "11 months ago",
+      "size": "2.2GB",
+      "digest": "sha256:1bdf54e906184e41cb379b76aa1d7063a8757a3a00854bcef4306f3cb7e62fdb",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1bdf54e906184e41cb379b76aa1d7063a8757a3a00854bcef4306f3cb7e62fdb",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cfcddb61f412e972e6f13efea3c71959e9918208c654053db5491132fd23f66c",
+            "size": 2188759168
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cfcddb61f412e972e6f13efea3c71959e9918208c654053db5491132fd23f66c",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q4_K_M",
+      "last_updated": "11 months ago",
+      "size": "2.4GB",
+      "digest": "sha256:39aa099efe1346f87bd257906ef633bd752ffbab785f24c0b0e07e3ba7f2397f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:39aa099efe1346f87bd257906ef633bd752ffbab785f24c0b0e07e3ba7f2397f",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:83a90572c9b7b660c6e5cf3ee833e976d8d97dde1fa302b90a276ec8cb6b79f6",
+            "size": 2393231488
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:83a90572c9b7b660c6e5cf3ee833e976d8d97dde1fa302b90a276ec8cb6b79f6",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q5_0",
+      "last_updated": "11 months ago",
+      "size": "2.6GB",
+      "digest": "sha256:4ec29a18c5fe32cbc103718000b892adeb06e1c5489397ad7476630ee0cc646f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4ec29a18c5fe32cbc103718000b892adeb06e1c5489397ad7476630ee0cc646f",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2905885d3c15de96cbd9fa5611ef4d06f9fde6a51fd5f6961bc240f0dc73325a",
+            "size": 2641473664
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2905885d3c15de96cbd9fa5611ef4d06f9fde6a51fd5f6961bc240f0dc73325a",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q5_1",
+      "last_updated": "11 months ago",
+      "size": "2.9GB",
+      "digest": "sha256:c8a85a98238709f94fd9ed79b910cb786239741de324fd6293b6f4d3df7f09a8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c8a85a98238709f94fd9ed79b910cb786239741de324fd6293b6f4d3df7f09a8",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:97f0aca42e311b95019ea992bf00c6e7e4ae66cb8f4460bbfaab631afeaf4a7a",
+            "size": 2874122368
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:97f0aca42e311b95019ea992bf00c6e7e4ae66cb8f4460bbfaab631afeaf4a7a",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q5_K_S",
+      "last_updated": "11 months ago",
+      "size": "2.6GB",
+      "digest": "sha256:49fdaeb4da7ae8406d50dc4e82378ece4c0644cea1753def9f3693fe3a9517c4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:49fdaeb4da7ae8406d50dc4e82378ece4c0644cea1753def9f3693fe3a9517c4",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:57c084f905df8928f9a1b0c9bf134aa1247f12731632688ffe086740fbbb09eb",
+            "size": 2641473664
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:57c084f905df8928f9a1b0c9bf134aa1247f12731632688ffe086740fbbb09eb",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q5_K_M",
+      "last_updated": "11 months ago",
+      "size": "2.8GB",
+      "digest": "sha256:bb09308bfa68d10c8e527c08c298b5011bae29b9edfe2d1e92c9bc9d3d90a128",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:bb09308bfa68d10c8e527c08c298b5011bae29b9edfe2d1e92c9bc9d3d90a128",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:aafdc0faf1759c6de868876292cdc6aa333a814c00e298c9b92e004158023a87",
+            "size": 2815275136
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:aafdc0faf1759c6de868876292cdc6aa333a814c00e298c9b92e004158023a87",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q6_K",
+      "last_updated": "11 months ago",
+      "size": "3.1GB",
+      "digest": "sha256:bba6398629709b9e7553b12f566d049ce68637a97ccdb48f68403b60d9cf9bab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:bba6398629709b9e7553b12f566d049ce68637a97ccdb48f68403b60d9cf9bab",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e2776cf8eb2c65a248bf5b049e0b0ff4b72d825f875bbe0a274b2167f61ab3f5",
+            "size": 3135852160
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e2776cf8eb2c65a248bf5b049e0b0ff4b72d825f875bbe0a274b2167f61ab3f5",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-q8_0",
+      "last_updated": "11 months ago",
+      "size": "4.1GB",
+      "digest": "sha256:518a6dafd84084cac87594e6a771bb2f035dc3fe006fcd0ca9ce5e23a9bbfec8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:518a6dafd84084cac87594e6a771bb2f035dc3fe006fcd0ca9ce5e23a9bbfec8",
+          "size": 483
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2a18d2671860b680cbb8783967d69c792e57618147705cde77cf1979bf236a01",
+            "size": 4061221504
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2a18d2671860b680cbb8783967d69c792e57618147705cde77cf1979bf236a01",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nuextract:3.8b-fp16",
+      "last_updated": "11 months ago",
+      "size": "7.6GB",
+      "digest": "sha256:4a69431959164b439602e0d3d44d253388a46ad2596059951fd39821e0225377",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4a69431959164b439602e0d3d44d253388a46ad2596059951fd39821e0225377",
+          "size": 482
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d1dba21b2691d0b144219fdb06c68fad6e5b815c1eed3c0d471d0002e4c0549f",
+            "size": 7643296384
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "size": 172
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f",
+            "size": 78
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "phi3",
+        "model_families": [
+          "phi3"
+        ],
+        "model_type": "3.8B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d1dba21b2691d0b144219fdb06c68fad6e5b815c1eed3c0d471d0002e4c0549f",
+            "sha256:e3e379c2858c267c9b9fcc52266d1b796ae4aa99a3412b16db5d5309ce0a6647",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:8dde1baf1db03d318a2ab076ae363318357dff487bdd8c1703a29886611e581f"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "3.8B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "chat"
+  },
+  "quality_score": {
+    "fields_filled": 24,
+    "total_possible": 43,
+    "completeness": 0.56
+  }
 }
