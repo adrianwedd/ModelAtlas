@@ -25,3 +25,5 @@ This memo summarizes the late-night directive from the lead architect. It lays o
 
 This direction transforms ModelAtlas from an assembly line into a system that models thinking itself. The forge begins here.
 
+
+Contributors should use the new GitHub issue and PR templates for all submissions.
