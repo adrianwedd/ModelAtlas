@@ -572,4 +572,175 @@
     - "Ensure tone is confident and visionary."
   acceptance_criteria:
     - "A new developer can understand the project's purpose and run it locally in under a minute from the README alone."
-  epic: "Onboarding & Polish
+  epic: "Onboarding & Polish"
+
+- id: 402
+  title: "Add open-source license"
+  description: "Introduce MIT LICENSE file and update README with licensing statement."
+  component: "Repo"
+  dependencies: []
+  priority: 1
+  status: "pending"
+  area: "Governance"
+  actionable_steps:
+    - "Create LICENSE using MIT template"
+    - "Mention license in README footer"
+  acceptance_criteria:
+    - "LICENSE file present"
+    - "README references MIT license"
+  task_id: "GOV-001"
+  epic: "Foundational Hardening"
+
+- id: 403
+  title: "Revise README quick start"
+  description: "Add concise setup commands and clarify existing components."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "pending"
+  area: "DX"
+  actionable_steps:
+    - "Add installation snippet with `pip install -r requirements.txt` and `playwright install`"
+    - "Mention which Python file runs the enrichment pipeline"
+    - "Clarify location of CLI scripts"
+  acceptance_criteria:
+    - "New contributor can run scraper and enrichment in <1 minute"
+    - "README passes markdown lint"
+  task_id: "DOCS-001"
+  epic: "Onboarding & Polish"
+
+- id: 404
+  title: "Synchronize CONTRIBUTING with codebase"
+  description: "Update CONTRIBUTING.md to reference actual script names and remove nonexistent files."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "pending"
+  area: "Consistency"
+  actionable_steps:
+    - "Replace references to scrape_models.py/enrich_models.py with tools/scrape_*.py and enrich/main.py"
+    - "Remove CHANGELOG mention or create the file"
+  acceptance_criteria:
+    - "All script names in CONTRIBUTING.md exist in repo"
+    - "Instructions mention running tests via pytest"
+  task_id: "DOCS-002"
+  epic: "Onboarding & Polish"
+
+- id: 405
+  title: "Introduce .editorconfig"
+  description: "Add a basic .editorconfig enforcing UTF-8, newline at EOF, and 4-space indentation."
+  component: "Repo"
+  dependencies: []
+  priority: 3
+  status: "pending"
+  area: "Consistency"
+  actionable_steps:
+    - "Create .editorconfig in repo root"
+    - "Align with existing Python style (PEP8)"
+    - "Document pre-commit hook idea in CONTRIBUTING"
+  acceptance_criteria:
+    - ".editorconfig committed"
+    - "Editors pick up settings automatically"
+  task_id: "REPO-001"
+  epic: "Foundational Hardening"
+
+- id: 406
+  title: "Refactor CLI into package"
+  description: "Move ollama_search_cli.py into atlas_cli/ package and prepare for Typer-based subcommands."
+  component: "CLI"
+  dependencies: []
+  priority: 3
+  status: "pending"
+  area: "Refactor"
+  actionable_steps:
+    - "Create atlas_cli/__init__.py and atlas_cli/main.py"
+    - "Wrap existing search logic using Typer"
+    - "Update README usage examples"
+  acceptance_criteria:
+    - "`python -m atlas_cli search llama` works"
+    - "Unit test covers basic command"
+  task_id: "CLI-001"
+  epic: "DX Improvement"
+
+- id: 407
+  title: "Add CI workflow"
+  description: "Run tests and doc build on each push via GitHub Actions."
+  component: "CI"
+  dependencies: [403]
+  priority: 3
+  status: "pending"
+  area: "Automation"
+  actionable_steps:
+    - "Create .github/workflows/ci.yml"
+    - "Install dependencies, run `pytest` and `make -C docs html`"
+  acceptance_criteria:
+    - "CI passes on main branch"
+    - "Failing tests block merge"
+  task_id: "CI-001"
+  epic: "Reliability & CI"
+
+- id: 408
+  title: "Unit tests for TrustForge and similarity engine"
+  description: "Increase coverage by testing score calculation and similarity heuristics."
+  component: "Testing"
+  dependencies: []
+  priority: 3
+  status: "pending"
+  area: "Testing"
+  actionable_steps:
+    - "Write tests for compute_score() edge cases"
+    - "Create tests for ModelSimilarityEngine.calculate_name_similarity()"
+  acceptance_criteria:
+    - "pytest shows >80% coverage for these modules"
+  task_id: "TEST-001"
+  epic: "Reliability & CI"
+
+- id: 409
+  title: "Create template directory for README generation"
+  description: "Add templates/README.md.j2 and adjust generate_readme.py to use it."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "pending"
+  area: "Automation"
+  actionable_steps:
+    - "Create templates/ directory with Jinja2 template"
+    - "Ensure generate_readme.py succeeds via make target"
+  acceptance_criteria:
+    - "generate_readme.py generates README without error"
+    - "Template documented in CONTRIBUTING"
+  task_id: "DOCS-003"
+  epic: "UX + Output"
+
+- id: 410
+  title: "Provide .env.example fields for all configurable keys"
+  description: "Expand .env.example with placeholders for future API keys or settings."
+  component: "Config"
+  dependencies: []
+  priority: 2
+  status: "pending"
+  area: "Refactor"
+  actionable_steps:
+    - "Add PLAYWRIGHT_BROWSERS_PATH, OPENAI_API_KEY placeholders"
+    - "Update README to refer to .env file"
+  acceptance_criteria:
+    - ".env.example contains at least three documented keys"
+  task_id: "CONFIG-001"
+  epic: "Foundational Hardening"
+
+- id: 411
+  title: "Implement pre-commit hooks"
+  description: "Run black, isort, and trailing newline check before commits."
+  component: "Repo"
+  dependencies: [405]
+  priority: 3
+  status: "pending"
+  area: "Automation"
+  actionable_steps:
+    - "Add pre-commit configuration with black/isort"
+    - "Document setup in CONTRIBUTING"
+  acceptance_criteria:
+    - "pre-commit passes locally and in CI"
+  task_id: "REPO-002"
+  epic: "Foundational Hardening"
+

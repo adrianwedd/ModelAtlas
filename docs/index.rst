@@ -22,4 +22,5 @@ documentation for details.
    OLLAMA_UI_DEMO
    PHASE_2_DESIGN
    VISUALIZATION_IDEAS
+   REPO_AUDIT
 
