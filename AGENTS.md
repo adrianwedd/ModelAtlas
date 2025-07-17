@@ -59,6 +59,10 @@ Examples:
 
 Run `make -C docs html` to generate the Sphinx site in `docs/build/html`.
 
+The Sphinx configuration uses `recommonmark` so Markdown files in `docs/` are
+included automatically. Add new docs as `.md` files and list them in
+`docs/index.rst`.
+
 ### Repository Hygiene
 
 The repository uses a comprehensive `.gitignore` based on common Python patterns.
