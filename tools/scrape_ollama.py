@@ -47,20 +47,6 @@ def fetch_manifest(model, tag="latest"):
         log_message(f"Error fetching manifest for {model}:{tag} from API: {e}", level="ERROR", phase="manifest_api")
         return None
 
-def decode_manifest_config(model_name, config_digest):
-    """
-    Fetches and decodes the config blob associated with a manifest digest.
-    """
-    url = f"https://registry.ollama.ai/v2/library/{model_name}/blobs/{config_digest}"
-    try:
-        log_message(f"Fetching config blob from: {url}", phase="config_blob_api")
-        resp = requests.get(url, timeout=30)
-        resp.raise_for_status()
-        return resp.json()
-    except requests.exceptions.RequestException as e:
-        log_message(f"Error fetching config blob for {model_name} with digest {config_digest}: {e}", level="ERROR", phase="config_blob_api")
-        return None
-
 def scrape_tags_page(page, model_name):
     """
     Scrapes the tags page for a given model to extract version information.
@@ -124,40 +110,31 @@ def scrape_tags_page(page, model_name):
             api_tag = tag_name.split(':')[-1] if ':' in tag_name else tag_name
 
             tag_entry = {
-                "tag": tag_name,
+                "name": tag_name,
                 "last_updated": last_updated,
                 "size": size.replace('•','').strip(),
                 "digest": digest,
-                "manifest": None,
-                "config": {} # Initialize config dictionary
+                "manifest": None
             }
 
             try:
                 manifest = fetch_manifest(model_name, api_tag)
                 if manifest:
                     tag_entry["manifest"] = manifest
-                    if manifest.get("config") and manifest["config"].get("digest"):
-                        tag_entry["digest"] = manifest["config"]["digest"]
-                        config_blob = decode_manifest_config(model_name, tag_entry["digest"])
-                        if config_blob:
-                            tag_entry["config"] = config_blob
-                            # Extract specific parameters from config_blob
-                            tag_entry["context_length"] = config_blob.get("parameters", {}).get("context_window")
-                            tag_entry["model_type"] = config_blob.get("model_type") # Assuming model_type might be directly in config
-                            tag_entry["quantization"] = config_blob.get("quantization") # Assuming quantization might be directly in config
-                            tag_entry["base_model"] = config_blob.get("base_model") # Assuming base_model might be directly in config
+                    if manifest.get("config"):
+                        tag_entry["digest"] = manifest.get("config", {}).get("digest")
 
-                    # Extract context_window and input_type from manifest layers (if still present/relevant)
+                    # Extract context_window and input_type from manifest layers
                     for layer in manifest.get("layers", []):
                         layer["mediaType"] = normalize_layer_media_type(layer["mediaType"])
                         if layer.get("annotations"):
-                            if "ollama.context_window" in layer["annotations"] and not tag_entry.get("context_length"):
-                                tag_entry["context_length"] = layer["annotations"]["ollama.context_window"]
-                            if "ollama.input_type" in layer["annotations"] and not tag_entry.get("model_type"):
-                                tag_entry["model_type"] = layer["annotations"]["ollama.input_type"]
+                            if "ollama.context_window" in layer["annotations"]:
+                                tag_entry["context_window"] = layer["annotations"]["ollama.context_window"]
+                            if "ollama.input_type" in layer["annotations"]:
+                                tag_entry["input_type"] = layer["annotations"]["ollama.input_type"]
 
             except Exception as e:
-                log_message(f"Error fetching manifest or decoding config for {api_tag}: {e}", level="ERROR")
+                log_message(f"Error fetching manifest for {api_tag}: {e}", level="ERROR")
 
             tags_data.append(tag_entry)
 
@@ -267,43 +244,241 @@ def enrich_model_data(detail):
 
     return detail
 
-def quality_score(model_data):
-    """
-    Calculates a completeness score for the model data.
-    """
-    fields = [
-        'name', 'description', 'license', 'pull_count', 'tags', 'readme_text',
-        'architecture', 'family', 'page_hash'
-    ]
-    filled = sum(1 for f in fields if model_data.get(f))
-    
-    # Check for presence of key fields within tags
-    if "tags" in model_data and isinstance(model_data["tags"], list):
-        for tag_entry in model_data["tags"]:
-            if tag_entry.get("tag") and tag_entry.get("digest") and tag_entry.get("size"):
-                filled += 1 # Count each tag with essential info as a filled field
-            if tag_entry.get("config") and tag_entry["config"].get("parameters"):
-                filled += 1 # Count if config parameters are present
-
-    total_possible = len(fields) + len(model_data.get("tags", [])) * 2 # Base fields + 2 per tag (tag_info + config_params)
-
-    completeness = round(filled / total_possible, 2) if total_possible > 0 else 0
-    return {
-        "fields_filled": filled,
-        "total_possible": total_possible,
-        "completeness": completeness
-    }
-
-def post_process_model_data(detail):
-    """
-    Performs any final post-processing on the model data before saving.
-    """
-    # Example: Add quality score
-    detail["quality_score"] = quality_score(detail)
     return detail
 
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
 
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
 
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
+
+def classify_with_llm(text):
+    """
+    Placeholder for LLM-based classification of text.
+    In a real scenario, this would call an LLM API to infer topics/capabilities.
+    """
+    # Simulate LLM output for demonstration
+    if "chat" in text.lower():
+        return ["chatbot", "conversational AI"]
+    elif "code" in text.lower():
+        return ["code generation", "programming"]
+    else:
+        return ["general purpose"]
+
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
+
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
+
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
+
+def classify_with_llm(text):
+    """
+    Placeholder for LLM-based classification of text.
+    In a real scenario, this would call an LLM API to infer topics/capabilities.
+    """
+    # Simulate LLM output for demonstration
+    if "chat" in text.lower():
+        return ["chatbot", "conversational AI"]
+    elif "code" in text.lower():
+        return ["code generation", "programming"]
+    else:
+        return ["general purpose"]
+
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
+
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
+
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
+
+LAYER_MEDIA_TYPE_MAP = {
+    "application/vnd.ollama.image.model": "Model Weights",
+    "application/vnd.ollama.image.license": "License",
+    "application/vnd.ollama.image.template": "Template",
+    "application/vnd.ollama.image.params": "Parameters",
+    # Add more mappings as needed
+}
+
+def normalize_layer_media_type(media_type_str):
+    """
+    Normalizes a layer media type string to a friendly label.
+    """
+    if not media_type_str:
+        return None
+    
+    return LAYER_MEDIA_TYPE_MAP.get(media_type_str, media_type_str)
+
+LICENSE_MAP = {
+    "mit": "MIT",
+    "apache-2.0": "Apache-2.0",
+    # Add more mappings as needed
+}
+
+def normalize_license(license_str):
+    """
+    Normalizes a license string to its SPDX ID.
+    """
+    if not license_str:
+        return None
+    
+    license_str = license_str.lower().strip()
+    return LICENSE_MAP.get(license_str, license_str) # Return the original string if no mapping is found
+
+def convert_size_to_gb(size_str):
+    """
+    Converts a size string (e.g., '3.8GB', '7.4MB') to gigabytes (float).
+    """
+    if not size_str:
+        return None
+
+    size_str = size_str.strip().upper()
+    num = float(re.findall(r'\d+\.?\d*', size_str)[0])
+
+    if "GB" in size_str:
+        return num
+    elif "MB" in size_str:
+        return num / 1024
+    elif "KB" in size_str:
+        return num / (1024 * 1024)
+    else:
+        return None
 
 
 
