@@ -110,4 +110,16 @@ Dashboard	AtlasView	Visual system overview
 
 ⸻
 
+## 🚀 Phase 2 Enhancements
+
+We are actively enhancing ModelAtlas with deeper insights and improved data quality. Key focus areas include:
+
+- **Manifest Enrichment**: Decoding model parameters (context window, quantization, model type) from manifest blobs.
+- **Human-Readable Tags**: Capturing clear, human-readable tag names (e.g., `8b-instruct`, `latest`) for better versioning.
+- **Data Quality Scoring**: Implementing a completeness score for each model to highlight data gaps and prioritize enrichment efforts.
+
+For a detailed breakdown of Phase 2 objectives and architecture, refer to [docs/PHASE_2_DESIGN.md](docs/PHASE_2_DESIGN.md).
+
+---
+
 Let’s map the modelscape.
