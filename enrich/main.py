@@ -10,10 +10,8 @@ from typing import Dict, List
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from trustforge import compute_score
 from atlas_schemas.models import Model
+from atlas_schemas.config import settings
 
-MODELS_DIR = "models"
-ENRICHED_OUTPUTS_DIR = "enriched_outputs"
-OUTPUT_FILE = "models_enriched.json"
 
 
 def load_base_model(path: str) -> Model:
@@ -23,8 +21,8 @@ def load_base_model(path: str) -> Model:
 
 
 def load_manual_enrichment(name: str) -> Dict:
-    enriched_path = os.path.join(ENRICHED_OUTPUTS_DIR, f"{name}_enriched.json")
-    if os.path.exists(enriched_path):
+    enriched_path = settings.ENRICHED_OUTPUTS_DIR / f"{name}_enriched.json"
+    if enriched_path.exists():
         try:
             with open(enriched_path, "r", encoding="utf-8") as f:
                 return json.load(f)
@@ -35,7 +33,7 @@ def load_manual_enrichment(name: str) -> Dict:
 
 def main() -> None:
     models: List[Model] = []
-    for path in glob.glob(os.path.join(MODELS_DIR, "*.json")):
+    for path in glob.glob(str(settings.MODELS_DIR / "*.json")):
         base = load_base_model(path)
         name_slug = base.name.replace("/", "_")
         enrichment = load_manual_enrichment(name_slug)
@@ -45,7 +43,7 @@ def main() -> None:
         updated_model.trust_score = compute_score(updated_model)
         models.append(updated_model)
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(settings.PROJECT_ROOT / settings.OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump([model.model_dump() for model in models], f, indent=2)
 
 
