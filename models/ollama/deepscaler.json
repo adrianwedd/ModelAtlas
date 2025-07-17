@@ -3,35 +3,322 @@
   "description": "A fine-tuned version of Deepseek-R1-Distilled-Qwen-1.5B that surpasses the performance of OpenAI\u2019s o1-preview with just 1.5B parameters on popular math evaluations.",
   "pull_count": 85700,
   "last_updated": "Feb 12, 2025 1:53 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<h1>DeepScaleR</h1>\n<p>\ud83d\ude80 Democratizing Reinforcement Learning for LLMs \ud83c\udf1f</p>\n<p>DeepScaleR-1.5B-Preview is a language model fine-tuned from DeepSeek-R1-Distilled-Qwen-1.5B using distributed reinforcement learning (RL) to scale up to long context lengths. The model achieves 43.1% Pass@1 accuracy on AIME 2024, representing a 15% improvement over the base model (28.8%) and surpassing OpenAI\u2019s O1-Preview performance with just 1.5B parameters.</p>\n<table>\n<thead>\n<tr>\n<th>Model</th>\n<th>AIME 2024</th>\n<th>MATH 500</th>\n<th>AMC 2023</th>\n<th>Minerva Math</th>\n<th>Olympiad Bench</th>\n<th>Avg.</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>DeepScaleR-1.5B-Preview</strong></td>\n<td><strong>43.1</strong></td>\n<td><strong>87.8</strong></td>\n<td><strong>73.6</strong></td>\n<td><strong>30.2</strong></td>\n<td><strong>50.0</strong></td>\n<td><strong>57.0</strong></td>\n</tr>\n<tr>\n<td>DeepSeek-R1-Distill-Qwen-1.5B</td>\n<td>28.8</td>\n<td>82.8</td>\n<td>62.9</td>\n<td>26.5</td>\n<td>43.3</td>\n<td>48.9</td>\n</tr>\n<tr>\n<td>O1-Preview</td>\n<td>40.0</td>\n<td>81.4</td>\n<td>-</td>\n<td>-</td>\n<td>-</td>\n<td>-</td>\n</tr>\n</tbody>\n</table>\n<p><img alt=\"image.png\" src=\"/assets/library/deepscaler/c8dcb4f4-481a-4fea-89a9-168cdd1f48fe\"/></p>\n<h3>Data</h3>\n<p>Our training dataset consists of approximately 40,000 unique problem-answer pairs compiled from:</p>\n<ul>\n<li>AIME problems (1984-2023)</li>\n<li>AMC problems (prior to 2023)</li>\n<li>Omni-MATH dataset</li>\n<li>Still dataset</li>\n</ul>\n<h3>Evaluation</h3>\n<p>We evaluate our model on competition-level mathematics benchmarks, including AIME 2024, AMC 2023, MATH-500, Minerva Math, and OlympiadBench. Below, Pass@1 accuracy is reported, averaged over 16 samples for each problem.</p>\n<table>\n<thead>\n<tr>\n<th><strong>Model</strong></th>\n<th><strong>AIME 2024</strong></th>\n<th><strong>MATH 500</strong></th>\n<th><strong>AMC 2023</strong></th>\n<th><strong>Minerva Math</strong></th>\n<th><strong>OlympiadBench</strong></th>\n<th><strong>Avg.</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Qwen-2.5-Math-7B-Instruct</td>\n<td>13.3</td>\n<td>79.8</td>\n<td>50.6</td>\n<td>34.6</td>\n<td>40.7</td>\n<td>43.8</td>\n</tr>\n<tr>\n<td>rStar-Math-7B</td>\n<td>26.7</td>\n<td>78.4</td>\n<td>47.5</td>\n<td>-</td>\n<td>47.1</td>\n<td>-</td>\n</tr>\n<tr>\n<td>Eurus-2-7B-PRIME</td>\n<td>26.7</td>\n<td>79.2</td>\n<td>57.8</td>\n<td>38.6</td>\n<td>42.1</td>\n<td>48.9</td>\n</tr>\n<tr>\n<td>Qwen2.5-7B-SimpleRL</td>\n<td>26.7</td>\n<td>82.4</td>\n<td>62.5</td>\n<td><strong>39.7</strong></td>\n<td>43.3</td>\n<td>50.9</td>\n</tr>\n<tr>\n<td>DeepSeek-R1-Distill-Qwen-1.5B</td>\n<td>28.8</td>\n<td>82.8</td>\n<td>62.9</td>\n<td>26.5</td>\n<td>43.3</td>\n<td>48.9</td>\n</tr>\n<tr>\n<td>Still-1.5B</td>\n<td>32.5</td>\n<td>84.4</td>\n<td>66.7</td>\n<td>29.0</td>\n<td>45.4</td>\n<td>51.6</td>\n</tr>\n<tr>\n<td><strong>DeepScaleR-1.5B-Preview</strong></td>\n<td><strong>43.1</strong></td>\n<td><strong>87.8</strong></td>\n<td><strong>73.6</strong></td>\n<td>30.2</td>\n<td><strong>50.0</strong></td>\n<td><strong>57.0</strong></td>\n</tr>\n<tr>\n<td>O1-Preview</td>\n<td>40.0</td>\n<td>81.4</td>\n<td>-</td>\n<td>-</td>\n<td>-</td>\n<td>-</td>\n</tr>\n</tbody>\n</table>\n<p>We compare DeepScaleR with the base DeepSeek model we use, as well as recent academic works exploring RL for reasoning tasks. DeepScaleR significantly outperforms the base model across all benchmarks, achieving a 14.4% absolute gain on AIME2024 and an 8.1% overall improvement. Additionally, DeepScaleR surpasses recent academic works such as rSTAR, Prime, and SimpleRL, which are finetuned from 7B models. DeepScaleR achieves O1-preview-level performance with only 1.5B parameters\u2014a remarkable efficiency gain.</p>\n<p><img alt=\"image.png\" src=\"/assets/library/deepscaler/afbe7f8e-04db-4350-ab39-352c023a6218\"/></p>\n<h2>References</h2>\n<p><a href=\"https://pretty-radio-b75.notion.site/DeepScaleR-Surpassing-O1-Preview-with-a-1-5B-Model-by-Scaling-RL-19681902c1468005bed8ca303013a4e2\" rel=\"nofollow\">Article</a></p>\n<p><a href=\"https://github.com/agentica-project/deepscaler\" rel=\"nofollow\">GitHub</a></p>\n<p><a href=\"https://huggingface.co/agentica-org/DeepScaleR-1.5B-Preview\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
   "page_hash": "fc41cb4871e5",
+  "readme_text": "\nDeepScaleR\n\ud83d\ude80 Democratizing Reinforcement Learning for LLMs \ud83c\udf1f\nDeepScaleR-1.5B-Preview is a language model fine-tuned from DeepSeek-R1-Distilled-Qwen-1.5B using distributed reinforcement learning (RL) to scale up to long context lengths. The model achieves 43.1% Pass@1 accuracy on AIME 2024, representing a 15% improvement over the base model (28.8%) and surpassing OpenAI\u2019s O1-Preview performance with just 1.5B parameters.\n\n\n\nModel\nAIME 2024\nMATH 500\nAMC 2023\nMinerva Math\nOlympiad Bench\nAvg.\n\n\n\n\nDeepScaleR-1.5B-Preview\n43.1\n87.8\n73.6\n30.2\n50.0\n57.0\n\n\nDeepSeek-R1-Distill-Qwen-1.5B\n28.8\n82.8\n62.9\n26.5\n43.3\n48.9\n\n\nO1-Preview\n40.0\n81.4\n-\n-\n-\n-\n\n\n\n\nData\nOur training dataset consists of approximately 40,000 unique problem-answer pairs compiled from:\n\nAIME problems (1984-2023)\nAMC problems (prior to 2023)\nOmni-MATH dataset\nStill dataset\n\nEvaluation\nWe evaluate our model on competition-level mathematics benchmarks, including AIME 2024, AMC 2023, MATH-500, Minerva Math, and OlympiadBench. Below, Pass@1 accuracy is reported, averaged over 16 samples for each problem.\n\n\n\nModel\nAIME 2024\nMATH 500\nAMC 2023\nMinerva Math\nOlympiadBench\nAvg.\n\n\n\n\nQwen-2.5-Math-7B-Instruct\n13.3\n79.8\n50.6\n34.6\n40.7\n43.8\n\n\nrStar-Math-7B\n26.7\n78.4\n47.5\n-\n47.1\n-\n\n\nEurus-2-7B-PRIME\n26.7\n79.2\n57.8\n38.6\n42.1\n48.9\n\n\nQwen2.5-7B-SimpleRL\n26.7\n82.4\n62.5\n39.7\n43.3\n50.9\n\n\nDeepSeek-R1-Distill-Qwen-1.5B\n28.8\n82.8\n62.9\n26.5\n43.3\n48.9\n\n\nStill-1.5B\n32.5\n84.4\n66.7\n29.0\n45.4\n51.6\n\n\nDeepScaleR-1.5B-Preview\n43.1\n87.8\n73.6\n30.2\n50.0\n57.0\n\n\nO1-Preview\n40.0\n81.4\n-\n-\n-\n-\n\n\n\nWe compare DeepScaleR with the base DeepSeek model we use, as well as recent academic works exploring RL for reasoning tasks. DeepScaleR significantly outperforms the base model across all benchmarks, achieving a 14.4% absolute gain on AIME2024 and an 8.1% overall improvement. Additionally, DeepScaleR surpasses recent academic works such as rSTAR, Prime, and SimpleRL, which are finetuned from 7B models. DeepScaleR achieves O1-preview-level performance with only 1.5B parameters\u2014a remarkable efficiency gain.\n\nReferences\nArticle\nGitHub\nHugging Face\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e",
-      "size": "3.32GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "deepscaler:latest",
+      "last_updated": "5 months ago",
+      "size": "3.6GB",
+      "digest": "sha256:c6145100d674420009c6d4223f31e7c9bf549eede1e5f822dd77a365a56d315e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c6145100d674420009c6d4223f31e7c9bf549eede1e5f822dd77a365a56d315e",
+          "size": 484
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e",
+            "size": 3560417376,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "size": 387
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "size": 1065
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7",
+            "size": 179
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "qwen2",
+        "model_families": [
+          "qwen2"
+        ],
+        "model_type": "1.8B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e",
+            "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "1.8B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "deepscaler:1.5b",
+      "last_updated": "5 months ago",
+      "size": "3.6GB",
+      "digest": "sha256:c6145100d674420009c6d4223f31e7c9bf549eede1e5f822dd77a365a56d315e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c6145100d674420009c6d4223f31e7c9bf549eede1e5f822dd77a365a56d315e",
+          "size": 484
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e",
+            "size": 3560417376,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "size": 387
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "size": 1065
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7",
+            "size": 179
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "qwen2",
+        "model_families": [
+          "qwen2"
+        ],
+        "model_type": "1.8B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e",
+            "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "1.8B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "deepscaler:1.5b-preview-q4_K_M",
+      "last_updated": "5 months ago",
+      "size": "1.1GB",
+      "digest": "sha256:d13f0f493ffb99b3e4aaf703d77dd38a9532d7f3785132ba95a3a3120f82fd60",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d13f0f493ffb99b3e4aaf703d77dd38a9532d7f3785132ba95a3a3120f82fd60",
+          "size": 487
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:34e322ab72fe639ea5e3a0c3641ab71b3bb8bb08291623a0dcb4413621dad448",
+            "size": 1117321824
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "size": 387
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "size": 1065
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7",
+            "size": 179
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "qwen2",
+        "model_families": [
+          "qwen2"
+        ],
+        "model_type": "1.8B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:34e322ab72fe639ea5e3a0c3641ab71b3bb8bb08291623a0dcb4413621dad448",
+            "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "1.8B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "deepscaler:1.5b-preview-q8_0",
+      "last_updated": "5 months ago",
+      "size": "1.9GB",
+      "digest": "sha256:5d1be9a1cff10c7c6a5760bfadb5ae2b61ab73b1e41c033a903fb34c02442442",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5d1be9a1cff10c7c6a5760bfadb5ae2b61ab73b1e41c033a903fb34c02442442",
+          "size": 485
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e8db93ab48a31404847a636f68e298de451b2fb5abb9a26e5d5bb89c06bd6e63",
+            "size": 1894533216
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "size": 387
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "size": 1065
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7",
+            "size": 179
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "qwen2",
+        "model_families": [
+          "qwen2"
+        ],
+        "model_type": "1.8B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e8db93ab48a31404847a636f68e298de451b2fb5abb9a26e5d5bb89c06bd6e63",
+            "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "1.8B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "deepscaler:1.5b-preview-fp16",
+      "last_updated": "5 months ago",
+      "size": "3.6GB",
+      "digest": "sha256:c6145100d674420009c6d4223f31e7c9bf549eede1e5f822dd77a365a56d315e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c6145100d674420009c6d4223f31e7c9bf549eede1e5f822dd77a365a56d315e",
+          "size": 484
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e",
+            "size": 3560417376,
+            "from": "/Users/administrator/.ollama/models/blobs/sha256-95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "size": 387
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "size": 1065
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7",
+            "size": 179
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "qwen2",
+        "model_families": [
+          "qwen2"
+        ],
+        "model_type": "1.8B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:95ff0bccfe6096c58d176bcbe8d0c87ccc4b517c0eade8acaa0797a9e441122e",
+            "sha256:369ca498f347f710d068cbb38bf0b8692dd3fa30f30ca2ff755e211c94768150",
+            "sha256:834c38322a8188108034b0016efc49312def909bc0ce7014c25f38357425d661",
+            "sha256:ed8474dc73db8ca0d85c1958c91c3a444e13a469c2efb10cd777ca9baeaddcb7"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "1.8B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "quality_score": {
+    "fields_filled": 11,
+    "total_possible": 19,
+    "completeness": 0.58
+  }
 }

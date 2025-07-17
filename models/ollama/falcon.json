@@ -2,30 +2,1815 @@
   "name": "falcon",
   "description": "A large language model built by the Technology Innovation Institute (TII) for use in summarization, text generation, and chat bots.",
   "license": "",
-  "pull_count": 78200,
+  "pull_count": 78600,
   "last_updated": "Oct 26, 2023 1:41 AM UTC",
-  "page_hash": "074f5f33533f",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img alt=\"Technology Innovation Institute Logo\" src=\"https://github.com/jmorganca/ollama/assets/251292/af914f26-9f0b-4e66-947a-33ae0d558ccf\" width=\"240\"/></p>\n<p>Falcon is a family of high-performing large language models model built by the Technology Innovation Institute (TII), a research center part of Abu Dhabi government\u2019s advanced technology research council overseeing technology research.</p>\n<h3>CLI</h3>\n<pre><code>ollama run falcon \"Why is the sky blue?\"\n</code></pre>\n<h3>API</h3>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"falcon\",\n  \"prompt\": \"Why is the sky blue?\"\n}'\n</code></pre>\n<h2>Parameter counts</h2>\n<table>\n<thead>\n<tr>\n<th>Parameter Count</th>\n<th>Recommended memory</th>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>7 billion</td>\n<td>8GB</td>\n<td><a href=\"/library/falcon:7b\" rel=\"nofollow\">View</a></td>\n<td><code>ollama run falcon:7b</code></td>\n</tr>\n<tr>\n<td>40 billion</td>\n<td>32GB</td>\n<td><a href=\"/library/falcon:40b\" rel=\"nofollow\">View</a></td>\n<td><code>ollama run falcon:40b</code></td>\n</tr>\n<tr>\n<td>180 billion</td>\n<td>192GB</td>\n<td><a href=\"/library/falcon:180b\" rel=\"nofollow\">View</a></td>\n<td><code>ollama run falcon:180b</code></td>\n</tr>\n</tbody>\n</table>\n<h2>Variations</h2>\n<table>\n<thead>\n<tr>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>chat</code></td>\n<td>Chat models are fine-tuned on chat and instruction datasets with a mix of several large-scale conversational datasets.</td>\n</tr>\n<tr>\n<td><code>instruct</code></td>\n<td>Instruct models follow instructions and are fine-tuned on the <a href=\"https://www.google.com/search?q=baize+dataset&amp;oq=baize+data&amp;aqs=chrome.0.0i512j69i57j0i10i15i22i30i625j0i390i650.1387j0j7&amp;sourceid=chrome&amp;ie=UTF-8\" rel=\"nofollow\">baize</a> instructional dataset.</td>\n</tr>\n<tr>\n<td><code>text</code></td>\n<td>Text models are the base foundation model without any fine-tuning for conversations, and are best used for simple text completion.</td>\n</tr>\n</tbody>\n</table>\n<h2>Falcon 180B</h2>\n<p>As of September 2023, the 180 billion parameter model, Falcon 180B, is the best-performing openly released LLM. It sits somewhere in between OpenAI\u2019s GPT 3.5 and GPT 4. For running Falcon 180B, a powerful system is recommended with at least 192GB of total memory.</p>\n<blockquote>\n<p>Note: Falcon 180B is released under a different license than its smaller siblings that restricts commercial use under certain conditions. See the <a href=\"/library/falcon:180b\" rel=\"nofollow\">model details</a> and license for more information.</p>\n</blockquote>\n<h2>More information</h2>\n<ul>\n<li><a href=\"https://www.tii.ae/\" rel=\"nofollow\">TII\u2019s website</a></li>\n<li><a href=\"https://falconllm.tii.ae\" rel=\"nofollow\">Falcon 180B announcement</a></li>\n<li><a href=\"https://huggingface.co/tiiuae\" rel=\"nofollow\">TII on HuggingFace</a></li>\n</ul>\n</div>",
+  "page_hash": "7ae39915fce4",
+  "readme_text": "\n\nFalcon is a family of high-performing large language models model built by the Technology Innovation Institute (TII), a research center part of Abu Dhabi government\u2019s advanced technology research council overseeing technology research.\nCLI\nollama run falcon \"Why is the sky blue?\"\n\nAPI\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"falcon\",\n  \"prompt\": \"Why is the sky blue?\"\n}'\n\nParameter counts\n\n\n\nParameter Count\nRecommended memory\n\n\n\n\n\n\n7 billion\n8GB\nView\nollama run falcon:7b\n\n\n40 billion\n32GB\nView\nollama run falcon:40b\n\n\n180 billion\n192GB\nView\nollama run falcon:180b\n\n\n\nVariations\n\n\n\n\n\n\n\n\n\nchat\nChat models are fine-tuned on chat and instruction datasets with a mix of several large-scale conversational datasets.\n\n\ninstruct\nInstruct models follow instructions and are fine-tuned on the baize instructional dataset.\n\n\ntext\nText models are the base foundation model without any fine-tuning for conversations, and are best used for simple text completion.\n\n\n\nFalcon 180B\nAs of September 2023, the 180 billion parameter model, Falcon 180B, is the best-performing openly released LLM. It sits somewhere in between OpenAI\u2019s GPT 3.5 and GPT 4. For running Falcon 180B, a powerful system is recommended with at least 192GB of total memory.\n\nNote: Falcon 180B is released under a different license than its smaller siblings that restricts commercial use under certain conditions. See the model details and license for more information.\n\nMore information\n\nTII\u2019s website\nFalcon 180B announcement\nTII on HuggingFace\n\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
-      "size": "3.92GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "falcon:latest",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "size": 4210994112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "falcon:instruct",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "size": 4210994112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "falcon:text",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:c5c005f2f99a7e2d5743f1065229260910c1c90764e9e21078303e2946c6032d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c5c005f2f99a7e2d5743f1065229260910c1c90764e9e21078303e2946c6032d",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1e409da23cf9cf05c8a46572ce765ef703cbbc0367f744f291df6a4219948efc",
+            "size": 4210994112
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1e409da23cf9cf05c8a46572ce765ef703cbbc0367f744f291df6a4219948efc"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "size": 4210994112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:af28e61681a803f8461219a5453f4ccd9b81cf6f337e3f1f2cf2784a6eb58f84",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:af28e61681a803f8461219a5453f4ccd9b81cf6f337e3f1f2cf2784a6eb58f84",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5b2b5f73b685e98b4a1cc826515b1463cf6d3e2e757d454a13d348aad2dd0757",
+            "size": 23808462560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5b2b5f73b685e98b4a1cc826515b1463cf6d3e2e757d454a13d348aad2dd0757",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:180b",
+      "last_updated": "1 year ago",
+      "size": "101GB",
+      "digest": "sha256:6006e8df6626619c5adf20319df3f60379cc35659b31b010957c6f109e2add2b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6006e8df6626619c5adf20319df3f60379cc35659b31b010957c6f109e2add2b",
+          "size": 458
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2627e73917e51a91602b9e219f96e0b48a2809fb8db049651a4aaca2d4199f1a",
+            "size": 101483201440
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "size": 15604
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "180B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2627e73917e51a91602b9e219f96e0b48a2809fb8db049651a4aaca2d4199f1a",
+            "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "180B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-instruct",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "size": 4210994112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-instruct-q4_0",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9ce7398869ade83f78efebc4912b2aaff51fdd1fc3f21c978e5948c6a2e5e9a0",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "size": 4210994112
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:305c4103a989d3f8ac457f912af30f32693f20dcffe1495e18c2ed7b5596b2d1",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-instruct-q4_1",
+      "last_updated": "1 year ago",
+      "size": "4.6GB",
+      "digest": "sha256:aeec0be415957cca2649538f15f32cd5034ca036a3e66af4c580385b453af59e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:aeec0be415957cca2649538f15f32cd5034ca036a3e66af4c580385b453af59e",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:9edb55e62542cc74f299993138dc290d11bbfe1b3fe3cb2c81d078e93b849db7",
+            "size": 4643582912
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:9edb55e62542cc74f299993138dc290d11bbfe1b3fe3cb2c81d078e93b849db7",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-instruct-q5_0",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "sha256:96ae673b0618add1fff73a991eb92634c01424c850e78e80cf58bd263ff11558",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:96ae673b0618add1fff73a991eb92634c01424c850e78e80cf58bd263ff11558",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:15b380f77cfcbf6038b71eb867ba27059af399e1e053bde816effd29ac5c8b05",
+            "size": 5076171712
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:15b380f77cfcbf6038b71eb867ba27059af399e1e053bde816effd29ac5c8b05",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-instruct-q5_1",
+      "last_updated": "1 year ago",
+      "size": "5.5GB",
+      "digest": "sha256:f2480843dbb96c643630103f3c87485228a8201c9845bb518726fc46f886689f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f2480843dbb96c643630103f3c87485228a8201c9845bb518726fc46f886689f",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fe023a5c525d26c8b7af3bed69b455dd3c006febe64838481928fe2421aeaa57",
+            "size": 5508760512
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fe023a5c525d26c8b7af3bed69b455dd3c006febe64838481928fe2421aeaa57",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-instruct-q8_0",
+      "last_updated": "1 year ago",
+      "size": "7.7GB",
+      "digest": "sha256:153a86708f70ed4f05377f903f9faf1b291727da90fa40b19b18d3fa97521ffd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:153a86708f70ed4f05377f903f9faf1b291727da90fa40b19b18d3fa97521ffd",
+          "size": 382
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:63fe8b6e7e6261087a7ec9d30aa0246dff8666ad7f252dc1cadd54c614930f76",
+            "size": 7671704512
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q8_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:63fe8b6e7e6261087a7ec9d30aa0246dff8666ad7f252dc1cadd54c614930f76",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-instruct-fp16",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:3a86b4f5f0a087f8c939ec242b44ee9b0d37855b1e8e5612368953c10ff6f5a1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3a86b4f5f0a087f8c939ec242b44ee9b0d37855b1e8e5612368953c10ff6f5a1",
+          "size": 381
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:eb265b16bf1ced4d89e35b5d6d77f0efd229a01760e3c74f0fb90d37d53f2315",
+            "size": 14437538688
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:eb265b16bf1ced4d89e35b5d6d77f0efd229a01760e3c74f0fb90d37d53f2315",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-text",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:c5c005f2f99a7e2d5743f1065229260910c1c90764e9e21078303e2946c6032d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c5c005f2f99a7e2d5743f1065229260910c1c90764e9e21078303e2946c6032d",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1e409da23cf9cf05c8a46572ce765ef703cbbc0367f744f291df6a4219948efc",
+            "size": 4210994112
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1e409da23cf9cf05c8a46572ce765ef703cbbc0367f744f291df6a4219948efc"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-text-q4_0",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "sha256:c5c005f2f99a7e2d5743f1065229260910c1c90764e9e21078303e2946c6032d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c5c005f2f99a7e2d5743f1065229260910c1c90764e9e21078303e2946c6032d",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1e409da23cf9cf05c8a46572ce765ef703cbbc0367f744f291df6a4219948efc",
+            "size": 4210994112
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1e409da23cf9cf05c8a46572ce765ef703cbbc0367f744f291df6a4219948efc"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-text-q4_1",
+      "last_updated": "1 year ago",
+      "size": "4.6GB",
+      "digest": "sha256:91144b8c68800a7d9d05f1774b66b5f84dcf99913e1296e6d73a6c2ad4532dec",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:91144b8c68800a7d9d05f1774b66b5f84dcf99913e1296e6d73a6c2ad4532dec",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b1b4f1ee429870fb86c04a24e59bd05637c72e5c6ea16c4fab009648f625871a",
+            "size": 4643582912
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:b1b4f1ee429870fb86c04a24e59bd05637c72e5c6ea16c4fab009648f625871a"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-text-q5_0",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "sha256:fe408d7db756f49f167dd9b7da473752567f900add9172e3dfde493125fafa68",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fe408d7db756f49f167dd9b7da473752567f900add9172e3dfde493125fafa68",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:97b9f9fc236075382afe304bd56ea917a1e9e0bb7d071f337b2c803924a8eaf4",
+            "size": 5076171712
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:97b9f9fc236075382afe304bd56ea917a1e9e0bb7d071f337b2c803924a8eaf4"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-text-q5_1",
+      "last_updated": "1 year ago",
+      "size": "5.5GB",
+      "digest": "sha256:35660acff814289c6dc2408a3918e42e921d62701ca7a1b2df5a4b3764123e70",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:35660acff814289c6dc2408a3918e42e921d62701ca7a1b2df5a4b3764123e70",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:100277a75181b1b21bca0deb57bf59386f86823454d03f6726d537a25b269856",
+            "size": 5508760512
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:100277a75181b1b21bca0deb57bf59386f86823454d03f6726d537a25b269856"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-text-q8_0",
+      "last_updated": "1 year ago",
+      "size": "7.7GB",
+      "digest": "sha256:e8ae1c3163612a4ffb1906078cf75433dc4182c2cf801a5f51fd4078527538b3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e8ae1c3163612a4ffb1906078cf75433dc4182c2cf801a5f51fd4078527538b3",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:db3e97c8035eaccc7b2aafa71403f80f9ce90a2eecdfd509eacdf5c2b309b01d",
+            "size": 7671704512
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "Q8_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:db3e97c8035eaccc7b2aafa71403f80f9ce90a2eecdfd509eacdf5c2b309b01d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:7b-text-fp16",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:3bdb035f451dd45c176d136fcf56b5f6a6fa1820718c5da8af9ec89b72a6965e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3bdb035f451dd45c176d136fcf56b5f6a6fa1820718c5da8af9ec89b72a6965e",
+          "size": 233
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:306448246940316bd676f9d451cdfaa12a3181ec867a3ae3cd364dc0a78c53e5",
+            "size": 14437538688
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "7B",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:306448246940316bd676f9d451cdfaa12a3181ec867a3ae3cd364dc0a78c53e5"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-instruct",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:af28e61681a803f8461219a5453f4ccd9b81cf6f337e3f1f2cf2784a6eb58f84",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:af28e61681a803f8461219a5453f4ccd9b81cf6f337e3f1f2cf2784a6eb58f84",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5b2b5f73b685e98b4a1cc826515b1463cf6d3e2e757d454a13d348aad2dd0757",
+            "size": 23808462560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5b2b5f73b685e98b4a1cc826515b1463cf6d3e2e757d454a13d348aad2dd0757",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-instruct-q4_0",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:af28e61681a803f8461219a5453f4ccd9b81cf6f337e3f1f2cf2784a6eb58f84",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:af28e61681a803f8461219a5453f4ccd9b81cf6f337e3f1f2cf2784a6eb58f84",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5b2b5f73b685e98b4a1cc826515b1463cf6d3e2e757d454a13d348aad2dd0757",
+            "size": 23808462560
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5b2b5f73b685e98b4a1cc826515b1463cf6d3e2e757d454a13d348aad2dd0757",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-instruct-q4_1",
+      "last_updated": "1 year ago",
+      "size": "26GB",
+      "digest": "sha256:4148eb481781e7c34cc6b63e2c1e2a87dad913d5d4c5f189c42e82cf609aa9f4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4148eb481781e7c34cc6b63e2c1e2a87dad913d5d4c5f189c42e82cf609aa9f4",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:7c21d66655911820137c51835d246a41c9c39190553bfafff27318d526107378",
+            "size": 26389794528
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:7c21d66655911820137c51835d246a41c9c39190553bfafff27318d526107378",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-instruct-q5_0",
+      "last_updated": "1 year ago",
+      "size": "29GB",
+      "digest": "sha256:15e6e5e7005c36a6d1b7b65717bc408dfc19f7a38b052eb0cb6f8b8e0ee61f7a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:15e6e5e7005c36a6d1b7b65717bc408dfc19f7a38b052eb0cb6f8b8e0ee61f7a",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0ab046cca82bd42ac4079fa8375552d22846ee48a1dc697739a0902077209854",
+            "size": 28971126496
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0ab046cca82bd42ac4079fa8375552d22846ee48a1dc697739a0902077209854",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-instruct-q5_1",
+      "last_updated": "1 year ago",
+      "size": "32GB",
+      "digest": "sha256:84904939e782ec91ed8ffe58538bc0f402bd07d16e9d63d029062e17f79af1e8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:84904939e782ec91ed8ffe58538bc0f402bd07d16e9d63d029062e17f79af1e8",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:10689603e108caa865330a8780ce8f014299ba23b73754d944186d4e20ee4828",
+            "size": 31552458464
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:10689603e108caa865330a8780ce8f014299ba23b73754d944186d4e20ee4828",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-instruct-q8_0",
+      "last_updated": "1 year ago",
+      "size": "44GB",
+      "digest": "sha256:cf5a5e997e8fcebc96d703b41a409bc7317b34dbed892616952a1006918efa4b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:cf5a5e997e8fcebc96d703b41a409bc7317b34dbed892616952a1006918efa4b",
+          "size": 383
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:779720a0923fa09b65332bd735d5ca591e8b2eadbc415b314cf8bce3287d98a2",
+            "size": 44459118304
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q8_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:779720a0923fa09b65332bd735d5ca591e8b2eadbc415b314cf8bce3287d98a2",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-instruct-fp16",
+      "last_updated": "1 year ago",
+      "size": "84GB",
+      "digest": "sha256:2591440b7b00003f8c8849a89a9f9b501f6d60b5193b38d664db167d3d05407d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2591440b7b00003f8c8849a89a9f9b501f6d60b5193b38d664db167d3d05407d",
+          "size": 307
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cfdd0494ed3d0831b5c9db1b7a188a6d3ea9e520450b67de67790c1ea37489f6",
+            "size": 83678427328
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:d5311aab7c4cecbb387fbb06dce34b395b87096b7e5e95b734a0c3149c8857fe",
+            "size": 84
+          }
+        ]
+      },
+      "config": {
+        "model_family": "falcon",
+        "model_type": "7B",
+        "model_format": "gguf",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cfdd0494ed3d0831b5c9db1b7a188a6d3ea9e520450b67de67790c1ea37489f6",
+            "sha256:d5311aab7c4cecbb387fbb06dce34b395b87096b7e5e95b734a0c3149c8857fe"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-text",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:f4e6fa0a2cfa73c8d8e88fc3eddb09f4b8a5664de04fc45b4562c12816bafbb4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f4e6fa0a2cfa73c8d8e88fc3eddb09f4b8a5664de04fc45b4562c12816bafbb4",
+          "size": 235
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d6284dcb0687a9021155f8574783363b249cad32d1f9aaaf8703e57abd9ac01e",
+            "size": 23808462560
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d6284dcb0687a9021155f8574783363b249cad32d1f9aaaf8703e57abd9ac01e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-text-q4_0",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:f4e6fa0a2cfa73c8d8e88fc3eddb09f4b8a5664de04fc45b4562c12816bafbb4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f4e6fa0a2cfa73c8d8e88fc3eddb09f4b8a5664de04fc45b4562c12816bafbb4",
+          "size": 235
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d6284dcb0687a9021155f8574783363b249cad32d1f9aaaf8703e57abd9ac01e",
+            "size": 23808462560
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d6284dcb0687a9021155f8574783363b249cad32d1f9aaaf8703e57abd9ac01e"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-text-q4_1",
+      "last_updated": "1 year ago",
+      "size": "26GB",
+      "digest": "sha256:3c4c48926903e895deeaeeede424b0f718c9801216057394498a6369ec28c642",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:3c4c48926903e895deeaeeede424b0f718c9801216057394498a6369ec28c642",
+          "size": 235
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4be4ab0a4c523480e5030cda76254d450532f7c524bf5191fe4fe80cf3106117",
+            "size": 26389794528
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q4_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4be4ab0a4c523480e5030cda76254d450532f7c524bf5191fe4fe80cf3106117"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-text-q5_0",
+      "last_updated": "1 year ago",
+      "size": "29GB",
+      "digest": "sha256:9e0304f19f8ee3ee5fd06fe38db154cd38041734404464b73c83f316d9180fd8",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9e0304f19f8ee3ee5fd06fe38db154cd38041734404464b73c83f316d9180fd8",
+          "size": 235
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e5a03b4df2bc01dca1303407a9ff19e545e51fef379246b244844a23ecc1f222",
+            "size": 28971126496
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q5_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e5a03b4df2bc01dca1303407a9ff19e545e51fef379246b244844a23ecc1f222"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-text-q5_1",
+      "last_updated": "1 year ago",
+      "size": "32GB",
+      "digest": "sha256:36844a447037c961a842d3b0a9ae9bd88967689fd67d8af50253adb68a4ad151",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:36844a447037c961a842d3b0a9ae9bd88967689fd67d8af50253adb68a4ad151",
+          "size": 235
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a2cc6e770538cd9e9fbecab4c192fde3171e56fe7212d84c073ac9ff32f87574",
+            "size": 31552458464
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "Q5_1",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a2cc6e770538cd9e9fbecab4c192fde3171e56fe7212d84c073ac9ff32f87574"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-text-q8_0",
+      "last_updated": "1 year ago",
+      "size": "44GB",
+      "digest": "sha256:d44ccf00b94ba8e8525e273a2f36791239bf6b47c2702d071d9f098d5bd65580",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d44ccf00b94ba8e8525e273a2f36791239bf6b47c2702d071d9f098d5bd65580",
+          "size": 233
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d763515626e50fd5c88b5059c94b489ab05309a9367da599f826e9354ee04427",
+            "size": 44459063552
+          }
+        ]
+      },
+      "config": {
+        "model_family": "falcon",
+        "model_type": "7B",
+        "model_format": "gguf",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d763515626e50fd5c88b5059c94b489ab05309a9367da599f826e9354ee04427"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:40b-text-fp16",
+      "last_updated": "1 year ago",
+      "size": "84GB",
+      "digest": "sha256:4c347dee89a382dcbc218730e5cbc64ada75a0a56479e009a83ca65607dcffe5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:4c347dee89a382dcbc218730e5cbc64ada75a0a56479e009a83ca65607dcffe5",
+          "size": 234
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2b75797cb7f50d2f1f578768cf0d1e9a75c1ca551eb22e7df2fd10a9f6af601f",
+            "size": 83678482112
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "40B",
+        "file_type": "F16",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2b75797cb7f50d2f1f578768cf0d1e9a75c1ca551eb22e7df2fd10a9f6af601f"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "40B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:180b-chat",
+      "last_updated": "1 year ago",
+      "size": "101GB",
+      "digest": "sha256:6006e8df6626619c5adf20319df3f60379cc35659b31b010957c6f109e2add2b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6006e8df6626619c5adf20319df3f60379cc35659b31b010957c6f109e2add2b",
+          "size": 458
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2627e73917e51a91602b9e219f96e0b48a2809fb8db049651a4aaca2d4199f1a",
+            "size": 101483201440
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "size": 15604
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "180B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2627e73917e51a91602b9e219f96e0b48a2809fb8db049651a4aaca2d4199f1a",
+            "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "180B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:180b-chat-q4_0",
+      "last_updated": "1 year ago",
+      "size": "101GB",
+      "digest": "sha256:6006e8df6626619c5adf20319df3f60379cc35659b31b010957c6f109e2add2b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6006e8df6626619c5adf20319df3f60379cc35659b31b010957c6f109e2add2b",
+          "size": 458
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2627e73917e51a91602b9e219f96e0b48a2809fb8db049651a4aaca2d4199f1a",
+            "size": 101483201440
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "size": 15604
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "size": 45
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d",
+            "size": 31
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "180B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2627e73917e51a91602b9e219f96e0b48a2809fb8db049651a4aaca2d4199f1a",
+            "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "sha256:4dec76bb1a4744ce1355e7d72a5362e1113eab96a55be46753a2320b7b12c60f",
+            "sha256:0644cce03f93ee11a936926c2f71a7f3998c94308002eb04c410228dba12636d"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "180B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:180b-text",
+      "last_updated": "1 year ago",
+      "size": "101GB",
+      "digest": "sha256:a7424da31c4f31cd545d24e3c2b9e94bc2d448393c3ff84ac3e691306cfb61de",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a7424da31c4f31cd545d24e3c2b9e94bc2d448393c3ff84ac3e691306cfb61de",
+          "size": 310
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fcdc1ef247baafe5eb89f9415508a715d82c251731f2ab278c2399281d97b358",
+            "size": 101483201440
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "size": 15604
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "180B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fcdc1ef247baafe5eb89f9415508a715d82c251731f2ab278c2399281d97b358",
+            "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "180B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "falcon:180b-text-q4_0",
+      "last_updated": "1 year ago",
+      "size": "101GB",
+      "digest": "sha256:a7424da31c4f31cd545d24e3c2b9e94bc2d448393c3ff84ac3e691306cfb61de",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a7424da31c4f31cd545d24e3c2b9e94bc2d448393c3ff84ac3e691306cfb61de",
+          "size": 310
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fcdc1ef247baafe5eb89f9415508a715d82c251731f2ab278c2399281d97b358",
+            "size": 101483201440
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896",
+            "size": 15604
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "falcon",
+        "model_type": "180B",
+        "file_type": "Q4_0",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fcdc1ef247baafe5eb89f9415508a715d82c251731f2ab278c2399281d97b358",
+            "sha256:8e8cf4b25d4757107beb3e252ac384a161c171998171b9f6d911abe77af8e896"
+          ]
+        },
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "context_length": null,
+      "model_type": "180B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "chat"
+  },
+  "quality_score": {
+    "fields_filled": 44,
+    "total_possible": 85,
+    "completeness": 0.52
+  }
 }

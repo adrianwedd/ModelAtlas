@@ -3,42 +3,1154 @@
   "description": "Llama-3.1-Nemotron-70B-Instruct is a large language model customized by NVIDIA to improve the helpfulness of LLM generated responses to user queries.",
   "pull_count": 82700,
   "last_updated": "Oct 16, 2024 11:10 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://ollama.com/assets/library/nemotron-mini/4e0ea563-a507-45e7-ad0b-b083918ec11b\" width=\"320\"/></p>\n<p>Llama-3.1-Nemotron-70B-Instruct is a large language model customized by NVIDIA to improve the helpfulness of LLM generated responses to user queries.</p>\n<p>This model was trained using RLHF (specifically, REINFORCE), <a href=\"https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Reward\" rel=\"nofollow\">Llama-3.1-Nemotron-70B-Reward</a> and <a href=\"https://huggingface.co/datasets/nvidia/HelpSteer2\" rel=\"nofollow\">HelpSteer2-Preference prompts</a> on a <a href=\"https://ai.meta.com/blog/meta-llama-3-1/\" rel=\"nofollow\">Llama-3.1-70B-Instruct</a> model as the initial policy.</p>\n<pre><code>$ ollama run nemotron\n&gt;&gt;&gt; How many r in strawberry?\nA sweet question!\n\nLet's count the \"R\"s in \"strawberry\":\n\n1. S\n2. T\n3. R\n4. A\n5. W\n6. B\n7. E\n8. R\n9. R\n10. Y\n\nThere are **3** \"R\"s in the word \"strawberry\".\n</code></pre>\n<h2>Reference</h2>\n<p><a href=\"https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
   "page_hash": "a6c8927ca083",
+  "readme_text": "\n\nLlama-3.1-Nemotron-70B-Instruct is a large language model customized by NVIDIA to improve the helpfulness of LLM generated responses to user queries.\nThis model was trained using RLHF (specifically, REINFORCE), Llama-3.1-Nemotron-70B-Reward and HelpSteer2-Preference prompts on a Llama-3.1-70B-Instruct model as the initial policy.\n$ ollama run nemotron\n>>> How many r in strawberry?\nA sweet question!\n\nLet's count the \"R\"s in \"strawberry\":\n\n1. S\n2. T\n3. R\n4. A\n5. W\n6. B\n7. E\n8. R\n9. R\n10. Y\n\nThere are **3** \"R\"s in the word \"strawberry\".\n\nReference\nHugging Face\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:c147388e99312d168a2c5a75d2048cd7654828c0bb9ed5f0ad1735c655aa5b45",
-      "size": "39.6GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "nemotron:latest",
+      "last_updated": "9 months ago",
+      "size": "43GB",
+      "digest": "sha256:2b4e98e1c22e252beb0c43e8a7075a2f6c04270b848044a2e96049fd3fe8bd8a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2b4e98e1c22e252beb0c43e8a7075a2f6c04270b848044a2e96049fd3fe8bd8a",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c147388e99312d168a2c5a75d2048cd7654828c0bb9ed5f0ad1735c655aa5b45",
+            "size": 42520398432
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c147388e99312d168a2c5a75d2048cd7654828c0bb9ed5f0ad1735c655aa5b45",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "nemotron:70b",
+      "last_updated": "9 months ago",
+      "size": "43GB",
+      "digest": "sha256:2b4e98e1c22e252beb0c43e8a7075a2f6c04270b848044a2e96049fd3fe8bd8a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2b4e98e1c22e252beb0c43e8a7075a2f6c04270b848044a2e96049fd3fe8bd8a",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c147388e99312d168a2c5a75d2048cd7654828c0bb9ed5f0ad1735c655aa5b45",
+            "size": 42520398432
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c147388e99312d168a2c5a75d2048cd7654828c0bb9ed5f0ad1735c655aa5b45",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "nemotron:70b-instruct-q2_K",
+      "last_updated": "9 months ago",
+      "size": "26GB",
+      "digest": "sha256:53bfb60bf1ba81e4b9621236e911ae24303cfe848c9d6cd46af0c76f31188dee",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:53bfb60bf1ba81e4b9621236e911ae24303cfe848c9d6cd46af0c76f31188dee",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ee07c8cfcf6ca030fe97bdce1b5b1299021b12e60aa77ace86010bf940fb7e52",
+            "size": 26375113312
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ee07c8cfcf6ca030fe97bdce1b5b1299021b12e60aa77ace86010bf940fb7e52",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "nemotron:70b-instruct-q3_K_S",
+      "last_updated": "9 months ago",
+      "size": "31GB",
+      "digest": "sha256:9474c2ea90812d75cfeee6736d0fc1fdebf63100657657be54e38641fc68a950",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9474c2ea90812d75cfeee6736d0fc1fdebf63100657657be54e38641fc68a950",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4e1f4ac8f842360579f9b26ff7c87f04207aa2e23c8ba1944efd5beca4842dde",
+            "size": 30912055904
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4e1f4ac8f842360579f9b26ff7c87f04207aa2e23c8ba1944efd5beca4842dde",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "nemotron:70b-instruct-q3_K_M",
+      "last_updated": "9 months ago",
+      "size": "34GB",
+      "digest": "sha256:305366b1ead7e2bd179f177270117debba9a0bfec15e7eeae1ee7809924796e5",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:305366b1ead7e2bd179f177270117debba9a0bfec15e7eeae1ee7809924796e5",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d9090d1cad2144ba4fca283ad83dcd71e16bd8cfb24af31e0d8f4f7d8ac24944",
+            "size": 34267499104
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d9090d1cad2144ba4fca283ad83dcd71e16bd8cfb24af31e0d8f4f7d8ac24944",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q3_K_L",
+      "last_updated": "9 months ago",
+      "size": "37GB",
+      "digest": "sha256:ff90aa139f73cb0bba6608bce69cc1f391cd9a183b24dc3e38cf8af55b2e76a9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ff90aa139f73cb0bba6608bce69cc1f391cd9a183b24dc3e38cf8af55b2e76a9",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e0c4183badeb34178fc66ab04ed02ea1b95435d25c791bbe3c40e65d86003564",
+            "size": 37140597344
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e0c4183badeb34178fc66ab04ed02ea1b95435d25c791bbe3c40e65d86003564",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q4_0",
+      "last_updated": "9 months ago",
+      "size": "40GB",
+      "digest": "sha256:c60aabde3f5362a52c7af5ae42d8fc6bdd8e5c085945580ac22aad189e4539d7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c60aabde3f5362a52c7af5ae42d8fc6bdd8e5c085945580ac22aad189e4539d7",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:65b1028bc3eb97716864c2c8cab0d547bae602a30df5ef218373d47d87d97aed",
+            "size": 39969737312
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:65b1028bc3eb97716864c2c8cab0d547bae602a30df5ef218373d47d87d97aed",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q4_1",
+      "last_updated": "9 months ago",
+      "size": "44GB",
+      "digest": "sha256:5e017c375098e9814079cee8bd6a671347cf6c9dcfc2c3d5d72b34cee8bd9f7e",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5e017c375098e9814079cee8bd6a671347cf6c9dcfc2c3d5d72b34cee8bd9f7e",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:30caf1d06b79fdbec659c8b4ebf0bccfc2c239cdfc8b8b66d01d6dc79be82d31",
+            "size": 44313594464
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:30caf1d06b79fdbec659c8b4ebf0bccfc2c239cdfc8b8b66d01d6dc79be82d31",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q4_K_S",
+      "last_updated": "9 months ago",
+      "size": "40GB",
+      "digest": "sha256:e21ba7804ef8e0f64cad40c03819ab726b7adfc6c41b72f30f4b5e7123dbb29a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e21ba7804ef8e0f64cad40c03819ab726b7adfc6c41b72f30f4b5e7123dbb29a",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4eeb2ea3ecf53c0205c0b5c8c12b60d4e1e36072f6ecf6b1158c21ede10ed545",
+            "size": 40347224672
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4eeb2ea3ecf53c0205c0b5c8c12b60d4e1e36072f6ecf6b1158c21ede10ed545",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q4_K_M",
+      "last_updated": "9 months ago",
+      "size": "43GB",
+      "digest": "sha256:2b4e98e1c22e252beb0c43e8a7075a2f6c04270b848044a2e96049fd3fe8bd8a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2b4e98e1c22e252beb0c43e8a7075a2f6c04270b848044a2e96049fd3fe8bd8a",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c147388e99312d168a2c5a75d2048cd7654828c0bb9ed5f0ad1735c655aa5b45",
+            "size": 42520398432
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c147388e99312d168a2c5a75d2048cd7654828c0bb9ed5f0ad1735c655aa5b45",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q5_0",
+      "last_updated": "9 months ago",
+      "size": "49GB",
+      "digest": "sha256:88a3304cf9a548505ddaac9da80d36885816bb005a29c3257ceccafbe6d34ae9",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:88a3304cf9a548505ddaac9da80d36885816bb005a29c3257ceccafbe6d34ae9",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3061862f5d9401e8c08337db420c0f1bf71c225bbd1a3df94189333f45da93e5",
+            "size": 48657451616
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3061862f5d9401e8c08337db420c0f1bf71c225bbd1a3df94189333f45da93e5",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q5_1",
+      "last_updated": "9 months ago",
+      "size": "53GB",
+      "digest": "sha256:1764e1fedf9152d7d1c9f6470e02d23b1dacf25109d855a44401537731136056",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1764e1fedf9152d7d1c9f6470e02d23b1dacf25109d855a44401537731136056",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e6e491dc708662782ed0e585ec3f8e7ff151f66b64d73247643600be997c93cd",
+            "size": 53001308768
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e6e491dc708662782ed0e585ec3f8e7ff151f66b64d73247643600be997c93cd",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q5_K_S",
+      "last_updated": "9 months ago",
+      "size": "49GB",
+      "digest": "sha256:25482f89c0607b363e7fe3b9e1b79eefe5df00ae0346bcae81d497680d259d54",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:25482f89c0607b363e7fe3b9e1b79eefe5df00ae0346bcae81d497680d259d54",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6895596e08cfa5f6e34265caaea42e5e5f54f06e169663f65216f64c5a3ea0ee",
+            "size": 48657451616
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:6895596e08cfa5f6e34265caaea42e5e5f54f06e169663f65216f64c5a3ea0ee",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q5_K_M",
+      "last_updated": "9 months ago",
+      "size": "50GB",
+      "digest": "sha256:9b6b4ff0199e5dbdcc53d3a76a1f45ff891e7e100f80718cbbc9729beb9faf40",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9b6b4ff0199e5dbdcc53d3a76a1f45ff891e7e100f80718cbbc9729beb9faf40",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f36f67597aa050137aef96782b86838146a8ebf289a8210706e9060880eea4c6",
+            "size": 49949821536
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f36f67597aa050137aef96782b86838146a8ebf289a8210706e9060880eea4c6",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q6_K",
+      "last_updated": "9 months ago",
+      "size": "58GB",
+      "digest": "sha256:2212f7cd6a11d96d21942e309cbddcbf1b766370404a08fd98b03e0964ddb423",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:2212f7cd6a11d96d21942e309cbddcbf1b766370404a08fd98b03e0964ddb423",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0da23eb37dac5e68d323aff6ab3d4bbdbcccdf6f5f2b0f5957b0eeed1af3337e",
+            "size": 57888148064
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0da23eb37dac5e68d323aff6ab3d4bbdbcccdf6f5f2b0f5957b0eeed1af3337e",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-q8_0",
+      "last_updated": "9 months ago",
+      "size": "75GB",
+      "digest": "sha256:632b40a4bb1b8b16a43d1873c4e7d923ac14b6250d1a2bfa56c25daa88b0d8f1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:632b40a4bb1b8b16a43d1873c4e7d923ac14b6250d1a2bfa56c25daa88b0d8f1",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:848943e58dd2e088774587c6c5371518ed34ecdda3da9fd37a18bd768f54595a",
+            "size": 74975054432
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:848943e58dd2e088774587c6c5371518ed34ecdda3da9fd37a18bd768f54595a",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nemotron:70b-instruct-fp16",
+      "last_updated": "9 months ago",
+      "size": "141GB",
+      "digest": "sha256:b35173b9b7e5e86562f7bd57dc7b83a0b89b8ef2cfcd422e29d50971824b2689",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b35173b9b7e5e86562f7bd57dc7b83a0b89b8ef2cfcd422e29d50971824b2689",
+          "size": 559
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2d4697c8d2a97516e6fea067112cbe5536f3420f2603698358c83a5c082ff7ec",
+            "size": 141117917792,
+            "from": "/Users/ollama/.ollama/models/blobs/sha256-2d4697c8d2a97516e6fea067112cbe5536f3420f2603698358c83a5c082ff7ec"
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "size": 1165
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "size": 7627
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "size": 4691
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb",
+            "size": 96
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "70.6B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2d4697c8d2a97516e6fea067112cbe5536f3420f2603698358c83a5c082ff7ec",
+            "sha256:4863fe3335f3e1614eac6a2cff56ae522f7ed8b4d83da72888e3bf8de374e13d",
+            "sha256:64e1b2889b7892e6bbe7a7ed5bfe6ff793c61f9d584345f8f41cf9f5cb30a369",
+            "sha256:a568f2ebc73cec3fd74ba2afd992d4e945a8c7a9d851f9b66163aac834b7b859",
+            "sha256:56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "70.6B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "quality_score": {
+    "fields_filled": 23,
+    "total_possible": 43,
+    "completeness": 0.53
+  }
 }

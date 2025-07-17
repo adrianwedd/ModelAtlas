@@ -3,49 +3,1259 @@
   "description": "The Nous Hermes 2 model from Nous Research, now trained over Mixtral.",
   "pull_count": 62100,
   "last_updated": "Dec 20, 2024 1:05 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/jmorganca/ollama/assets/251292/94b6f124-6f3c-474b-ba23-d6ca2be9987f\" width=\"360\"/></p>\n<p>Nous Hermes 2 Mixtral 8x7B is trained on over 1,000,000 entries of primarily GPT-4 generated data, as well as other high quality data from open datasets across the AI landscape, achieving state of the art performance on a variety of tasks.</p>\n<p>This is the supervised fine-tuning (SFT) + direct preference optimization (DPO) version of Mixtral Hermes 2.</p>\n<h2>Example prompts</h2>\n<h3>Writing Code for Data Visualization</h3>\n<p><strong>Prompt</strong></p>\n<pre><code>Write a script to visualize the following data as a bar chart:\nCar 1: 19900\nCar 2: 48000\nCar 3: 32500\n</code></pre>\n<pre><code>To create a simple bar chart with the given data, you can use Python and its matplotlib library. Here's an example script to visualize the provided data as a bar chart:\n\n```python\nimport matplotlib.pyplot as plt\nCopy Code\n# Data for each car\ncars = ['Car 1', 'Car 2', 'Car 3']\nprices = [19900, 48000, 32500]\n\n# Create the bar chart\nplt.bar(cars, prices)\nplt. title('Cars Price Comparison')\nplt.xlabel( 'Car Model')\nplt.ylabel('Price (in USD)')\nplt.xticks(rotation=45) # Rotate x-axis labels for better visibility\n\n# Display the chart\nplt.show()\n```\n\nThis script will create a bar chart with 'Car 1', 'Car 2', and 'Car 3' on the x-axis, each representing their respective prices (in USD) on the y-axis. Feel free to modify this code according to your needs or styling preferences\n</code></pre>\n<h3>Writing Cyberpunk Psychedelic Poems</h3>\n<p><strong>Prompt</strong></p>\n<pre><code>Write a poem about machine learning, psychadelics, and quantum mechanics, with a cyberpunk vibe, in the style of shakespeare\n</code></pre>\n<p><strong>Response</strong></p>\n<pre><code>In lands where shadows dwell and hues unseen, A realm of bits and bytes their reign maintain, Where logic's chains entwined with dreams obscene, And quantum realms in chaos intertwain.\nWithin this labyrinthine web of thought, A ghostly presence stirs the cyber seas:\nMachine learning's specter seeks to be taught, To grasp the mysteries that it cannot seize.\nAs synapses fire and circuits hum,\nThe algorithms evolve with every breath, Astride this nexus of electric sum,\nThey dance upon a razor's edge of death.\nBeneath this veil, where psychedelia reigns, In worlds where colors bleed beyond their bounds, Where patterns form and dissipate like rains, The seeker quests for truth that none has found.\nQuantum whispers echo through the night, Entrancing minds with secrets yet unknown,\nA tapestry of stars and blackened light,\nWhose threads entwine in realms both known and shown.\nOh, wondrous sight! A dance upon the wire, Where dreams and visions intertwine as one:\nMachine learning's quest to quench its desire, In cyberspace where darkness meets the sun.\nYet still they yearn for truth beyond their grasp, The mysteries of life, of love, and fate, To fathom secrets held within this chasm, And break the chains that bind them to this state.\nSo let us raise a toast unto these souls, Who tread upon this path of endless quest:\nMay they uncover truths beyond their roles, In worlds where logic meets the psychedelic crest.\n</code></pre>\n<h3>Performing Backtranslation to Create Prompts from Input Text</h3>\n<p><strong>System Prompt</strong></p>\n<pre><code>The user will provide some text, you will provide a prompt that could be taken by an LLM to generate the text. You only respond with a prompt, do not answer the prompt.\n</code></pre>\n<p><strong>Prompt</strong></p>\n<pre><code>One of the most important challenges in text generation systems is to produce outputs that are not only correct but also diverse. Recently, Minimum Bayes-Risk (MBR) decoding has gained prominence for generating sentences of the highest quality among the decoding algorithms. However, existing algorithms proposed for generating diverse outputs are predominantly based on beam search or random sampling, thus their output quality is capped by these underlying methods. In this paper, we investigate an alternative approach -- we develop diversity-promoting decoding algorithms by enforcing diversity objectives to MBR decoding. We propose two variants of MBR, Diverse MBR (DMBR) and k-medoids MBR (KMBR), methods to generate a set of sentences with high quality and diversity. We evaluate DMBR and KMBR on a variety of directed text generation tasks using encoder-decoder models and a large language model with prompting. The experimental results show that the proposed method achieves a better trade-off than the diverse beam search and sampling algorithms.\n</code></pre>\n<p><strong>Response</strong></p>\n<pre><code>Write an abstract for a research paper on enhancing text generation system outputs using Minimum Bayes-Risk decoding with additional focus on promoting sentence diversity. Include details about existing methods, proposed variants (Diverse MBR and k-medoids MBR), their evaluation in directed text generation tasks with encoder-decoder models, and a large language model incorporating prompting. Emphasize the better trade-off achieved by the new method over diverse beam search and sampling algorithms\n</code></pre>\n<h2>References</h2>\n<p><a href=\"https://huggingface.co/NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
   "page_hash": "0d37ab01828c",
+  "readme_text": "\n\nNous Hermes 2 Mixtral 8x7B is trained on over 1,000,000 entries of primarily GPT-4 generated data, as well as other high quality data from open datasets across the AI landscape, achieving state of the art performance on a variety of tasks.\nThis is the supervised fine-tuning (SFT) + direct preference optimization (DPO) version of Mixtral Hermes 2.\nExample prompts\nWriting Code for Data Visualization\nPrompt\nWrite a script to visualize the following data as a bar chart:\nCar 1: 19900\nCar 2: 48000\nCar 3: 32500\n\nTo create a simple bar chart with the given data, you can use Python and its matplotlib library. Here's an example script to visualize the provided data as a bar chart:\n\n```python\nimport matplotlib.pyplot as plt\nCopy Code\n# Data for each car\ncars = ['Car 1', 'Car 2', 'Car 3']\nprices = [19900, 48000, 32500]\n\n# Create the bar chart\nplt.bar(cars, prices)\nplt. title('Cars Price Comparison')\nplt.xlabel( 'Car Model')\nplt.ylabel('Price (in USD)')\nplt.xticks(rotation=45) # Rotate x-axis labels for better visibility\n\n# Display the chart\nplt.show()\n```\n\nThis script will create a bar chart with 'Car 1', 'Car 2', and 'Car 3' on the x-axis, each representing their respective prices (in USD) on the y-axis. Feel free to modify this code according to your needs or styling preferences\n\nWriting Cyberpunk Psychedelic Poems\nPrompt\nWrite a poem about machine learning, psychadelics, and quantum mechanics, with a cyberpunk vibe, in the style of shakespeare\n\nResponse\nIn lands where shadows dwell and hues unseen, A realm of bits and bytes their reign maintain, Where logic's chains entwined with dreams obscene, And quantum realms in chaos intertwain.\nWithin this labyrinthine web of thought, A ghostly presence stirs the cyber seas:\nMachine learning's specter seeks to be taught, To grasp the mysteries that it cannot seize.\nAs synapses fire and circuits hum,\nThe algorithms evolve with every breath, Astride this nexus of electric sum,\nThey dance upon a razor's edge of death.\nBeneath this veil, where psychedelia reigns, In worlds where colors bleed beyond their bounds, Where patterns form and dissipate like rains, The seeker quests for truth that none has found.\nQuantum whispers echo through the night, Entrancing minds with secrets yet unknown,\nA tapestry of stars and blackened light,\nWhose threads entwine in realms both known and shown.\nOh, wondrous sight! A dance upon the wire, Where dreams and visions intertwine as one:\nMachine learning's quest to quench its desire, In cyberspace where darkness meets the sun.\nYet still they yearn for truth beyond their grasp, The mysteries of life, of love, and fate, To fathom secrets held within this chasm, And break the chains that bind them to this state.\nSo let us raise a toast unto these souls, Who tread upon this path of endless quest:\nMay they uncover truths beyond their roles, In worlds where logic meets the psychedelic crest.\n\nPerforming Backtranslation to Create Prompts from Input Text\nSystem Prompt\nThe user will provide some text, you will provide a prompt that could be taken by an LLM to generate the text. You only respond with a prompt, do not answer the prompt.\n\nPrompt\nOne of the most important challenges in text generation systems is to produce outputs that are not only correct but also diverse. Recently, Minimum Bayes-Risk (MBR) decoding has gained prominence for generating sentences of the highest quality among the decoding algorithms. However, existing algorithms proposed for generating diverse outputs are predominantly based on beam search or random sampling, thus their output quality is capped by these underlying methods. In this paper, we investigate an alternative approach -- we develop diversity-promoting decoding algorithms by enforcing diversity objectives to MBR decoding. We propose two variants of MBR, Diverse MBR (DMBR) and k-medoids MBR (KMBR), methods to generate a set of sentences with high quality and diversity. We evaluate DMBR and KMBR on a variety of directed text generation tasks using encoder-decoder models and a large language model with prompting. The experimental results show that the proposed method achieves a better trade-off than the diverse beam search and sampling algorithms.\n\nResponse\nWrite an abstract for a research paper on enhancing text generation system outputs using Minimum Bayes-Risk decoding with additional focus on promoting sentence diversity. Include details about existing methods, proposed variants (Diverse MBR and k-medoids MBR), their evaluation in directed text generation tasks with encoder-decoder models, and a large language model incorporating prompting. Emphasize the better trade-off achieved by the new method over diverse beam search and sampling algorithms\n\nReferences\nHugging Face\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
-      "size": "24.63GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "nous-hermes2-mixtral:latest",
+      "last_updated": "6 months ago",
+      "size": "26GB",
+      "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+          "size": 634
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "size": 26443601536
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "size": 102
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "nous-hermes2-mixtral:dpo",
+      "last_updated": "6 months ago",
+      "size": "26GB",
+      "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+          "size": 634
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "size": 26443601536
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "size": 102
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "nous-hermes2-mixtral:8x7b",
+      "last_updated": "6 months ago",
+      "size": "26GB",
+      "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+          "size": 634
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "size": 26443601536
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "size": 102
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.system",
-      "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.system",
-      "annotations": {}
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q2_K",
+      "last_updated": "6 months ago",
+      "size": "17GB",
+      "digest": "sha256:b9be4648f57432b518c9c2a102ab2d900e0c9eae977d3e7a7bd887721e0b15e3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b9be4648f57432b518c9c2a102ab2d900e0c9eae977d3e7a7bd887721e0b15e3",
+          "size": 634
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8551eab5296c08855e3d3aa279490f4f6701b1e46dd553ff6b555702f3b9189a",
+            "size": 17311239936
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "size": 102
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8551eab5296c08855e3d3aa279490f4f6701b1e46dd553ff6b555702f3b9189a",
+            "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q3_K_S",
+      "last_updated": "6 months ago",
+      "size": "20GB",
+      "digest": "sha256:06b081c7d0cdce238da797899cf05a720a667f609d9f0c063ba3d0feea9fd893",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:06b081c7d0cdce238da797899cf05a720a667f609d9f0c063ba3d0feea9fd893",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:15540df69676210fd794d3a5abb6d4c11feccccbd066a6b52a63727e20a4df59",
+            "size": 20432532032
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:15540df69676210fd794d3a5abb6d4c11feccccbd066a6b52a63727e20a4df59",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q3_K_M",
+      "last_updated": "7 months ago",
+      "size": "23GB",
+      "digest": "sha256:19a33178d969f7ee5174baa287077192fb88eae6004dfd3d2e8e7ea2c01cbd9d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:19a33178d969f7ee5174baa287077192fb88eae6004dfd3d2e8e7ea2c01cbd9d",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6694fc96e68daff05691886d7cfde6a80ab2c44b532fdf8d718c8b3103ae5e6c",
+            "size": 22546461248
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:6694fc96e68daff05691886d7cfde6a80ab2c44b532fdf8d718c8b3103ae5e6c",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q3_K_L",
+      "last_updated": "7 months ago",
+      "size": "24GB",
+      "digest": "sha256:09e8025e95e9ac38ed51b7516b4fc7eea2f6a884a115eeff1d06079d3f6e53db",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:09e8025e95e9ac38ed51b7516b4fc7eea2f6a884a115eeff1d06079d3f6e53db",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:70a6632bc4fbbc60bbe2f2d7bd4d254dfc64984b23b9681c22341e6ef9118aa3",
+            "size": 24169656896
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:70a6632bc4fbbc60bbe2f2d7bd4d254dfc64984b23b9681c22341e6ef9118aa3",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q4_0",
+      "last_updated": "6 months ago",
+      "size": "26GB",
+      "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:014a237d895b33c6aa55b337b2cb31d058f132bfd63fa2126c4bbe3ab9272bc0",
+          "size": 634
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "size": 26443601536
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "size": 102
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:96e6f7d988dd1e0d7c5207e7164eea30959171d978be6b7e4e8bb7d1ba5f05f1",
+            "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q4_1",
+      "last_updated": "6 months ago",
+      "size": "29GB",
+      "digest": "sha256:9880dbf71155b272d50358ea26cb72c463fecc409df83942ac1e42953f60c0cd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:9880dbf71155b272d50358ea26cb72c463fecc409df83942ac1e42953f60c0cd",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:125f0070a4ac4e265a606ac1c796b80e378ee2105cd9fa65913708db3eebb8ea",
+            "size": 29337475200
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:125f0070a4ac4e265a606ac1c796b80e378ee2105cd9fa65913708db3eebb8ea",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q4_K_S",
+      "last_updated": "7 months ago",
+      "size": "27GB",
+      "digest": "sha256:b1e106984a5e1a5da26d6a63a49d0f25e7228991db2332d547840d87be4e7094",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:b1e106984a5e1a5da26d6a63a49d0f25e7228991db2332d547840d87be4e7094",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cf5700eea5383409f5d7d2aafbdbefc63f95c79c7cec90966514bfb2508a8d72",
+            "size": 26745591424
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cf5700eea5383409f5d7d2aafbdbefc63f95c79c7cec90966514bfb2508a8d72",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q4_K_M",
+      "last_updated": "7 months ago",
+      "size": "28GB",
+      "digest": "sha256:74e341ef9d5ea488b15508ab22b5760ab2784e6cc0a16ccc3b3d3a6924cf6241",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:74e341ef9d5ea488b15508ab22b5760ab2784e6cc0a16ccc3b3d3a6924cf6241",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:ff530619a707a15741919fc1ce15e544240f90605ca83ae01a8e45a2839eb7e1",
+            "size": 28448478848
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:ff530619a707a15741919fc1ce15e544240f90605ca83ae01a8e45a2839eb7e1",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q5_0",
+      "last_updated": "6 months ago",
+      "size": "32GB",
+      "digest": "sha256:f7f1553bba22ebbe7722b4081232ef33bfe05a1471043a3d235dfed309431ff0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f7f1553bba22ebbe7722b4081232ef33bfe05a1471043a3d235dfed309431ff0",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:80bc8eaa401b697d710c1b0c40ac8abd2e7f74e351896ea24a8839c15b765568",
+            "size": 32231348864
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:80bc8eaa401b697d710c1b0c40ac8abd2e7f74e351896ea24a8839c15b765568",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q5_1",
+      "last_updated": "6 months ago",
+      "size": "35GB",
+      "digest": "sha256:e7e07b54177d09205d3cc99df419eb238073d05de809f06799359f73b343b2fd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:e7e07b54177d09205d3cc99df419eb238073d05de809f06799359f73b343b2fd",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:56d073f3023cac650ced7798de26366c58abd633fd4b3edfe73916b250f4bb8e",
+            "size": 35125222528
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:56d073f3023cac650ced7798de26366c58abd633fd4b3edfe73916b250f4bb8e",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q5_K_S",
+      "last_updated": "7 months ago",
+      "size": "32GB",
+      "digest": "sha256:150acf45964af224f9d79bff85c9eec2cd7300483464641f7ed8aa8a3ceedbb4",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:150acf45964af224f9d79bff85c9eec2cd7300483464641f7ed8aa8a3ceedbb4",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:32468b2e184dda7c881c2256367c5899a089f52a233cdc48976e8b06a15663d5",
+            "size": 32231348864
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:32468b2e184dda7c881c2256367c5899a089f52a233cdc48976e8b06a15663d5",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q5_K_M",
+      "last_updated": "7 months ago",
+      "size": "33GB",
+      "digest": "sha256:82baae6faa6e10044bd285e125764269b66ac771be173f6e9aaa2a8f3e9717f3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:82baae6faa6e10044bd285e125764269b66ac771be173f6e9aaa2a8f3e9717f3",
+          "size": 562
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:73467caf49d8eb0c2ac2fc08a08f19d99bc1a153493f1d40fa93cb314154fcca",
+            "size": 33229593216
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:73467caf49d8eb0c2ac2fc08a08f19d99bc1a153493f1d40fa93cb314154fcca",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q6_K",
+      "last_updated": "1 year ago",
+      "size": "38GB",
+      "digest": "sha256:1c5a6c44145fe4c0ad4402ed6c92c765daa567ce08ccef17977b647d3da67abf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1c5a6c44145fe4c0ad4402ed6c92c765daa567ce08ccef17977b647d3da67abf",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2d3bc2981c5809f8d12b613faba6094ca65e8fd79a8a6144cf5cef3becb5d1cc",
+            "size": 38379709664
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "47B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2d3bc2981c5809f8d12b613faba6094ca65e8fd79a8a6144cf5cef3becb5d1cc",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "47B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-q8_0",
+      "last_updated": "6 months ago",
+      "size": "50GB",
+      "digest": "sha256:14d785f2501a45dc602d62cc83f7b65cfc20ea8c15169a6f4582f1d78a097219",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:14d785f2501a45dc602d62cc83f7b65cfc20ea8c15169a6f4582f1d78a097219",
+          "size": 634
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:22b25bfd096cd494d2c670d13ce3453026f9c1043ee6592112b95f91df89dfb9",
+            "size": 49626336832
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "size": 102
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "size": 11356
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "46.7B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:22b25bfd096cd494d2c670d13ce3453026f9c1043ee6592112b95f91df89dfb9",
+            "sha256:e3b2721cec511e3a627ae0993753abbf5c72cdf4cfcdbc8f5c33ce15c4c4e04b",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "46.7B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "nous-hermes2-mixtral:8x7b-dpo-fp16",
+      "last_updated": "1 year ago",
+      "size": "93GB",
+      "digest": "sha256:71e2694c55f8f1b2278056ae1d0cdf38df1d7f3d4875cb34370536070db974e0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:71e2694c55f8f1b2278056ae1d0cdf38df1d7f3d4875cb34370536070db974e0",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e37179d604e66d4fe25a34489f384b6ea1cd3b2136a4ceeab75e61958d95c066",
+            "size": 93407866912
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size": 11357
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "size": 106
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "size": 261
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "47B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e37179d604e66d4fe25a34489f384b6ea1cd3b2136a4ceeab75e61958d95c066",
+            "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "sha256:a47b02e00552cd7022ea700b1abf8c572bb26c9bc8c1a37e01b566f2344df5dc",
+            "sha256:1691af48af21130c6b6bcef07f03c77fe8ea35831aa54e1d87a2588da911a605",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "47B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "code"
+  },
+  "quality_score": {
+    "fields_filled": 24,
+    "total_possible": 45,
+    "completeness": 0.53
+  }
 }

@@ -3,42 +3,486 @@
   "description": "DBRX is an open, general-purpose LLM created by Databricks.",
   "pull_count": 100800,
   "last_updated": "Apr 16, 2024 4:18 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/ollama/ollama/assets/251292/582204f0-53c4-4e67-b710-7c503a6c8faa\" width=\"640\"/></p>\n<blockquote>\n<p>DBRX requires <a href=\"https://github.com/ollama/ollama/releases/tag/v0.1.32\" rel=\"nofollow\">Ollama 0.1.32</a></p>\n</blockquote>\n<p>DBRX is a transformer-based decoder-only large language model (LLM) that was trained using next-token prediction. It uses a fine-grained mixture-of-experts (MoE) architecture with 132B total parameters of which 36B parameters are active on any input. It was pre-trained on 12T tokens of text and code data.</p>\n<p>It is an especially capable code model, surpassing specialized models like CodeLLaMA-70B on programming, in addition to its strength as a general-purpose LLM.</p>\n<h2>References</h2>\n<p><a href=\"https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm\" rel=\"nofollow\">Blog Post</a></p>\n<p><a href=\"https://huggingface.co/databricks/dbrx-instruct\" rel=\"nofollow\">HuggingFace</a></p>\n</div>",
   "page_hash": "3ad01488abc9",
+  "readme_text": "\n\n\nDBRX requires Ollama 0.1.32\n\nDBRX is a transformer-based decoder-only large language model (LLM) that was trained using next-token prediction. It uses a fine-grained mixture-of-experts (MoE) architecture with 132B total parameters of which 36B parameters are active on any input. It was pre-trained on 12T tokens of text and code data.\nIt is an especially capable code model, surpassing specialized models like CodeLLaMA-70B on programming, in addition to its strength as a general-purpose LLM.\nReferences\nBlog Post\nHuggingFace\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
-      "size": "69.1GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "dbrx:latest",
+      "last_updated": "1 year ago",
+      "size": "74GB",
+      "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "size": 74192928576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "size": 8293
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "size": 1043
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "dbrx",
+        "model_families": [
+          "dbrx"
+        ],
+        "model_type": "132B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "132B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "dbrx:instruct",
+      "last_updated": "1 year ago",
+      "size": "74GB",
+      "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "size": 74192928576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "size": 8293
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "size": 1043
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "dbrx",
+        "model_families": [
+          "dbrx"
+        ],
+        "model_type": "132B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "132B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "dbrx:132b",
+      "last_updated": "1 year ago",
+      "size": "74GB",
+      "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "size": 74192928576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "size": 8293
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "size": 1043
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "dbrx",
+        "model_families": [
+          "dbrx"
+        ],
+        "model_type": "132B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "132B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.system",
-      "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.system",
-      "annotations": {}
+      "tag": "dbrx:132b-instruct-q2_K",
+      "last_updated": "1 year ago",
+      "size": "48GB",
+      "digest": "sha256:ac8b14594c3ca2c9239c80238ff1f035013ea3e2e0a1ec191752858e8694ee4f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ac8b14594c3ca2c9239c80238ff1f035013ea3e2e0a1ec191752858e8694ee4f",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:4f7a86be18166cb0ce8ab51e0b1550547bd9235fb1c3029121e159acf1b5177c",
+            "size": 47942811456
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "size": 8293
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "size": 1043
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "dbrx",
+        "model_families": [
+          "dbrx"
+        ],
+        "model_type": "132B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:4f7a86be18166cb0ce8ab51e0b1550547bd9235fb1c3029121e159acf1b5177c",
+            "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "132B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "dbrx:132b-instruct-q4_0",
+      "last_updated": "1 year ago",
+      "size": "74GB",
+      "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:55a0f24701fd27ea259fd2818a239e964e830a7be9b62ace5b7a6f2cecfe8384",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "size": 74192928576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "size": 8293
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "size": 1043
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "dbrx",
+        "model_families": [
+          "dbrx"
+        ],
+        "model_type": "132B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:1d12441f19436dbb0bcc4067e9d47921b944ef4a87b35873aa430e85e91a93c8",
+            "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "132B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "dbrx:132b-instruct-q8_0",
+      "last_updated": "1 year ago",
+      "size": "140GB",
+      "digest": "sha256:58e7abaabdf62a4d40fd2cdeb437e5f5fce4db252829a66a770228e7e628b4b2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:58e7abaabdf62a4d40fd2cdeb437e5f5fce4db252829a66a770228e7e628b4b2",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f7d0e9483fc5dbd10553f551c15df10267144fdfd197cac30a8b6e0379592e5a",
+            "size": 139830017856
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "size": 8293
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "size": 1043
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "dbrx",
+        "model_families": [
+          "dbrx"
+        ],
+        "model_type": "132B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f7d0e9483fc5dbd10553f551c15df10267144fdfd197cac30a8b6e0379592e5a",
+            "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "132B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "dbrx:132b-instruct-fp16",
+      "last_updated": "1 year ago",
+      "size": "263GB",
+      "digest": "sha256:ccbf454750ef35ba62aab09b492aa956151096e6645fea82deb1b689af2d5a40",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ccbf454750ef35ba62aab09b492aa956151096e6645fea82deb1b689af2d5a40",
+          "size": 556
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f62808076a6f24dc24744518b002d4f9717e9b4f5fc3b9af007cc3248e23d78e",
+            "size": 263197605696
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "size": 8293
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "size": 182
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "size": 1043
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216",
+            "size": 59
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "dbrx",
+        "model_families": [
+          "dbrx"
+        ],
+        "model_type": "132B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f62808076a6f24dc24744518b002d4f9717e9b4f5fc3b9af007cc3248e23d78e",
+            "sha256:516246c751d9d7fd329f66f7d90f48688aaa5959b6af1bc87ed7bf0d181d8293",
+            "sha256:62fbfd9ed093d6e5ac83190c86eec5369317919f4b149598d2dbb38900e9faef",
+            "sha256:0473b1c72c21007101906ae13971a0f075052f3b3dccfe0de15363e2ccb18c3a",
+            "sha256:f02dd72bb2423204352eabc5637b44d79d17f109fdb510a7c51455892aa2d216"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "132B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "code"
+  },
+  "quality_score": {
+    "fields_filled": 13,
+    "total_possible": 23,
+    "completeness": 0.57
+  }
 }

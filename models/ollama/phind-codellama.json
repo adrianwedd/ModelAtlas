@@ -3,42 +3,2742 @@
   "description": "Code generation model based on Code Llama.",
   "pull_count": 87500,
   "last_updated": "Dec 28, 2023 2:53 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://user-images.githubusercontent.com/633681/264120182-4a05afc9-0003-410e-8ac5-a7745dedaba8.png\"/></p>\n<p>Phind CodeLlama is a code generation model based on CodeLlama 34B fine-tuned for instruct use cases. There are two versions of the model: <code>v1</code> and <code>v2</code>. <code>v1</code> is based on CodeLlama 34B and CodeLlama-Python 34B. <code>v2</code> is an iteration on <code>v1</code>, trained on an additional 1.5B tokens of high-quality programming-related data.</p>\n<h2>Usage</h2>\n<h3>CLI</h3>\n<p>Open the terminal and run <code>ollama run phind-codellama</code></p>\n<h3>API</h3>\n<p>Example</p>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"phind-codellama\",\n  \"prompt\":\"Implement a linked list in C++\"\n }'\n</code></pre>\n<h2>Memory requirements</h2>\n<ul>\n<li>34b models generally require at least 32GB of RAM</li>\n</ul>\n<h2>References</h2>\n<p><a href=\"https://www.phind.com/blog/code-llama-beats-gpt4\" rel=\"nofollow\">Beating GPT-4 on HumanEval with a Fine-Tuned CodeLlama-34B</a></p>\n<p><a href=\"https://huggingface.co/Phind\" rel=\"nofollow\">HuggingFace</a></p>\n</div>",
   "page_hash": "61e4cdc03049",
+  "readme_text": "\n\nPhind CodeLlama is a code generation model based on CodeLlama 34B fine-tuned for instruct use cases. There are two versions of the model: v1 and v2. v1 is based on CodeLlama 34B and CodeLlama-Python 34B. v2 is an iteration on v1, trained on an additional 1.5B tokens of high-quality programming-related data.\nUsage\nCLI\nOpen the terminal and run ollama run phind-codellama\nAPI\nExample\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"phind-codellama\",\n  \"prompt\":\"Implement a linked list in C++\"\n }'\n\nMemory requirements\n\n34b models generally require at least 32GB of RAM\n\nReferences\nBeating GPT-4 on HumanEval with a Fine-Tuned CodeLlama-34B\nHuggingFace\n",
   "tags": [
     {
-      "name": "application/vnd.ollama.image.model",
-      "digest": "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
-      "size": "17.74GB",
-      "media_type": "application/vnd.ollama.image.model",
-      "annotations": {}
+      "tag": "phind-codellama:latest",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "size": 19052048544
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.license",
-      "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.license",
-      "annotations": {}
+      "tag": "phind-codellama:34b",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "size": 19052048544
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.template",
-      "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.template",
-      "annotations": {}
+      "tag": "phind-codellama:34b-python",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:a9103a9c0d6ce45fb9ec27317bba5fafa41a8560cffc6528460fe66fc41f6407",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a9103a9c0d6ce45fb9ec27317bba5fafa41a8560cffc6528460fe66fc41f6407",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:7f720f1e2b0a8458b36aaaca70ad04b5d8a9e310867a96d9b19824a35f2fcf55",
+            "size": 19052048544
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:7f720f1e2b0a8458b36aaaca70ad04b5d8a9e310867a96d9b19824a35f2fcf55",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.system",
-      "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.system",
-      "annotations": {}
+      "tag": "phind-codellama:34b-python-q2_K",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:7494061ad57787bcce570b2ea72391dc29ebf39b2bda25e2bd2abdf3a643cdbd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7494061ad57787bcce570b2ea72391dc29ebf39b2bda25e2bd2abdf3a643cdbd",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2c087b58842db42c7338708e18a95a4568539232a028b0ed482ae5b3c3e17d7b",
+            "size": 14210674848
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2c087b58842db42c7338708e18a95a4568539232a028b0ed482ae5b3c3e17d7b",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
     },
     {
-      "name": "application/vnd.ollama.image.params",
-      "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
-      "size": "0.0GB",
-      "media_type": "application/vnd.ollama.image.params",
-      "annotations": {}
+      "tag": "phind-codellama:34b-python-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "15GB",
+      "digest": "sha256:61b8199a25eb635f827546a4bcbaa0f0b19e7dd7c8cb8daa028e91df4113016d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:61b8199a25eb635f827546a4bcbaa0f0b19e7dd7c8cb8daa028e91df4113016d",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:85ea7d16cae61a1864a3bc58da189a99a424c77d1fcd1df2e9045b7e7d611a11",
+            "size": 14605349024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:85ea7d16cae61a1864a3bc58da189a99a424c77d1fcd1df2e9045b7e7d611a11",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "16GB",
+      "digest": "sha256:db3fa13f4f2445b38dcf99670818ba243e18e39bfed7ddac19d47433cb000e29",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:db3fa13f4f2445b38dcf99670818ba243e18e39bfed7ddac19d47433cb000e29",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:3304010bfa37cc990f31f9aac43cab79e04967c4be706b53e303240bdb239823",
+            "size": 16283594912
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:3304010bfa37cc990f31f9aac43cab79e04967c4be706b53e303240bdb239823",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "sha256:ddf9cec288a68befec9a8d20791e23dbb3fb5a4968e7c9aa642141ffd9041e7f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ddf9cec288a68befec9a8d20791e23dbb3fb5a4968e7c9aa642141ffd9041e7f",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:62f3f7afd6cb7f7a06abce99c0dafd9703fed2e158a082beb89dff0dc006ebad",
+            "size": 17771524256
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:62f3f7afd6cb7f7a06abce99c0dafd9703fed2e158a082beb89dff0dc006ebad",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q4_0",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:a9103a9c0d6ce45fb9ec27317bba5fafa41a8560cffc6528460fe66fc41f6407",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a9103a9c0d6ce45fb9ec27317bba5fafa41a8560cffc6528460fe66fc41f6407",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:7f720f1e2b0a8458b36aaaca70ad04b5d8a9e310867a96d9b19824a35f2fcf55",
+            "size": 19052048544
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:7f720f1e2b0a8458b36aaaca70ad04b5d8a9e310867a96d9b19824a35f2fcf55",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q4_1",
+      "last_updated": "1 year ago",
+      "size": "21GB",
+      "digest": "sha256:7dfcbb0e2bf976f0d1a5b7b091ae7b37c71da3e22ae7541a4682711e692a4cc6",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7dfcbb0e2bf976f0d1a5b7b091ae7b37c71da3e22ae7541a4682711e692a4cc6",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:680021630847a5d2db257eda0eee5d79b8d01215eb438e2952bbe354a4e3d8b2",
+            "size": 21144613024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:680021630847a5d2db257eda0eee5d79b8d01215eb438e2952bbe354a4e3d8b2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:253709d51cb2f908147bf5336c55e2c59632f0aa65befd3c1ee23b460a419666",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:253709d51cb2f908147bf5336c55e2c59632f0aa65befd3c1ee23b460a419666",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2745628f35e929bb539f21ceb45edc1cbf84f56657606ed09c3461f4fb2a2cbe",
+            "size": 19146420384
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2745628f35e929bb539f21ceb45edc1cbf84f56657606ed09c3461f4fb2a2cbe",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "sha256:456b96c74a3fa399ebc3f72f9de89c138a2e14ba121bd63408f71e648f7cce5d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:456b96c74a3fa399ebc3f72f9de89c138a2e14ba121bd63408f71e648f7cce5d",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:6a8435fb57a54206819ed993978485e8cec1f335a8cd140831d4d50351ae0bf5",
+            "size": 20219900064
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:6a8435fb57a54206819ed993978485e8cec1f335a8cd140831d4d50351ae0bf5",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q5_0",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "sha256:6a230b3aa5a118982fb3514c6eb48339fc12b02a5a2d3d02762d1166d8fef05d",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6a230b3aa5a118982fb3514c6eb48339fc12b02a5a2d3d02762d1166d8fef05d",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5099ee0c4d03a4a081c89181c39ee3de37f73023603aa1217a9fb89f44c62deb",
+            "size": 23237177504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5099ee0c4d03a4a081c89181c39ee3de37f73023603aa1217a9fb89f44c62deb",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q5_1",
+      "last_updated": "1 year ago",
+      "size": "25GB",
+      "digest": "sha256:dc1004e7cb0626bc75e7b11485b4c0051fed2906280d1d4231081ab7ed1f2b6a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:dc1004e7cb0626bc75e7b11485b4c0051fed2906280d1d4231081ab7ed1f2b6a",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fff3f304cd2f4a23d03cd9e5520382f837f6d9da638a7dee426cd7fb636480ab",
+            "size": 25329741984
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fff3f304cd2f4a23d03cd9e5520382f837f6d9da638a7dee426cd7fb636480ab",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "sha256:86e01c5e7ccac0e551e9815be8ef5f2ead80dba0885a6acc6c8dd6e2e648fba3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:86e01c5e7ccac0e551e9815be8ef5f2ead80dba0885a6acc6c8dd6e2e648fba3",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:c979358e21ed9dfcf900ee2bdd3e3e9080490f7e2a53d95f2cc184d6aff52042",
+            "size": 23237177504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:c979358e21ed9dfcf900ee2bdd3e3e9080490f7e2a53d95f2cc184d6aff52042",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:6d618dbb1551fe2e9fb779561269475829a95e903b74e975389ecb2492ad52c0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:6d618dbb1551fe2e9fb779561269475829a95e903b74e975389ecb2492ad52c0",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:f49d4df5df27a3a20eb7cec11ed22c617ca2d6d28acf8d58cb3191e79040b6df",
+            "size": 23838797984
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:f49d4df5df27a3a20eb7cec11ed22c617ca2d6d28acf8d58cb3191e79040b6df",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q6_K",
+      "last_updated": "1 year ago",
+      "size": "28GB",
+      "digest": "sha256:0b042b163b8ab7348eef2dbfbad24a8f5588f69be86f804ccfcd221da2f64536",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0b042b163b8ab7348eef2dbfbad24a8f5588f69be86f804ccfcd221da2f64536",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:48d3441f44064bfbb5e31fc712fa8c846b190edd0bb06a9d2b07457a86a103fd",
+            "size": 27683877024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:48d3441f44064bfbb5e31fc712fa8c846b190edd0bb06a9d2b07457a86a103fd",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-q8_0",
+      "last_updated": "1 year ago",
+      "size": "36GB",
+      "digest": "sha256:92858f5cfb2b1fd795cdea70c3e31bfd411d3ff789ed118502ee75c299ecf53c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:92858f5cfb2b1fd795cdea70c3e31bfd411d3ff789ed118502ee75c299ecf53c",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:24886d4f1066e2c71743b783fe3cdcd90158fff478dd23c1e74ff62266904f5d",
+            "size": 35856052384
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:24886d4f1066e2c71743b783fe3cdcd90158fff478dd23c1e74ff62266904f5d",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-python-fp16",
+      "last_updated": "1 year ago",
+      "size": "67GB",
+      "digest": "sha256:f540fdbe7212bf040e04e29d732faa417b01cfe77637d7733db6ebc2d9f4d3e2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f540fdbe7212bf040e04e29d732faa417b01cfe77637d7733db6ebc2d9f4d3e2",
+          "size": 335
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8166851b2fcb056a117a59da0d2bd3a9a84a8703abdb18a3fc92086f43a23960",
+            "size": 67490279552
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8166851b2fcb056a117a59da0d2bd3a9a84a8703abdb18a3fc92086f43a23960",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "size": 19052048544
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q2_K",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:923a2f32efced677ccc561d2df0bb74c64b548af56fbfc10cc54c00ac863e75f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:923a2f32efced677ccc561d2df0bb74c64b548af56fbfc10cc54c00ac863e75f",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:069f145115ad7b8d92c778bf06c7555ff1c539922c8942f0e0c9863f88838a79",
+            "size": 14210674848
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:069f145115ad7b8d92c778bf06c7555ff1c539922c8942f0e0c9863f88838a79",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "15GB",
+      "digest": "sha256:11206ecd503eccd92a473cf8be6f9a5e6c2ec8a1b423737ee04bc14f6184fdcd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:11206ecd503eccd92a473cf8be6f9a5e6c2ec8a1b423737ee04bc14f6184fdcd",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8af7e6dba3e18e97c72e1955040636452a90a56d275e723692c2d5a5e74f8d9e",
+            "size": 14605349024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8af7e6dba3e18e97c72e1955040636452a90a56d275e723692c2d5a5e74f8d9e",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "16GB",
+      "digest": "sha256:0911578d2404b6995360c8309f3b1bd9245a26f38de9ff2fbc0b1ece3e40d627",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0911578d2404b6995360c8309f3b1bd9245a26f38de9ff2fbc0b1ece3e40d627",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:44d536c92392e73d2aab24d3d3c6f93c9f0aefe3ef309fe334cd95f5cc7874ab",
+            "size": 16283594912
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:44d536c92392e73d2aab24d3d3c6f93c9f0aefe3ef309fe334cd95f5cc7874ab",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "sha256:be5daf2664b1386877d6338ae189a0254d2d4ebc26ca6c820e12306c7134cb39",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:be5daf2664b1386877d6338ae189a0254d2d4ebc26ca6c820e12306c7134cb39",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:667d720d177e6ca2b2549794f0bb738fea21623b682165838c01a9129a6a00f8",
+            "size": 17771524256
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:667d720d177e6ca2b2549794f0bb738fea21623b682165838c01a9129a6a00f8",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q4_0",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:ee041eb771eb86734e51c251e840d15b6933121777e2ca290a6dece875f3ecd1",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "size": 19052048544
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:45488384ce7a0a42ed3afa01b759df504b9d994f896aacbea64e5b1414d38ba2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q4_1",
+      "last_updated": "1 year ago",
+      "size": "21GB",
+      "digest": "sha256:271b6fa5ff86169b35a6aa55fe6879af3819708baa7ce479471a623e1da1b9fd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:271b6fa5ff86169b35a6aa55fe6879af3819708baa7ce479471a623e1da1b9fd",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5190b9a7d13ee18d83a3298ad70811669fc9e9d47f546cf271d3b51054d88813",
+            "size": 21144613024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5190b9a7d13ee18d83a3298ad70811669fc9e9d47f546cf271d3b51054d88813",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:7e56c473f3a5147fbd40723a5bd19f4c46a364e7d9b42b2808993a527308adf2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:7e56c473f3a5147fbd40723a5bd19f4c46a364e7d9b42b2808993a527308adf2",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:579842a5d351f3017b9c645f5db43c5da42cca5f3753f4a5662be544d487c1b2",
+            "size": 19146420384
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:579842a5d351f3017b9c645f5db43c5da42cca5f3753f4a5662be544d487c1b2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "sha256:33faf74d9e6729d30074991926bfa55134e110c8e5f0d19e58b20532d6ed73dc",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:33faf74d9e6729d30074991926bfa55134e110c8e5f0d19e58b20532d6ed73dc",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:fe78c463a9c83a9bac6d7d54f4e00b4f61678c00a3e2dfced10709aaa4531810",
+            "size": 20219900064
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:fe78c463a9c83a9bac6d7d54f4e00b4f61678c00a3e2dfced10709aaa4531810",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q5_0",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "sha256:c73ba4ebb9158822bbee211f0b0234fbb1211feeec5030ab04f7d393f2c21e70",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c73ba4ebb9158822bbee211f0b0234fbb1211feeec5030ab04f7d393f2c21e70",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:7ae2fcb97430a5282a1ff1534500ab7a64f8a34b9d2b0162e5c622c32eb871e6",
+            "size": 23237177504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:7ae2fcb97430a5282a1ff1534500ab7a64f8a34b9d2b0162e5c622c32eb871e6",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q5_1",
+      "last_updated": "1 year ago",
+      "size": "25GB",
+      "digest": "sha256:a3d8ffc8818e808b888489ceab0b84f6784fea788f62720f6aef3918881d1acd",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a3d8ffc8818e808b888489ceab0b84f6784fea788f62720f6aef3918881d1acd",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:5450501ca5ec820e62919a868c045c43543e838127d8417a413f121c5e6c153f",
+            "size": 25329741984
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:5450501ca5ec820e62919a868c045c43543e838127d8417a413f121c5e6c153f",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "sha256:a567d5ccda15d11cad6d09c058a0a724be816329657ff22b98f7b708355545cf",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a567d5ccda15d11cad6d09c058a0a724be816329657ff22b98f7b708355545cf",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:bfa721e2998701cca1bb9c2d43a50dbcd0b1095e02f54fa5b1f468ec3a0a3a3d",
+            "size": 23237177504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:bfa721e2998701cca1bb9c2d43a50dbcd0b1095e02f54fa5b1f468ec3a0a3a3d",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:97798d041ebe95abcae62ac0133d7e9f39298c4977c70674e274280ff423f0d2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:97798d041ebe95abcae62ac0133d7e9f39298c4977c70674e274280ff423f0d2",
+          "size": 560
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:93564b4a6fe027e43eca59a0b6f89028412d6009d2ee7b0799279e8c0214521d",
+            "size": 23838797984
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:93564b4a6fe027e43eca59a0b6f89028412d6009d2ee7b0799279e8c0214521d",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q6_K",
+      "last_updated": "1 year ago",
+      "size": "28GB",
+      "digest": "sha256:c7f57ce61c0b28f41a4df4e0490105ce41dd95a8fb488d035402fc2f21120fc2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c7f57ce61c0b28f41a4df4e0490105ce41dd95a8fb488d035402fc2f21120fc2",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:2574628e17dc2cca82b28c0b79a9fc9f07ea78662d6133469cad1b249e2f066a",
+            "size": 27683877024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:2574628e17dc2cca82b28c0b79a9fc9f07ea78662d6133469cad1b249e2f066a",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-q8_0",
+      "last_updated": "1 year ago",
+      "size": "36GB",
+      "digest": "sha256:d42df4b5ec2f8cbfe6dafed5039d9ea66775eb6584299c7e06c5b2b83f8f3ba7",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d42df4b5ec2f8cbfe6dafed5039d9ea66775eb6584299c7e06c5b2b83f8f3ba7",
+          "size": 558
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:9d582901648153451af51983a96f89544b2f79012e8a5c9af2e364f3e614d184",
+            "size": 35856052384
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:9d582901648153451af51983a96f89544b2f79012e8a5c9af2e364f3e614d184",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-v2-fp16",
+      "last_updated": "1 year ago",
+      "size": "67GB",
+      "digest": "sha256:041d69218d551ac5202885f07d61afc1409e221a399cd75531c70b206cfe19fc",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:041d69218d551ac5202885f07d61afc1409e221a399cd75531c70b206cfe19fc",
+          "size": 557
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:eec3b32414e1150ce8c3476d6c894015514653db1dd991130b2edc2d0e15c6af",
+            "size": 67490279552
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          },
+          {
+            "mediaType": "Template",
+            "digest": "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "size": 108
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.system",
+            "digest": "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "size": 46
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04",
+            "size": 69
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:eec3b32414e1150ce8c3476d6c894015514653db1dd991130b2edc2d0e15c6af",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "sha256:fb9390528638173921c5100c17dbba3d549a651a83caf1d00ecc6ab437052a13",
+            "sha256:c26c7db9206c9c70a788ef8d99743153be8ae4524434e2798293324db95dea12",
+            "sha256:62ab78abadd613cb882be1e63a1a0d843685858f5f9456e7c4e3350284245d04"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q2_K",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "sha256:1e211350f633a091c2f1cb48e13ca68c375c6b3e064fde97baf34b2d22113275",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1e211350f633a091c2f1cb48e13ca68c375c6b3e064fde97baf34b2d22113275",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d16b5c70d70ca5879b3840d0390f40e67493eccf2f8d3e5639551a6111d320ad",
+            "size": 14210674848
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q2_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d16b5c70d70ca5879b3840d0390f40e67493eccf2f8d3e5639551a6111d320ad",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q3_K_S",
+      "last_updated": "1 year ago",
+      "size": "15GB",
+      "digest": "sha256:d0d60477d3d99e367f11158727c07b58ae2ccb14df4cc7245da5e5ad44168c76",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d0d60477d3d99e367f11158727c07b58ae2ccb14df4cc7245da5e5ad44168c76",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a0b39ec0230bce39ed7f2a48306a836e3cde905533c322bf8d703161dacfabe5",
+            "size": 14605349024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:a0b39ec0230bce39ed7f2a48306a836e3cde905533c322bf8d703161dacfabe5",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q3_K_M",
+      "last_updated": "1 year ago",
+      "size": "16GB",
+      "digest": "sha256:fed54448f15dbc45c6dc676321065d991e864b3d429b6baf6c6465c40d1d6803",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:fed54448f15dbc45c6dc676321065d991e864b3d429b6baf6c6465c40d1d6803",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:81c3f98c49f310f2655bda411d791744ff1c7015d6fbd6bb16219b57903eac80",
+            "size": 16283594912
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:81c3f98c49f310f2655bda411d791744ff1c7015d6fbd6bb16219b57903eac80",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q3_K_L",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "sha256:a3be39eed89683f527857723907b376fa7c64252ef56f683c0c18242d5ea0618",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a3be39eed89683f527857723907b376fa7c64252ef56f683c0c18242d5ea0618",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:9d1afa54756b03b54a1a4f70b0d44bd55853ea617f9e2e0b8b701c1824988d44",
+            "size": 17771524256
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q3_K_L",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:9d1afa54756b03b54a1a4f70b0d44bd55853ea617f9e2e0b8b701c1824988d44",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q4_0",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:deb73900ffc75551b488a5b9d697db7b1e70af76298067d11cf9462a98ed5a5c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:deb73900ffc75551b488a5b9d697db7b1e70af76298067d11cf9462a98ed5a5c",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:d8ec2a76443fbb0f1c28d562f75b3f692eaa43234e787cbe834d559e2098141d",
+            "size": 19052048544
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:d8ec2a76443fbb0f1c28d562f75b3f692eaa43234e787cbe834d559e2098141d",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q4_1",
+      "last_updated": "1 year ago",
+      "size": "21GB",
+      "digest": "sha256:79d4502fabd2ba2e324845af4367c0b9331a2c7380ac41164785295c939a49c0",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:79d4502fabd2ba2e324845af4367c0b9331a2c7380ac41164785295c939a49c0",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:cc8f9a0988694ece9fe1e511265b2d71bb93edc641ca0b6832ca8e6d9bd5b36b",
+            "size": 21144613024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:cc8f9a0988694ece9fe1e511265b2d71bb93edc641ca0b6832ca8e6d9bd5b36b",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q4_K_S",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "sha256:5476721c6f30c2d97335789b796d41c0cccf662f18472b7869771abf3f334b5f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:5476721c6f30c2d97335789b796d41c0cccf662f18472b7869771abf3f334b5f",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:0b705a4a00e40aaecc104a07f4a302f99575e759a78ee9c5ba2c613ab21803b2",
+            "size": 19146420384
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:0b705a4a00e40aaecc104a07f4a302f99575e759a78ee9c5ba2c613ab21803b2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q4_K_M",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "sha256:a21d4134f4aced5292c5eff2b43ebe1c03274836a5c5d72b7196a7c961933390",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a21d4134f4aced5292c5eff2b43ebe1c03274836a5c5d72b7196a7c961933390",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:56cbd8512ff8b57e80e4a2177f890434dfb6236514ec7a6d8d697c700b952a3b",
+            "size": 20219900064
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q4_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:56cbd8512ff8b57e80e4a2177f890434dfb6236514ec7a6d8d697c700b952a3b",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q5_0",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "sha256:23339debcc2cc544a85130e45bb20428c731093ad2aab42461f66f13a87a28e2",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:23339debcc2cc544a85130e45bb20428c731093ad2aab42461f66f13a87a28e2",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:b20619a7d4e6439aecb41a2f95725b33a9b726506726eb27d176b6e1f6446d7b",
+            "size": 23237177504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:b20619a7d4e6439aecb41a2f95725b33a9b726506726eb27d176b6e1f6446d7b",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q5_1",
+      "last_updated": "1 year ago",
+      "size": "25GB",
+      "digest": "sha256:08e787f705ff26e36fc2456fc33987817474bb623c43c82be4dac755210d60b3",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:08e787f705ff26e36fc2456fc33987817474bb623c43c82be4dac755210d60b3",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:8ff700e832302b2b6718284b23ef45fc40eca5aefac8ad4e39d82e909e7fb418",
+            "size": 25329741984
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_1",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:8ff700e832302b2b6718284b23ef45fc40eca5aefac8ad4e39d82e909e7fb418",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q5_K_S",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "sha256:a9cf25c9b08703d72fe7536b9888ed96dc1aac72948b4cca2c60239590914d37",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a9cf25c9b08703d72fe7536b9888ed96dc1aac72948b4cca2c60239590914d37",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:e2cdd58b73cb180c759255b9b3f8bf4e55ad78f975e53b023ba7e5fac52a812c",
+            "size": 23237177504
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_K_S",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:e2cdd58b73cb180c759255b9b3f8bf4e55ad78f975e53b023ba7e5fac52a812c",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q5_K_M",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "sha256:1adcf13e36225e5c92acde9fc365aff0c30557e7b0ffb6286bc911143ccac93b",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:1adcf13e36225e5c92acde9fc365aff0c30557e7b0ffb6286bc911143ccac93b",
+          "size": 338
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:50a0c9794c8edbc1d9be8852321306070061cbaf3d19d086e3607cea5f345e2b",
+            "size": 23838797984
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q5_K_M",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:50a0c9794c8edbc1d9be8852321306070061cbaf3d19d086e3607cea5f345e2b",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q6_K",
+      "last_updated": "1 year ago",
+      "size": "28GB",
+      "digest": "sha256:51946fdad87c590cbdcc418d8f0746c12cb92250d9ee0b340af52d15bbaf09d1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:51946fdad87c590cbdcc418d8f0746c12cb92250d9ee0b340af52d15bbaf09d1",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:80418d81971c4da602b8551f8f903eb8ab49068084f0ac70fa23923dfd28aed9",
+            "size": 27683877024
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q6_K",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:80418d81971c4da602b8551f8f903eb8ab49068084f0ac70fa23923dfd28aed9",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-q8_0",
+      "last_updated": "1 year ago",
+      "size": "36GB",
+      "digest": "sha256:c61a677188797c6c4e98acabe7b4feb2de47c7cb201bb689ab4bcffb579c8f8c",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:c61a677188797c6c4e98acabe7b4feb2de47c7cb201bb689ab4bcffb579c8f8c",
+          "size": 336
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:78ea0991b27ce0836037f796bf7ec5dbd00a3814833b214a99dd93d3875e87f2",
+            "size": 35856052384
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "Q8_0",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:78ea0991b27ce0836037f796bf7ec5dbd00a3814833b214a99dd93d3875e87f2",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
+    },
+    {
+      "tag": "phind-codellama:34b-fp16",
+      "last_updated": "1 year ago",
+      "size": "67GB",
+      "digest": "sha256:f1fffb7709d402d205173fafd9e6b0e41f50a8005ff62637998a88237ada9516",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:f1fffb7709d402d205173fafd9e6b0e41f50a8005ff62637998a88237ada9516",
+          "size": 335
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:64d75cbc41351cbd90c92c3f1f6771c9ac0ff06a1dd65f15c691f4a8909df817",
+            "size": 67490279552
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78",
+            "size": 7019
+          }
+        ]
+      },
+      "config": {
+        "model_format": "gguf",
+        "model_family": "llama",
+        "model_families": [
+          "llama"
+        ],
+        "model_type": "34B",
+        "file_type": "F16",
+        "architecture": "amd64",
+        "os": "linux",
+        "rootfs": {
+          "type": "layers",
+          "diff_ids": [
+            "sha256:64d75cbc41351cbd90c92c3f1f6771c9ac0ff06a1dd65f15c691f4a8909df817",
+            "sha256:41774062cd349c744e8ee986c1aaf5784b7e42fbe306619536fa7386d421da78"
+          ]
+        }
+      },
+      "context_length": null,
+      "model_type": "34B",
+      "quantization": null,
+      "base_model": null
     }
-  ]
+  ],
+  "annotations": {
+    "ollama.input_type": "code"
+  },
+  "quality_score": {
+    "fields_filled": 55,
+    "total_possible": 107,
+    "completeness": 0.51
+  }
 }

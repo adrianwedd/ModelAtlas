@@ -422,19 +422,48 @@ def scrape_ollama_models_from_web(headless=True, debug_model=None):
         for i, name in enumerate(names):
             log_message(f"==> Processing Ollama.com model: {name} ({i+1}/{len(names)})", status=f"{i+1}/{len(names)}", phase="ollama_scrape")
             
-            detail = scrape_details(page, name)
-            
-            # Scrape the tags page for version info
-            detail["tags"] = scrape_tags_page(page, name)
+            model_file_path = os.path.join(OLLAMA_MODELS_DIR, f"{name.replace('/', '_')}.json")
+            existing_model_data = {}
+            if os.path.exists(model_file_path):
+                with open(model_file_path, "r", encoding="utf-8") as f:
+                    existing_model_data = json.load(f)
 
-            # Enrich the model data
-            detail = enrich_model_data(detail)
+            # First, get the current page hash to check for changes
+            current_page_hash = None
+            try:
+                temp_page = browser.new_page() # Use a new page to avoid interfering with main page
+                temp_page.goto(f"https://ollama.com/library/{name}", wait_until="networkidle", timeout=90000)
+                temp_soup = BeautifulSoup(temp_page.content(), "html.parser")
+                current_page_hash = get_hash(temp_soup.prettify())
+                temp_page.close()
+            except PlaywrightTimeout as e:
+                log_message(f"Timeout getting hash for {name}: {e}", level="ERROR")
+                temp_page.close()
+                continue # Skip this model if we can't even get the hash
+            except Exception as e:
+                log_message(f"Error getting hash for {name}: {e}", level="ERROR")
+                temp_page.close()
+                continue # Skip this model if we can't even get the hash
 
-            # Post-process the model data (including quality score)
-            detail = post_process_model_data(detail)
+            detail = {}
+            if existing_model_data and existing_model_data.get("page_hash") == current_page_hash:
+                log_message(f"Page hash for {name} matches existing data. Skipping detailed scrape.", phase="ollama_scrape")
+                detail = existing_model_data
+            else:
+                log_message(f"Page hash for {name} changed or no existing data. Performing full scrape.", phase="ollama_scrape")
+                detail = scrape_details(page, name)
+                detail["page_hash"] = current_page_hash # Ensure the new hash is stored
+
+                # Scrape the tags page for version info
+                detail["tags"] = scrape_tags_page(page, name)
+
+                # Enrich the model data
+                detail = enrich_model_data(detail)
+
+                # Post-process the model data (including quality score)
+                detail = post_process_model_data(detail)
 
             # Save individual model JSON file
-            model_file_path = os.path.join(OLLAMA_MODELS_DIR, f"{name.replace('/', '_')}.json")
             with open(model_file_path, "w", encoding="utf-8") as mf:
                 json.dump(detail, mf, indent=2)
             results.append(detail)
