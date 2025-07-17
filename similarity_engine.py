@@ -31,7 +31,7 @@ class ModelSimilarityEngine:
         
     def load_models(self, models_file: str):
         """Load enriched models data"""
-        with open(models_file, 'r') as f:
+        with open(models_file, 'r', encoding='utf-8') as f:
             self.models_data = {model['id']: model for model in json.load(f)}
     
     def normalize_architecture(self, arch: str) -> str:
@@ -293,5 +293,5 @@ if __name__ == "__main__":
     
     # Generate graph data
     graph = engine.generate_similarity_graph()
-    with open('similarity_graph.json', 'w') as f:
+    with open('similarity_graph.json', 'w', encoding='utf-8') as f:
         json.dump(graph, f, indent=2)

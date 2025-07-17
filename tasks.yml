@@ -357,7 +357,7 @@
   component: "Repo"
   dependencies: []
   priority: 2
-  status: "pending"
+  status: "done"
 
 - id: 18
   title: "Refactor atlas_cli using Typer or Click"
@@ -452,5 +452,21 @@
   description: "Use rich for styled output and a 'TRUTH FORGED' banner on completion."
   component: "CLI"
   dependencies: [18]
+  priority: 3
+  status: "pending"
+
+- id: 30
+  title: "Centralize text normalization"
+  description: "Move duplicate normalize_text functions to common/text_utils.py and update imports."
+  component: "Core"
+  dependencies: []
+  priority: 3
+  status: "pending"
+
+- id: 31
+  title: "Terminology enforcement linter"
+  description: "Create CONTRIBUTING lexicon and fail builds if docs or code use inconsistent terms."
+  component: "Repo"
+  dependencies: [25]
   priority: 3
   status: "pending"

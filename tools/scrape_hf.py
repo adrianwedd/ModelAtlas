@@ -13,7 +13,7 @@ def log_message(message, level="INFO", status=None, phase=None):
     ts = time.strftime("%Y-%m-%d %H:%M:%S")
     status_str = f"[{status}]" if status else ""
     phase_str = f"[{phase}]" if phase else ""
-    with open(LOG_FILE, "a") as f:
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(f"[{ts}] [{level}]{phase_str}{status_str} {message}\n")
 
 def parse_pull_count(s):
@@ -99,7 +99,7 @@ def run_hf_scraper(limit=None):
 
                 # Save individual model JSON file in the new directory
                 model_file_path = os.path.join(hf_models_output_dir, f"{model_id.replace('/', '_')}.json")
-                with open(model_file_path, "w") as mf:
+                with open(model_file_path, "w", encoding="utf-8") as mf:
                     json.dump(data, mf, indent=2)
 
             except Exception as model_e:
