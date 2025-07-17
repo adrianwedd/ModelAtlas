@@ -779,3 +779,19 @@
   status: "done"
   epic: "Refactor"
 
+
+- id: 415
+  title: "Add lint workflow"
+  description: "Create .github/workflows/lint.yml running black --check, isort --check, and flake8; integrate with CI."
+  component: "CI"
+  dependencies: [407]
+  priority: 3
+  status: "done"
+  area: "Automation"
+  actionable_steps:
+    - "Create lint.yml"
+    - "Have ci.yml depend on lint job"
+  acceptance_criteria:
+    - "CI fails on formatting violations"
+  task_id: "CI-002"
+  epic: "Reliability & CI"
