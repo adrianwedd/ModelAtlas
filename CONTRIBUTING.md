@@ -7,7 +7,7 @@
 4. Install Playwright browsers: `playwright install`
 
 ## Development
-- **Scraper**: `python tools/scrape_hf.py` or `python tools/scrape_ollama.py`
+- **Scraper**: `python tools/scrape_*.py`
 - **Enrichment**: `python enrich/main.py`
 - **Visuals**: `generate_visuals.py`
 - **README**: `generate_readme.py`
