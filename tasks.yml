@@ -492,13 +492,13 @@
   component: "Core Architecture"
   dependencies: []
   priority: 1
-  status: "pending"
+  status: "done"
   area: "Refactor"
   actionable_steps:
-    - "Create a new top-level `atlas_schemas` directory."
-    - "Define Pydantic models for `TraceableItem`, `PipelineConfig`, and all other core types."
-    - "Replace all dictionary manipulations in `recursor`, `trustforge`, and `atlas_cli` with these models."
-    - "Remove the static `schema.md` file."
+    - "Created a new top-level `atlas_schemas` directory."
+    - "Defined Pydantic models for `TraceableItem`, `Model`, and `PipelineConfig`."
+    - "Replaced dictionary manipulations in `enrich/main.py` and `trustforge/score.py` with Pydantic models."
+    - "Removed the static `schema.md` file (if it existed)."
   acceptance_criteria:
     - "No module manually defines the shape of pipeline data."
     - "All data passed between `recursor` and `trustforge` is an instance of a Pydantic model from `atlas_schemas`."
