@@ -1,3 +1,4 @@
+from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 import json
 
@@ -10,7 +11,7 @@ with open('models_enriched.json', 'r', encoding='utf-8') as f:
     models = json.load(f)
 
 # Render and write
-readme = template.render(models=models, date='{{DATE}}')
+readme = template.render(models=models, date=datetime.utcnow().strftime('%Y-%m-%d'))
 with open('README.md', 'w', encoding='utf-8') as f:
     f.write(readme)
 
