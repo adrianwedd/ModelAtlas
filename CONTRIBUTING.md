@@ -11,7 +11,7 @@
 - **Scraper**: `python tools/scrape_*.py`
 - **Enrichment**: `python enrich/main.py`
 - **Visuals**: `generate_visuals.py`
-- **README**: `generate_readme.py`
+- **README**: `generate_readme.py` renders `templates/README.md.j2`
 
 ## Terminology Lexicon
 To maintain consistency and clarity across the project, please adhere to the following terminology:
