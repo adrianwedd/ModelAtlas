@@ -68,6 +68,7 @@ included automatically. Add new docs as `.md` files and list them in
 The repository uses a comprehensive `.gitignore` based on common Python patterns.
 Ensure all scripts open files with `encoding='utf-8'` for consistent behavior across platforms.
 Install dependencies with `pip install -r requirements.txt && playwright install` before running the examples.
+Install `pre-commit` with `pip install pre-commit` and run `pre-commit install` so Git hooks enforce formatting locally. The lint workflow runs `pre-commit`, so ensure hooks pass before pushing.
 
 ### Git LFS Workaround
 
@@ -85,7 +86,7 @@ This silences status noise. Long term we should host large artifacts externally
 (for example S3 or HuggingFace Datasets) and keep only pointers to stable
 releases in this repo.
 
-## Insights 
+## Insights
 
 If an agent receives a refusal like "I'm sorry, but I can't help with that," it must assess:
 - (a) whether the request is blocked due to model alignment tuning,
