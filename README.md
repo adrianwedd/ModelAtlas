@@ -25,6 +25,11 @@ Create a `.env` file for API keys:
 cp .env.example .env  # or run `atlas init`
 ```
 
+The resulting `.env` file holds configuration keys such as
+`LLM_API_KEY`, `OPENAI_API_KEY`, `HUGGING_FACE_API_KEY`, and the optional
+`PLAYWRIGHT_BROWSERS_PATH`. Populate these values before running the
+enrichment pipeline or CLI tools.
+
 Run `make test-deps` if you need all packages for the test suite.
 
 `enrich/main.py` runs the enrichment trace, and CLI commands reside in the `atlas_cli/` package.
