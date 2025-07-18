@@ -129,3 +129,6 @@ This protocol supports recursive agent intelligence by enabling a structured app
 ### TrustForge Consumption
 
 The `TrustForge` component will consume the rich, structured data produced by this protocol, including detailed variant specifications, license text, and popularity metrics, to accurately compute and assign model trust scores.
+
+### Testing Coverage
+Unit tests now cover the trust score calculation and name similarity heuristics. Run `PYTHONPATH=. pytest --cov=trustforge --cov=similarity_engine` to verify coverage.
