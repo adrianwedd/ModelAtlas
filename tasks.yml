@@ -814,6 +814,82 @@
   epic: "Foundational Hardening"
 
 - id: 417
+  title: "Document LUMEN UX audit"
+  description: "Save UX audit summary and redesign recommendations from LUMEN to docs/UX_AUDIT_LUMEN.md."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "done"
+  area: "UX Research"
+  actionable_steps:
+    - "Create docs/UX_AUDIT_LUMEN.md summarizing findings"
+    - "Add corresponding tasks to tasks.yml"
+  acceptance_criteria:
+    - "File docs/UX_AUDIT_LUMEN.md exists with audit summary"
+  epic: "Onboarding & Polish"
+
+- id: 418
+  title: "Clarify README components and dashboard note"
+  description: "Add Components and Toolchain subheadings and mention that the dashboard code is not yet included."
+  component: "Docs"
+  dependencies: []
+  priority: 3
+  status: "pending"
+  area: "DX"
+  actionable_steps:
+    - "Add \u1F4E6 Components and \u1F6E0 Toolchain headers"
+    - "Explain missing dashboards/ directory or planned dashboard"
+    - "Ensure quick start block remains clear"
+  acceptance_criteria:
+    - "README clarifies dashboard status and includes new headers"
+  epic: "UX"
+
+- id: 419
+  title: "Improve CLI help and error messaging"
+  description: "Group trace options in help text, show output examples, and provide guidance when tasks.yml is missing or after init."
+  component: "CLI"
+  dependencies: [18]
+  priority: 3
+  status: "pending"
+  actionable_steps:
+    - "Add 'Trace Options' heading in help output"
+    - "Include input/output examples"
+    - "Warn to run 'atlas init' if tasks.yml missing"
+    - "Remind to add API keys after init"
+  acceptance_criteria:
+    - "CLI help shows grouped options and examples"
+    - "Missing tasks.yml message guides the user"
+  epic: "DX Improvement"
+
+- id: 420
+  title: "Document atlas search alias"
+  description: "Clarify in README and CLI whether 'atlas search' is a subcommand or alias."
+  component: "CLI"
+  dependencies: [18]
+  priority: 3
+  status: "pending"
+  actionable_steps:
+    - "Expose search as official subcommand or document alias"
+    - "Update README examples accordingly"
+  acceptance_criteria:
+    - "Users can run atlas search or know correct command"
+  epic: "DX Improvement"
+
+- id: 421
+  title: "Unify CLI naming in docs"
+  description: "Standardize use of 'atlas' vs 'atlas-cli' across documentation."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "pending"
+  actionable_steps:
+    - "Audit docs for inconsistent CLI naming"
+    - "Replace references to use a single term"
+  acceptance_criteria:
+    - "Documentation consistently refers to the CLI"
+  epic: "Consistency"
+
+- 1d: 422
   title: "Write CLI search tests"
   description: "Add unit tests for atlas_cli.search module"
   component: "Testing"
