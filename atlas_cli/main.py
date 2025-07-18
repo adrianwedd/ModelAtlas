@@ -18,6 +18,7 @@ from common.logging import logger
 from atlas_schemas.config import settings
 from enrich.main import run_enrichment_trace
 from trustforge.score import compute_and_merge_trust_scores
+from atlas_cli.search import cli as search_cli
 
 app = typer.Typer(help="ModelAtlas CLI")
 console = Console()
@@ -79,6 +80,12 @@ def init() -> None:
         shutil.copy(example_path, env_path)
         console.print(Panel("TRUTH FORGED", style="bold green"))
         console.print(f"[bold green]Created {env_path} from .env.example[/]")
+
+
+@app.command(help="Search models by name and summary")
+def search(query: str, top_k: int = typer.Option(5, help="Number of results")) -> None:
+    """Search the local model catalog."""
+    search_cli(query=query, top_k=top_k)
 
 
 def _run() -> None:
