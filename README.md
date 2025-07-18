@@ -29,6 +29,27 @@ Run `make test-deps` if you need all packages for the test suite.
 
 `enrich/main.py` runs the enrichment trace, and CLI commands reside in the `atlas_cli/` package.
 
+## 🐳 Docker Usage
+
+Build a container with all Python dependencies and Playwright browsers preinstalled:
+
+```bash
+docker build -t modelatlas .
+```
+
+Launch an interactive shell inside the container:
+
+```bash
+docker run --rm -it modelatlas
+```
+
+You can then run the enrichment trace or CLI tools just as on the host system:
+
+```bash
+python enrich/main.py
+atlas search "llama"
+```
+
 ⸻
 
 ## 🧠 System Overview
