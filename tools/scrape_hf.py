@@ -1,20 +1,22 @@
-from huggingface_hub import list_models, HfApi, ModelCard, hf_hub_download
+from huggingface_hub import list_models, HfApi, ModelCard
 import json
 import os
 import time
 import re
 import sys
+from pathlib import Path
+import requests_cache
 
-LOG_FILE = "hf_scraper.log"
+from atlas_schemas.config import settings
+from common.logging import logger
+
+# HTTP request cache
+# HTTP request cache
+LOG_FILE = settings.LOG_FILE
+MODELS_DIR = settings.MODELS_DIR
+CACHE_PATH = Path(settings.PROJECT_ROOT / ".cache" / "http")
 # OUTPUT_FILE = "data/models_raw.json" # Removed, as we're saving individual files
 
-def log_message(message, level="INFO", status=None, phase=None):
-    """Append a timestamped log entry to LOG_FILE, with optional status and phase markers."""
-    ts = time.strftime("%Y-%m-%d %H:%M:%S")
-    status_str = f"[{status}]" if status else ""
-    phase_str = f"[{phase}]" if phase else ""
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(f"[{ts}] [{level}]{phase_str}{status_str} {message}\n")
 
 def parse_pull_count(s):
     """Normalize text counts like '1.2M' or '650K' into integer counts."""
@@ -32,11 +34,15 @@ def parse_pull_count(s):
     except:
         return 0  # fallback to zero on parse failure
 
-def run_hf_scraper(limit=None):
+def execute_hf_scraper(limit=None, use_cache=True):
+    if use_cache:
+        CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        requests_cache.install_cache(str(CACHE_PATH))
+
     api = HfApi()
     all_models_data = []
     
-    log_message("Starting Hugging Face Hub scraping...")
+    logger.info("Starting Hugging Face Hub scraping...")
     
     # Define the new output directory for Hugging Face models
     hf_models_output_dir = os.path.join("models", "huggingface")
@@ -45,11 +51,11 @@ def run_hf_scraper(limit=None):
     try:
         # Fetch models from Hugging Face Hub
         hf_models_list = list(list_models(sort="downloads", direction=-1, limit=limit))
-        log_message(f"Fetched {len(hf_models_list)} models from Hugging Face Hub initial list.")
+        logger.info("Fetched %s models from Hugging Face Hub initial list.", len(hf_models_list))
 
         for i, model_info in enumerate(hf_models_list):
             model_id = model_info.id
-            log_message(f"Processing model: {model_id} ({i+1}/{len(hf_models_list)})", phase="hf_scrape")
+            logger.info("Processing model: %s (%s/%s)", model_id, i+1, len(hf_models_list))
             
             try:
                 # Fetch full model details
@@ -93,7 +99,7 @@ def run_hf_scraper(limit=None):
                             data["arxiv_ids"] = list(set(arxiv_links)) # Use set to avoid duplicates
 
                 except Exception as mc_e:
-                    log_message(f"Could not load model card for {model_id}: {mc_e}", level="WARNING")
+                    logger.warning("Could not load model card for %s: %s", model_id, mc_e)
 
                 all_models_data.append(data)
 
@@ -103,19 +109,27 @@ def run_hf_scraper(limit=None):
                     json.dump(data, mf, indent=2)
 
             except Exception as model_e:
-                log_message(f"Error processing model {model_id}: {model_e}", level="ERROR")
+                logger.error("Error processing model %s: %s", model_id, model_e)
             
             time.sleep(0.1) # Politeness delay
 
     except Exception as e:
-        log_message(f"An error occurred during Hugging Face Hub scraping: {e}", level="ERROR")
+        logger.error("An error occurred during Hugging Face Hub scraping: %s", e)
 
-    log_message(f"Hugging Face Hub scraping complete — {len(all_models_data)} models stored in {hf_models_output_dir}", status="COMPLETE", phase="done")
+    logger.info("Hugging Face Hub scraping complete — %s models stored in %s", len(all_models_data), hf_models_output_dir)
 
 if __name__ == "__main__":
-    # Reset log file each run for clean debugging
+    # Reset log file each trace for clean debugging
     if os.path.exists(LOG_FILE):
         os.remove(LOG_FILE)
     
-    # Example usage: scrape top 100 models
-    run_hf_scraper(limit=100)
+    use_cache = "--no-cache" not in sys.argv
+    limit = 100
+    for arg in sys.argv:
+        if arg.startswith("--limit="):
+            try:
+                limit = int(arg.split("=")[1])
+            except ValueError:
+                pass
+
+    execute_hf_scraper(limit=limit, use_cache=use_cache)

@@ -10,12 +10,12 @@ Yes, this **brilliant and comprehensive prototype** has been preserved here in i
 - Smart model filtering, sorting, and visualization with mock data.
 - **Live simulation** of scraping new models.
 - Dashboard metrics + visual tagging.
-- Alignment with our data pipeline blueprint.
+- Alignment with our data trace blueprint.
 
 ## 💡 Why It Matters
 
 This UI:
-- Proves out our modular data→enrichment→visualization pipeline
+- Proves out our modular data→enrichment→visualization trace
 - Acts as a visual scaffold for future LLM-generated dashboards
 - Can generate README output for GitHub directly from visual data
 - Is ready for backend integration and GitHub Actions enrichment

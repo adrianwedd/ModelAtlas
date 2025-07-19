@@ -21,7 +21,7 @@
 3.  Updated `tasks.yml` to reflect the two-step scraping process (Task 1 for HF, Task 1.1 for Ollama.com).
 
 **Current Status:**
-*   The scraping pipeline is now designed to leverage the strengths of both Hugging Face API and Ollama Registry API, with Playwright used only for Ollama.com-specific web content.
+*   The scraping trace is now designed to leverage the strengths of both Hugging Face API and Ollama Registry API, with Playwright used only for Ollama.com-specific web content.
 *   Debugging capabilities for Ollama.com scraping are significantly enhanced.
 
 **Next Step:** Execute `python tools/scrape_hf.py` (Task 1), then `python tools/scrape_ollama.py` (Task 1.1).

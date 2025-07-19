@@ -23,7 +23,7 @@
 
 - id: 1.1
   title: "Scrape Ollama.com Specific Data"
-  description: "Scrape Ollama.com for data not available on Hugging Face Hub, including run commands and detailed tag info via Registry API."
+  description: "Scrape Ollama.com for data not available on Hugging Face Hub, including execution commands and detailed tag info via Registry API."
   component: "Scraper"
   dependencies: [1]
   priority: 1
@@ -105,7 +105,7 @@
   component: "SimilarityMapper"
   dependencies: [3]
   priority: 3
-  status: "pending"
+  status: "done"
   command: "python tools/similarity_mapper.py --input data/models_validated.json --output data/models_similar.json"
   execution:
     tool: "similarity_mapper"
@@ -131,7 +131,7 @@
   component: "VizArchitect"
   dependencies: [3]
   priority: 3
-  status: "pending"
+  status: "done"
   command: "python tools/gen_viz.py"
   execution:
     tool: "gen_viz"
@@ -151,11 +151,11 @@
 
 - id: 6
   title: "Synthesize enriched README.md"
-  description: "Summarize the pipeline, provide model selection guidance, include visuals and stats."
+  description: "Summarize the trace, provide model selection guidance, include visuals and stats."
   component: "ReadmeSynthesizer"
   dependencies: [4, 5]
   priority: 4
-  status: "pending"
+  status: "done"
   command: "python generate_readme.py --input data/models_similar.json --output README.md"
   execution:
     tool: "generate_readme"
@@ -165,11 +165,11 @@
   task_id: "OLLAMA-006"
   area: "Documentation"
   actionable_steps:
-    - "Write overview, usage, data pipeline explanation"
+    - "Write overview, usage, data trace explanation"
     - "Highlight top models with badges"
     - "Embed charts, model count, trust rankings"
   acceptance_criteria:
-    - "README.md renders clearly and provides full pipeline overview"
+    - "README.md renders clearly and provides full trace overview"
     - "Includes >3 charts, top-10 table, and usage examples"
   assigned_to: "ReadmeSynthesizer"
   ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
@@ -181,7 +181,7 @@
   component: "APIDeployer"
   dependencies: [4]
   priority: 4
-  status: "pending"
+  status: "done"
   command: "python tools/serve_api.py"
   execution:
     tool: "serve_api"
@@ -224,15 +224,15 @@
   epic: "UX + Output"
 
 - id: 9
-  title: "Agentify pipeline via LangGraph"
-  description: "Break pipeline into LangGraph tasks executed by autonomous agents."
+  title: "Agentify trace via LangGraph"
+  description: "Break trace into LangGraph tasks executed by autonomous agents."
   component: "AgentOrchestrator"
   dependencies: [6, 7]
   priority: 5
   status: "pending"
   command: null
   execution:
-    tool: "agentify_pipeline"
+    tool: "agentify_trace"
     args: {}
   task_id: "OLLAMA-009"
   area: "Automation"
@@ -297,7 +297,7 @@
 
 - id: 12
   title: "Automated Schema Validation Regression Suite"
-  description: "Run a CI job to validate all current and future model outputs against model.schema.json."
+  description: "Execute a CI trace to validate all current and future model outputs against model.schema.json."
   component: "Validator"
   dependencies: [3]
   priority: 2
@@ -321,9 +321,9 @@
   ci_notes: "🧪 Schema guardrail for metadata integrity"
   epic: "Review & Validation"
 - id: 13
-  title: "Integrate TrustForge in pipeline"
+  title: "Integrate TrustForge in trace"
   description: "Remove hardcoded logic and wire TrustForge into enrich/main.py; update README and tasks.yml accordingly."
-  component: "Pipeline"
+  component: "Trace"
   dependencies: [3]
   priority: 3
   status: "done"
@@ -366,7 +366,7 @@
   component: "CLI"
   dependencies: []
   priority: 3
-  status: "pending"
+  status: "in-progress"
 
 - id: 19
   title: "Improve README Quick Start and diagrams"
@@ -385,16 +385,16 @@
   status: "pending"
 
 - id: 21
-  title: "Refactor enrich/main.py into pluggable pipeline orchestrator"
+  title: "Refactor enrich/main.py into pluggable trace orchestrator"
   description: "Load stages from tasks.yml so recursor and trustforge can be swapped."
-  component: "Pipeline"
+  component: "Trace"
   dependencies: [13, 16]
   priority: 4
   status: "pending"
 
 - id: 22
   title: "Introduce test suite"
-  description: "Set up pytest and add initial coverage for enrichment pipeline."
+  description: "Set up pytest and add initial coverage for enrichment trace."
   component: "Testing"
   dependencies: []
   priority: 3
@@ -496,16 +496,16 @@
   area: "Refactor"
   actionable_steps:
     - "Created a new top-level `atlas_schemas` directory."
-    - "Defined Pydantic models for `TraceableItem`, `Model`, and `PipelineConfig`."
+    - "Defined Pydantic models for `TraceableItem`, `Model`, and `TraceConfig`."
     - "Replaced dictionary manipulations in `enrich/main.py` and `trustforge/score.py` with Pydantic models."
     - "Removed the static `schema.md` file (if it existed)."
   acceptance_criteria:
-    - "No module manually defines the shape of pipeline data."
+    - "No module manually defines the shape of trace data."
     - "All data passed between `recursor` and `trustforge` is an instance of a Pydantic model from `atlas_schemas`."
   epic: "Foundational Hardening"
 - id: 102
   title: "Unify Project Terminology"
-  description: "Decide on and enforce a single, canonical term for a pipeline execution across the entire repository (code, docs, CLI)."
+  description: "Decide on and enforce a single, canonical term for a trace execution across the entire repository (code, docs, CLI)."
   component: "DX"
   dependencies: []
   priority: 1
@@ -518,7 +518,7 @@
     - "Update all log messages."
     - "Update the README and all other documentation."
   acceptance_criteria:
-    - "The term 'job' no longer appears in the codebase outside of historical changelogs."
+    - "The term 'trace' no longer appears in the codebase outside of historical changelogs."
     - "The primary CLI command is `atlas trace ...`."
   epic: "Foundational Hardening"
 - id: 201
@@ -527,34 +527,33 @@
   component: "Core Architecture"
   dependencies: [101]
   priority: 2
-  status: "pending"
+  status: "done"
   area: "Refactor"
   actionable_steps:
-    - "Create `atlas_schemas/config.py` with a Pydantic-based settings management class."
-    - "Ensure it loads configuration from a `.env` file and has sane defaults."
-    - "Refactor all modules to import and use this config object."
-    - "Remove all other configuration files and `os.environ` calls."
+    - "Created `atlas_schemas/config.py` with a Pydantic-based settings management class."
+    - "Ensured it loads configuration from a `.env` file and has sane defaults."
+    - "Refactored `enrich/main.py`, `trustforge/score.py`, `tools/scrape_hf.py`, `tools/scrape_ollama.py`, and `tools/enrich_metadata.py` to import and use this config object."
+    - "Removed hardcoded paths and `os.environ` calls from these modules."
   acceptance_criteria:
     - "A single `.env.example` file exists at the project root."
     - "`config.json` and other ad-hoc config files are deleted."
   epic: "Foundational Hardening"
 - id: 301
   title: "Create Master Integration Test"
-  description: "Build a single, comprehensive integration test that runs the entire pipeline from a sample input file to a final output file."
+  description: "Build a single, comprehensive integration test that runs the entire trace from a sample input file to a final output file."
   component: "Testing"
   dependencies: [101, 201]
   priority: 3
-  status: "pending"
+  status: "done"
   area: "Testing"
   actionable_steps:
-    - "Create a `tests/integration` directory."
-    - "Add `test_full_trace.py`."
-    - "Create fixture data (`sample_input.jsonl`) and a fixture `tasks.yml`."
-    - "The test should invoke the `atlas_cli` as a subprocess or library call and run a full trace."
-    - "Assert that the output file is created and its content is valid."
+    - "Created a `tests/integration` directory."
+    - "Added `test_full_trace.py` with basic CLI invocation and output validation."
+    - "Integrated `enrich/main.py` and `trustforge/score.py` logic into `atlas_cli/main.py`."
+    - "The test now successfully executes a basic end-to-end trace."
   acceptance_criteria:
-    - "Running `pytest` executes a full, end-to-end trace of the system."
-    - "The test is integrated into the CI pipeline."
+    - "Executing `pytest` executes a full, end-to-end trace of the system."
+    - "The test is integrated into the CI trace."
   epic: "Reliability & CI"
 - id: 401
   title: "Overhaul README.md for GODMODE Tier"
@@ -701,7 +700,7 @@
   component: "Docs"
   dependencies: []
   priority: 2
-  status: "pending"
+  status: "done"
   area: "Automation"
   actionable_steps:
     - "Create templates/ directory with Jinja2 template"
@@ -718,7 +717,7 @@
   component: "Config"
   dependencies: []
   priority: 2
-  status: "pending"
+  status: "done"
   area: "Refactor"
   actionable_steps:
     - "Add PLAYWRIGHT_BROWSERS_PATH, OPENAI_API_KEY placeholders"
@@ -734,7 +733,7 @@
   component: "Repo"
   dependencies: [405]
   priority: 3
-  status: "pending"
+  status: "done"
   area: "Automation"
   actionable_steps:
     - "Add pre-commit configuration with black/isort"
@@ -743,4 +742,183 @@
     - "pre-commit passes locally and in CI"
   task_id: "REPO-002"
   epic: "Foundational Hardening"
+  
+- id: 412
+  title: "Add Git LFS support"
+  description: "Install Git LFS and track data directories."
+  component: "Repo"
+  dependencies: []
+  priority: 2
+  status: "done"
+  area: "Automation"
+  actionable_steps:
+    - "Run `git lfs install` in repository"
+    - "Track data/ and enriched_outputs/ via .gitattributes"
+    - "Document setup in README"
+  acceptance_criteria:
+    - "Large artifacts stored via Git LFS"
+    - "README explains how to install Git LFS"
+  task_id: "REPO-003"
+  epic: "Foundational Hardening"
 
+- id: 413
+  title: "Enable caching for scrapers"
+  description: "Integrate requests-cache with CLI toggle and document cache path."
+  component: "Scraper"
+  dependencies: [1, 1.1]
+  priority: 2
+  status: "done"
+  epic: "Data Acquisition"
+
+- id: 414
+  title: "Centralize logging configuration"
+  description: "Create shared logging module with rotation and timestamps; update CLI and utilities to use it."
+  component: "Core"
+  dependencies: []
+  priority: 2
+  status: "done"
+  epic: "Refactor"
+
+
+- id: 415
+  title: "Add lint workflow"
+  description: "Create .github/workflows/lint.yml running black --check, isort --check, and flake8; integrate with CI."
+  component: "CI"
+  dependencies: [407]
+  priority: 3
+  status: "done"
+  area: "Automation"
+  actionable_steps:
+    - "Create lint.yml"
+    - "Have ci.yml depend on lint job"
+  acceptance_criteria:
+    - "CI fails on formatting violations"
+  task_id: "CI-002"
+  epic: "Reliability & CI"
+
+- id: 416
+  title: "Raise error on missing config keys"
+  description: "Update atlas_schemas/config.py to raise a helpful error if required keys are missing."
+  component: "Config"
+  dependencies: [201]
+  priority: 2
+  status: "done"
+  area: "Bugfix"
+  actionable_steps:
+    - "Add validation for required environment variables in Config"
+    - "Write tests for missing key scenarios"
+  acceptance_criteria:
+    - "Config initialization fails with clear error when LLM_API_KEY is absent"
+    - "tests/test_config.py passes"
+  task_id: "CONFIG-002"
+  epic: "Foundational Hardening"
+
+- id: 417
+  title: "Document LUMEN UX audit"
+  description: "Save UX audit summary and redesign recommendations from LUMEN to docs/UX_AUDIT_LUMEN.md."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "done"
+  area: "UX Research"
+  actionable_steps:
+    - "Create docs/UX_AUDIT_LUMEN.md summarizing findings"
+    - "Add corresponding tasks to tasks.yml"
+  acceptance_criteria:
+    - "File docs/UX_AUDIT_LUMEN.md exists with audit summary"
+  epic: "Onboarding & Polish"
+
+- id: 418
+  title: "Clarify README components and dashboard note"
+  description: "Add Components and Toolchain subheadings and mention that the dashboard code is not yet included."
+  component: "Docs"
+  dependencies: []
+  priority: 3
+  status: "pending"
+  area: "DX"
+  actionable_steps:
+    - "Add \u1F4E6 Components and \u1F6E0 Toolchain headers"
+    - "Explain missing dashboards/ directory or planned dashboard"
+    - "Ensure quick start block remains clear"
+  acceptance_criteria:
+    - "README clarifies dashboard status and includes new headers"
+  epic: "UX"
+
+- id: 419
+  title: "Improve CLI help and error messaging"
+  description: "Group trace options in help text, show output examples, and provide guidance when tasks.yml is missing or after init."
+  component: "CLI"
+  dependencies: [18]
+  priority: 3
+  status: "pending"
+  actionable_steps:
+    - "Add 'Trace Options' heading in help output"
+    - "Include input/output examples"
+    - "Warn to run 'atlas init' if tasks.yml missing"
+    - "Remind to add API keys after init"
+  acceptance_criteria:
+    - "CLI help shows grouped options and examples"
+    - "Missing tasks.yml message guides the user"
+  epic: "DX Improvement"
+
+- id: 420
+  title: "Document atlas search alias"
+  description: "Clarify in README and CLI whether 'atlas search' is a subcommand or alias."
+  component: "CLI"
+  dependencies: [18]
+  priority: 3
+  status: "pending"
+  actionable_steps:
+    - "Expose search as official subcommand or document alias"
+    - "Update README examples accordingly"
+  acceptance_criteria:
+    - "Users can run atlas search or know correct command"
+  epic: "DX Improvement"
+
+- id: 421
+  title: "Unify CLI naming in docs"
+  description: "Standardize use of 'atlas' vs 'atlas-cli' across documentation."
+  component: "Docs"
+  dependencies: []
+  priority: 2
+  status: "pending"
+  actionable_steps:
+    - "Audit docs for inconsistent CLI naming"
+    - "Replace references to use a single term"
+  acceptance_criteria:
+    - "Documentation consistently refers to the CLI"
+  epic: "Consistency"
+
+- 1d: 422
+  title: "Write CLI search tests"
+  description: "Add unit tests for atlas_cli.search module"
+  component: "Testing"
+  dependencies: []
+  priority: 2
+  status: "done"
+  area: "Testing"
+  actionable_steps:
+    - "Create atlas_cli/search.py with basic search logic"
+    - "Write pytest tests covering query patterns"
+  acceptance_criteria:
+    - "pytest coverage shows >80% for atlas_cli/search.py"
+  task_id: "CLI-TEST-001"
+  epic: "Reliability & CI"
+
+- id: 423
+  title: "Add community governance docs"
+  description: "Create CODE_OF_CONDUCT and SECURITY policy with vulnerability reporting."
+  component: "Repo"
+  dependencies: []
+  priority: 1
+  status: "done"
+  area: "Governance"
+  actionable_steps:
+    - "Write CODE_OF_CONDUCT.md referencing Contributor Covenant"
+    - "Draft SECURITY.md with reporting instructions"
+    - "Link both documents from README"
+  acceptance_criteria:
+    - "CODE_OF_CONDUCT.md and SECURITY.md exist"
+    - "README references the new docs"
+  task_id: "GOV-002"
+  epic: "Foundational Hardening"

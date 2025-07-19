@@ -1,4 +1,4 @@
-# 🌐 **ModelAtlas**  
+# 🌐 **ModelAtlas**
 ### *Map the Modelverse. Trace the Truth. Shape the Future.*
 
 ⸻
@@ -11,13 +11,57 @@ Crafted for researchers, engineers, analysts, and agentic systems alike, it seam
 
 > 💡 *Trust. Trace. Transform.*
 
+## ⚡ Quick Start
+
+```bash
+pip install -r requirements.txt && playwright install
+python enrich/main.py
+python -m atlas_cli search "llama"
+```
+
+Create a `.env` file for API keys:
+
+```bash
+cp .env.example .env  # or run `atlas init`
+```
+
+The resulting `.env` file holds configuration keys such as
+`LLM_API_KEY`, `OPENAI_API_KEY`, `HUGGING_FACE_API_KEY`, and the optional
+`PLAYWRIGHT_BROWSERS_PATH`. Populate these values before running the
+enrichment pipeline or CLI tools.
+
+Run `make test-deps` if you need all packages for the test suite.
+
+`enrich/main.py` runs the enrichment trace, and CLI commands reside in the `atlas_cli/` package.
+
+## 🐳 Docker Usage
+
+Build a container with all Python dependencies and Playwright browsers preinstalled:
+
+```bash
+docker build -t modelatlas .
+```
+
+Launch an interactive shell inside the container:
+
+```bash
+docker run --rm -it modelatlas
+```
+
+You can then run the enrichment trace or CLI tools just as on the host system:
+
+```bash
+python enrich/main.py
+atlas search "llama"
+```
+
 ⸻
 
 ## 🧠 System Overview
 
 ```mermaid
 flowchart TD
-  subgraph Pipeline [ModelAtlas Enrichment Pipeline]
+  subgraph Trace [ModelAtlas Enrichment Trace]
     A[🌐 Ollama Scraper<br/>Collects raw metadata from Ollama.com] --> B[📦 Raw Model Data]
     B --> C[🧠 RECURSOR-1<br/>Recursive Enrichment Agent]
     C --> D[📝 Enriched JSON Records]
@@ -32,7 +76,7 @@ flowchart TD
 
 - **Ollama Scraper**: Harvests raw model data, including tags, manifests, and configuration files.
 - **RECURSOR-1**: Normalizes fields, infers missing data, and leverages LLMs for comprehensive enrichment.
-- **TrustForge**: Computes trust scores by fusing heuristic metrics from multiple data sources and now runs automatically inside the enrichment pipeline.
+- **TrustForge**: Computes trust scores by fusing heuristic metrics from multiple data sources and now runs automatically inside the enrichment trace.
 - **TracePoint**: Tracks enrichment lineage, prompt decision paths, and source deltas for transparent provenance.
 - **AtlasView**: A web-based dashboard enabling search, filtering, comparative analysis, and visual audits.
 
@@ -43,7 +87,7 @@ flowchart TD
 ### `atlas-cli` — 🌐 Semantic Search Interface
 - Enables powerful search across enriched model metadata fields.
 - Supports embeddings, advanced filters, and fuzzy matching techniques.
-- Example usage:  
+- Example usage:
   ```bash
   atlas search "open model for code completion"
   ```
@@ -68,7 +112,7 @@ flowchart TD
   - Config blob origins
   - Step-by-step enrichment history
   - Prompt decision trees and rationale
-- Usage example:  
+- Usage example:
   ```bash
   tracepoint llama3:8b --lineage
   ```
@@ -125,7 +169,7 @@ modelatlas/
 ## 🧪 Example Commands
 
 ```bash
-# Run enrichment pipeline (includes trust scoring)
+# Run enrichment trace (includes trust scoring)
 python enrich/main.py
 
 # Perform semantic search for multilingual open-license models
@@ -137,6 +181,27 @@ tracepoint gemma:2b --lineage
 # Launch the interactive dashboard locally
 cd dashboards && npm run dev
 ```
+
+All HTTP requests made by the scrapers are cached in `.cache/http.sqlite` by default. Use `--no-cache` to disable caching.
+
+## ✅ Running Tests
+
+Execute the test suite with `pytest` from the repository root:
+
+```bash
+pytest
+```
+
+## 📦 Git LFS Setup
+
+This repository uses [Git LFS](https://git-lfs.com/) to version large JSON artifacts. Run the following commands after cloning:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+All files in `data/` and `enriched_outputs/` are tracked via LFS, so new assets in these directories are stored automatically.
 
 ⸻
 
@@ -158,11 +223,13 @@ cd dashboards && npm run dev
 | Documentation File    | Purpose                                         |
 |----------------------|------------------------------------------------|
 | `AGENTS.md`          | Details on enrichment agents, memory, and state logic |
-| `tasks.yml`          | Canonical task graph defining enrichment workflows |
+| `tasks.yml`          | Canonical task graph defining enrichment traces |
 | `naming.md`          | Naming philosophy and conventions |
 | `schema.md`          | Data schema specification for enriched model entries |
-| `usage_examples.md`  | Real-world CLI workflows and usage patterns |
+| `usage_examples.md`  | Real-world CLI traces and usage patterns |
 | `PHASE_2_DESIGN.md`  | Design notes on manifest decoding, tag repair, and scoring implementation |
+| `CODE_OF_CONDUCT.md` | Community expectations and enforcement policy |
+| `SECURITY.md`        | How to report vulnerabilities |
 
 ⸻
 
@@ -170,14 +237,14 @@ cd dashboards && npm run dev
 
 ModelAtlas is founded on these core principles:
 
-- 🔎 *Transparency over Obfuscation*  
-- ♻️ *Recursive Enrichment is Integral, Not Optional*  
-- 🛡️ *Trust Must Be Quantifiable and Measurable*  
-- 🧠 *LLMs Are Tools That Can Self-Improve and Assist*  
+- 🔎 *Transparency over Obfuscation*
+- ♻️ *Recursive Enrichment is Integral, Not Optional*
+- 🛡️ *Trust Must Be Quantifiable and Measurable*
+- 🧠 *LLMs Are Tools That Can Self-Improve and Assist*
 
 We hold that metadata is critical infrastructure, and that systems should be able to explain their own construction with clarity and rigor.
 
 ⸻
 
-> **Map the modelscape. Trace the truth. Shape the future.**  
+> **Map the modelscape. Trace the truth. Shape the future.**
 > 🧭 *Welcome to the Atlas.*

@@ -52,7 +52,7 @@ Example:
 https://ollama.com/library/deepseek-r1
 
 Structure & Extracted Data
-•Header: name, tagline, downloads, updated_at, run_command, license_text.
+•Header: name, tagline, downloads, updated_at, execute_command, license_text.
 •Variants table:
 •variant_id, size, context_window, input_type, last_updated_variant
 •readme_content: full markdown description
@@ -62,14 +62,14 @@ JSON Schema
 
 {
   "type": "object",
-  "required": ["name","description","downloads","updated_at","license_text","run_command","variants_overview","readme_content"],
+  "required": ["name","description","downloads","updated_at","license_text","execute_command","variants_overview","readme_content"],
   "properties": {
     "name": {"type":"string"},
     "description": {"type":"string"},
     "downloads": {"type":"integer"},
     "updated_at": {"type":"string"},
     "license_text": {"type":"string"},
-    "run_command": {"type":"string"},
+    "execute_command": {"type":"string"},
     "variants_overview": {
       "type":"array",
       "items":{
@@ -240,5 +240,5 @@ Recursive agent loop:
 2.schemas/library_*.schema.json: finalize schemas for each page type
 3.AGENTS.md: outline the fetch→parse→log pattern
 4.tasks.yml: add per-model+step tasks (see Plan.md for full list)
-5.Run & validate against live Ollama pages
+5.Execute & validate against live Ollama pages
 6.Then: move to enrichment (TrustForge + RECURSOR loop)

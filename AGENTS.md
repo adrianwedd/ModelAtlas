@@ -14,11 +14,11 @@ Use it to:
 
 ## Agent Task List
 
-Agent workflows are driven by the priority, dependencies, and structure defined in `tasks.yml`. This file governs execution order, coordination logic, and outcome tracking. Refer to `PLAN.md` for mission structure and phase objectives.
+Agent traces are driven by the priority, dependencies, and structure defined in `tasks.yml`. This file governs execution order, coordination logic, and outcome tracking. Refer to `PLAN.md` for mission structure and phase objectives.
 
 Maintain the status of your task in your commit messages. Use this file to log insights, challenges and fixes for future agents and human developers. Extend it as required to ensure efficient, thorough and accurate operations.
 
-All task-related commits must follow the pattern `Description` from tasks.yml (e.g. `Collect runtime metadata and download stats via CLI`) to ensure clean traceability and semantic commit history.
+All task-related commits must follow the pattern `Description` from tasks.yml (e.g. `Collect trace metadata and download stats via CLI`) to ensure clean traceability and semantic commit history.
 
 ## Task Completion Protocol
 
@@ -67,9 +67,26 @@ included automatically. Add new docs as `.md` files and list them in
 
 The repository uses a comprehensive `.gitignore` based on common Python patterns.
 Ensure all scripts open files with `encoding='utf-8'` for consistent behavior across platforms.
+Install dependencies with `pip install -r requirements.txt && playwright install` before running the examples.
+Install `pre-commit` with `pip install pre-commit` and run `pre-commit install` so Git hooks enforce formatting locally. The lint workflow runs `pre-commit`, so ensure hooks pass before pushing.
 
+### Git LFS Workaround
 
-## Insights 
+CI runners lack Git LFS objects, so cloned repositories may show hundreds of
+modified files in `data/` and `enriched_outputs/`. Run `git lfs install` and set
+`GIT_LFS_SKIP_SMUDGE=1` before cloning to avoid pulling large artifacts.
+After checkout, mark these paths with:
+
+```bash
+git update-index --skip-worktree data/**
+git update-index --skip-worktree enriched_outputs/**
+```
+
+This silences status noise. Long term we should host large artifacts externally
+(for example S3 or HuggingFace Datasets) and keep only pointers to stable
+releases in this repo.
+
+## Insights
 
 If an agent receives a refusal like "I'm sorry, but I can't help with that," it must assess:
 - (a) whether the request is blocked due to model alignment tuning,
@@ -87,6 +104,7 @@ To ensure "granularity, God-mode logging, and recursive agent intelligence" acro
 
 1.  **Fetch:** Agents will use `playwright` to programmatically access and retrieve the raw HTML content of target web pages. This ensures handling of dynamically loaded content.
     *   **Logging:** For every page fetch, log the `fetched_url`, `timestamp`, and `HTTP status` to a dedicated log file (e.g., `ollama_scraper.log`).
+    *   **Caching:** HTTP responses are cached in `.cache/http.sqlite` via `requests-cache`. Use the `--no-cache` flag to disable.
 
 2.  **Parse:** Agents will use `BeautifulSoup` to parse the fetched HTML content, extracting structured data based on predefined CSS selectors and regular expressions. This step will involve:
     *   Identifying model listings on search/library pages.
@@ -95,7 +113,7 @@ To ensure "granularity, God-mode logging, and recursive agent intelligence" acro
     *   Parsing content from blob URLs (e.g., license text, prompt templates, detailed model parameters).
     *   **Logging:** For each data point extracted, log the `field_name`, `raw_value`, and `parsed_value`. For parsing errors or unexpected data formats, log a `WARNING` or `ERROR` with relevant context.
 
-3.  **Log Micro-steps (God-Mode Introspection):** Beyond basic fetch/parse logging, agents will implement "God-mode" introspection by logging granular details at every significant micro-step of the data processing pipeline.
+3.  **Log Micro-steps (God-Mode Introspection):** Beyond basic fetch/parse logging, agents will implement "God-mode" introspection by logging granular details at every significant micro-step of the data processing trace.
     *   **Pre-processing Dumps:** Prior to any data transformation or merging, dump the full raw JSON or parsed data structures to a dedicated `agentlogs/recursor/` directory. This allows for complete historical analysis and debugging.
     *   **Change Detection:** When updating existing model entries, log the type of update (e.g., `new version added`, `existing version updated`, `license changed`, `metadata corrected`). This helps track the evolution of data over time.
     *   **Provenance Tracking:** For each piece of data, maintain a clear link to its source URL and the timestamp of its acquisition.
@@ -112,3 +130,6 @@ This protocol supports recursive agent intelligence by enabling a structured app
 ### TrustForge Consumption
 
 The `TrustForge` component will consume the rich, structured data produced by this protocol, including detailed variant specifications, license text, and popularity metrics, to accurately compute and assign model trust scores.
+
+### Testing Coverage
+Unit tests now cover the trust score calculation and name similarity heuristics. Run `PYTHONPATH=. pytest --cov=trustforge --cov=similarity_engine` to verify coverage.

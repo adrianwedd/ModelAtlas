@@ -5,18 +5,14 @@ import os
 import re
 import time
 
-LOG_FILE = "enrichment.log"
+from atlas_schemas.config import settings
+from common.logging import logger
+
+LOG_FILE = settings.LOG_FILE
 MODELS_DIR = "models"
 PROMPTS_DIR = "enrichment_prompts"
 ENRICHED_OUTPUTS_DIR = "enriched_outputs"
 
-def log_message(message, level="INFO", status=None, phase=None):
-    """Append a timestamped log entry to LOG_FILE, with optional status and phase markers."""
-    ts = time.strftime("%Y-%m-%d %H:%M:%S")
-    status_str = f"[{status}]" if status else ""
-    phase_str = f"[{phase}]" if phase else ""
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(f"[{ts}] [{level}]{phase_str}{status_str} {message}\n")
 
 def enrich_model_metadata(model_data):
     """
@@ -48,7 +44,7 @@ Your mission: analyze and enrich the metadata for the AI model called **"{model_
   "summary": "⚡ One paragraph. No waffle. What is this model, what’s it for, and what’s the vibe? Drop a reference if it makes it pop.",
   "use_cases": [
     "🛠️ Practical uses that matter",
-    "🎯 Niche workflows it nails",
+    "🎯 Niche traces it nails",
     "👩‍🔬 Weird or brilliant things it enables"
   ],
   "strengths": [
@@ -78,7 +74,7 @@ GO."""
 
     with open(prompt_filename, "w", encoding="utf-8") as f:
         f.write(prompt_content)
-    log_message(f"Generated enrichment prompt: {prompt_filename}", level="INFO")
+    logger.info("Generated enrichment prompt: %s", prompt_filename)
 
     # Create placeholder for manual enrichment output
     placeholder_output = {
@@ -89,7 +85,7 @@ GO."""
     }
     with open(enriched_output_filename, "w", encoding="utf-8") as f:
         json.dump(placeholder_output, f, indent=2)
-    log_message(f"Created enrichment output placeholder: {enriched_output_filename}", level="INFO")
+    logger.info("Created enrichment output placeholder: %s", enriched_output_filename)
 
     # Add paths to model_data for later reference
     model_data["enrichment_prompt_path"] = prompt_filename
@@ -98,32 +94,32 @@ GO."""
     return model_data
 
 def main():
-    log_message("Starting model enrichment process (prompt generation only).")
+    logger.info("Starting model enrichment process (prompt generation only).")
     
     # Ensure prompt directory exists
     try:
         os.makedirs(PROMPTS_DIR, exist_ok=True)
-        log_message(f"Ensured prompts directory exists: {PROMPTS_DIR}")
+        logger.info("Ensured prompts directory exists: %s", PROMPTS_DIR)
     except Exception as e:
-        log_message(f"Failed to create prompts directory {PROMPTS_DIR}: {e}", level="ERROR")
+        logger.error("Failed to create prompts directory %s: %s", PROMPTS_DIR, e)
         return
 
     # Ensure enriched outputs directory exists
     try:
         os.makedirs(ENRICHED_OUTPUTS_DIR, exist_ok=True)
-        log_message(f"Ensured enriched outputs directory exists: {ENRICHED_OUTPUTS_DIR}")
+        logger.info("Ensured enriched outputs directory exists: %s", ENRICHED_OUTPUTS_DIR)
     except Exception as e:
-        log_message(f"Failed to create enriched outputs directory {ENRICHED_OUTPUTS_DIR}: {e}", level="ERROR")
+        logger.error("Failed to create enriched outputs directory %s: %s", ENRICHED_OUTPUTS_DIR, e)
         return
 
     # Check if models directory exists
     if not os.path.exists(MODELS_DIR):
-        log_message(f"Models directory not found: {MODELS_DIR}", level="ERROR")
+        logger.error("Models directory not found: %s", MODELS_DIR)
         return
 
     # List all model JSON files to process
     model_files = [f for f in os.listdir(MODELS_DIR) if f.endswith(".json")]
-    log_message(f"Found {len(model_files)} model files to process in {MODELS_DIR}.")
+    logger.info("Found %s model files to process in %s.", len(model_files), MODELS_DIR)
 
     for i, filename in enumerate(model_files):
         file_path = os.path.join(MODELS_DIR, filename)
