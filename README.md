@@ -1,4 +1,4 @@
-# 🌐 **ModelAtlas**  
+# 🌐 **ModelAtlas**
 ### *Map the Modelverse. Trace the Truth. Shape the Future.*
 
 ⸻
@@ -87,7 +87,7 @@ flowchart TD
 ### `atlas-cli` — 🌐 Semantic Search Interface
 - Enables powerful search across enriched model metadata fields.
 - Supports embeddings, advanced filters, and fuzzy matching techniques.
-- Example usage:  
+- Example usage:
   ```bash
   atlas search "open model for code completion"
   ```
@@ -112,7 +112,7 @@ flowchart TD
   - Config blob origins
   - Step-by-step enrichment history
   - Prompt decision trees and rationale
-- Usage example:  
+- Usage example:
   ```bash
   tracepoint llama3:8b --lineage
   ```
@@ -228,6 +228,8 @@ All files in `data/` and `enriched_outputs/` are tracked via LFS, so new assets 
 | `schema.md`          | Data schema specification for enriched model entries |
 | `usage_examples.md`  | Real-world CLI traces and usage patterns |
 | `PHASE_2_DESIGN.md`  | Design notes on manifest decoding, tag repair, and scoring implementation |
+| `CODE_OF_CONDUCT.md` | Community expectations and enforcement policy |
+| `SECURITY.md`        | How to report vulnerabilities |
 
 ⸻
 
@@ -235,14 +237,14 @@ All files in `data/` and `enriched_outputs/` are tracked via LFS, so new assets 
 
 ModelAtlas is founded on these core principles:
 
-- 🔎 *Transparency over Obfuscation*  
-- ♻️ *Recursive Enrichment is Integral, Not Optional*  
-- 🛡️ *Trust Must Be Quantifiable and Measurable*  
-- 🧠 *LLMs Are Tools That Can Self-Improve and Assist*  
+- 🔎 *Transparency over Obfuscation*
+- ♻️ *Recursive Enrichment is Integral, Not Optional*
+- 🛡️ *Trust Must Be Quantifiable and Measurable*
+- 🧠 *LLMs Are Tools That Can Self-Improve and Assist*
 
 We hold that metadata is critical infrastructure, and that systems should be able to explain their own construction with clarity and rigor.
 
 ⸻
 
-> **Map the modelscape. Trace the truth. Shape the future.**  
+> **Map the modelscape. Trace the truth. Shape the future.**
 > 🧭 *Welcome to the Atlas.*

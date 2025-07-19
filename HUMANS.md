@@ -27,6 +27,7 @@ This direction transforms ModelAtlas from an assembly line into a system that mo
 
 
 Contributors should use the new GitHub issue and PR templates for all submissions.
+Community policies are documented in `CODE_OF_CONDUCT.md` and `SECURITY.md`.
 
 ## README Generation
 The root README is rendered from `templates/README.md.j2` by running `python generate_readme.py`.
