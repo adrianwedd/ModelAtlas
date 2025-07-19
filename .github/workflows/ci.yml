@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: ["**"]
   pull_request:
 
 jobs:
@@ -26,3 +26,8 @@ jobs:
         run: pytest
       - name: Build docs
         run: make -C docs html
+      - name: Upload docs artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: html-docs
+          path: docs/_build/html
