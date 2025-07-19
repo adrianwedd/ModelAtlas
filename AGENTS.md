@@ -68,6 +68,7 @@ included automatically. Add new docs as `.md` files and list them in
 The repository uses a comprehensive `.gitignore` based on common Python patterns.
 Ensure all scripts open files with `encoding='utf-8'` for consistent behavior across platforms.
 Install dependencies with `pip install -r requirements.txt && playwright install` before running the examples.
+Run `pip install pre-commit && pre-commit install` to enable automatic formatting with black and isort.
 
 ### Git LFS Workaround
 
