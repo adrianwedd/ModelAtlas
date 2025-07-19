@@ -7,6 +7,7 @@
 4. Install Playwright browsers: `playwright install`
 5. Optionally run `make test-deps` to perform both steps at once
 6. Install pre-commit hooks: `pip install pre-commit && pre-commit install`
+7. Run the hook suite manually with `pre-commit run --all-files` to ensure formatting passes before pushing
 
 ## Development
 - **Scraper**: `python tools/scrape_*.py`
