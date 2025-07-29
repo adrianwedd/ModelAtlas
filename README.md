@@ -259,3 +259,7 @@ We hold that metadata is critical infrastructure, and that systems should be abl
 
 > **Map the modelscape. Trace the truth. Shape the future.**
 > 🧭 *Welcome to the Atlas.*
+
+## ⚖️ License
+
+This project is licensed under the [MIT License](LICENSE).
