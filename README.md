@@ -124,7 +124,9 @@ flowchart TD
   - Detailed lineage trees illustrating model ancestry
   - Metadata completeness and quality indicators
 
-⸻
+> **Note:** The dashboard code is currently under active development and is not yet included in this repository. It will be released in a future update.
+
+---
 
 ## 📁 Project Structure
 
