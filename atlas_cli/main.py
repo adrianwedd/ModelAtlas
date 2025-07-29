@@ -83,8 +83,15 @@ def init() -> None:
 
 
 @app.command(help="Search models by name and summary")
-def search(query: str, top_k: int = typer.Option(5, help="Number of results")) -> None:
-    """Search the local model catalog."""
+def search(
+    query: str, top_k: int = typer.Option(5, help="Number of results")
+) -> None:
+    """Search the local model catalog.
+
+    Examples:
+        atlas search "llama2"
+        atlas search "embedding model" --top-k 10
+    """
     search_cli(query=query, top_k=top_k)
 
 
