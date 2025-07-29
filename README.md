@@ -59,6 +59,8 @@ atlas search "llama"
 
 ## 🧠 System Overview
 
+> The diagram below is generated from `architecture.mmd`. You can edit it there to update the visual representation of the system.
+
 ```mermaid
 flowchart TD
   subgraph Trace [ModelAtlas Enrichment Trace]
