@@ -1,6 +1,11 @@
+import json
+import glob
 from langgraph.graph import StateGraph, END
 from typing import TypedDict, Annotated, List
 from pathlib import Path
+
+from tools.enrich_metadata import enrich_model_metadata
+from common.logging import logger
 
 # Define the state for our graph
 class TraceState(TypedDict):
@@ -18,10 +23,29 @@ def scrape_node(state: TraceState) -> TraceState:
     return {"raw_models_dir": state["raw_models_dir"]}
 
 def enrich_node(state: TraceState) -> TraceState:
-    print("Executing Enrich Node...")
-    # Call run_enrichment_trace here
-    # Update state with paths to enriched models
-    return {"enriched_models_dir": state["enriched_models_dir"]}
+    logger.info("Executing Enrich Node...")
+    raw_models_dir = state["raw_models_dir"]
+    enriched_models_dir = state["enriched_models_dir"]
+    
+    os.makedirs(enriched_models_dir, exist_ok=True)
+
+    for file_path in glob.glob(str(raw_models_dir / "**/*.json"), recursive=True):
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                model_data = json.load(f)
+            
+            enriched_data = enrich_model_metadata(model_data)
+            
+            # Save enriched data to the enriched_models_dir
+            model_name = Path(file_path).stem # Get filename without extension
+            output_path = enriched_models_dir / f"{model_name}_enriched.json"
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(enriched_data, f, indent=2)
+            logger.info(f"Enriched and saved: {output_path}")
+        except Exception as e:
+            logger.error(f"Error enriching model {file_path}: {e}")
+
+    return {"enriched_models_dir": enriched_models_dir}
 
 def validate_node(state: TraceState) -> TraceState:
     print("Executing Validate Node...")

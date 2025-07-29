@@ -76,15 +76,7 @@ GO."""
         f.write(prompt_content)
     logger.info("Generated enrichment prompt: %s", prompt_filename)
 
-    # Placeholder for LLM API call and response parsing
-    # In a real implementation, you would call your LLM here with prompt_content
-    # and parse the JSON response to populate enriched_data.
-    enriched_data = {
-        "summary": "LLM-generated summary placeholder.",
-        "use_cases": ["LLM-generated use case 1", "LLM-generated use case 2"],
-        "strengths": ["LLM-generated strength 1", "LLM-generated strength 2"],
-        "weaknesses": ["LLM-generated weakness 1", "LLM-generated weakness 2"],
-    }
+    enriched_data = simulate_llm_enrichment(prompt_content, model_name)
 
     with open(enriched_output_filename, "w", encoding="utf-8") as f:
         json.dump(enriched_data, f, indent=2)
