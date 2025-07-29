@@ -5,7 +5,12 @@ from typing import TypedDict, Annotated, List
 from pathlib import Path
 
 from tools.enrich_metadata import enrich_model_metadata
+from tools.scrape_hf import execute_hf_scraper
+from tools.scrape_ollama import scrape_ollama_models
+from tools.validate_all import validate_model_file
 from common.logging import logger
+import asyncio
+import os
 
 # Define the state for our graph
 class TraceState(TypedDict):
@@ -16,11 +21,23 @@ class TraceState(TypedDict):
     # Add other state variables as needed, e.g., errors, logs
 
 # Define the nodes (functions) for each stage of the trace
-def scrape_node(state: TraceState) -> TraceState:
-    print("Executing Scrape Node...")
-    # Call scrape_hf and scrape_ollama here
-    # Update state with paths to raw models
-    return {"raw_models_dir": state["raw_models_dir"]}
+async def scrape_node(state: TraceState) -> TraceState:
+    logger.info("Executing Scrape Node...")
+    raw_models_dir = state["raw_models_dir"]
+    
+    os.makedirs(raw_models_dir, exist_ok=True)
+
+    # Execute Hugging Face scraper
+    logger.info("Starting Hugging Face scraping...")
+    execute_hf_scraper(limit=10, use_cache=True) # Limit for testing, use_cache for efficiency
+    logger.info("Hugging Face scraping complete.")
+
+    # Execute Ollama scraper
+    logger.info("Starting Ollama scraping...")
+    await scrape_ollama_models(concurrency=5) # Concurrency for async operations
+    logger.info("Ollama scraping complete.")
+
+    return {"raw_models_dir": raw_models_dir}
 
 def enrich_node(state: TraceState) -> TraceState:
     logger.info("Executing Enrich Node...")
@@ -48,10 +65,34 @@ def enrich_node(state: TraceState) -> TraceState:
     return {"enriched_models_dir": enriched_models_dir}
 
 def validate_node(state: TraceState) -> TraceState:
-    print("Executing Validate Node...")
-    # Call normalize_and_validate here
-    # Update state with paths to validated models
-    return {"validated_models_dir": state["validated_models_dir"]}
+    logger.info("Executing Validate Node...")
+    enriched_models_dir = state["enriched_models_dir"]
+    validated_models_dir = state["validated_models_dir"]
+
+    os.makedirs(validated_models_dir, exist_ok=True)
+
+    all_valid = True
+    for file_path in glob.glob(str(enriched_models_dir / "*.json")):
+        result = validate_model_file(Path(file_path))
+        if result["status"] == "❌ Invalid":
+            all_valid = False
+            logger.error(f"Validation failed for {result["file"]}: {result["errors"]}")
+        else:
+            logger.info(f"Validation passed for {result["file"]}")
+            # Copy valid files to the validated_models_dir
+            with open(file_path, 'r', encoding='utf-8') as f_in:
+                data = json.load(f_in)
+            with open(validated_models_dir / Path(file_path).name, 'w', encoding='utf-8') as f_out:
+                json.dump(data, f_out, indent=2)
+
+    if not all_valid:
+        logger.error("Some enriched models failed schema validation.")
+        # Depending on desired behavior, you might raise an exception here
+        # or proceed with only valid models.
+    else:
+        logger.info("All enriched models passed schema validation.")
+
+    return {"validated_models_dir": validated_models_dir}
 
 def score_node(state: TraceState) -> TraceState:
     print("Executing Score Node...")
