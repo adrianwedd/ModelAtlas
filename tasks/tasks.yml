@@ -182,10 +182,11 @@
   dependencies: [4]
   priority: 4
   status: "done"
-  command: "python tools/serve_api.py"
+  command: "uvicorn tools.serve_api:app --host 0.0.0.0 --port 8000"
   execution:
-    tool: "serve_api"
-    args: {}
+    tool: "run_shell_command"
+    args:
+      command: "uvicorn tools.serve_api:app --host 0.0.0.0 --port 8000"
   task_id: "OLLAMA-007"
   area: "Backend"
   actionable_steps:
