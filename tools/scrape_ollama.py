@@ -231,5 +231,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--concurrency", type=int, default=5)
     parser.add_argument("--debug-model")
+    parser.add_argument("--no-cache", action="store_false", dest="use_cache", help="Disable HTTP caching")
     args = parser.parse_args()
-    asyncio.run(scrape_ollama_models(concurrency=args.concurrency, debug_model=args.debug_model))
+    asyncio.run(scrape_ollama_models(concurrency=args.concurrency, debug_model=args.debug_model, use_cache=args.use_cache))
