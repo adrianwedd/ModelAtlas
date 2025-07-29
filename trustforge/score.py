@@ -11,54 +11,19 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from trustforge import compute_score
 from atlas_schemas.models import Model
 from atlas_schemas.config import settings
-
-
-
-def load_model(path: str) -> Model:
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-        return Model(**data)
-
-
-def merge_enrichment(model: Model) -> Model:
-    name = model.name.replace("/", "_")
-    enriched_path = settings.ENRICHED_OUTPUTS_DIR / f"{name}_enriched.json"
-    if enriched_path.exists():
-        try:
-            with open(enriched_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            model_dict = model.model_dump()
-            model_dict.update(data)
-            return Model(**model_dict)
-        except Exception:
-            pass
-    return model
+from atlas_schemas.data_io import load_model_from_json, merge_enrichment
 
 
 def compute_and_merge_trust_scores(input_dir: Path, output_file: Path, enriched_outputs_dir: Path) -> None:
     models: List[Model] = []
     for path in glob.glob(str(input_dir / "*.json")):
-        model = load_model(path)
+        model = load_model_from_json(Path(path))
         model = merge_enrichment(model, enriched_outputs_dir)
         model.trust_score = compute_score(model)
         models.append(model)
 
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump([model.model_dump() for model in models], f, indent=2)
-
-def merge_enrichment(model: Model, enriched_outputs_dir: Path) -> Model:
-    name = model.name.replace("/", "_")
-    enriched_path = enriched_outputs_dir / f"{name}_enriched.json"
-    if enriched_path.exists():
-        try:
-            with open(enriched_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            model_dict = model.model_dump()
-            model_dict.update(data)
-            return Model(**model_dict)
-        except Exception:
-            pass
-    return model
 
 
 # Removed if __name__ == "__main__" block
