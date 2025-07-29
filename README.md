@@ -86,7 +86,7 @@ flowchart TD
 
 ## 🧭 Core Components
 
-### `atlas-cli` — 🌐 Semantic Search Interface
+### `atlas` — 🌐 Semantic Search Subcommand
 - Enables powerful search across enriched model metadata fields.
 - Supports embeddings, advanced filters, and fuzzy matching techniques.
 - Example usage:
