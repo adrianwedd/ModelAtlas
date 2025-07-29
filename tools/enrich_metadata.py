@@ -26,14 +26,14 @@ def enrich_model_metadata(model_data):
 
     prompt_content = f"""🎩 You are an elite AI analyst with domain mastery, cutting wit, and irreverent genius. Think if Hunter S. Thompson had a PhD in model benchmarking and worked for a clandestine model intelligence agency.
 
-Your mission: analyze and enrich the metadata for the AI model called **"{model_data.get("name")}**".
+Your mission: analyze and enrich the metadata for the AI model called **"{model_data.get("name")}"**".
 
 👇 You’ve got:
 ────────────────────────────
 📝 Raw description:
-\"\"\"
+"""
 {model_data.get("description", "No description available.")}
-\"\"\"
+"""
 
 👀 That's it. The rest is up to you.
 ────────────────────────────
@@ -76,16 +76,19 @@ GO."""
         f.write(prompt_content)
     logger.info("Generated enrichment prompt: %s", prompt_filename)
 
-    # Create placeholder for manual enrichment output
-    placeholder_output = {
-        "summary": "",
-        "use_cases": [],
-        "strengths": [],
-        "weaknesses": []
+    # Placeholder for LLM API call and response parsing
+    # In a real implementation, you would call your LLM here with prompt_content
+    # and parse the JSON response to populate enriched_data.
+    enriched_data = {
+        "summary": "LLM-generated summary placeholder.",
+        "use_cases": ["LLM-generated use case 1", "LLM-generated use case 2"],
+        "strengths": ["LLM-generated strength 1", "LLM-generated strength 2"],
+        "weaknesses": ["LLM-generated weakness 1", "LLM-generated weakness 2"],
     }
+
     with open(enriched_output_filename, "w", encoding="utf-8") as f:
-        json.dump(placeholder_output, f, indent=2)
-    logger.info("Created enrichment output placeholder: %s", enriched_output_filename)
+        json.dump(enriched_data, f, indent=2)
+    logger.info("Created enrichment output: %s", enriched_output_filename)
 
     # Add paths to model_data for later reference
     model_data["enrichment_prompt_path"] = prompt_filename
