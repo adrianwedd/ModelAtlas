@@ -248,7 +248,14 @@ ModelAtlas is founded on these core principles:
 
 We hold that metadata is critical infrastructure, and that systems should be able to explain their own construction with clarity and rigor.
 
-⸻
+---
+
+## 🤝 Community
+
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+
+---
 
 > **Map the modelscape. Trace the truth. Shape the future.**
 > 🧭 *Welcome to the Atlas.*
