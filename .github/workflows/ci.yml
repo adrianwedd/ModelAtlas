@@ -24,6 +24,8 @@ jobs:
           playwright install --with-deps
       - name: Run tests
         run: pytest
+      - name: Run schema validation
+        run: python tools/validate_all.py
       - name: Build docs
         run: make -C docs html
       - name: Upload docs artifacts
