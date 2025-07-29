@@ -16,7 +16,7 @@ Crafted for researchers, engineers, analysts, and agentic systems alike, it seam
 ```bash
 pip install -r requirements.txt && playwright install
 python enrich/main.py
-python -m atlas_cli search "llama"
+python -m atlas search "llama"
 ```
 
 Create a `.env` file for API keys:
