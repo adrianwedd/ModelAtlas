@@ -214,7 +214,7 @@ All files in `data/` and `enriched_outputs/` are tracked via LFS, so new assets 
 | Subsystem     | Designation  | Role Description                  |
 |---------------|--------------|---------------------------------|
 | Full System   | ModelAtlas   | The overarching meta-system      |
-| Enrichment    | RECURSOR-1   | Autonomous recursive enrichment agent |
+| Enrichment    | Recursor   | Autonomous recursive enrichment agent |
 | Trust Engine  | TrustForge   | Assigns and computes trust scores |
 | Lineage Tool  | TracePoint   | Debugs provenance and lineage    |
 | Dashboard     | AtlasView    | Frontend user interface          |
