@@ -10,6 +10,8 @@
 7. Run the hook suite manually with `pre-commit run --all-files` to ensure formatting passes before pushing
 
 ## Development
+
+(Note: The CLI is implemented in the `atlas_cli` package.)
 - **Scraper**: `python tools/scrape_*.py`
 - **Enrichment**: `python enrich/main.py`
 - **Visuals**: `generate_visuals.py`
