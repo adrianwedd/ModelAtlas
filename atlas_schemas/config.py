@@ -32,15 +32,15 @@ class Config(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     @model_validator(mode="after")
-    def validate_required_keys(cls, values: "Config") -> "Config":
-        missing = [k for k in values.REQUIRED_KEYS if not getattr(values, k)]
+    def validate_required_keys(self) -> "Config":
+        missing = [k for k in self.REQUIRED_KEYS if not getattr(self, k)]
         if missing:
             missing_str = ", ".join(missing)
             raise ValueError(
                 f"Missing required configuration keys: {missing_str}. "
                 "Set them in your environment or .env file."
             )
-        return values
+        return self
 
 # Create a singleton instance of the Config
 settings = Config()
