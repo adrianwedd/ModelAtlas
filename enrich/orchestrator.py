@@ -76,9 +76,9 @@ def validate_node(state: TraceState) -> TraceState:
         result = validate_model_file(Path(file_path))
         if result["status"] == "❌ Invalid":
             all_valid = False
-            logger.error(f"Validation failed for {result["file"]}: {result["errors"]}")
+            logger.error("Validation failed for %s: %s", result["file"], result["errors"])
         else:
-            logger.info(f"Validation passed for {result["file"]}")
+            logger.info("Validation passed for %s", result["file"])
             # Copy valid files to the validated_models_dir
             with open(file_path, 'r', encoding='utf-8') as f_in:
                 data = json.load(f_in)
@@ -95,13 +95,34 @@ def validate_node(state: TraceState) -> TraceState:
     return {"validated_models_dir": validated_models_dir}
 
 def score_node(state: TraceState) -> TraceState:
-    print("Executing Score Node...")
-    # Call compute_and_merge_trust_scores here
-    return state
+    logger.info("Executing Score Node...")
+    validated_models_dir = state["validated_models_dir"]
+    final_output_file = state["final_output_file"]
+
+    from trustforge import compute_score
+    from atlas_schemas.models import Model
+    from pydantic import ValidationError
+
+    scored_models = []
+    for file_path in glob.glob(str(validated_models_dir / "*.json")):
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            model = Model(**data)
+            model.trust_score = compute_score(model)
+            scored_models.append(model.model_dump())
+        except (ValidationError, Exception) as e:
+            logger.error("Error scoring model %s: %s", file_path, e)
+
+    os.makedirs(final_output_file.parent, exist_ok=True)
+    with open(final_output_file, "w", encoding="utf-8") as f:
+        json.dump(scored_models, f, indent=2)
+    logger.info("Scored %s models, written to %s", len(scored_models), final_output_file)
+
+    return {"final_output_file": final_output_file}
 
 def visualize_node(state: TraceState) -> TraceState:
-    print("Executing Visualize Node...")
-    # Call gen_viz here
+    logger.info("Executing Visualize Node (stub — not yet implemented).")
     return state
 
 # Build the graph
