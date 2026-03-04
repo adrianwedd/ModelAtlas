@@ -1,4 +1,4 @@
-from scrape_ollama import parse_pull_count, get_hash
+from tools.scrape_ollama import parse_pull_count, get_hash
 
 def test_parse_pull_count_variants():
     assert parse_pull_count("123") == 123
