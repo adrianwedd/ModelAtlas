@@ -14,6 +14,7 @@ class TraceableItem(BaseModel):
 class Model(BaseModel):
     """Represents a model with its metadata and scores."""
     name: str
+    summary: Optional[str] = None
     description: Optional[str] = None
     license: Optional[str] = None
     pull_count: Optional[int] = None
@@ -27,6 +28,7 @@ class Model(BaseModel):
     annotations: Dict[str, Any] = Field(default_factory=dict)
     quality_score: Dict[str, Any] = Field(default_factory=dict)
     trust_score: Optional[float] = None
+    similar_models: List[Dict[str, Any]] = Field(default_factory=list)
 
 class TraceConfig(BaseModel):
     """Represents the configuration for a trace."""
