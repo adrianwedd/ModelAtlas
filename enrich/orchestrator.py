@@ -1,16 +1,18 @@
-import json
+import asyncio
 import glob
-from langgraph.graph import StateGraph, END
-from typing import TypedDict
+import json
+import os
 from pathlib import Path
+from typing import TypedDict
 
+from langgraph.graph import END, StateGraph
+
+from common.logging import logger
 from tools.enrich_metadata import enrich_model_metadata
 from tools.scrape_hf import execute_hf_scraper
 from tools.scrape_ollama import scrape_ollama_models
 from tools.validate_all import validate_model_file
-from common.logging import logger
-import asyncio
-import os
+
 
 # Define the state for our graph
 class TraceState(TypedDict):
@@ -20,11 +22,12 @@ class TraceState(TypedDict):
     final_output_file: Path
     # Add other state variables as needed, e.g., errors, logs
 
+
 # Define the nodes (functions) for each stage of the trace
 async def scrape_node(state: TraceState) -> TraceState:
     logger.info("Executing Scrape Node...")
     raw_models_dir = state["raw_models_dir"]
-    
+
     os.makedirs(raw_models_dir, exist_ok=True)
 
     if os.environ.get("ATLAS_SKIP_SCRAPE") == "true":
@@ -33,40 +36,47 @@ async def scrape_node(state: TraceState) -> TraceState:
 
     # Execute Hugging Face scraper
     logger.info("Starting Hugging Face scraping...")
-    execute_hf_scraper(limit=10, use_cache=True) # Limit for testing, use_cache for efficiency
+    execute_hf_scraper(
+        limit=10, use_cache=True
+    )  # Limit for testing, use_cache for efficiency
     logger.info("Hugging Face scraping complete.")
 
     # Execute Ollama scraper
     logger.info("Starting Ollama scraping...")
-    await scrape_ollama_models(concurrency=5) # Concurrency for async operations
+    await scrape_ollama_models(concurrency=5)  # Concurrency for async operations
     logger.info("Ollama scraping complete.")
 
     return {"raw_models_dir": raw_models_dir}
+
 
 def enrich_node(state: TraceState) -> TraceState:
     logger.info("Executing Enrich Node...")
     raw_models_dir = state["raw_models_dir"]
     enriched_models_dir = state["enriched_models_dir"]
-    
+
     os.makedirs(enriched_models_dir, exist_ok=True)
 
     for file_path in glob.glob(str(raw_models_dir / "**/*.json"), recursive=True):
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 model_data = json.load(f)
-            
+
             enriched_data = enrich_model_metadata(model_data)
-            
+
             # Save enriched data to the enriched_models_dir
-            model_name = Path(file_path).stem # Get filename without extension
+            # Use path relative to raw_models_dir to avoid collisions across subdirs
+            # e.g. "huggingface/bert.json" → "huggingface_bert_enriched.json"
+            rel = Path(file_path).relative_to(raw_models_dir)
+            model_name = "_".join(rel.with_suffix("").parts)
             output_path = enriched_models_dir / f"{model_name}_enriched.json"
-            with open(output_path, 'w', encoding='utf-8') as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(enriched_data, f, indent=2)
             logger.info(f"Enriched and saved: {output_path}")
         except Exception as e:
             logger.error(f"Error enriching model {file_path}: {e}")
 
     return {"enriched_models_dir": enriched_models_dir}
+
 
 def validate_node(state: TraceState) -> TraceState:
     logger.info("Executing Validate Node...")
@@ -80,13 +90,17 @@ def validate_node(state: TraceState) -> TraceState:
         result = validate_model_file(Path(file_path))
         if result["status"] == "❌ Invalid":
             all_valid = False
-            logger.error("Validation failed for %s: %s", result["file"], result["errors"])
+            logger.error(
+                "Validation failed for %s: %s", result["file"], result["errors"]
+            )
         else:
             logger.info("Validation passed for %s", result["file"])
             # Copy valid files to the validated_models_dir
-            with open(file_path, 'r', encoding='utf-8') as f_in:
+            with open(file_path, "r", encoding="utf-8") as f_in:
                 data = json.load(f_in)
-            with open(validated_models_dir / Path(file_path).name, 'w', encoding='utf-8') as f_out:
+            with open(
+                validated_models_dir / Path(file_path).name, "w", encoding="utf-8"
+            ) as f_out:
                 json.dump(data, f_out, indent=2)
 
     if not all_valid:
@@ -98,13 +112,14 @@ def validate_node(state: TraceState) -> TraceState:
 
     return {"validated_models_dir": validated_models_dir}
 
+
 def score_node(state: TraceState) -> TraceState:
     logger.info("Executing Score Node...")
     validated_models_dir = state["validated_models_dir"]
     final_output_file = state["final_output_file"]
 
-    from trustforge import compute_score
     from atlas_schemas.models import Model
+    from trustforge import compute_score
 
     scored_models = []
     for file_path in glob.glob(str(validated_models_dir / "*.json")):
@@ -120,13 +135,17 @@ def score_node(state: TraceState) -> TraceState:
     os.makedirs(final_output_file.parent, exist_ok=True)
     with open(final_output_file, "w", encoding="utf-8") as f:
         json.dump(scored_models, f, indent=2)
-    logger.info("Scored %s models, written to %s", len(scored_models), final_output_file)
+    logger.info(
+        "Scored %s models, written to %s", len(scored_models), final_output_file
+    )
 
     return {"final_output_file": final_output_file}
+
 
 def visualize_node(state: TraceState) -> TraceState:
     logger.info("Executing Visualize Node (stub — not yet implemented).")
     return state
+
 
 # Build the graph
 def build_trace_graph():
@@ -147,16 +166,3 @@ def build_trace_graph():
     workflow.add_edge("visualize", END)
 
     return workflow.compile()
-
-if __name__ == "__main__":
-    graph = build_trace_graph()
-    # Example usage (replace with actual paths and logic)
-    initial_state = {
-        "raw_models_dir": Path("models/raw"),
-        "enriched_models_dir": Path("enriched_outputs"),
-        "validated_models_dir": Path("data/validated"),
-        "final_output_file": Path("final_report.json"),
-    }
-    # For demonstration, we'll just run the graph without actual file operations
-    # for s in graph.stream(initial_state):
-    #     print(s)
