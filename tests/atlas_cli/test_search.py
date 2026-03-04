@@ -137,7 +137,6 @@ def test_cli_no_results(
 
 def test_load_models_returns_empty_on_corrupted_catalog(tmp_path):
     """load_models must return [] and not raise on corrupted catalog JSON."""
-    from atlas_cli.search import load_models
     bad = tmp_path / "catalog.json"
     bad.write_text("{corrupted")
     result = load_models(bad)
