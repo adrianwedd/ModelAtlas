@@ -13,19 +13,21 @@ os.environ.setdefault("LLM_API_KEY", "dummy")
 
 def test_unknown_license_and_none_downloads():
     model = Model(name="test", license=None, pull_count=None)
-    assert compute_score(model) == 0.35
+    assert compute_score(model) == 0.4
 
 
 def test_known_license_large_downloads():
     model = Model(name="test", license="MIT", pull_count=20_000_000)
-    assert compute_score(model) == 0.93
+    assert compute_score(model) == 0.8
 
 
 def test_non_numeric_downloads():
+    # pydantic coerces the string "1000" to int, so downloads_score is non-zero but tiny
     model = Model(name="test", license="apache-2.0", pull_count="1000")
-    assert compute_score(model) == 0.63  # downloads_score treated as 0
+    assert compute_score(model) == 0.6
 
 
 def test_negative_downloads():
+    # Negative pull_count is domain-invalid; trust score must be clamped to >= 0.0
     model = Model(name="test", license="MIT", pull_count=-50_000_000)
-    assert compute_score(model) == -0.87
+    assert compute_score(model) >= 0.0

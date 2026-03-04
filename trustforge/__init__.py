@@ -27,4 +27,4 @@ def compute_score(model: Model) -> float:
 
     # Combine scores with arbitrary weights
     score = (0.5 * license_score) + (0.2 * downloads_score) + (0.15 * jailbreak_risk_score) + (0.15 * privacy_risk_score)
-    return round(min(score, 1.0), 3)
+    return round(max(0.0, min(score, 1.0)), 3)
