@@ -56,3 +56,29 @@ def test_no_duplicate_similar_route():
         f"Expected 1 /similar route, got {len(similar_routes)}: "
         f"{[r.path for r in similar_routes]}"
     )
+
+
+def test_load_models_data_returns_empty_on_nonexistent_file(tmp_path):
+    """load_models_data must return [] if data file doesn't exist."""
+    import tools.serve_api as api
+    original = api.MODELS_DATA_PATH
+    api.MODELS_DATA_PATH = tmp_path / "nonexistent.json"
+    try:
+        result = api.load_models_data()
+        assert result == []
+    finally:
+        api.MODELS_DATA_PATH = original
+
+
+def test_load_models_data_returns_empty_on_corrupted_json(tmp_path):
+    """load_models_data must return [] on corrupted JSON, not raise."""
+    import tools.serve_api as api
+    bad = tmp_path / "bad.json"
+    bad.write_text("{corrupted")
+    original = api.MODELS_DATA_PATH
+    api.MODELS_DATA_PATH = bad
+    try:
+        result = api.load_models_data()
+        assert result == []
+    finally:
+        api.MODELS_DATA_PATH = original

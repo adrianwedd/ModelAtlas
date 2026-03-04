@@ -1,4 +1,5 @@
 import json
+import logging
 import sys
 from pathlib import Path
 from typing import List, Optional
@@ -12,18 +13,23 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from atlas_schemas.config import settings
 from atlas_schemas.models import Model
 
-# Assuming models_similar.json is in the data directory
-MODELS_SIMILAR_PATH = settings.PROJECT_ROOT / "data" / "models_similar.json"
+logger = logging.getLogger(__name__)
+
+MODELS_DATA_PATH = settings.PROJECT_ROOT / settings.OUTPUT_FILE
 
 app = FastAPI(title="ModelAtlas API")
 
 
 # Load models data
 def load_models_data():
-    if not MODELS_SIMILAR_PATH.exists():
+    if not MODELS_DATA_PATH.exists():
         return []
-    with open(MODELS_SIMILAR_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(MODELS_DATA_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        logger.error("Catalog JSON is corrupted: %s", e)
+        return []
 
 
 models_data = load_models_data()
