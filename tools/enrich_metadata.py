@@ -27,18 +27,12 @@ def simulate_llm_enrichment(prompt: str, model_name: str) -> dict:
     }
 
 
-def enrich_model_metadata(model_data: dict) -> dict:
-    """Generates prompts for subjective enrichment and writes output files."""
+def enrich_model_metadata(model_data: dict, write_files: bool = False) -> dict:
+    """Generates prompts for subjective enrichment and returns merged data."""
     model_name = model_data.get("name", "unknown_model").replace("/", "_")
-
-    prompt_filename = os.path.join(PROMPTS_DIR, f"{model_name}_prompt.txt")
-    enriched_output_filename = os.path.join(
-        ENRICHED_OUTPUTS_DIR, f"{model_name}_enriched.json"
-    )
 
     description = model_data.get("description", "No description available.")
 
-    # Build prompt without embedding triple-quotes inside the f-string
     prompt_lines = [
         "You are an elite AI analyst.",
         "",
@@ -53,18 +47,30 @@ def enrich_model_metadata(model_data: dict) -> dict:
     ]
     prompt_content = "\n".join(prompt_lines)
 
-    with open(prompt_filename, "w", encoding="utf-8") as f:
-        f.write(prompt_content)
-    logger.info("Generated enrichment prompt: %s", prompt_filename)
+    if write_files:
+        prompt_filename = os.path.join(PROMPTS_DIR, f"{model_name}_prompt.txt")
+        os.makedirs(PROMPTS_DIR, exist_ok=True)
+        with open(prompt_filename, "w", encoding="utf-8") as f:
+            f.write(prompt_content)
+        logger.info("Generated enrichment prompt: %s", prompt_filename)
+        model_data["enrichment_prompt_path"] = prompt_filename
 
     enriched_data = simulate_llm_enrichment(prompt_content, model_name)
 
-    with open(enriched_output_filename, "w", encoding="utf-8") as f:
-        json.dump(enriched_data, f, indent=2)
-    logger.info("Created enrichment output: %s", enriched_output_filename)
+    # Merge enrichment data into model_data, only filling absent or empty fields
+    for key, value in enriched_data.items():
+        if key not in model_data or not model_data[key]:
+            model_data[key] = value
 
-    model_data["enrichment_prompt_path"] = prompt_filename
-    model_data["manual_enriched_output_path"] = enriched_output_filename
+    if write_files:
+        enriched_output_filename = os.path.join(
+            ENRICHED_OUTPUTS_DIR, f"{model_name}_enriched.json"
+        )
+        os.makedirs(ENRICHED_OUTPUTS_DIR, exist_ok=True)
+        with open(enriched_output_filename, "w", encoding="utf-8") as f:
+            json.dump(model_data, f, indent=2)
+        logger.info("Created enrichment output: %s", enriched_output_filename)
+        model_data["manual_enriched_output_path"] = enriched_output_filename
 
     return model_data
 
@@ -99,14 +105,8 @@ def main():
             with open(file_path, "r", encoding="utf-8") as f:
                 model_data = json.load(f)
 
-            enriched_model_data = enrich_model_metadata(model_data)
-
-            try:
-                with open(file_path, "w", encoding="utf-8") as f:
-                    json.dump(enriched_model_data, f, indent=2)
-                logger.info("Successfully processed: %s", filename)
-            except Exception as e:
-                logger.error("Error writing enriched data to %s: %s", filename, e)
+            enrich_model_metadata(model_data, write_files=True)
+            logger.info("Successfully processed: %s", filename)
 
         except json.JSONDecodeError as e:
             logger.error("Error decoding JSON from %s: %s", filename, e)
