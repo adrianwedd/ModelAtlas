@@ -1,11 +1,12 @@
-from huggingface_hub import list_models, HfApi, ModelCard
 import json
 import os
-import time
 import re
 import sys
+import time
 from pathlib import Path
+
 import requests_cache
+from huggingface_hub import HfApi, ModelCard, list_models
 
 from atlas_schemas.config import settings
 from common.logging import logger
@@ -27,12 +28,13 @@ def parse_pull_count(s):
     s = str(s).replace("Downloads", "").strip()
     try:
         if "M" in s:
-            return int(float(s.replace("M"," ")) * 1e6)
+            return int(float(s.replace("M", " ")) * 1e6)
         if "K" in s:
-            return int(float(s.replace("K"," ")) * 1e3)
+            return int(float(s.replace("K", " ")) * 1e3)
         return int(float(s))
-    except:
+    except (ValueError, TypeError, AttributeError):
         return 0  # fallback to zero on parse failure
+
 
 def execute_hf_scraper(limit=None, use_cache=True):
     if use_cache:
@@ -41,9 +43,9 @@ def execute_hf_scraper(limit=None, use_cache=True):
 
     api = HfApi()
     all_models_data = []
-    
+
     logger.info("Starting Hugging Face Hub scraping...")
-    
+
     # Define the new output directory for Hugging Face models
     hf_models_output_dir = os.path.join("models", "huggingface")
     os.makedirs(hf_models_output_dir, exist_ok=True)
@@ -51,30 +53,44 @@ def execute_hf_scraper(limit=None, use_cache=True):
     try:
         # Fetch models from Hugging Face Hub
         hf_models_list = list(list_models(sort="downloads", direction=-1, limit=limit))
-        logger.info("Fetched %s models from Hugging Face Hub initial list.", len(hf_models_list))
+        logger.info(
+            "Fetched %s models from Hugging Face Hub initial list.", len(hf_models_list)
+        )
 
         for i, model_info in enumerate(hf_models_list):
             model_id = model_info.id
-            logger.info("Processing model: %s (%s/%s)", model_id, i+1, len(hf_models_list))
-            
+            logger.info(
+                "Processing model: %s (%s/%s)", model_id, i + 1, len(hf_models_list)
+            )
+
             try:
                 # Fetch full model details
                 full_model_info = api.model_info(model_id)
-                
+
                 # Use .get() with a default empty dictionary if cardData is None
-                card_data = full_model_info.cardData if full_model_info.cardData is not None else {}
+                card_data = (
+                    full_model_info.cardData
+                    if full_model_info.cardData is not None
+                    else {}
+                )
 
                 # Extract relevant data points
                 data = {
                     "name": full_model_info.id,
                     "description": card_data.get("description", ""),
                     "pull_count": parse_pull_count(full_model_info.downloads),
-                    "last_updated": full_model_info.lastModified.isoformat() if full_model_info.lastModified else None,
+                    "last_updated": (
+                        full_model_info.lastModified.isoformat()
+                        if full_model_info.lastModified
+                        else None
+                    ),
                     "license": card_data.get("license", ""),
                     "architecture": card_data.get("architecture", ""),
-                    "family": card_data.get("model_name", ""), # Often model_name in cardData is the family
+                    "family": card_data.get(
+                        "model_name", ""
+                    ),  # Often model_name in cardData is the family
                     "tags": full_model_info.tags,
-                    "model_variants": [] # To store detailed tag info if available
+                    "model_variants": [],  # To store detailed tag info if available
                 }
 
                 # Attempt to get more detailed info from model card if available
@@ -88,41 +104,59 @@ def execute_hf_scraper(limit=None, use_cache=True):
                                     for result in item["results"]:
                                         if "metrics" in result:
                                             for metric in result["metrics"]:
-                                                if "name" in metric and "value" in metric:
+                                                if (
+                                                    "name" in metric
+                                                    and "value" in metric
+                                                ):
                                                     if "benchmarks" not in data:
                                                         data["benchmarks"] = {}
-                                                    data["benchmarks"][metric["name"]] = metric["value"]
-                        
+                                                    data["benchmarks"][
+                                                        metric["name"]
+                                                    ] = metric["value"]
+
                         # Extract arxiv links from model card content (README.md)
-                        arxiv_links = re.findall(r'arxiv:([0-9]{4}\.[0-9]{5})', model_card.content)
+                        arxiv_links = re.findall(
+                            r"arxiv:([0-9]{4}\.[0-9]{5})", model_card.content
+                        )
                         if arxiv_links:
-                            data["arxiv_ids"] = list(set(arxiv_links)) # Use set to avoid duplicates
+                            data["arxiv_ids"] = list(
+                                set(arxiv_links)
+                            )  # Use set to avoid duplicates
 
                 except Exception as mc_e:
-                    logger.warning("Could not load model card for %s: %s", model_id, mc_e)
+                    logger.warning(
+                        "Could not load model card for %s: %s", model_id, mc_e
+                    )
 
                 all_models_data.append(data)
 
                 # Save individual model JSON file in the new directory
-                model_file_path = os.path.join(hf_models_output_dir, f"{model_id.replace('/', '_')}.json")
+                model_file_path = os.path.join(
+                    hf_models_output_dir, f"{model_id.replace('/', '_')}.json"
+                )
                 with open(model_file_path, "w", encoding="utf-8") as mf:
                     json.dump(data, mf, indent=2)
 
             except Exception as model_e:
                 logger.error("Error processing model %s: %s", model_id, model_e)
-            
-            time.sleep(0.1) # Politeness delay
+
+            time.sleep(0.1)  # Politeness delay
 
     except Exception as e:
         logger.error("An error occurred during Hugging Face Hub scraping: %s", e)
 
-    logger.info("Hugging Face Hub scraping complete — %s models stored in %s", len(all_models_data), hf_models_output_dir)
+    logger.info(
+        "Hugging Face Hub scraping complete — %s models stored in %s",
+        len(all_models_data),
+        hf_models_output_dir,
+    )
+
 
 if __name__ == "__main__":
     # Reset log file each trace for clean debugging
     if os.path.exists(LOG_FILE):
         os.remove(LOG_FILE)
-    
+
     use_cache = "--no-cache" not in sys.argv
     limit = 100
     for arg in sys.argv:
