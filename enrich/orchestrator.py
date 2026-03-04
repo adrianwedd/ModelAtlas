@@ -1,7 +1,7 @@
 import json
 import glob
 from langgraph.graph import StateGraph, END
-from typing import TypedDict, Annotated, List
+from typing import TypedDict
 from pathlib import Path
 
 from tools.enrich_metadata import enrich_model_metadata
@@ -26,6 +26,10 @@ async def scrape_node(state: TraceState) -> TraceState:
     raw_models_dir = state["raw_models_dir"]
     
     os.makedirs(raw_models_dir, exist_ok=True)
+
+    if os.environ.get("ATLAS_SKIP_SCRAPE") == "true":
+        logger.info("Skipping scrape as ATLAS_SKIP_SCRAPE is true.")
+        return {"raw_models_dir": raw_models_dir}
 
     # Execute Hugging Face scraper
     logger.info("Starting Hugging Face scraping...")
@@ -101,7 +105,6 @@ def score_node(state: TraceState) -> TraceState:
 
     from trustforge import compute_score
     from atlas_schemas.models import Model
-    from pydantic import ValidationError
 
     scored_models = []
     for file_path in glob.glob(str(validated_models_dir / "*.json")):
@@ -111,7 +114,7 @@ def score_node(state: TraceState) -> TraceState:
             model = Model(**data)
             model.trust_score = compute_score(model)
             scored_models.append(model.model_dump())
-        except (ValidationError, Exception) as e:
+        except Exception as e:
             logger.error("Error scoring model %s: %s", file_path, e)
 
     os.makedirs(final_output_file.parent, exist_ok=True)
