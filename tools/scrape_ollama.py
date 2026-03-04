@@ -220,7 +220,8 @@ async def scrape_ollama_models(concurrency: int = 5, debug_model: str | None = N
                 return []
         semaphore = asyncio.Semaphore(concurrency)
         tasks = [process_model(client, n, semaphore) for n in names]
-        results = [r for r in await asyncio.gather(*tasks) if r]
+        gathered = await asyncio.gather(*tasks, return_exceptions=True)
+        results = [r for r in gathered if r and not isinstance(r, BaseException)]
     logger.info("Ollama.com scraping complete — %s models stored in %s", len(results), OLLAMA_MODELS_DIR)
     return results
 
