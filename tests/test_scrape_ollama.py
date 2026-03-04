@@ -79,6 +79,49 @@ async def test_scrape_ollama_tolerates_one_failed_model(monkeypatch, tmp_path):
 
 
 @pytest.mark.asyncio
+async def test_scrape_tags_page_href_tag_extraction(tmp_path):
+    """scrape_tags_page must extract tag names from href, not get_text,
+    to avoid digest hash concatenation (e.g. 'latest78fad5d182a7•')."""
+    from unittest.mock import AsyncMock, patch
+    import httpx
+
+    html = """
+    <html><body>
+      <div class="group px-4 py-3">
+        <a href="/library/phi4-mini:latest">latest<span class="font-mono">78fad5d182a7•</span></a>
+        <p class="col-span-2">3.8 GB</p>
+        <div class="flex text-neutral-500 text-xs items-center">
+          <span class="font-mono">78fad5d182a7</span> · 2 weeks ago
+        </div>
+      </div>
+      <div class="group px-4 py-3">
+        <a href="/library/phi4-mini:3.8b">3.8b<span class="font-mono">1234abcd5678•</span></a>
+        <p class="col-span-2">3.8 GB</p>
+        <div class="flex text-neutral-500 text-xs items-center">
+          <span class="font-mono">1234abcd5678</span> · 3 weeks ago
+        </div>
+      </div>
+    </body></html>
+    """
+
+    async def fake_fetch(client, url):
+        return html
+
+    async def fake_fetch_manifest(client, model, tag="latest"):
+        return None  # don't need manifest for this test
+
+    with patch("scrape_ollama.fetch", new=AsyncMock(side_effect=fake_fetch)):
+        with patch("scrape_ollama.fetch_manifest", new=AsyncMock(side_effect=fake_fetch_manifest)):
+            import httpx
+            async with httpx.AsyncClient() as client:
+                tags = await scrape_ollama.scrape_tags_page(client, "phi4-mini")
+
+    assert len(tags) == 2
+    assert tags[0]["tag"] == "latest", f"Expected 'latest', got {tags[0]['tag']!r}"
+    assert tags[1]["tag"] == "3.8b", f"Expected '3.8b', got {tags[1]['tag']!r}"
+
+
+@pytest.mark.asyncio
 async def test_scrape_ollama_does_not_add_duplicate_handlers(tmp_path):
     """Calling scrape_ollama_models twice must not add a second RotatingFileHandler."""
     import logging

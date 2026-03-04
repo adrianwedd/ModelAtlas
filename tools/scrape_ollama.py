@@ -102,8 +102,15 @@ async def scrape_tags_page(client: httpx.AsyncClient, model_name: str) -> list[d
         tag_elem = item.find("a")
         if not tag_elem:
             continue
-        # Only take the first part of the text which should be the tag name
-        tag_name = tag_elem.get_text(strip=True).split()[0]
+        # Derive tag name from href (e.g. /library/phi4-mini:3.8b → "3.8b")
+        # Using get_text() is unreliable: the digest span inside the anchor is
+        # concatenated without whitespace (e.g. "latest78fad5d182a7•").
+        href = tag_elem.get("href", "")
+        if ":" in href:
+            tag_name = href.rsplit(":", 1)[-1]
+        else:
+            # Fallback: first whitespace-separated word, separator=" " keeps child spacing
+            tag_name = tag_elem.get_text(separator=" ", strip=True).split()[0]
         size_elem = item.find("p", class_="col-span-2")
         size = size_elem.get_text(strip=True) if size_elem else ""
         details_div = item.find(
