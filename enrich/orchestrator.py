@@ -66,6 +66,12 @@ def enrich_node(state: TraceState) -> TraceState:
             # Use model's name field so merge_enrichment can find the file by name
             model_name_slug = model_data.get("name", Path(file_path).stem).replace("/", "_")
             output_path = enriched_models_dir / f"{model_name_slug}_enriched.json"
+            if output_path.exists():
+                logger.warning(
+                    "Enrichment file %s already exists; overwriting with data from %s",
+                    output_path.name,
+                    file_path,
+                )
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(enriched_data, f, indent=2)
             logger.info(f"Enriched and saved: {output_path}")
