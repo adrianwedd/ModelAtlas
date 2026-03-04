@@ -68,7 +68,7 @@ def execute_hf_scraper(limit=None, use_cache=True):
                 data = {
                     "name": full_model_info.id,
                     "description": card_data.get("description", ""),
-                    "downloads": parse_pull_count(full_model_info.downloads),
+                    "pull_count": parse_pull_count(full_model_info.downloads),
                     "last_updated": full_model_info.lastModified.isoformat() if full_model_info.lastModified else None,
                     "license": card_data.get("license", ""),
                     "architecture": card_data.get("architecture", ""),
