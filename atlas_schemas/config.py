@@ -1,6 +1,7 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
 from typing import Optional
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Config(BaseSettings):
@@ -11,6 +12,7 @@ class Config(BaseSettings):
 
     MODELS_DIR: Path = PROJECT_ROOT / "models"
     ENRICHED_OUTPUTS_DIR: Path = PROJECT_ROOT / "enriched_outputs"
+    PROMPTS_DIR: Path = PROJECT_ROOT / "enrichment_prompts"
     DEBUG_DIR: Path = PROJECT_ROOT / "ollama_debug_dumps"
     LOG_FILE: Path = PROJECT_ROOT / "ollama_scraper.log"
     OUTPUT_FILE: str = "models_enriched.json"

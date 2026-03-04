@@ -8,9 +8,9 @@ from atlas_schemas.config import settings
 from common.logging import logger
 
 LOG_FILE = settings.LOG_FILE
-MODELS_DIR = "models"
-PROMPTS_DIR = "enrichment_prompts"
-ENRICHED_OUTPUTS_DIR = "enriched_outputs"
+MODELS_DIR = settings.MODELS_DIR
+PROMPTS_DIR = settings.PROMPTS_DIR
+ENRICHED_OUTPUTS_DIR = settings.ENRICHED_OUTPUTS_DIR
 
 
 def simulate_llm_enrichment(prompt: str, model_name: str) -> dict:

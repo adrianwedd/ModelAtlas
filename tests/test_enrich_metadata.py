@@ -39,6 +39,21 @@ def test_enrich_write_files_writes_model_data_not_just_enriched(tmp_path, monkey
     assert written.get("pull_count") == 999, "Original model fields must be preserved"
 
 
+def test_enrich_metadata_uses_settings_dirs():
+    """enrich_metadata module-level constants must use settings, not hardcoded strings."""
+    import tools.enrich_metadata as mod
+    from atlas_schemas.config import settings
+    assert mod.MODELS_DIR == settings.MODELS_DIR, (
+        f"MODELS_DIR must equal settings.MODELS_DIR ({settings.MODELS_DIR}), got {mod.MODELS_DIR!r}"
+    )
+    assert str(mod.ENRICHED_OUTPUTS_DIR) == str(settings.ENRICHED_OUTPUTS_DIR), (
+        f"ENRICHED_OUTPUTS_DIR must equal settings.ENRICHED_OUTPUTS_DIR, got {mod.ENRICHED_OUTPUTS_DIR!r}"
+    )
+    assert str(mod.PROMPTS_DIR) == str(settings.PROMPTS_DIR), (
+        f"PROMPTS_DIR must equal settings.PROMPTS_DIR, got {mod.PROMPTS_DIR!r}"
+    )
+
+
 def test_main_does_not_overwrite_source_files(tmp_path, monkeypatch):
     import tools.enrich_metadata as em
     monkeypatch.setattr(em, "MODELS_DIR", str(tmp_path / "models"))
