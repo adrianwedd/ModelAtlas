@@ -32,17 +32,14 @@ def load_models_data():
         return []
 
 
-models_data = load_models_data()
-
-
 @app.get("/models", response_model=List[Model])
 async def get_all_models():
-    return models_data
+    return load_models_data()
 
 
 @app.get("/models/{model_name}", response_model=Model)
 async def get_model_by_name(model_name: str):
-    for model in models_data:
+    for model in load_models_data():
         if model["name"] == model_name:
             return model
     raise HTTPException(status_code=404, detail="Model not found")
@@ -50,7 +47,7 @@ async def get_model_by_name(model_name: str):
 
 @app.get("/models/{model_name}/similar", response_model=List[dict])
 async def get_similar_models(model_name: str):
-    for model in models_data:
+    for model in load_models_data():
         if model["name"] == model_name:
             return model.get("similar_models", [])
     raise HTTPException(status_code=404, detail="Model not found")

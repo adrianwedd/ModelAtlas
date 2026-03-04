@@ -19,11 +19,8 @@ FAKE_MODELS = [
 
 @pytest.fixture
 def client():
-    # Patch load_models_data before the module-level call runs
     with patch("tools.serve_api.load_models_data", return_value=FAKE_MODELS):
-        import importlib
         import tools.serve_api as api_module
-        api_module.models_data = FAKE_MODELS
         from fastapi.testclient import TestClient
         yield TestClient(api_module.app)
 
@@ -80,5 +77,29 @@ def test_load_models_data_returns_empty_on_corrupted_json(tmp_path):
     try:
         result = api.load_models_data()
         assert result == []
+    finally:
+        api.MODELS_DATA_PATH = original
+
+
+def test_get_all_models_reflects_file_changes(tmp_path):
+    """get_all_models must load fresh data on each call, not use cached global."""
+    import json as json_mod
+    import tools.serve_api as api
+    from fastapi.testclient import TestClient
+
+    data_file = tmp_path / "models.json"
+    data_file.write_text(json_mod.dumps([{"name": "bert"}]))
+
+    original = api.MODELS_DATA_PATH
+    api.MODELS_DATA_PATH = data_file
+    try:
+        client = TestClient(api.app)
+        resp1 = client.get("/models")
+        assert len(resp1.json()) == 1
+
+        # Simulate file update between requests
+        data_file.write_text(json_mod.dumps([{"name": "bert"}, {"name": "gpt2"}]))
+        resp2 = client.get("/models")
+        assert len(resp2.json()) == 2, "API must reflect updated file on second request"
     finally:
         api.MODELS_DATA_PATH = original
