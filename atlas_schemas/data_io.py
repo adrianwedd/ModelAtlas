@@ -1,17 +1,21 @@
-from pathlib import Path
 import json
 import logging
+from pathlib import Path
 
 from atlas_schemas.models import Model
 
 logger = logging.getLogger(__name__)
 
 
-def load_model_from_json(path: Path) -> Model:
+def load_model_from_json(path: Path) -> "Model | None":
     """Load a Model instance from a JSON file."""
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return Model(**data)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return Model(**data)
+    except Exception as e:
+        logger.error("Failed to load model from %s: %s", path, e)
+        return None
 
 
 def merge_enrichment(model: Model, enriched_outputs_dir: Path) -> Model:

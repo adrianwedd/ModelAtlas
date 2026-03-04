@@ -1,8 +1,10 @@
 import json
-import pytest
 from pathlib import Path
 from unittest.mock import patch
-from atlas_schemas.data_io import merge_enrichment
+
+import pytest
+
+from atlas_schemas.data_io import load_model_from_json, merge_enrichment
 from atlas_schemas.models import Model
 
 
@@ -36,3 +38,23 @@ def test_merge_enrichment_applies_valid_enrichment(base_model, tmp_path):
 
     result = merge_enrichment(base_model, tmp_path)
     assert result.summary == "great model"
+
+
+def test_load_model_from_json_returns_none_on_missing_file(tmp_path):
+    result = load_model_from_json(tmp_path / "nonexistent.json")
+    assert result is None
+
+
+def test_load_model_from_json_returns_none_on_bad_json(tmp_path):
+    bad = tmp_path / "bad.json"
+    bad.write_text("{not valid json}")
+    result = load_model_from_json(bad)
+    assert result is None
+
+
+def test_load_model_from_json_returns_model_on_valid_file(tmp_path):
+    good = tmp_path / "model.json"
+    good.write_text('{"name": "test-model"}')
+    result = load_model_from_json(good)
+    assert result is not None
+    assert result.name == "test-model"
