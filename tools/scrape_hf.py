@@ -47,7 +47,7 @@ def execute_hf_scraper(limit=None, use_cache=True):
     logger.info("Starting Hugging Face Hub scraping...")
 
     # Define the new output directory for Hugging Face models
-    hf_models_output_dir = os.path.join("models", "huggingface")
+    hf_models_output_dir = str(settings.MODELS_DIR / "huggingface")
     os.makedirs(hf_models_output_dir, exist_ok=True)
 
     try:
@@ -154,8 +154,7 @@ def execute_hf_scraper(limit=None, use_cache=True):
 
 if __name__ == "__main__":
     # Reset log file each trace for clean debugging
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
+    Path(str(LOG_FILE)).unlink(missing_ok=True)
 
     use_cache = "--no-cache" not in sys.argv
     limit = 100

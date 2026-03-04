@@ -27,3 +27,13 @@ def test_parse_pull_count_handles_int():
 def test_parse_pull_count_handles_empty():
     assert parse_pull_count("") == 0
     assert parse_pull_count(None) == 0
+
+
+def test_scrape_hf_uses_settings_models_dir():
+    """execute_hf_scraper must derive output dir from settings.MODELS_DIR, not hardcode 'models'."""
+    import inspect
+    import tools.scrape_hf as hf_module
+    src = inspect.getsource(hf_module.execute_hf_scraper)
+    assert 'os.path.join("models"' not in src, (
+        "execute_hf_scraper must not hardcode the string 'models' — use settings.MODELS_DIR"
+    )

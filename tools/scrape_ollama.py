@@ -276,8 +276,7 @@ async def scrape_ollama_models(
 
 
 if __name__ == "__main__":
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
+    Path(str(LOG_FILE)).unlink(missing_ok=True)
     import argparse
 
     parser = argparse.ArgumentParser()
