@@ -131,3 +131,30 @@ def test_calculate_name_similarity_tolerates_none_right(fresh_engine):
 def test_calculate_name_similarity_tolerates_both_none(fresh_engine):
     score, reasons = fresh_engine.calculate_name_similarity(None, None)
     assert score == 0.0
+
+
+# ------------------------------------------------------------------
+# Jaccard division-by-zero guard tests
+# ------------------------------------------------------------------
+
+
+def test_metadata_similarity_both_empty_dicts(fresh_engine):
+    """_metadata_similarity({}, {}) must return 0.0, not raise."""
+    score = fresh_engine._metadata_similarity({}, {})
+    assert score == 0.0
+
+
+def test_metadata_similarity_empty_summaries(fresh_engine):
+    """Both empty summary strings must not raise ZeroDivisionError."""
+    a = {"optimal_use_cases": [{"use_case": "chat"}], "summary": ""}
+    b = {"optimal_use_cases": [{"use_case": "chat"}], "summary": ""}
+    score = fresh_engine._metadata_similarity(a, b)
+    assert 0.0 <= score <= 1.0
+
+
+def test_metadata_similarity_empty_use_cases(fresh_engine):
+    """Both empty use_case lists must not raise ZeroDivisionError."""
+    a = {"optimal_use_cases": [], "summary": "some summary"}
+    b = {"optimal_use_cases": [], "summary": "some summary"}
+    score = fresh_engine._metadata_similarity(a, b)
+    assert 0.0 <= score <= 1.0
