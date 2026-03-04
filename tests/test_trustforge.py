@@ -66,3 +66,14 @@ def test_trust_score_none_license_does_not_produce_none_string():
     score = compute_score(model)
     assert isinstance(score, float)
     assert 0.0 <= score <= 1.0
+
+
+def test_compute_and_merge_creates_output_parent_dir(tmp_path):
+    """compute_and_merge_trust_scores must create output_file.parent if it doesn't exist."""
+    import json
+    nested_output = tmp_path / "new_dir" / "subdir" / "out.json"
+    # nested_output.parent doesn't exist yet
+    (tmp_path / "model.json").write_text(json.dumps({"name": "bert"}))
+    # Should not raise FileNotFoundError
+    compute_and_merge_trust_scores(tmp_path, nested_output, tmp_path)
+    assert nested_output.exists()

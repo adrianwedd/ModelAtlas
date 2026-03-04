@@ -25,6 +25,7 @@ def compute_and_merge_trust_scores(
         model.trust_score = compute_score(model)
         models.append(model)
 
+    Path(output_file).parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump([model.model_dump() for model in models], f, indent=2)
 
