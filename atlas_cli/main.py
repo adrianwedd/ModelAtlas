@@ -5,8 +5,8 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-import yaml
 import typer
+import yaml
 from rich.console import Console
 from rich.panel import Panel
 
@@ -14,11 +14,11 @@ from rich.panel import Panel
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from common.logging import logger
+from atlas_cli.search import cli as search_cli
 from atlas_schemas.config import settings
+from common.logging import logger
 from enrich.main import run_enrichment_trace
 from trustforge.score import compute_and_merge_trust_scores
-from atlas_cli.search import cli as search_cli
 
 app = typer.Typer(help="ModelAtlas CLI")
 console = Console()
@@ -35,7 +35,7 @@ def trace(
     Examples:
         python -m atlas_cli.main trace --input models --output result.json
     """
-    tasks_file_path = tasks_yml if tasks_yml else PROJECT_ROOT / "tasks.yml"
+    tasks_file_path = tasks_yml if tasks_yml else PROJECT_ROOT / "tasks" / "tasks.yml"
     if not tasks_file_path.exists():
         logger.error("tasks.yml not found at %s", tasks_file_path)
         raise typer.Exit(code=1)
@@ -83,9 +83,7 @@ def init() -> None:
 
 
 @app.command(help="Search models by name and summary")
-def search(
-    query: str, top_k: int = typer.Option(5, help="Number of results")
-) -> None:
+def search(query: str, top_k: int = typer.Option(5, help="Number of results")) -> None:
     """Search the local model catalog.
 
     Examples:
@@ -97,7 +95,7 @@ def search(
 
 def _run() -> None:
     args = sys.argv[1:]
-    if args and args[0] in {"init", "trace", "--help", "-h"}:
+    if args and args[0] in {"init", "trace", "search", "--help", "-h"}:
         app()
     else:
         app(args=["trace"] + args)
