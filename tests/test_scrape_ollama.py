@@ -78,21 +78,27 @@ async def test_scrape_ollama_tolerates_one_failed_model(monkeypatch, tmp_path):
     assert results[0]["name"] == "good-model"
 
 
-def test_scrape_ollama_does_not_add_duplicate_handlers():
-    """scrape_ollama_models must not add RotatingFileHandlers on each call."""
+@pytest.mark.asyncio
+async def test_scrape_ollama_does_not_add_duplicate_handlers(tmp_path):
+    """Calling scrape_ollama_models twice must not add a second RotatingFileHandler."""
     import logging
-    from tools.scrape_ollama import scrape_ollama_models
-    # Count handlers before
-    scrape_logger = logging.getLogger("ModelAtlas")
-    handler_count_before = len(scrape_logger.handlers)
 
-    # Calling the function twice shouldn't multiply handlers
-    # We can't actually call it (network), so just verify the module doesn't
-    # add handlers at import time beyond what's expected
-    import importlib
-    import tools.scrape_ollama as mod
-    importlib.reload(mod)
-    handler_count_after = len(scrape_logger.handlers)
-    assert handler_count_after <= handler_count_before + 1, (
-        f"Handler count grew unexpectedly on reload: {handler_count_before} → {handler_count_after}"
+    scrape_ollama.OLLAMA_MODELS_DIR = tmp_path / "models"
+    scrape_ollama.DEBUG_DIR = tmp_path / "debug"
+    scrape_ollama.LOG_FILE = tmp_path / "log.log"
+
+    scrape_logger = logging.getLogger("ModelAtlas")
+    sample_detail = {"name": "foo", "page_hash": "abc", "description": "desc"}
+    sample_tags = [{"tag": "latest"}]
+
+    with patch("scrape_ollama.fetch_model_list", new=AsyncMock(return_value=["foo"])):
+        with patch("scrape_ollama.scrape_details", new=AsyncMock(return_value=sample_detail)):
+            with patch("scrape_ollama.scrape_tags_page", new=AsyncMock(return_value=sample_tags)):
+                await scrape_ollama.scrape_ollama_models(concurrency=1)
+                count_after_first = len(scrape_logger.handlers)
+                await scrape_ollama.scrape_ollama_models(concurrency=1)
+                count_after_second = len(scrape_logger.handlers)
+
+    assert count_after_second == count_after_first, (
+        f"Handler count grew from {count_after_first} to {count_after_second} on second call"
     )
