@@ -5,7 +5,6 @@ import logging
 import os
 import re
 import time
-from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 import httpx
@@ -244,14 +243,6 @@ async def scrape_ollama_models(
 ) -> list[dict]:
     os.makedirs(OLLAMA_MODELS_DIR, exist_ok=True)
     os.makedirs(DEBUG_DIR, exist_ok=True)
-    for handler in list(logger.handlers):
-        if isinstance(handler, RotatingFileHandler):
-            logger.removeHandler(handler)
-    file_handler = RotatingFileHandler(
-        LOG_FILE, maxBytes=1_000_000, backupCount=3, encoding="utf-8"
-    )
-    file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
-    logger.addHandler(file_handler)
     results = []
     async with httpx.AsyncClient() as client:
         names = await fetch_model_list(client)
