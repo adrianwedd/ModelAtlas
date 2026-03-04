@@ -5,11 +5,13 @@ import sys
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from atlas_schemas.config import settings
+
 logger = logging.getLogger(__name__)
 
 
 def main():
-    data_path = "models_enriched.json"
+    data_path = str(settings.PROJECT_ROOT / settings.OUTPUT_FILE)
 
     # Guard: exit gracefully if data file is missing
     if not os.path.exists(data_path):
