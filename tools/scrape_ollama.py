@@ -91,7 +91,8 @@ async def scrape_tags_page(client: httpx.AsyncClient, model_name: str) -> list[d
         tag_elem = item.find("a")
         if not tag_elem:
             continue
-        tag_name = tag_elem.text.strip()
+        # Only take the first part of the text which should be the tag name
+        tag_name = tag_elem.get_text(strip=True).split()[0]
         size_elem = item.find("p", class_="col-span-2")
         size = size_elem.get_text(strip=True) if size_elem else ""
         details_div = item.find("div", class_="flex text-neutral-500 text-xs items-center")
@@ -103,7 +104,7 @@ async def scrape_tags_page(client: httpx.AsyncClient, model_name: str) -> list[d
             last_updated_match = re.search(r"·\s*(.*)", details_div.get_text(strip=True))
             if last_updated_match:
                 last_updated = last_updated_match.group(1).strip()
-        api_tag = tag_name.split(":")[-1]
+        api_tag = tag_name.split(":")[-1].strip()
         tag_entry = {
             "tag": tag_name,
             "last_updated": last_updated,
@@ -172,7 +173,7 @@ async def fetch_model_list(client: httpx.AsyncClient) -> list[str]:
     soup = BeautifulSoup(html, "html.parser")
     items = soup.select("ul[role=list] > li")
     names = [
-        i.find("a")["href"].split("/")[-1]
+        i.find("a")["href"].split("/")[-1].strip()
         for i in items
         if i.find("a") and "/library/" in i.find("a")["href"]
     ]

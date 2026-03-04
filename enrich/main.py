@@ -15,6 +15,8 @@ from atlas_schemas.data_io import load_model_from_json, merge_enrichment
 from enrich.orchestrator import build_trace_graph, TraceState
 
 
+import asyncio
+
 def run_enrichment_trace(input_dir: Path, output_file: Path, enriched_outputs_dir: Path) -> None:
     graph = build_trace_graph()
     initial_state = TraceState(
@@ -25,6 +27,6 @@ def run_enrichment_trace(input_dir: Path, output_file: Path, enriched_outputs_di
     )
     # This is a simplified call. In a real scenario, you'd iterate through the graph stream
     # and handle state updates and actual function calls within the nodes.
-    graph.invoke(initial_state)
+    asyncio.run(graph.ainvoke(initial_state))
 
 # Removed if __name__ == "__main__" block
