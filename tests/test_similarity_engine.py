@@ -1,8 +1,13 @@
 import os
 import sys
+from pathlib import Path
+
 import pytest
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from similarity_engine import ModelSimilarityEngine
 
@@ -10,6 +15,11 @@ from similarity_engine import ModelSimilarityEngine
 os.environ.setdefault("LLM_API_KEY", "dummy")
 
 engine = ModelSimilarityEngine()
+
+
+@pytest.fixture
+def fresh_engine():
+    return ModelSimilarityEngine()
 
 
 def test_exact_base_match_with_params():
@@ -20,7 +30,9 @@ def test_exact_base_match_with_params():
 
 
 def test_architecture_and_variant_similarity():
-    score, reasons = engine.calculate_name_similarity("codellama:7b-instruct", "llama2:7b-instruct")
+    score, reasons = engine.calculate_name_similarity(
+        "codellama:7b-instruct", "llama2:7b-instruct"
+    )
     assert score == pytest.approx(0.9)
     assert "Same architecture family (llama)" in reasons
     assert "Same parameter count (7.0B)" in reasons
@@ -76,7 +88,46 @@ def test_helper_functions_and_graph_generation():
     assert sims and sims[0].model_b == "llama2:7b-instruct"
 
     dups = engine.detect_duplicates(threshold=0.5)
-    assert ("llama3:8b", "llama2:7b-instruct",) in [(a, b) for a, b, _ in dups]
+    assert (
+        "llama3:8b",
+        "llama2:7b-instruct",
+    ) in [(a, b) for a, b, _ in dups]
 
     graph = engine.generate_similarity_graph()
     assert {"nodes", "edges"} <= graph.keys()
+
+
+# ------------------------------------------------------------------
+# None-guard tests
+# ------------------------------------------------------------------
+
+
+def test_normalize_architecture_returns_empty_for_none(fresh_engine):
+    assert fresh_engine.normalize_architecture(None) == ""
+
+
+def test_extract_parameter_count_returns_none_for_none(fresh_engine):
+    assert fresh_engine.extract_parameter_count(None) is None
+
+
+def test_extract_variants_returns_empty_set_for_none(fresh_engine):
+    assert fresh_engine._extract_variants(None) == set()
+
+
+def test_extract_base_token_returns_empty_for_none(fresh_engine):
+    assert fresh_engine._extract_base_token(None) == ""
+
+
+def test_calculate_name_similarity_tolerates_none_left(fresh_engine):
+    score, reasons = fresh_engine.calculate_name_similarity(None, "llama-7b")
+    assert 0.0 <= score <= 1.0
+
+
+def test_calculate_name_similarity_tolerates_none_right(fresh_engine):
+    score, reasons = fresh_engine.calculate_name_similarity("llama-7b", None)
+    assert 0.0 <= score <= 1.0
+
+
+def test_calculate_name_similarity_tolerates_both_none(fresh_engine):
+    score, reasons = fresh_engine.calculate_name_similarity(None, None)
+    assert score == 0.0

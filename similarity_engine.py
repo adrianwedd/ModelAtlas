@@ -1,6 +1,7 @@
 """ModelSimilarityEngine: name-based and metadata-based model similarity."""
 
 from __future__ import annotations
+
 import re
 from dataclasses import dataclass, field
 from typing import Any
@@ -23,7 +24,17 @@ _ARCH_MAP: list[tuple[str, list[str]]] = [
 ]
 
 _PARAM_RE = re.compile(r"(\d+(?:\.\d+)?)\s*[Bb]", re.IGNORECASE)
-_VARIANT_KEYWORDS = {"instruct", "chat", "code", "base", "gguf", "q4", "q8", "fp16", "awq"}
+_VARIANT_KEYWORDS = {
+    "instruct",
+    "chat",
+    "code",
+    "base",
+    "gguf",
+    "q4",
+    "q8",
+    "fp16",
+    "awq",
+}
 
 
 @dataclass
@@ -46,6 +57,8 @@ class ModelSimilarityEngine:
 
     def normalize_architecture(self, name: str) -> str:
         """Return canonical architecture family for a model name."""
+        if name is None:
+            return ""
         lower = name.lower()
         for family, patterns in _ARCH_MAP:
             if any(p in lower for p in patterns):
@@ -56,15 +69,21 @@ class ModelSimilarityEngine:
 
     def extract_parameter_count(self, name: str) -> float | None:
         """Extract parameter count in billions, e.g. '7b' -> 7.0, '2.7b' -> 2.7."""
+        if name is None:
+            return None
         m = _PARAM_RE.search(name)
         return float(m.group(1)) if m else None
 
     def _extract_variants(self, name: str) -> set[str]:
+        if name is None:
+            return set()
         parts = re.split(r"[-:_.]", name.lower())
         return {p for p in parts if p in _VARIANT_KEYWORDS}
 
     def _extract_base_token(self, name: str) -> str:
         """Return the first meaningful token of the model name (before any separator)."""
+        if name is None:
+            return ""
         # Strip Hugging Face org prefix if present (e.g. "meta-llama/Llama-3" -> "Llama-3")
         if "/" in name:
             name = name.split("/", 1)[1]
@@ -72,7 +91,9 @@ class ModelSimilarityEngine:
         # First token before separator
         return re.split(r"[-:_.]", lower)[0]
 
-    def calculate_name_similarity(self, name_a: str, name_b: str) -> tuple[float, list[str]]:
+    def calculate_name_similarity(
+        self, name_a: str, name_b: str
+    ) -> tuple[float, list[str]]:
         """
         Compare two model name strings.
         Returns (score 0.0-1.0, list of human-readable reasons).
@@ -99,7 +120,7 @@ class ModelSimilarityEngine:
         # Full base model match: same specific base token + same params.
         # Use the base token (e.g. "llama3") not the normalized family ("llama")
         # so that "codellama" vs "llama2" do NOT trigger this path.
-        if base_a == base_b and params_a is not None and params_a == params_b:
+        if base_a and base_b and base_a == base_b and params_a is not None and params_a == params_b:
             reasons.append(f"Same base model ({base_a})")
             reasons.append(f"Same parameter count ({params_a}B)")
             if common_variants:
@@ -108,7 +129,7 @@ class ModelSimilarityEngine:
 
         score = 0.0
 
-        if arch_a == arch_b:
+        if arch_a and arch_b and arch_a == arch_b:
             score += 0.4
             reasons.append(f"Same architecture family ({arch_a})")
 
@@ -141,8 +162,16 @@ class ModelSimilarityEngine:
             if a.get(field_name) and a.get(field_name) == b.get(field_name):
                 score += weight
 
-        uc_a = {u.get("use_case") for u in a.get("optimal_use_cases", []) if u.get("use_case")}
-        uc_b = {u.get("use_case") for u in b.get("optimal_use_cases", []) if u.get("use_case")}
+        uc_a = {
+            u.get("use_case")
+            for u in a.get("optimal_use_cases", [])
+            if u.get("use_case")
+        }
+        uc_b = {
+            u.get("use_case")
+            for u in b.get("optimal_use_cases", [])
+            if u.get("use_case")
+        }
         if uc_a and uc_b:
             score += 0.20 * len(uc_a & uc_b) / len(uc_a | uc_b)
 
@@ -172,9 +201,11 @@ class ModelSimilarityEngine:
         names = list(self.models_data.keys())
         duplicates: list[tuple[str, str, float]] = []
         for i, a in enumerate(names):
-            for b in names[i + 1:]:
+            for b in names[i + 1 :]:
                 name_score, _ = self.calculate_name_similarity(a, b)
-                meta_score = self._metadata_similarity(self.models_data[a], self.models_data[b])
+                meta_score = self._metadata_similarity(
+                    self.models_data[a], self.models_data[b]
+                )
                 combined = round(0.5 * name_score + 0.5 * meta_score, 3)
                 if combined >= threshold:
                     duplicates.append((a, b, combined))
@@ -186,10 +217,19 @@ class ModelSimilarityEngine:
         nodes = [{"id": n} for n in names]
         edges = []
         for i, a in enumerate(names):
-            for b in names[i + 1:]:
+            for b in names[i + 1 :]:
                 name_score, reasons = self.calculate_name_similarity(a, b)
-                meta_score = self._metadata_similarity(self.models_data[a], self.models_data[b])
+                meta_score = self._metadata_similarity(
+                    self.models_data[a], self.models_data[b]
+                )
                 combined = round(0.5 * name_score + 0.5 * meta_score, 3)
                 if combined >= threshold:
-                    edges.append({"source": a, "target": b, "weight": combined, "reasons": reasons})
+                    edges.append(
+                        {
+                            "source": a,
+                            "target": b,
+                            "weight": combined,
+                            "reasons": reasons,
+                        }
+                    )
         return {"nodes": nodes, "edges": edges}
