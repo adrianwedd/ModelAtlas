@@ -87,3 +87,44 @@ def test_atlas_skip_scrape_value_1_skips_scraping(tmp_path):
             with patch("enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock):
                 asyncio.run(scrape_node(state))
                 mock_hf.assert_not_called()
+
+
+def test_enrich_node_output_filename_matches_merge_enrichment_lookup(tmp_path):
+    """Enrichment files must be named {model_name.replace('/','_')}_enriched.json
+    so that merge_enrichment can find them by model name."""
+    import json
+    from unittest.mock import patch
+    from enrich.orchestrator import enrich_node
+    from atlas_schemas.data_io import merge_enrichment
+    from atlas_schemas.models import Model
+
+    hf_dir = tmp_path / "raw" / "huggingface"
+    hf_dir.mkdir(parents=True)
+    model_data = {"name": "google-bert/bert-base-uncased", "description": "BERT"}
+    (hf_dir / "bert-base-uncased.json").write_text(json.dumps(model_data))
+
+    enriched_dir = tmp_path / "enriched"
+    enriched_dir.mkdir()
+
+    state = {
+        "raw_models_dir": tmp_path / "raw",
+        "enriched_models_dir": enriched_dir,
+        "validated_models_dir": tmp_path / "validated",
+        "final_output_file": tmp_path / "out.json",
+    }
+
+    with patch("enrich.orchestrator.enrich_model_metadata", side_effect=lambda d: d):
+        enrich_node(state)
+
+    # merge_enrichment looks for "google-bert_bert-base-uncased_enriched.json"
+    expected_slug = "google-bert_bert-base-uncased"
+    expected_file = enriched_dir / f"{expected_slug}_enriched.json"
+    assert expected_file.exists(), (
+        f"Expected enrichment file {expected_file.name} not found. "
+        f"Found: {[f.name for f in enriched_dir.glob('*.json')]}"
+    )
+
+    # Verify merge_enrichment can actually find and load it
+    model = Model(name="google-bert/bert-base-uncased")
+    merged = merge_enrichment(model, enriched_dir)
+    assert merged.name == "google-bert/bert-base-uncased"

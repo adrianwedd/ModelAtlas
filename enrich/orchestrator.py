@@ -63,12 +63,9 @@ def enrich_node(state: TraceState) -> TraceState:
 
             enriched_data = enrich_model_metadata(model_data)
 
-            # Save enriched data to the enriched_models_dir
-            # Use path relative to raw_models_dir to avoid collisions across subdirs
-            # e.g. "huggingface/bert.json" → "huggingface_bert_enriched.json"
-            rel = Path(file_path).relative_to(raw_models_dir)
-            model_name = "_".join(rel.with_suffix("").parts)
-            output_path = enriched_models_dir / f"{model_name}_enriched.json"
+            # Use model's name field so merge_enrichment can find the file by name
+            model_name_slug = model_data.get("name", Path(file_path).stem).replace("/", "_")
+            output_path = enriched_models_dir / f"{model_name_slug}_enriched.json"
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(enriched_data, f, indent=2)
             logger.info(f"Enriched and saved: {output_path}")
