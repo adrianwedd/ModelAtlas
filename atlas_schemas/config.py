@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional
 
 
 class Config(BaseSettings):
@@ -23,8 +23,6 @@ class Config(BaseSettings):
     OPENAI_API_KEY: Optional[str] = None
     PLAYWRIGHT_BROWSERS_PATH: Optional[str] = None
     LLM_MODEL_NAME: str = "gemini-1.5-pro"
-
-    REQUIRED_KEYS: List[str] = []
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
