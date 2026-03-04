@@ -1,8 +1,7 @@
-"""Script to generate enrichment prompts and placeholders for AI model metadata, facilitating subjective analysis and manual enrichment."""
+"""Script to generate enrichment prompts and placeholders for AI model metadata."""
 
 import json
 import os
-import re
 import time
 
 from atlas_schemas.config import settings
@@ -14,63 +13,45 @@ PROMPTS_DIR = "enrichment_prompts"
 ENRICHED_OUTPUTS_DIR = "enriched_outputs"
 
 
-def enrich_model_metadata(model_data):
-    """
-    Generates prompts for subjective enrichment.
-    """
-    model_name = model_data.get("name", "unknown_model").replace('/', '_')
-    
-    # Generate prompt for subjective enrichment
+def simulate_llm_enrichment(prompt: str, model_name: str) -> dict:
+    """Placeholder: returns empty enrichment structure until LLM is wired in."""
+    return {
+        "summary": "",
+        "use_cases": [],
+        "strengths": [],
+        "weaknesses": [],
+        "meta": {
+            "rated_by": "placeholder",
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        },
+    }
+
+
+def enrich_model_metadata(model_data: dict) -> dict:
+    """Generates prompts for subjective enrichment and writes output files."""
+    model_name = model_data.get("name", "unknown_model").replace("/", "_")
+
     prompt_filename = os.path.join(PROMPTS_DIR, f"{model_name}_prompt.txt")
-    enriched_output_filename = os.path.join(ENRICHED_OUTPUTS_DIR, f"{model_name}_enriched.json")
+    enriched_output_filename = os.path.join(
+        ENRICHED_OUTPUTS_DIR, f"{model_name}_enriched.json"
+    )
 
-    prompt_content = f"""🎩 You are an elite AI analyst with domain mastery, cutting wit, and irreverent genius. Think if Hunter S. Thompson had a PhD in model benchmarking and worked for a clandestine model intelligence agency.
+    description = model_data.get("description", "No description available.")
 
-Your mission: analyze and enrich the metadata for the AI model called **"{model_data.get("name")}"**".
-
-👇 You’ve got:
-────────────────────────────
-📝 Raw description:
-"""
-{model_data.get("description", "No description available.")}
-"""
-
-👀 That's it. The rest is up to you.
-────────────────────────────
-
-🎯 You must produce a **pure JSON object** with the following fields — sharp, honest, compact:
-
-{{
-  "summary": "⚡ One paragraph. No waffle. What is this model, what’s it for, and what’s the vibe? Drop a reference if it makes it pop.",
-  "use_cases": [
-    "🛠️ Practical uses that matter",
-    "🎯 Niche traces it nails",
-    "👩‍🔬 Weird or brilliant things it enables"
-  ],
-  "strengths": [
-    "🔥 What it does *really* well — model architecture, dataset, speed, community, license, vibes?",  # strengths details
-    "✅ One or two things that justify its existence"
-  ],
-  "weaknesses": [
-    "⚠️ Every model has flaws — be blunt, be real",  # weaknesses details
-    "🔍 Is it mid? Is it a GPU hog? Is the README full of lies?"
-  ],
-  "meta": {{
-    "rated_by": "Model Intelligence Ops - GODMODE v7",  # metadata info
-    "timestamp": "{time.strftime('%Y-%m-%d %H:%M:%S')}"
-  }}
-}}
-
-✒️ Style:
-- Dry humor ✅
-- Razor clarity ✅
-- Useful, not diplomatic ✅
-- Your tone is 'in-the-know renegade', not corporate shill
-
-🛑 No markdown, no commentary, no apologies.
-Just the JSON, clean and lethal.
-
-GO."""
+    # Build prompt without embedding triple-quotes inside the f-string
+    prompt_lines = [
+        "You are an elite AI analyst.",
+        "",
+        "Model: " + model_data.get("name", "unknown"),
+        "",
+        "Raw description:",
+        "---",
+        description,
+        "---",
+        "",
+        "Return a JSON object with: summary, use_cases, strengths, weaknesses.",
+    ]
+    prompt_content = "\n".join(prompt_lines)
 
     with open(prompt_filename, "w", encoding="utf-8") as f:
         f.write(prompt_content)
@@ -82,68 +63,62 @@ GO."""
         json.dump(enriched_data, f, indent=2)
     logger.info("Created enrichment output: %s", enriched_output_filename)
 
-    # Add paths to model_data for later reference
     model_data["enrichment_prompt_path"] = prompt_filename
     model_data["manual_enriched_output_path"] = enriched_output_filename
 
     return model_data
 
+
 def main():
-    logger.info("Starting model enrichment process (prompt generation only).")
-    
-    # Ensure prompt directory exists
+    logger.info("Starting model enrichment process.")
+
     try:
         os.makedirs(PROMPTS_DIR, exist_ok=True)
-        logger.info("Ensured prompts directory exists: %s", PROMPTS_DIR)
     except Exception as e:
         logger.error("Failed to create prompts directory %s: %s", PROMPTS_DIR, e)
         return
 
-    # Ensure enriched outputs directory exists
     try:
         os.makedirs(ENRICHED_OUTPUTS_DIR, exist_ok=True)
-        logger.info("Ensured enriched outputs directory exists: %s", ENRICHED_OUTPUTS_DIR)
     except Exception as e:
-        logger.error("Failed to create enriched outputs directory %s: %s", ENRICHED_OUTPUTS_DIR, e)
+        logger.error("Failed to create enriched outputs directory: %s", e)
         return
 
-    # Check if models directory exists
     if not os.path.exists(MODELS_DIR):
         logger.error("Models directory not found: %s", MODELS_DIR)
         return
 
-    # List all model JSON files to process
     model_files = [f for f in os.listdir(MODELS_DIR) if f.endswith(".json")]
-    logger.info("Found %s model files to process in %s.", len(model_files), MODELS_DIR)
+    logger.info("Found %s model files in %s.", len(model_files), MODELS_DIR)
 
     for i, filename in enumerate(model_files):
         file_path = os.path.join(MODELS_DIR, filename)
-        model_name_for_log = filename.replace(".json", "")
-        log_message(f"Processing file: {filename} ({i+1}/{len(model_files)})", phase="enrichment")
-        
-        try:
-            with open(file_path, 'r', encoding="utf-8") as f:
-                model_data = json.load(f)
-            
-            enriched_model_data = enrich_model_metadata(model_data)
-            
-            # Write back enriched model data safely
-            try:
-                with open(file_path, 'w', encoding="utf-8") as f:
-                    json.dump(enriched_model_data, f, indent=2)
-                log_message(f"Successfully processed: {filename}")
-            except Exception as e:
-                log_message(f"Error writing enriched data to {filename}: {e}", level="ERROR")
-        except json.JSONDecodeError as e:
-            log_message(f"Error decoding JSON from {filename}: {e}", level="ERROR")
-        except Exception as e:
-            log_message(f"Error processing {filename}: {e}", level="ERROR")
-        
-        time.sleep(0.1) # Politeness delay
+        logger.info("Processing file: %s (%s/%s)", filename, i + 1, len(model_files))
 
-    log_message("Model enrichment process completed.", status="COMPLETE")
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                model_data = json.load(f)
+
+            enriched_model_data = enrich_model_metadata(model_data)
+
+            try:
+                with open(file_path, "w", encoding="utf-8") as f:
+                    json.dump(enriched_model_data, f, indent=2)
+                logger.info("Successfully processed: %s", filename)
+            except Exception as e:
+                logger.error("Error writing enriched data to %s: %s", filename, e)
+
+        except json.JSONDecodeError as e:
+            logger.error("Error decoding JSON from %s: %s", filename, e)
+        except Exception as e:
+            logger.error("Error processing %s: %s", filename, e)
+
+        time.sleep(0.1)
+
+    logger.info("Model enrichment process completed.")
+
 
 if __name__ == "__main__":
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
+    if os.path.exists(str(LOG_FILE)):
+        os.remove(str(LOG_FILE))
     main()
