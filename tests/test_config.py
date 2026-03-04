@@ -1,17 +1,17 @@
 import pytest
-
+from pathlib import Path
 from atlas_schemas.config import Config
 
 
-def test_config_missing_required_key(monkeypatch, tmp_path):
+def test_config_initializes_without_env(monkeypatch, tmp_path):
+    """Config must construct cleanly even with no env vars set."""
     monkeypatch.delenv("LLM_API_KEY", raising=False)
-    # Pass a nonexistent env_file so pydantic-settings does not read the .env on disk
-    with pytest.raises(ValueError) as exc:
-        Config(_env_file=str(tmp_path / ".env.nonexistent"))
-    assert "LLM_API_KEY" in str(exc.value)
+    cfg = Config(_env_file=str(tmp_path / ".env.missing"))
+    assert cfg.PROJECT_NAME == "ModelAtlas"
+    assert cfg.LLM_API_KEY is None
 
 
-def test_config_initialization_with_key(monkeypatch):
-    monkeypatch.setenv("LLM_API_KEY", "dummy")
-    cfg = Config()
-    assert cfg.LLM_API_KEY == "dummy"
+def test_config_accepts_optional_llm_key(tmp_path):
+    """LLM_API_KEY is optional; supplying it must not raise."""
+    cfg = Config(LLM_API_KEY="sk-test", _env_file=str(tmp_path / ".env.missing"))
+    assert cfg.LLM_API_KEY == "sk-test"
