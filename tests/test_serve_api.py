@@ -1,0 +1,58 @@
+import json
+import sys
+from pathlib import Path
+from unittest.mock import patch, MagicMock
+
+import pytest
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+
+FAKE_MODELS = [
+    {
+        "name": "test-model",
+        "similar_models": [{"name": "other-model", "score": 0.9}],
+    }
+]
+
+
+@pytest.fixture
+def client():
+    # Patch load_models_data before the module-level call runs
+    with patch("tools.serve_api.load_models_data", return_value=FAKE_MODELS):
+        import importlib
+        import tools.serve_api as api_module
+        api_module.models_data = FAKE_MODELS
+        from fastapi.testclient import TestClient
+        yield TestClient(api_module.app)
+
+
+def test_get_all_models(client):
+    resp = client.get("/models")
+    assert resp.status_code == 200
+    data = resp.json()
+    assert isinstance(data, list)
+
+
+def test_get_model_by_name_not_found(client):
+    resp = client.get("/models/nonexistent")
+    assert resp.status_code == 404
+
+
+def test_get_similar_models_not_found(client):
+    resp = client.get("/models/nonexistent/similar")
+    assert resp.status_code == 404
+
+
+def test_no_duplicate_similar_route():
+    """Each route path must appear only once."""
+    import tools.serve_api as api_module
+    similar_routes = [
+        r for r in api_module.app.routes
+        if hasattr(r, "path") and str(r.path).endswith("/similar")
+    ]
+    assert len(similar_routes) == 1, (
+        f"Expected 1 /similar route, got {len(similar_routes)}: "
+        f"{[r.path for r in similar_routes]}"
+    )
