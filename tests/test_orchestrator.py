@@ -1,7 +1,9 @@
+import asyncio
 import json
+import os
 import sys
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
@@ -47,3 +49,41 @@ def test_orchestrator_has_no_main_block():
     src = (PROJECT_ROOT / "enrich" / "orchestrator.py").read_text()
     # The dead block starts with building an initial_state dict with hardcoded paths
     assert '"models/raw"' not in src, "Dead __main__ block still present"
+
+
+def test_atlas_skip_scrape_uppercase_skips_scraping(tmp_path):
+    """ATLAS_SKIP_SCRAPE=TRUE (uppercase) must also skip scraping."""
+    from enrich.orchestrator import scrape_node
+
+    state = {
+        "raw_models_dir": tmp_path / "raw",
+        "enriched_models_dir": tmp_path / "enriched",
+        "validated_models_dir": tmp_path / "validated",
+        "final_output_file": tmp_path / "out.json",
+    }
+    (tmp_path / "raw").mkdir()
+
+    with patch.dict(os.environ, {"ATLAS_SKIP_SCRAPE": "TRUE"}):
+        with patch("enrich.orchestrator.execute_hf_scraper") as mock_hf:
+            with patch("enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock):
+                asyncio.run(scrape_node(state))
+                mock_hf.assert_not_called()
+
+
+def test_atlas_skip_scrape_value_1_skips_scraping(tmp_path):
+    """ATLAS_SKIP_SCRAPE=1 must also skip scraping."""
+    from enrich.orchestrator import scrape_node
+
+    state = {
+        "raw_models_dir": tmp_path / "raw",
+        "enriched_models_dir": tmp_path / "enriched",
+        "validated_models_dir": tmp_path / "validated",
+        "final_output_file": tmp_path / "out.json",
+    }
+    (tmp_path / "raw").mkdir()
+
+    with patch.dict(os.environ, {"ATLAS_SKIP_SCRAPE": "1"}):
+        with patch("enrich.orchestrator.execute_hf_scraper") as mock_hf:
+            with patch("enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock):
+                asyncio.run(scrape_node(state))
+                mock_hf.assert_not_called()

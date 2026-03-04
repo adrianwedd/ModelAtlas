@@ -30,14 +30,14 @@ async def scrape_node(state: TraceState) -> TraceState:
 
     os.makedirs(raw_models_dir, exist_ok=True)
 
-    if os.environ.get("ATLAS_SKIP_SCRAPE") == "true":
+    if os.environ.get("ATLAS_SKIP_SCRAPE", "").lower() in ("true", "1", "yes"):
         logger.info("Skipping scrape as ATLAS_SKIP_SCRAPE is true.")
         return {"raw_models_dir": raw_models_dir}
 
     # Execute Hugging Face scraper
     logger.info("Starting Hugging Face scraping...")
-    execute_hf_scraper(
-        limit=10, use_cache=True
+    await asyncio.to_thread(
+        execute_hf_scraper, limit=10, use_cache=True
     )  # Limit for testing, use_cache for efficiency
     logger.info("Hugging Face scraping complete.")
 
