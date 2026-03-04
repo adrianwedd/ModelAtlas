@@ -198,7 +198,7 @@ async def process_model(client: httpx.AsyncClient, name: str, semaphore: asyncio
         model_file_path.write_text(json.dumps(data, indent=2), encoding="utf-8")
         return data
 
-async def scrape_ollama_models(concurrency: int = 5, debug_model: str | None = None) -> list[dict]:
+async def scrape_ollama_models(concurrency: int = 5, debug_model: str | None = None, use_cache: bool = True) -> list[dict]:
     os.makedirs(OLLAMA_MODELS_DIR, exist_ok=True)
     os.makedirs(DEBUG_DIR, exist_ok=True)
     for handler in list(logger.handlers):
