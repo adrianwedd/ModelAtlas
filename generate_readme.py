@@ -5,13 +5,15 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
+from atlas_schemas.config import settings
+
 
 def main():
     # Resolve paths relative to this file
     BASE_DIR = Path(__file__).resolve().parent
 
     # Guard: exit gracefully if data file is missing
-    data_path = BASE_DIR / "models_enriched.json"
+    data_path = settings.PROJECT_ROOT / settings.OUTPUT_FILE
     if not data_path.exists():
         print(f"Error: Data file '{data_path}' not found. Run the enrichment trace first.", file=sys.stderr)
         sys.exit(1)
