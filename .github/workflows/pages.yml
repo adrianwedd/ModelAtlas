@@ -24,7 +24,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Copy data into site
-        run: cp models_enriched.json site/models_enriched.json
+        run: |
+          if [ -f models_enriched.json ]; then
+            cp models_enriched.json site/models_enriched.json
+          else
+            echo '[]' > site/models_enriched.json
+          fi
 
       - uses: actions/configure-pages@v4
 
