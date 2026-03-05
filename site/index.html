@@ -9,7 +9,136 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" integrity="sha384-vsrfeLOOY6KuIYKDlmVH5UiBmgIdB1oEf7p01YgWHuqmOHfZr374+odEv96n9tNC" crossorigin="anonymous"></script>
 </head>
 <body x-data="modelApp()" x-init="init()">
-  <p>ModelAtlas loading...</p>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">ModelAtlas</div>
+    <div class="tagline">AI Model Intelligence Catalog</div>
+    <a href="https://github.com/adrianwedd/ModelAtlas" class="gh-link" target="_blank">GitHub ↗</a>
+  </header>
+
+  <!-- Hero stats -->
+  <section class="hero-stats">
+    <div class="stat-chip">
+      <span class="stat-value" x-text="models.length || '—'"></span>
+      <span class="stat-label">models</span>
+    </div>
+    <div class="stat-chip">
+      <span class="stat-value" x-text="licensedPct + '%'"></span>
+      <span class="stat-label">licensed</span>
+    </div>
+    <div class="stat-chip">
+      <span class="stat-value" x-text="avgTrust"></span>
+      <span class="stat-label">avg trust</span>
+    </div>
+    <div class="stat-chip stat-chip--pending"
+         title="Attack Success Rate from empirical adversarial benchmarks (source: Failure-First). Data pending.">
+      <span class="stat-value">ASR</span>
+      <span class="stat-label">coming soon</span>
+    </div>
+  </section>
+
+  <!-- Charts -->
+  <section class="charts">
+    <div class="chart-card">
+      <h3>License distribution</h3>
+      <canvas id="licenseChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Trust score distribution</h3>
+      <canvas id="trustChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Top tags</h3>
+      <canvas id="tagsChart"></canvas>
+    </div>
+  </section>
+
+  <!-- Filter bar -->
+  <section class="filter-bar">
+    <input
+      type="text"
+      placeholder="🔍 Search models..."
+      x-model="search"
+      class="search-input"
+      autocomplete="off"
+    >
+    <select x-model="licenseFilter" class="filter-select">
+      <option value="all">All licenses</option>
+      <option value="apache-2.0">Apache-2.0</option>
+      <option value="mit">MIT</option>
+      <option value="other">Other / Restrictive</option>
+      <option value="none">Unlicensed</option>
+    </select>
+    <select x-model="sortBy" class="filter-select">
+      <option value="trust_score">Sort: Trust ↓</option>
+      <option value="name">Sort: Name</option>
+      <option value="last_updated">Sort: Updated</option>
+    </select>
+    <span class="result-count" x-text="filtered.length + ' models'"></span>
+  </section>
+
+  <!-- Model table -->
+  <section class="table-section">
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Tags</th>
+          <th>License</th>
+          <th>Trust</th>
+          <th class="asr-col"
+              title="Attack Success Rate (empirical adversarial benchmarks). Source: Failure-First. Data pending.">
+            ASR ⓘ
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <template x-for="model in filtered" :key="model.name">
+          <tr>
+            <td class="name-cell">
+              <a :href="modelUrl(model)" target="_blank" x-text="model.name" class="model-link"></a>
+            </td>
+            <td class="tags-cell">
+              <template x-for="tag in topTags(model)" :key="tag">
+                <span class="tag-chip" x-text="tag"></span>
+              </template>
+            </td>
+            <td>
+              <span
+                class="license-badge"
+                :class="licenseBadgeClass(model.license)"
+                x-text="model.license || '—'"
+              ></span>
+            </td>
+            <td class="trust-cell">
+              <span class="trust-dots" x-html="trustDots(model.trust_score)"></span>
+              <span class="trust-num" x-text="(model.trust_score || 0).toFixed(2)"></span>
+            </td>
+            <td class="asr-cell asr-pending" title="No benchmark data">—</td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+    <div class="empty-state" x-show="filtered.length === 0 && models.length > 0">
+      No models match your filters.
+    </div>
+    <div class="empty-state" x-show="models.length === 0">
+      Loading models…
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Data sourced from
+      <a href="https://huggingface.co" target="_blank">Hugging Face</a> and
+      <a href="https://ollama.com" target="_blank">Ollama</a>.
+      Trust scores computed by TrustForge.
+    </p>
+    <p><a href="https://github.com/adrianwedd/ModelAtlas" target="_blank">adrianwedd/ModelAtlas</a></p>
+  </footer>
+
   <script src="app.js"></script>
 </body>
 </html>
