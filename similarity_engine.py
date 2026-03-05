@@ -81,10 +81,10 @@ class ModelSimilarityEngine:
         return {p for p in parts if p in _VARIANT_KEYWORDS}
 
     def _extract_base_token(self, name: str) -> str:
-        """Return the first meaningful token of the model name (before any separator)."""
+        """Return the first meaningful token of the model name (before any separator)."""  # noqa: E501
         if name is None:
             return ""
-        # Strip Hugging Face org prefix if present (e.g. "meta-llama/Llama-3" -> "Llama-3")
+        # Strip Hugging Face org prefix if present (e.g. "meta-llama/Llama-3" -> "Llama-3")  # noqa: E501
         if "/" in name:
             name = name.split("/", 1)[1]
         lower = name.lower()

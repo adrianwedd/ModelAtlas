@@ -1,7 +1,5 @@
 """Simple TrustForge scoring heuristics."""
 
-from typing import Dict
-
 from atlas_schemas.models import Model
 
 LICENSE_SCORES = {

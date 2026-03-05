@@ -6,7 +6,6 @@ Run: pytest tests/test_gh_pages_smoke.py -v
 Requires: pip install pytest-playwright && playwright install chromium
 """
 
-import os
 import subprocess
 import time
 from pathlib import Path

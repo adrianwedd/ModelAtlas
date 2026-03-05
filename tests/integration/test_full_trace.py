@@ -10,7 +10,7 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from common.logging import logger
+from common.logging import logger  # noqa: E402
 
 # Define paths relative to the project root
 ATLAS_CLI_PATH = PROJECT_ROOT / "atlas_cli" / "main.py"
@@ -51,7 +51,7 @@ def fixture_tasks_yml(tmp_path):
     tasks_content = """
 - id: 2
   title: "Enrich model metadata with LLM"
-  description: "Use prompt engineering to generate model summaries, use cases, strengths, and potential limitations."
+  description: "Use prompt engineering to generate model summaries, use cases, strengths, and potential limitations."  # noqa: E501
   component: "LLMEnricher"
   dependencies: [1]
   priority: 2
@@ -69,15 +69,15 @@ def fixture_tasks_yml(tmp_path):
     - "Include comparisons with similar models"
     - "Extract strengths and weaknesses heuristically"
   acceptance_criteria:
-    - "Each model in models_enriched.json has summary, strengths, weaknesses, and use_cases"
+    - "Each model in models_enriched.json has summary, strengths, weaknesses, and use_cases"  # noqa: E501
     - "Generated content passes hallucination check"
   assigned_to: "LLMEnricher"
-  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."  # noqa: E501
   epic: "Metadata Enrichment"
 
 - id: 10
   title: "Evaluate and rank models by trust and transparency"
-  description: "Use risk heuristics and download metadata to rank models by transparency and reliability."
+  description: "Use risk heuristics and download metadata to rank models by transparency and reliability."  # noqa: E501
   component: "TrustRanker"
   dependencies: [3]
   priority: 3
@@ -96,7 +96,7 @@ def fixture_tasks_yml(tmp_path):
     - "Each model has a trust_score"
     - "Top-10 table appears in README"
   assigned_to: "TrustRanker"
-  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."
+  ci_notes: "⚙️ Optimized for GitHub Actions: ensure script runtime < 6 mins, use minimal dependencies, write to /tmp or workspace only."  # noqa: E501
   epic: "Metadata Enrichment"
 """
     file_path = tmp_path / "tasks.yml"

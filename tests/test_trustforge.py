@@ -5,11 +5,9 @@ import sys
 # Ensure modules import correctly
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from pathlib import Path
-
-from atlas_schemas.models import Model
-from trustforge import compute_score
-from trustforge.score import compute_and_merge_trust_scores
+from atlas_schemas.models import Model  # noqa: E402
+from trustforge import compute_score  # noqa: E402
+from trustforge.score import compute_and_merge_trust_scores  # noqa: E402
 
 # Set dummy API keys to satisfy config initialization
 os.environ.setdefault("LLM_API_KEY", "dummy")
@@ -69,7 +67,7 @@ def test_trust_score_none_license_does_not_produce_none_string():
 
 
 def test_compute_and_merge_creates_output_parent_dir(tmp_path):
-    """compute_and_merge_trust_scores must create output_file.parent if it doesn't exist."""
+    """compute_and_merge_trust_scores must create output_file.parent if it doesn't exist."""  # noqa: E501
     nested_output = tmp_path / "new_dir" / "subdir" / "out.json"
     # nested_output.parent doesn't exist yet
     (tmp_path / "model.json").write_text(json.dumps({"name": "bert"}))

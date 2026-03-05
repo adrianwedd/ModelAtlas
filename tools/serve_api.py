@@ -2,7 +2,7 @@ import json
 import logging
 import sys
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
 from fastapi import FastAPI, HTTPException
 
@@ -10,8 +10,8 @@ from fastapi import FastAPI, HTTPException
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from atlas_schemas.config import settings
-from atlas_schemas.models import Model
+from atlas_schemas.config import settings  # noqa: E402
+from atlas_schemas.models import Model  # noqa: E402
 
 logger = logging.getLogger(__name__)
 

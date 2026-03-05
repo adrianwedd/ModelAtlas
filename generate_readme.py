@@ -16,7 +16,7 @@ def main():
     data_path = settings.PROJECT_ROOT / settings.OUTPUT_FILE
     if not data_path.exists():
         print(
-            f"Error: Data file '{data_path}' not found. Run the enrichment trace first.",
+            f"Error: Data file '{data_path}' not found. Run the enrichment trace first.",  # noqa: E501
             file=sys.stderr,
         )
         sys.exit(1)

@@ -1,8 +1,5 @@
 import sys
 from pathlib import Path
-from unittest.mock import MagicMock, patch
-
-import pytest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -10,9 +7,6 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 def test_default_tasks_yml_path_points_to_tasks_subdir():
     """The hardcoded default tasks.yml path must be under tasks/ subdir."""
-    import ast
-    import textwrap
-
     src = (PROJECT_ROOT / "atlas_cli" / "main.py").read_text()
     # Quick string check — the literal must not appear without "tasks/" prefix
     assert (

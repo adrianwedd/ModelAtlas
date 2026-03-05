@@ -1,7 +1,7 @@
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Dict, List
 
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity

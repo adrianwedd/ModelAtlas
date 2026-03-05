@@ -1,17 +1,15 @@
 import asyncio
 import hashlib
 import json
-import logging
 import os
 import re
-import time
 from pathlib import Path
 
 import httpx
 from bs4 import BeautifulSoup
 
 from atlas_schemas.config import settings
-from common.logging import LOG_FORMAT, logger
+from common.logging import logger
 
 LOG_FILE = settings.LOG_FILE
 OLLAMA_MODELS_DIR = settings.MODELS_DIR / "ollama"
@@ -109,7 +107,7 @@ async def scrape_tags_page(client: httpx.AsyncClient, model_name: str) -> list[d
         if ":" in href:
             tag_name = href.rsplit(":", 1)[-1]
         else:
-            # Fallback: first whitespace-separated word, separator=" " keeps child spacing
+            # Fallback: first whitespace-separated word, separator=" " keeps child spacing  # noqa: E501
             tag_name = tag_elem.get_text(separator=" ", strip=True).split()[0]
         size_elem = item.find("p", class_="col-span-2")
         size = size_elem.get_text(strip=True) if size_elem else ""

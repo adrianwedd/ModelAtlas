@@ -1,9 +1,8 @@
-import asyncio
 import json
 import os
 import sys
 from pathlib import Path
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, patch
 
 import pytest
 
@@ -12,7 +11,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 
 def test_enrich_node_no_collision_across_subdirs(tmp_path):
-    """Two models with the same filename in different subdirs must produce distinct output files."""
+    """Two models with the same filename in different subdirs must produce distinct output files."""  # noqa: E501
     from enrich.orchestrator import enrich_node
 
     # Create two models with same filename in different subdirs
@@ -51,7 +50,8 @@ def test_orchestrator_has_no_main_block():
     assert '"models/raw"' not in src, "Dead __main__ block still present"
 
 
-def test_atlas_skip_scrape_uppercase_skips_scraping(tmp_path):
+@pytest.mark.asyncio
+async def test_atlas_skip_scrape_uppercase_skips_scraping(tmp_path):
     """ATLAS_SKIP_SCRAPE=TRUE (uppercase) must also skip scraping."""
     from enrich.orchestrator import scrape_node
 
@@ -68,11 +68,12 @@ def test_atlas_skip_scrape_uppercase_skips_scraping(tmp_path):
             with patch(
                 "enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock
             ):
-                asyncio.run(scrape_node(state))
+                await scrape_node(state)
                 mock_hf.assert_not_called()
 
 
-def test_atlas_skip_scrape_value_1_skips_scraping(tmp_path):
+@pytest.mark.asyncio
+async def test_atlas_skip_scrape_value_1_skips_scraping(tmp_path):
     """ATLAS_SKIP_SCRAPE=1 must also skip scraping."""
     from enrich.orchestrator import scrape_node
 
@@ -89,7 +90,7 @@ def test_atlas_skip_scrape_value_1_skips_scraping(tmp_path):
             with patch(
                 "enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock
             ):
-                asyncio.run(scrape_node(state))
+                await scrape_node(state)
                 mock_hf.assert_not_called()
 
 

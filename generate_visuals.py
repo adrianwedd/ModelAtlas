@@ -61,8 +61,8 @@ def main():
     else:
         logger.info("Skipping license chart: 'license' column not found or empty.")
 
-    # 3. Histogram: Model size (Requires 'size_bytes' which is currently missing from enriched data)
-    # This section is commented out until 'size_bytes' is reliably available in models_enriched.json
+    # 3. Histogram: Model size (Requires 'size_bytes' which is currently missing from enriched data)  # noqa: E501
+    # This section is commented out until 'size_bytes' is reliably available in models_enriched.json  # noqa: E501
     # fig = plt.figure()
     # plt.hist(df['size_bytes'] / 1e9, bins=20)
     # plt.title('Model Size (GB)')

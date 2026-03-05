@@ -1,8 +1,6 @@
-import asyncio
 import json
 import os
 import sys
-from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
 import pytest
@@ -16,7 +14,7 @@ os.environ.setdefault("LLM_API_KEY", "dummy")
 os.environ.setdefault("HUGGING_FACE_API_KEY", "dummy")
 os.environ.setdefault("OPENAI_API_KEY", "dummy")
 
-import scrape_ollama
+import scrape_ollama  # noqa: E402
 
 
 @pytest.mark.asyncio
@@ -89,14 +87,14 @@ async def test_scrape_tags_page_href_tag_extraction(tmp_path):
     html = """
     <html><body>
       <div class="group px-4 py-3">
-        <a href="/library/phi4-mini:latest">latest<span class="font-mono">78fad5d182a7•</span></a>
+        <a href="/library/phi4-mini:latest">latest<span class="font-mono">78fad5d182a7•</span></a>  # noqa: E501
         <p class="col-span-2">3.8 GB</p>
         <div class="flex text-neutral-500 text-xs items-center">
           <span class="font-mono">78fad5d182a7</span> · 2 weeks ago
         </div>
       </div>
       <div class="group px-4 py-3">
-        <a href="/library/phi4-mini:3.8b">3.8b<span class="font-mono">1234abcd5678•</span></a>
+        <a href="/library/phi4-mini:3.8b">3.8b<span class="font-mono">1234abcd5678•</span></a>  # noqa: E501
         <p class="col-span-2">3.8 GB</p>
         <div class="flex text-neutral-500 text-xs items-center">
           <span class="font-mono">1234abcd5678</span> · 3 weeks ago
@@ -116,8 +114,6 @@ async def test_scrape_tags_page_href_tag_extraction(tmp_path):
             "scrape_ollama.fetch_manifest",
             new=AsyncMock(side_effect=fake_fetch_manifest),
         ):
-            import httpx
-
             async with httpx.AsyncClient() as client:
                 tags = await scrape_ollama.scrape_tags_page(client, "phi4-mini")
 
@@ -154,4 +150,4 @@ async def test_scrape_ollama_does_not_add_duplicate_handlers(tmp_path):
 
     assert (
         count_after_second == count_after_first
-    ), f"Handler count grew from {count_after_first} to {count_after_second} on second call"
+    ), f"Handler count grew from {count_after_first} to {count_after_second} on second call"  # noqa: E501

@@ -14,11 +14,11 @@ from rich.panel import Panel
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from atlas_cli.search import cli as search_cli
-from atlas_schemas.config import settings
-from common.logging import logger
-from enrich.main import run_enrichment_trace
-from trustforge.score import compute_and_merge_trust_scores
+from atlas_cli.search import cli as search_cli  # noqa: E402
+from atlas_schemas.config import settings  # noqa: E402
+from common.logging import logger  # noqa: E402
+from enrich.main import run_enrichment_trace  # noqa: E402
+from trustforge.score import compute_and_merge_trust_scores  # noqa: E402
 
 app = typer.Typer(help="ModelAtlas CLI")
 console = Console()

@@ -6,8 +6,8 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from atlas_schemas.config import settings
-from enrich.orchestrator import TraceState, build_trace_graph
+from atlas_schemas.config import settings  # noqa: E402
+from enrich.orchestrator import TraceState, build_trace_graph  # noqa: E402
 
 
 def run_enrichment_trace(

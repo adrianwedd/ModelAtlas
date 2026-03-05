@@ -1,7 +1,3 @@
-from pathlib import Path
-
-import pytest
-
 from atlas_schemas.config import Config
 
 

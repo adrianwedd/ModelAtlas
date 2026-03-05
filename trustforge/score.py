@@ -1,16 +1,14 @@
 """Compute trust scores for model catalog."""
 
 import json
-import os
 import sys
 from pathlib import Path
-from typing import Dict, List
+from typing import List
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
-from atlas_schemas.config import settings
-from atlas_schemas.data_io import load_model_from_json, merge_enrichment
-from atlas_schemas.models import Model
-from trustforge import compute_score
+from atlas_schemas.data_io import load_model_from_json, merge_enrichment  # noqa: E402
+from atlas_schemas.models import Model  # noqa: E402
+from trustforge import compute_score  # noqa: E402
 
 
 def compute_and_merge_trust_scores(

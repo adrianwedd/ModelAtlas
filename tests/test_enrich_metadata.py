@@ -2,12 +2,10 @@ import json
 import sys
 from pathlib import Path
 
-import pytest
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from tools.enrich_metadata import enrich_model_metadata
+from tools.enrich_metadata import enrich_model_metadata  # noqa: E402
 
 
 def test_enrich_does_not_overwrite_existing_summary():
@@ -42,16 +40,16 @@ def test_enrich_write_files_writes_model_data_not_just_enriched(tmp_path, monkey
 
 
 def test_enrich_metadata_uses_settings_dirs():
-    """enrich_metadata module-level constants must use settings, not hardcoded strings."""
+    """enrich_metadata module-level constants must use settings, not hardcoded strings."""  # noqa: E501
     import tools.enrich_metadata as mod
     from atlas_schemas.config import settings
 
     assert (
         mod.MODELS_DIR == settings.MODELS_DIR
-    ), f"MODELS_DIR must equal settings.MODELS_DIR ({settings.MODELS_DIR}), got {mod.MODELS_DIR!r}"
+    ), f"MODELS_DIR must equal settings.MODELS_DIR ({settings.MODELS_DIR}), got {mod.MODELS_DIR!r}"  # noqa: E501
     assert str(mod.ENRICHED_OUTPUTS_DIR) == str(
         settings.ENRICHED_OUTPUTS_DIR
-    ), f"ENRICHED_OUTPUTS_DIR must equal settings.ENRICHED_OUTPUTS_DIR, got {mod.ENRICHED_OUTPUTS_DIR!r}"
+    ), f"ENRICHED_OUTPUTS_DIR must equal settings.ENRICHED_OUTPUTS_DIR, got {mod.ENRICHED_OUTPUTS_DIR!r}"  # noqa: E501
     assert str(mod.PROMPTS_DIR) == str(
         settings.PROMPTS_DIR
     ), f"PROMPTS_DIR must equal settings.PROMPTS_DIR, got {mod.PROMPTS_DIR!r}"

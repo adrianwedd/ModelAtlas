@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from similarity_engine import ModelSimilarityEngine
+from similarity_engine import ModelSimilarityEngine  # noqa: E402
 
 # Avoid config initialization issues in imported modules
 os.environ.setdefault("LLM_API_KEY", "dummy")
