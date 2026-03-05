@@ -16,7 +16,7 @@ Crafted for researchers, engineers, analysts, and agentic systems alike, it seam
 ```bash
 pip install -r requirements.txt && playwright install
 python enrich/main.py
-python -m atlas search "llama"
+python -m atlas_cli search "llama"
 ```
 
 Create a `.env` file for API keys:
@@ -25,41 +25,13 @@ Create a `.env` file for API keys:
 cp .env.example .env  # or run `atlas init`
 ```
 
-The resulting `.env` file holds configuration keys such as
-`LLM_API_KEY`, `OPENAI_API_KEY`, `HUGGING_FACE_API_KEY`, and the optional
-`PLAYWRIGHT_BROWSERS_PATH`. Populate these values before running the
-enrichment pipeline or CLI tools.
-
 Run `make test-deps` if you need all packages for the test suite.
 
 `enrich/main.py` runs the enrichment trace, and CLI commands reside in the `atlas_cli/` package.
 
-## 🐳 Docker Usage
-
-Build a container with all Python dependencies and Playwright browsers preinstalled:
-
-```bash
-docker build -t modelatlas .
-```
-
-Launch an interactive shell inside the container:
-
-```bash
-docker run --rm -it modelatlas
-```
-
-You can then run the enrichment trace or CLI tools just as on the host system:
-
-```bash
-python enrich/main.py
-atlas search "llama"
-```
-
 ⸻
 
 ## 🧠 System Overview
-
-> The diagram below is generated from `architecture.mmd`. You can edit it there to update the visual representation of the system.
 
 ```mermaid
 flowchart TD
@@ -86,7 +58,7 @@ flowchart TD
 
 ## 🧭 Core Components
 
-### `atlas` — 🌐 Semantic Search Subcommand
+### `atlas-cli` — 🌐 Semantic Search Interface
 - Enables powerful search across enriched model metadata fields.
 - Supports embeddings, advanced filters, and fuzzy matching techniques.
 - Example usage:
@@ -126,7 +98,17 @@ flowchart TD
   - Detailed lineage trees illustrating model ancestry
   - Metadata completeness and quality indicators
 
-> **Note:** The dashboard code is currently under active development and is not yet included in this repository. It will be released in a future update.
+---
+
+## 🚀 Model Selection Guidance
+
+This section will provide guidance on how to select models based on their enriched metadata, including use cases, strengths, and weaknesses. (Requires data from LLM enrichment.)
+
+---
+
+## 📈 Visuals and Stats
+
+This section will include various charts and statistics generated from the enriched model data, such as license distribution, download trends, and trust score distributions. (Requires data from visualization engine.)
 
 ---
 
@@ -232,8 +214,6 @@ All files in `data/` and `enriched_outputs/` are tracked via LFS, so new assets 
 | `schema.md`          | Data schema specification for enriched model entries |
 | `usage_examples.md`  | Real-world CLI traces and usage patterns |
 | `PHASE_2_DESIGN.md`  | Design notes on manifest decoding, tag repair, and scoring implementation |
-| `CODE_OF_CONDUCT.md` | Community expectations and enforcement policy |
-| `SECURITY.md`        | How to report vulnerabilities |
 
 ⸻
 
@@ -248,18 +228,9 @@ ModelAtlas is founded on these core principles:
 
 We hold that metadata is critical infrastructure, and that systems should be able to explain their own construction with clarity and rigor.
 
----
-
-## 🤝 Community
-
-- [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Security Policy](SECURITY.md)
-
----
+⸻
 
 > **Map the modelscape. Trace the truth. Shape the future.**
 > 🧭 *Welcome to the Atlas.*
 
-## ⚖️ License
-
-This project is licensed under the [MIT License](LICENSE).
+_This README was generated on 2026-03-05 and tracks 101 models._

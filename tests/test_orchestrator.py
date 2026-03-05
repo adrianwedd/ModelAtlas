@@ -65,7 +65,9 @@ def test_atlas_skip_scrape_uppercase_skips_scraping(tmp_path):
 
     with patch.dict(os.environ, {"ATLAS_SKIP_SCRAPE": "TRUE"}):
         with patch("enrich.orchestrator.execute_hf_scraper") as mock_hf:
-            with patch("enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock):
+            with patch(
+                "enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock
+            ):
                 asyncio.run(scrape_node(state))
                 mock_hf.assert_not_called()
 
@@ -84,7 +86,9 @@ def test_atlas_skip_scrape_value_1_skips_scraping(tmp_path):
 
     with patch.dict(os.environ, {"ATLAS_SKIP_SCRAPE": "1"}):
         with patch("enrich.orchestrator.execute_hf_scraper") as mock_hf:
-            with patch("enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock):
+            with patch(
+                "enrich.orchestrator.scrape_ollama_models", new_callable=AsyncMock
+            ):
                 asyncio.run(scrape_node(state))
                 mock_hf.assert_not_called()
 
@@ -94,9 +98,10 @@ def test_enrich_node_output_filename_matches_merge_enrichment_lookup(tmp_path):
     so that merge_enrichment can find them by model name."""
     import json
     from unittest.mock import patch
-    from enrich.orchestrator import enrich_node
+
     from atlas_schemas.data_io import merge_enrichment
     from atlas_schemas.models import Model
+    from enrich.orchestrator import enrich_node
 
     hf_dir = tmp_path / "raw" / "huggingface"
     hf_dir.mkdir(parents=True)

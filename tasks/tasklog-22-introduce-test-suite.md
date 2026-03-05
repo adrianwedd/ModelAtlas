@@ -6,4 +6,3 @@ Documented the packages required for executing the unit tests and provided a hel
 ## Notes
 - Added `pytest` to `requirements.txt` for easier installation.
 - CONTRIBUTING now instructs contributors to run `playwright install`.
-

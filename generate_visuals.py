@@ -15,7 +15,9 @@ def main():
 
     # Guard: exit gracefully if data file is missing
     if not os.path.exists(data_path):
-        logger.error("Data file '%s' not found. Run the enrichment trace first.", data_path)
+        logger.error(
+            "Data file '%s' not found. Run the enrichment trace first.", data_path
+        )
         sys.exit(1)
 
     # Load enriched metadata
@@ -39,7 +41,9 @@ def main():
         else:
             logger.info("Skipping architecture chart: No architecture data.")
     else:
-        logger.info("Skipping architecture chart: 'architecture' column not found or empty.")
+        logger.info(
+            "Skipping architecture chart: 'architecture' column not found or empty."
+        )
 
     # 2. Pie chart: License distribution
     # Ensure 'license' column exists and is not empty

@@ -1,7 +1,7 @@
 import json
-from pathlib import Path
 import sys
-from typing import List, Dict
+from pathlib import Path
+from typing import Dict, List
 
 from pydantic import ValidationError
 from rich.console import Console
@@ -11,10 +11,11 @@ from rich.table import Table
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from atlas_schemas.models import Model
 from atlas_schemas.config import settings
+from atlas_schemas.models import Model
 
 console = Console()
+
 
 def validate_model_file(file_path: Path) -> Dict:
     """Validates a single JSON file against the Model schema."""
@@ -24,16 +25,25 @@ def validate_model_file(file_path: Path) -> Dict:
         # If the file contains a list of models, validate each one
         if isinstance(data, list):
             for item in data:
-                Model(**item) # Validate each item in the list
+                Model(**item)  # Validate each item in the list
         else:
-            Model(**data) # Validate single model
+            Model(**data)  # Validate single model
         return {"file": file_path.name, "status": "✅ Valid", "errors": "None"}
     except ValidationError as e:
         return {"file": file_path.name, "status": "❌ Invalid", "errors": str(e)}
     except json.JSONDecodeError as e:
-        return {"file": file_path.name, "status": "❌ Invalid", "errors": f"JSON Decode Error: {e}"}
+        return {
+            "file": file_path.name,
+            "status": "❌ Invalid",
+            "errors": f"JSON Decode Error: {e}",
+        }
     except Exception as e:
-        return {"file": file_path.name, "status": "❌ Invalid", "errors": f"Unexpected Error: {e}"}
+        return {
+            "file": file_path.name,
+            "status": "❌ Invalid",
+            "errors": f"Unexpected Error: {e}",
+        }
+
 
 def main() -> None:
     """Scans and validates all JSON files in enriched_outputs directory."""
@@ -72,6 +82,7 @@ def main() -> None:
     else:
         console.print("[bold green]All files passed schema validation.[/]")
         sys.exit(0)
+
 
 if __name__ == "__main__":
     main()

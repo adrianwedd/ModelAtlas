@@ -9,4 +9,3 @@
 - Updated `generate_readme.py` to use Jinja2 and provide a date variable.
 - Documented template usage in `CONTRIBUTING.md`.
 - Verified `python generate_readme.py` successfully regenerates `README.md`.
-

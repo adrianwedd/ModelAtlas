@@ -8,6 +8,6 @@ def test_generate_readme_uses_settings_output_file():
     import generate_readme
 
     src = inspect.getsource(generate_readme.main)
-    assert '"models_enriched.json"' not in src, (
-        "generate_readme must use settings.OUTPUT_FILE, not hardcode the filename"
-    )
+    assert (
+        '"models_enriched.json"' not in src
+    ), "generate_readme must use settings.OUTPUT_FILE, not hardcode the filename"

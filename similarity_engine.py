@@ -120,7 +120,13 @@ class ModelSimilarityEngine:
         # Full base model match: same specific base token + same params.
         # Use the base token (e.g. "llama3") not the normalized family ("llama")
         # so that "codellama" vs "llama2" do NOT trigger this path.
-        if base_a and base_b and base_a == base_b and params_a is not None and params_a == params_b:
+        if (
+            base_a
+            and base_b
+            and base_a == base_b
+            and params_a is not None
+            and params_a == params_b
+        ):
             reasons.append(f"Same base model ({base_a})")
             reasons.append(f"Same parameter count ({params_a}B)")
             if common_variants:

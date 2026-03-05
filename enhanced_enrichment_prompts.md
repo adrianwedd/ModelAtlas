@@ -37,7 +37,7 @@ TASK: Generate a structured JSON profile following this exact schema:
   }
 }
 
-IMPORTANT: 
+IMPORTANT:
 - Only include information you can reasonably infer from the model name, size, and tags
 - Mark uncertain fields as "unknown" rather than guessing
 - Be precise about parameter counts (7B, 13B, etc.)
@@ -80,7 +80,7 @@ TASK: Evaluate security and trust factors, returning JSON:
 
 SCORING GUIDE:
 - 0.0-0.3: High risk
-- 0.3-0.7: Medium risk  
+- 0.3-0.7: Medium risk
 - 0.7-1.0: Low risk
 ```
 
@@ -167,7 +167,7 @@ VALIDATION RULES:
 ```python
 def select_enrichment_prompt(model_name, size_bytes, tags):
     """Select appropriate enrichment strategy based on model characteristics"""
-    
+
     if any(keyword in model_name.lower() for keyword in ['code', 'coding', 'coder']):
         return "code_model_enrichment_prompt"
     elif any(keyword in model_name.lower() for keyword in ['vision', 'multimodal', 'image']):

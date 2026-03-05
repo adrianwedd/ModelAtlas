@@ -1,7 +1,7 @@
 import json
 import sys
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -20,8 +20,10 @@ FAKE_MODELS = [
 @pytest.fixture
 def client():
     with patch("tools.serve_api.load_models_data", return_value=FAKE_MODELS):
-        import tools.serve_api as api_module
         from fastapi.testclient import TestClient
+
+        import tools.serve_api as api_module
+
         yield TestClient(api_module.app)
 
 
@@ -45,8 +47,10 @@ def test_get_similar_models_not_found(client):
 def test_no_duplicate_similar_route():
     """Each route path must appear only once."""
     import tools.serve_api as api_module
+
     similar_routes = [
-        r for r in api_module.app.routes
+        r
+        for r in api_module.app.routes
         if hasattr(r, "path") and str(r.path).endswith("/similar")
     ]
     assert len(similar_routes) == 1, (
@@ -58,6 +62,7 @@ def test_no_duplicate_similar_route():
 def test_load_models_data_returns_empty_on_nonexistent_file(tmp_path):
     """load_models_data must return [] if data file doesn't exist."""
     import tools.serve_api as api
+
     original = api.MODELS_DATA_PATH
     api.MODELS_DATA_PATH = tmp_path / "nonexistent.json"
     try:
@@ -70,6 +75,7 @@ def test_load_models_data_returns_empty_on_nonexistent_file(tmp_path):
 def test_load_models_data_returns_empty_on_corrupted_json(tmp_path):
     """load_models_data must return [] on corrupted JSON, not raise."""
     import tools.serve_api as api
+
     bad = tmp_path / "bad.json"
     bad.write_text("{corrupted")
     original = api.MODELS_DATA_PATH
@@ -84,8 +90,10 @@ def test_load_models_data_returns_empty_on_corrupted_json(tmp_path):
 def test_get_all_models_reflects_file_changes(tmp_path):
     """get_all_models must load fresh data on each call, not use cached global."""
     import json as json_mod
-    import tools.serve_api as api
+
     from fastapi.testclient import TestClient
+
+    import tools.serve_api as api
 
     data_file = tmp_path / "models.json"
     data_file.write_text(json_mod.dumps([{"name": "bert"}]))

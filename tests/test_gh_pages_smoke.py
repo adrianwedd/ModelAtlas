@@ -5,11 +5,13 @@ Starts a local http.server, loads the page, verifies key elements are rendered.
 Run: pytest tests/test_gh_pages_smoke.py -v
 Requires: pip install pytest-playwright && playwright install chromium
 """
+
+import os
 import subprocess
 import time
-import os
-import pytest
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
@@ -24,6 +26,7 @@ def http_server():
     dst = SITE / "models_enriched.json"
     if src.exists() and not dst.exists():
         import shutil
+
         shutil.copy(src, dst)
 
     proc = subprocess.Popen(

@@ -7,4 +7,3 @@ This project uses a consistent naming style across code and documentation.
 - Hyphenated lower-case for CLI commands.
 
 These guidelines keep the codebase readable and predictable.
-

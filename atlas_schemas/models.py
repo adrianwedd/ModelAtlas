@@ -1,8 +1,11 @@
+from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any, List
+
 
 class TraceableItem(BaseModel):
     """Represents a single item that flows through the trace with provenance."""
+
     id: str
     content: str
     # Add other common fields that all traceable items should have
@@ -11,8 +14,10 @@ class TraceableItem(BaseModel):
     source: Optional[str] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
+
 class Model(BaseModel):
     """Represents a model with its metadata and scores."""
+
     name: str
     summary: Optional[str] = None
     description: Optional[str] = None
@@ -30,11 +35,14 @@ class Model(BaseModel):
     trust_score: Optional[float] = None
     similar_models: List[Dict[str, Any]] = Field(default_factory=list)
 
+
 class TraceConfig(BaseModel):
     """Represents the configuration for a trace."""
+
     name: str
     stages: List[Dict[str, Any]] = Field(default_factory=list)
     # Add other trace-specific configurations
     output_dir: Optional[str] = None
+
 
 # You can add more models here as needed, e.g., for specific enrichment outputs

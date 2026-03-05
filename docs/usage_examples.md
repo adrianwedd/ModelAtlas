@@ -50,4 +50,3 @@ Bootstrap local environment by creating a .env file.
 Options:
   --help  Show this message and exit.
 ```
-

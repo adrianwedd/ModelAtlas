@@ -10,4 +10,3 @@ Key fields include:
 - `downloads`: integer download count
 
 See `schemas/model.schema.json` for the authoritative specification.
-

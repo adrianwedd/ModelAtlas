@@ -83,6 +83,7 @@ async def test_scrape_tags_page_href_tag_extraction(tmp_path):
     """scrape_tags_page must extract tag names from href, not get_text,
     to avoid digest hash concatenation (e.g. 'latest78fad5d182a7•')."""
     from unittest.mock import AsyncMock, patch
+
     import httpx
 
     html = """
@@ -111,8 +112,12 @@ async def test_scrape_tags_page_href_tag_extraction(tmp_path):
         return None  # don't need manifest for this test
 
     with patch("scrape_ollama.fetch", new=AsyncMock(side_effect=fake_fetch)):
-        with patch("scrape_ollama.fetch_manifest", new=AsyncMock(side_effect=fake_fetch_manifest)):
+        with patch(
+            "scrape_ollama.fetch_manifest",
+            new=AsyncMock(side_effect=fake_fetch_manifest),
+        ):
             import httpx
+
             async with httpx.AsyncClient() as client:
                 tags = await scrape_ollama.scrape_tags_page(client, "phi4-mini")
 
@@ -135,13 +140,18 @@ async def test_scrape_ollama_does_not_add_duplicate_handlers(tmp_path):
     sample_tags = [{"tag": "latest"}]
 
     with patch("scrape_ollama.fetch_model_list", new=AsyncMock(return_value=["foo"])):
-        with patch("scrape_ollama.scrape_details", new=AsyncMock(return_value=sample_detail)):
-            with patch("scrape_ollama.scrape_tags_page", new=AsyncMock(return_value=sample_tags)):
+        with patch(
+            "scrape_ollama.scrape_details", new=AsyncMock(return_value=sample_detail)
+        ):
+            with patch(
+                "scrape_ollama.scrape_tags_page",
+                new=AsyncMock(return_value=sample_tags),
+            ):
                 await scrape_ollama.scrape_ollama_models(concurrency=1)
                 count_after_first = len(scrape_logger.handlers)
                 await scrape_ollama.scrape_ollama_models(concurrency=1)
                 count_after_second = len(scrape_logger.handlers)
 
-    assert count_after_second == count_after_first, (
-        f"Handler count grew from {count_after_first} to {count_after_second} on second call"
-    )
+    assert (
+        count_after_second == count_after_first
+    ), f"Handler count grew from {count_after_first} to {count_after_second} on second call"

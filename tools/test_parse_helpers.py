@@ -1,4 +1,5 @@
-from tools.scrape_ollama import parse_pull_count, get_hash
+from tools.scrape_ollama import get_hash, parse_pull_count
+
 
 def test_parse_pull_count_variants():
     assert parse_pull_count("123") == 123
@@ -6,6 +7,7 @@ def test_parse_pull_count_variants():
     assert parse_pull_count("3.4M Downloads") == 3_400_000
     assert parse_pull_count(None) == 0
     assert parse_pull_count("invalid") == 0
+
 
 def test_get_hash_consistency():
     h1 = get_hash("hello")

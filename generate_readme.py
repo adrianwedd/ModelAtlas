@@ -15,7 +15,10 @@ def main():
     # Guard: exit gracefully if data file is missing
     data_path = settings.PROJECT_ROOT / settings.OUTPUT_FILE
     if not data_path.exists():
-        print(f"Error: Data file '{data_path}' not found. Run the enrichment trace first.", file=sys.stderr)
+        print(
+            f"Error: Data file '{data_path}' not found. Run the enrichment trace first.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     # Load template
@@ -27,7 +30,9 @@ def main():
         models = json.load(f)
 
     # Render and write
-    readme = template.render(models=models, date=datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    readme = template.render(
+        models=models, date=datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    )
     with open(BASE_DIR / "README.md", "w", encoding="utf-8") as f:
         f.write(readme)
 

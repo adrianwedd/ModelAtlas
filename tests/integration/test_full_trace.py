@@ -1,9 +1,10 @@
-import pytest
-import subprocess
-import os
 import json
-from pathlib import Path
+import os
+import subprocess
 import sys
+from pathlib import Path
+
+import pytest
 
 # Add the project root to sys.path to enable imports from atlas_schemas
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -14,6 +15,7 @@ from common.logging import logger
 # Define paths relative to the project root
 ATLAS_CLI_PATH = PROJECT_ROOT / "atlas_cli" / "main.py"
 
+
 @pytest.fixture
 def sample_input_dir(tmp_path):
     """Creates a dummy input directory with model JSON files."""
@@ -22,14 +24,14 @@ def sample_input_dir(tmp_path):
         "description": "This is a sample model description.",
         "pull_count": 1000,
         "license": "MIT",
-        "tags": ["tag1", "tag2"]
+        "tags": ["tag1", "tag2"],
     }
     input_data_model2 = {
         "name": "model2",
         "description": "Another model with different content.",
         "pull_count": 500,
         "license": "Apache-2.0",
-        "tags": ["tag3"]
+        "tags": ["tag3"],
     }
 
     models_dir = tmp_path / "models"
@@ -41,6 +43,7 @@ def sample_input_dir(tmp_path):
         json.dump(input_data_model2, f)
 
     return models_dir
+
 
 @pytest.fixture
 def fixture_tasks_yml(tmp_path):
@@ -101,6 +104,7 @@ def fixture_tasks_yml(tmp_path):
         f.write(tasks_content)
     return file_path
 
+
 @pytest.fixture
 def enriched_outputs_dir(tmp_path):
     """Creates a dummy enriched_outputs directory."""
@@ -110,7 +114,10 @@ def enriched_outputs_dir(tmp_path):
     # For now, we'll assume no pre-existing enriched data for simplicity
     return dir_path
 
-def test_full_trace_execution(sample_input_dir, fixture_tasks_yml, enriched_outputs_dir, tmp_path):
+
+def test_full_trace_execution(
+    sample_input_dir, fixture_tasks_yml, enriched_outputs_dir, tmp_path
+):
     """Tests the end-to-end execution of a full trace."""
     output_file = tmp_path / "models_enriched.json"
 
@@ -118,14 +125,21 @@ def test_full_trace_execution(sample_input_dir, fixture_tasks_yml, enriched_outp
         "python",
         str(ATLAS_CLI_PATH),
         "trace",
-        "--input", str(sample_input_dir),
-        "--output", str(output_file),
-        "--tasks-yml", str(fixture_tasks_yml)
+        "--input",
+        str(sample_input_dir),
+        "--output",
+        str(output_file),
+        "--tasks-yml",
+        str(fixture_tasks_yml),
     ]
 
     try:
-        # Execute the CLI command
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        # Execute the CLI command with ATLAS_SKIP_SCRAPE=true to skip real scraping
+        env = os.environ.copy()
+        env["ATLAS_SKIP_SCRAPE"] = "true"
+        result = subprocess.run(
+            command, capture_output=True, text=True, check=True, env=env
+        )
         logger.info("STDOUT: %s", result.stdout)
         logger.info("STDERR: %s", result.stderr)
 
@@ -137,14 +151,14 @@ def test_full_trace_execution(sample_input_dir, fixture_tasks_yml, enriched_outp
 
     # Assert that the output file is created
     assert output_file.exists()
-    assert output_file.stat().st_size > 0 # Ensure it's not empty
+    assert output_file.stat().st_size > 0  # Ensure it's not empty
 
     # Assert content of the output file
     with open(output_file, "r") as f:
         output_content = json.load(f)
 
     assert isinstance(output_content, list)
-    assert len(output_content) == 2 # Expecting 2 models
+    assert len(output_content) == 2  # Expecting 2 models
 
     # Check if trust_score is added and other fields are present
     for model in output_content:
