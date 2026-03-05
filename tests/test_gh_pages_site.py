@@ -39,3 +39,23 @@ def test_html_has_required_elements():
     assert "x-data" in html, "missing Alpine.js x-data attribute"
     assert "alpinejs" in html, "missing Alpine.js CDN link"
     assert "chart.js" in html, "missing Chart.js CDN link"
+
+
+def test_app_js_has_required_functions():
+    """app.js must define modelApp() and required methods."""
+    src = (SITE / "app.js").read_text()
+    required = [
+        "function modelApp",
+        "async init",
+        "applyFilters",
+        "trustDots",
+        "topTags",
+        "modelUrl",
+        "licenseBadgeClass",
+        "initLicenseChart",
+        "initTrustChart",
+        "initTagsChart",
+        "TAG_BLOCKLIST",
+    ]
+    for name in required:
+        assert name in src, f"app.js missing: {name}"
