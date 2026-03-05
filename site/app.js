@@ -13,8 +13,13 @@ function modelApp() {
     sortBy: 'trust_score',
 
     async init() {
-      const resp = await fetch('./models_enriched.json');
-      this.models = await resp.json();
+      try {
+        const resp = await fetch('./models_enriched.json');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        this.models = await resp.json();
+      } catch (err) {
+        console.error('Failed to load model data:', err);
+      }
       this.applyFilters();
 
       // Watch reactive properties and re-filter on change
@@ -57,7 +62,7 @@ function modelApp() {
         } else if (this.licenseFilter === 'other') {
           result = result.filter(m => m.license && !['apache-2.0', 'mit'].includes(m.license));
         } else {
-          result = result.filter(m => m.license === this.licenseFilter);
+          result = result.filter(m => (m.license || '').toLowerCase() === this.licenseFilter);
         }
       }
 
@@ -81,17 +86,19 @@ function modelApp() {
     },
 
     modelUrl(model) {
-      // Ollama models have pull_count; HF models don't
-      if (model.pull_count !== undefined && model.pull_count !== null) {
-        return `https://ollama.com/library/${model.name}`;
+      // HF models always have namespace/repo format (e.g. "bert-base/uncased")
+      // Ollama native models never have a slash (e.g. "llama3", "mistral")
+      if (model.name.includes('/')) {
+        return `https://huggingface.co/${model.name}`;
       }
-      return `https://huggingface.co/${model.name}`;
+      return `https://ollama.com/library/${model.name}`;
     },
 
     licenseBadgeClass(license) {
       if (!license) return 'badge--none';
-      if (license === 'apache-2.0') return 'badge--apache';
-      if (license === 'mit') return 'badge--mit';
+      const l = license.toLowerCase();
+      if (l === 'apache-2.0') return 'badge--apache';
+      if (l === 'mit') return 'badge--mit';
       return 'badge--other';
     },
 

@@ -14,7 +14,7 @@
   <header>
     <div class="logo">ModelAtlas</div>
     <div class="tagline">AI Model Intelligence Catalog</div>
-    <a href="https://github.com/adrianwedd/ModelAtlas" class="gh-link" target="_blank">GitHub ↗</a>
+    <a href="https://github.com/adrianwedd/ModelAtlas" class="gh-link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
   </header>
 
   <!-- Hero stats -->
@@ -97,7 +97,7 @@
         <template x-for="model in filtered" :key="model.name">
           <tr>
             <td class="name-cell">
-              <a :href="modelUrl(model)" target="_blank" x-text="model.name" class="model-link"></a>
+              <a :href="modelUrl(model)" target="_blank" rel="noopener noreferrer" x-text="model.name" class="model-link"></a>
             </td>
             <td class="tags-cell">
               <template x-for="tag in topTags(model)" :key="tag">
@@ -132,11 +132,11 @@
   <footer>
     <p>
       Data sourced from
-      <a href="https://huggingface.co" target="_blank">Hugging Face</a> and
-      <a href="https://ollama.com" target="_blank">Ollama</a>.
+      <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">Hugging Face</a> and
+      <a href="https://ollama.com" target="_blank" rel="noopener noreferrer">Ollama</a>.
       Trust scores computed by TrustForge.
     </p>
-    <p><a href="https://github.com/adrianwedd/ModelAtlas" target="_blank">adrianwedd/ModelAtlas</a></p>
+    <p><a href="https://github.com/adrianwedd/ModelAtlas" target="_blank" rel="noopener noreferrer">adrianwedd/ModelAtlas</a></p>
   </footer>
 
   <script src="app.js"></script>
