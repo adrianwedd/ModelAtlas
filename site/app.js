@@ -11,6 +11,7 @@ function modelApp() {
     search: '',
     licenseFilter: 'all',
     sortBy: 'trust_score',
+    sourceFilter: 'all',
 
     async init() {
       try {
@@ -26,6 +27,7 @@ function modelApp() {
       this.$watch('search', () => this.applyFilters());
       this.$watch('licenseFilter', () => this.applyFilters());
       this.$watch('sortBy', () => this.applyFilters());
+      this.$watch('sourceFilter', () => this.applyFilters());
 
       // Init charts after DOM renders
       this.$nextTick(() => this.initCharts());
@@ -40,7 +42,7 @@ function modelApp() {
 
     get avgTrust() {
       if (!this.models.length) return '—';
-      const avg = this.models.reduce((s, m) => s + (m.trust_score || 0), 0) / this.models.length;
+      const avg = this.models.reduce((s, m) => s + (parseFloat(m.trust_score) || 0), 0) / this.models.length;
       return avg.toFixed(2);
     },
 
@@ -51,8 +53,15 @@ function modelApp() {
       if (this.search.trim()) {
         const q = this.search.trim().toLowerCase();
         result = result.filter(m =>
-          m.name.toLowerCase().includes(q) ||
-          (m.tags || []).some(t => typeof t === 'string' && t.toLowerCase().includes(q))
+          (m.name || '').toLowerCase().includes(q) ||
+          (m.description || '').toLowerCase().includes(q) ||
+          (Array.isArray(m.tags) ? m.tags : []).some(t => typeof t === 'string' && t.toLowerCase().includes(q))
+        );
+      }
+
+      if (this.sourceFilter !== 'all') {
+        result = result.filter(m =>
+          this.sourceFilter === 'hf' ? (m.name || '').includes('/') : !(m.name || '').includes('/')
         );
       }
 
@@ -60,17 +69,21 @@ function modelApp() {
         if (this.licenseFilter === 'none') {
           result = result.filter(m => !m.license);
         } else if (this.licenseFilter === 'other') {
-          result = result.filter(m => m.license && !['apache-2.0', 'mit'].includes(m.license));
+          const common = ['apache-2.0', 'mit'];
+          result = result.filter(m => m.license && !common.includes((m.license || '').toLowerCase()));
         } else {
           result = result.filter(m => (m.license || '').toLowerCase() === this.licenseFilter);
         }
       }
 
       result.sort((a, b) => {
-        if (this.sortBy === 'name') return a.name.localeCompare(b.name);
-        if (this.sortBy === 'trust_score') return (b.trust_score || 0) - (a.trust_score || 0);
+        if (this.sortBy === 'name') return (a.name || '').localeCompare(b.name || '');
+        if (this.sortBy === 'trust_score') return (parseFloat(b.trust_score) || 0) - (parseFloat(a.trust_score) || 0);
+        if (this.sortBy === 'downloads') {
+          return (b.pull_count || b.downloads || 0) - (a.pull_count || a.downloads || 0);
+        }
         if (this.sortBy === 'last_updated') {
-          return (b.last_updated || '').localeCompare(a.last_updated || '');
+          return new Date(b.last_updated || 0) - new Date(a.last_updated || 0);
         }
         return 0;
       });
@@ -80,15 +93,48 @@ function modelApp() {
 
     // ── Row helpers ───────────────────────────────────────────
     topTags(model) {
-      return (model.tags || [])
+      return (Array.isArray(model.tags) ? model.tags : [])
         .filter(t => typeof t === 'string' && !TAG_BLOCKLIST.has(t))
-        .slice(0, 3);
+        .slice(0, 4);
+    },
+
+    sourceLabel(model) {
+      return (model.name || '').includes('/') ? 'HF' : 'Ollama';
+    },
+
+    sourceBadgeClass(model) {
+      return (model.name || '').includes('/') ? 'source--hf' : 'source--ollama';
+    },
+
+    formatPopularity(model) {
+      const n = model.pull_count || model.downloads || 0;
+      if (!n) return '—';
+      if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+      if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+      if (n >= 1e3) return Math.round(n / 1e3) + 'K';
+      return String(n);
+    },
+
+    descExcerpt(model) {
+      const d = (model.description || '').trim();
+      if (!d) return '—';
+      return d.length > 130 ? d.slice(0, 130) + '…' : d;
+    },
+
+    formatDate(model) {
+      const d = model.last_updated;
+      if (!d) return '—';
+      try {
+        const date = new Date(d);
+        if (isNaN(date)) return d.slice(0, 10);
+        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+      } catch {
+        return '—';
+      }
     },
 
     modelUrl(model) {
-      // HF models always have namespace/repo format (e.g. "bert-base/uncased")
-      // Ollama native models never have a slash (e.g. "llama3", "mistral")
-      if (model.name.includes('/')) {
+      if ((model.name || '').includes('/')) {
         return `https://huggingface.co/${model.name}`;
       }
       return `https://ollama.com/library/${model.name}`;
@@ -103,7 +149,7 @@ function modelApp() {
     },
 
     trustDots(score) {
-      const filled = Math.round((score || 0) * 5);
+      const filled = Math.round((parseFloat(score) || 0) * 5);
       let html = '';
       for (let i = 0; i < 5; i++) {
         html += `<span class="${i < filled ? 'dot--filled' : 'dot--empty'}">●</span>`;
