@@ -12,14 +12,18 @@ function modelApp() {
     licenseFilter: 'all',
     sortBy: 'trust_score',
     sourceFilter: 'all',
+    loadError: false,
+    safeStr(v) { return (v != null && typeof v === 'string') ? v : ''; },
 
     async init() {
       try {
         const resp = await fetch('./models_enriched.json');
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        this.models = await resp.json();
+        const data = await resp.json();
+        this.models = Array.isArray(data) ? data.filter(m => m != null && typeof m === 'object') : [];
       } catch (err) {
         console.error('Failed to load model data:', err);
+        this.loadError = true;
       }
       this.applyFilters();
 
@@ -53,37 +57,42 @@ function modelApp() {
       if (this.search.trim()) {
         const q = this.search.trim().toLowerCase();
         result = result.filter(m =>
-          (m.name || '').toLowerCase().includes(q) ||
-          (m.description || '').toLowerCase().includes(q) ||
+          this.safeStr(m.name).toLowerCase().includes(q) ||
+          this.safeStr(m.description).toLowerCase().includes(q) ||
           (Array.isArray(m.tags) ? m.tags : []).some(t => typeof t === 'string' && t.toLowerCase().includes(q))
         );
       }
 
       if (this.sourceFilter !== 'all') {
         result = result.filter(m =>
-          this.sourceFilter === 'hf' ? (m.name || '').includes('/') : !(m.name || '').includes('/')
+          this.sourceFilter === 'hf' ? this.safeStr(m.name).includes('/') : !this.safeStr(m.name).includes('/')
         );
       }
 
       if (this.licenseFilter !== 'all') {
         if (this.licenseFilter === 'none') {
-          result = result.filter(m => !m.license);
+          result = result.filter(m => !this.safeStr(m.license));
         } else if (this.licenseFilter === 'other') {
           const common = ['apache-2.0', 'mit'];
-          result = result.filter(m => m.license && !common.includes((m.license || '').toLowerCase()));
+          result = result.filter(m => {
+            const license = this.safeStr(m.license);
+            return license && !common.includes(license.toLowerCase());
+          });
         } else {
-          result = result.filter(m => (m.license || '').toLowerCase() === this.licenseFilter);
+          result = result.filter(m => this.safeStr(m.license).toLowerCase().trim() === this.licenseFilter);
         }
       }
 
       result.sort((a, b) => {
-        if (this.sortBy === 'name') return (a.name || '').localeCompare(b.name || '');
+        if (this.sortBy === 'name') return this.safeStr(a.name).localeCompare(this.safeStr(b.name));
         if (this.sortBy === 'trust_score') return (parseFloat(b.trust_score) || 0) - (parseFloat(a.trust_score) || 0);
         if (this.sortBy === 'downloads') {
-          return (b.pull_count || b.downloads || 0) - (a.pull_count || a.downloads || 0);
+          return (b.pull_count ?? b.downloads ?? 0) - (a.pull_count ?? a.downloads ?? 0);
         }
         if (this.sortBy === 'last_updated') {
-          return new Date(b.last_updated || 0) - new Date(a.last_updated || 0);
+          const da = new Date(a.last_updated || 0), db = new Date(b.last_updated || 0);
+          const ta = isNaN(da) ? 0 : da.getTime(), tb = isNaN(db) ? 0 : db.getTime();
+          return tb - ta;
         }
         return 0;
       });
@@ -99,24 +108,24 @@ function modelApp() {
     },
 
     sourceLabel(model) {
-      return (model.name || '').includes('/') ? 'HF' : 'Ollama';
+      return this.safeStr(model.name).includes('/') ? 'HF' : 'Ollama';
     },
 
     sourceBadgeClass(model) {
-      return (model.name || '').includes('/') ? 'source--hf' : 'source--ollama';
+      return this.safeStr(model.name).includes('/') ? 'source--hf' : 'source--ollama';
     },
 
     formatPopularity(model) {
-      const n = model.pull_count || model.downloads || 0;
+      const n = model.pull_count ?? model.downloads ?? 0;
       if (!n) return '—';
       if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B';
       if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
-      if (n >= 1e3) return Math.round(n / 1e3) + 'K';
+      if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'K';
       return String(n);
     },
 
     descExcerpt(model) {
-      const d = (model.description || '').trim();
+      const d = this.safeStr(model.description).trim();
       if (!d) return '—';
       return d.length > 130 ? d.slice(0, 130) + '…' : d;
     },
@@ -126,7 +135,7 @@ function modelApp() {
       if (!d) return '—';
       try {
         const date = new Date(d);
-        if (isNaN(date)) return d.slice(0, 10);
+        if (isNaN(date)) return '—';
         return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
       } catch {
         return '—';
@@ -134,27 +143,29 @@ function modelApp() {
     },
 
     modelUrl(model) {
-      if ((model.name || '').includes('/')) {
-        return `https://huggingface.co/${model.name}`;
+      const modelName = this.safeStr(model.name);
+      if (!modelName) return '#';
+      if (modelName.includes('/')) {
+        return `https://huggingface.co/${modelName}`;
       }
-      return `https://ollama.com/library/${model.name}`;
+      return `https://ollama.com/library/${modelName}`;
     },
 
     licenseBadgeClass(license) {
-      if (!license) return 'badge--none';
-      const l = license.toLowerCase();
+      const l = (typeof license === 'string' ? license : '').toLowerCase().trim();
+      if (!l) return 'badge--none';
       if (l === 'apache-2.0') return 'badge--apache';
       if (l === 'mit') return 'badge--mit';
       return 'badge--other';
     },
 
+    trustFilled(score) {
+      const raw = parseFloat(score);
+      return Number.isFinite(raw) ? Math.min(5, Math.max(0, Math.round(raw * 5))) : 0;
+    },
+
     trustDots(score) {
-      const filled = Math.round((parseFloat(score) || 0) * 5);
-      let html = '';
-      for (let i = 0; i < 5; i++) {
-        html += `<span class="${i < filled ? 'dot--filled' : 'dot--empty'}">●</span>`;
-      }
-      return html;
+      return '';
     },
 
     // ── Charts ────────────────────────────────────────────────
@@ -167,7 +178,7 @@ function modelApp() {
     initLicenseChart() {
       const counts = {};
       this.models.forEach(m => {
-        const key = m.license || 'unlicensed';
+        const key = this.safeStr(m.license) || 'unlicensed';
         counts[key] = (counts[key] || 0) + 1;
       });
       const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 6);
@@ -196,7 +207,8 @@ function modelApp() {
       const labels = ['0–0.2', '0.2–0.4', '0.4–0.6', '0.6–0.8', '0.8–1.0'];
       const buckets = [0, 0, 0, 0, 0];
       this.models.forEach(m => {
-        const s = m.trust_score || 0;
+        const raw = parseFloat(m.trust_score);
+        const s = Number.isFinite(raw) ? Math.min(Math.max(raw, 0), 1) : 0;
         const idx = Math.min(Math.floor(s * 5), 4);
         buckets[idx]++;
       });
@@ -225,7 +237,7 @@ function modelApp() {
     initTagsChart() {
       const counts = {};
       this.models.forEach(m => {
-        (m.tags || [])
+        (Array.isArray(m.tags) ? m.tags : [])
           .filter(t => typeof t === 'string' && !TAG_BLOCKLIST.has(t))
           .forEach(t => { counts[t] = (counts[t] || 0) + 1; });
       });

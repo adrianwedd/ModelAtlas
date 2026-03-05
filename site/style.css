@@ -171,6 +171,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1;
+  box-shadow: 0 1px 0 var(--border);
   font-weight: 600;
   white-space: nowrap;
 }
@@ -190,7 +191,6 @@ header {
 .model-link:hover { text-decoration: underline; }
 
 /* Description */
-.desc-cell { }
 .desc-text {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -199,10 +199,10 @@ header {
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.45;
+  max-height: calc(1.45em * 2);
 }
 
 /* Tags */
-.tags-cell { }
 .tags-inner {
   display: flex;
   gap: 0.3rem;
@@ -220,7 +220,6 @@ header {
 }
 
 /* License badges */
-.license-cell { }
 .license-badge {
   display: inline-block;
   padding: 0.15rem 0.5rem;
@@ -236,7 +235,6 @@ header {
 .badge--none   { background: #1c1c1c; color: var(--muted); border: 1px solid var(--border); }
 
 /* Source badge */
-.source-cell { }
 .source-badge {
   display: inline-block;
   padding: 0.15rem 0.45rem;
@@ -266,7 +264,6 @@ header {
 }
 
 /* Trust dots */
-.trust-cell { }
 .trust-inner { display: flex; align-items: center; gap: 0.4rem; }
 .trust-dots { font-size: 0.85rem; letter-spacing: 0.05em; line-height: 1; }
 .dot--filled { color: var(--green); }
@@ -284,6 +281,20 @@ header {
   padding: 3rem;
   color: var(--muted);
   font-size: 0.875rem;
+}
+
+.empty-state--error { color: var(--red); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ── Footer ──────────────────────────── */

@@ -12,7 +12,7 @@
 
   <!-- Header -->
   <header>
-    <div class="logo">ModelAtlas</div>
+    <h1 class="logo">ModelAtlas</h1>
     <div class="tagline">AI Model Intelligence Catalog</div>
     <a href="https://github.com/adrianwedd/ModelAtlas" class="gh-link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
   </header>
@@ -42,15 +42,15 @@
   <section class="charts">
     <div class="chart-card">
       <h3>License distribution</h3>
-      <canvas id="licenseChart"></canvas>
+      <canvas id="licenseChart" aria-label="License distribution chart" role="img"></canvas>
     </div>
     <div class="chart-card">
       <h3>Trust score distribution</h3>
-      <canvas id="trustChart"></canvas>
+      <canvas id="trustChart" aria-label="Trust score distribution chart" role="img"></canvas>
     </div>
     <div class="chart-card">
       <h3>Top tags</h3>
-      <canvas id="tagsChart"></canvas>
+      <canvas id="tagsChart" aria-label="Top tags chart" role="img"></canvas>
     </div>
   </section>
 
@@ -88,6 +88,7 @@
   <!-- Model table -->
   <section class="table-section">
     <table class="model-table">
+      <caption class="sr-only">AI model catalog. Use filters above to narrow results.</caption>
       <thead>
         <tr>
           <th scope="col" class="col-name">Name</th>
@@ -105,7 +106,7 @@
         </tr>
       </thead>
       <tbody>
-        <template x-for="model in filtered" :key="model.name">
+        <template x-for="(model, $index) in filtered" :key="(model.name || '') + '|' + $index">
           <tr>
             <td class="name-cell">
               <a :href="modelUrl(model)" target="_blank" rel="noopener noreferrer" x-text="model.name" class="model-link"></a>
@@ -115,7 +116,7 @@
             </td>
             <td class="tags-cell">
               <div class="tags-inner">
-                <template x-for="tag in topTags(model)" :key="tag">
+                <template x-for="(tag, $index) in topTags(model)" :key="tag + '-' + $index">
                   <span class="tag-chip" x-text="tag"></span>
                 </template>
               </div>
@@ -134,7 +135,11 @@
             <td class="updated-cell" x-text="formatDate(model)"></td>
             <td class="trust-cell">
               <div class="trust-inner">
-                <span class="trust-dots" x-html="trustDots(model.trust_score)"></span>
+                <span class="trust-dots" aria-hidden="true">
+                  <template x-for="i in 5" :key="i">
+                    <span :class="i <= trustFilled(model.trust_score) ? 'dot--filled' : 'dot--empty'">●</span>
+                  </template>
+                </span>
                 <span class="trust-num" x-text="(parseFloat(model.trust_score) || 0).toFixed(2)"></span>
               </div>
             </td>
@@ -146,8 +151,11 @@
     <div class="empty-state" x-show="filtered.length === 0 && models.length > 0">
       No models match your filters.
     </div>
-    <div class="empty-state" x-show="models.length === 0">
+    <div class="empty-state" x-show="models.length === 0 && !loadError">
       Loading models…
+    </div>
+    <div class="empty-state empty-state--error" x-show="loadError">
+      Failed to load model data. Please refresh.
     </div>
   </section>
 
