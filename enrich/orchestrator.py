@@ -11,6 +11,8 @@ from common.logging import logger
 from tools.enrich_metadata import enrich_model_metadata
 from tools.scrape_hf import execute_hf_scraper
 from tools.scrape_ollama import scrape_ollama_models
+from tools.scrape_ollama_cloud import scrape_ollama_cloud_models
+from tools.scrape_openrouter import scrape_openrouter_models
 from tools.validate_all import validate_model_file
 
 
@@ -41,10 +43,20 @@ async def scrape_node(state: TraceState) -> TraceState:
     )  # Limit for testing, use_cache for efficiency
     logger.info("Hugging Face scraping complete.")
 
-    # Execute Ollama scraper
-    logger.info("Starting Ollama scraping...")
-    await scrape_ollama_models(concurrency=5)  # Concurrency for async operations
-    logger.info("Ollama scraping complete.")
+    # Execute Ollama scraper (ollama.com/library — locally-pullable models)
+    logger.info("Starting Ollama library scraping...")
+    await scrape_ollama_models(concurrency=5)
+    logger.info("Ollama library scraping complete.")
+
+    # Execute Ollama Cloud scraper (GPU-hosted cloud-only models via API)
+    logger.info("Starting Ollama Cloud API scraping...")
+    await asyncio.to_thread(scrape_ollama_cloud_models)
+    logger.info("Ollama Cloud scraping complete.")
+
+    # Execute OpenRouter scraper (200+ models, including free-tier)
+    logger.info("Starting OpenRouter scraping...")
+    await asyncio.to_thread(scrape_openrouter_models)
+    logger.info("OpenRouter scraping complete.")
 
     return {"raw_models_dir": raw_models_dir}
 

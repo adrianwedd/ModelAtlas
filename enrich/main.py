@@ -21,3 +21,11 @@ def run_enrichment_trace(
         final_output_file=output_file,
     )
     asyncio.run(graph.ainvoke(initial_state))
+
+
+if __name__ == "__main__":
+    run_enrichment_trace(
+        input_dir=settings.MODELS_DIR,
+        output_file=settings.PROJECT_ROOT / settings.OUTPUT_FILE,
+        enriched_outputs_dir=settings.ENRICHED_OUTPUTS_DIR,
+    )

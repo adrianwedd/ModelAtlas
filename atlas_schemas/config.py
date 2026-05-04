@@ -23,6 +23,8 @@ class Config(BaseSettings):
     LLM_API_KEY: Optional[str] = None
     HUGGING_FACE_API_KEY: Optional[str] = None
     OPENAI_API_KEY: Optional[str] = None
+    OLLAMA_CLOUD_API_KEY: Optional[str] = None
+    OPENROUTER_API_KEY: Optional[str] = None
     PLAYWRIGHT_BROWSERS_PATH: Optional[str] = None
     LLM_MODEL_NAME: str = "gemini-1.5-pro"
 
