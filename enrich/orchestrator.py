@@ -170,9 +170,10 @@ def score_node(state: TraceState) -> TraceState:
             with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
             # Promote extra source-specific fields into annotations before Pydantic drops them
+            ann = data.setdefault("annotations", {})
             for field in EXTRA_ANNOTATION_FIELDS:
-                if field in data and field not in (data.get("annotations") or {}):
-                    data.setdefault("annotations", {})[field] = data[field]
+                if field in data and field not in ann:
+                    ann[field] = data[field]
             # Map HF downloads → pull_count when pull_count absent
             if not data.get("pull_count") and data.get("downloads"):
                 data["pull_count"] = data["downloads"]

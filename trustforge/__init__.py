@@ -34,7 +34,7 @@ def compute_score(model: Model) -> float:
     context_score = min(context_length / MAX_CONTEXT, 1.0) if context_length else 0.0
 
     is_free = ann.get("is_free")
-    # Free models get a small bump (accessible); paid models with pricing data also non-zero
+    # Free = accessible bump; paid with pricing data = moderate; unknown = low
     pricing = ann.get("pricing") or {}
     has_pricing = any(v for v in pricing.values() if v)
     availability_score = 0.8 if is_free else (0.6 if has_pricing else 0.4)
