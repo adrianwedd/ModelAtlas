@@ -59,10 +59,7 @@ def normalize_model(raw: dict) -> dict:
         "last_updated": added_at or None,
         "digest": raw.get("digest", ""),
         "details": details,
-        "family": (
-            details.get("family")
-            or (details.get("families") or [None])[0]
-        ),
+        "family": (details.get("family") or (details.get("families") or [None])[0]),
         "architecture": details.get("parameter_size") or None,
         "pull_count": None,
     }
