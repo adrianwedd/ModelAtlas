@@ -10,6 +10,7 @@ function modelApp() {
     filtered: [],
     search: '',
     licenseFilter: 'all',
+    typeFilter: 'all',
     sortBy: 'trust_score',
     sourceFilter: 'all',
     loadError: false,
@@ -30,6 +31,7 @@ function modelApp() {
       // Watch reactive properties and re-filter on change
       this.$watch('search', () => this.applyFilters());
       this.$watch('licenseFilter', () => this.applyFilters());
+      this.$watch('typeFilter', () => this.applyFilters());
       this.$watch('sortBy', () => this.applyFilters());
       this.$watch('sourceFilter', () => this.applyFilters());
 
@@ -65,6 +67,10 @@ function modelApp() {
 
       if (this.sourceFilter !== 'all') {
         result = result.filter(m => this.sourceKey(m) === this.sourceFilter);
+      }
+
+      if (this.typeFilter !== 'all') {
+        result = result.filter(m => this.modelType(m) === this.typeFilter);
       }
 
       if (this.licenseFilter !== 'all') {
@@ -129,6 +135,30 @@ function modelApp() {
       if (k === 'ollama_cloud') return 'source--ollama-cloud';
       if (k === 'openrouter') return 'source--openrouter';
       return 'source--ollama';
+    },
+
+    modelType(model) {
+      const arch = this.safeStr(model.architecture).toLowerCase();
+      const tags = (Array.isArray(model.tags) ? model.tags : []).map(t => (typeof t === 'string' ? t : '').toLowerCase());
+      const name = this.safeStr(model.name).toLowerCase();
+
+      const hasTag = (...needles) => needles.some(n => tags.some(t => t.includes(n)));
+      const archHas = (...needles) => needles.some(n => arch.includes(n));
+      const nameHas = (...needles) => needles.some(n => name.includes(n));
+
+      if (hasTag('text-to-image', 'image-generation', 'diffusers', 'stable-diffusion', 'text-to-video'))
+        return 'image-gen';
+      if (hasTag('automatic-speech-recognition', 'text-to-speech', 'audio-classification') || archHas('audio') || nameHas('whisper', 'tts', 'speech'))
+        return 'audio';
+      if (hasTag('feature-extraction', 'sentence-similarity', 'text-embeddings-inference', 'sentence-transformers') || nameHas('embed', 'reranker', 'contriever', 'bge', 'nomic-embed', 'mxbai-embed', 'e5-', 'minilm', 'bert', 'roberta', 'deberta'))
+        return 'embedding';
+      if (hasTag('code', 'coding') || nameHas('code', 'coder', 'deepcoder', 'devstral', 'starcoder', 'codestral'))
+        return 'code';
+      if (archHas('image', 'video', 'vision') || hasTag('vision', 'image-classification', 'zero-shot-image-classification', 'object-detection', 'vqa') || nameHas('llava', 'vision', 'vl:', 'vl-', '-vl', 'minicpm-v', 'cogvlm', 'bakllava', 'moondream'))
+        return 'vision';
+      if (archHas('text->text') || hasTag('text-generation', 'text-generation-inference', 'conversational', 'chat', 'instruct') || nameHas('llama', 'mistral', 'gemma', 'qwen', 'phi', 'falcon', 'dolphin', 'command', 'deepseek', 'orca', 'vicuna', 'wizard', 'hermes', 'solar', 'yi', 'mixtral', 'granite', 'lfm', 'nexus', 'nous', 'stablelm', 'starling', 'zephyr', 'notus', 'notux', 'minimax', 'gpt-oss', 'reflection', 'xwin', 'everythinglm', 'deepscaler', 'r1-', 'megadolphin', 'openhermes', 'samantha'))
+        return 'text-llm';
+      return 'other';
     },
 
     formatPopularity(model) {
