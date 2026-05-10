@@ -61,9 +61,7 @@ def normalize_model(raw: dict) -> dict:
         "name": raw.get("id", ""),
         "display_name": raw.get("name", ""),
         "source": "openrouter",
-        "provider": raw.get("id", "").split("/")[0]
-        if "/" in raw.get("id", "")
-        else "",
+        "provider": raw.get("id", "").split("/")[0] if "/" in raw.get("id", "") else "",
         "context_length": raw.get("context_length"),
         "is_free": is_free(raw),
         "pricing": {
@@ -128,7 +126,9 @@ def scrape_openrouter_models(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--free-only", action="store_true", help="Only save free-tier models"
+        "--free-only",
+        action="store_true",
+        help="Only save free-tier models",
     )
     parser.add_argument("--dry-run", action="store_true", help="Fetch but do not write files")
     args = parser.parse_args()

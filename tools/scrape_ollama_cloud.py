@@ -100,7 +100,9 @@ def scrape_ollama_cloud_models(dry_run: bool = False) -> list[dict]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--dry-run", action="store_true", help="Fetch but do not write files"
+        "--dry-run",
+        action="store_true",
+        help="Fetch but do not write files",
     )
     args = parser.parse_args()
     result = scrape_ollama_cloud_models(dry_run=args.dry_run)
