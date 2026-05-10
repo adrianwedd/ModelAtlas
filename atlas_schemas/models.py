@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class TraceableItem(BaseModel):
@@ -31,6 +31,19 @@ class Model(BaseModel):
     page_hash: Optional[str] = None
     tags: List[str] = Field(default_factory=list)
     annotations: Dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("tags", mode="before")
+    @classmethod
+    def coerce_tags_to_strings(cls, v: Any) -> List[str]:
+        if not isinstance(v, list):
+            return []
+        result = []
+        for item in v:
+            if isinstance(item, str):
+                result.append(item)
+            elif isinstance(item, dict) and "tag" in item:
+                result.append(str(item["tag"]))
+        return result
     quality_score: Dict[str, Any] = Field(default_factory=dict)
     trust_score: Optional[float] = None
     similar_models: List[Dict[str, Any]] = Field(default_factory=list)
