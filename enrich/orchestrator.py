@@ -74,6 +74,16 @@ def enrich_node(state: TraceState) -> TraceState:
             with open(file_path, "r", encoding="utf-8") as f:
                 model_data = json.load(f)
 
+            if not model_data.get("source"):
+                parent = Path(file_path).parent.name
+                source_map = {
+                    "huggingface": "huggingface",
+                    "ollama": "ollama",
+                    "ollama_cloud": "ollama_cloud",
+                    "openrouter": "openrouter",
+                }
+                model_data["source"] = source_map.get(parent)
+
             enriched_data = enrich_model_metadata(model_data)
 
             # Use model's name field so merge_enrichment can find the file by name

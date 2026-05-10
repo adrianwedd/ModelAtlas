@@ -19,6 +19,7 @@ class Model(BaseModel):
     """Represents a model with its metadata and scores."""
 
     name: str
+    source: Optional[str] = None
     summary: Optional[str] = None
     description: Optional[str] = None
     license: Optional[str] = None
@@ -47,6 +48,17 @@ class Model(BaseModel):
             elif isinstance(item, dict) and "tag" in item:
                 result.append(str(item["tag"]))
         return result
+
+    @field_validator("architecture", mode="before")
+    @classmethod
+    def coerce_architecture_to_string(cls, v: Any) -> Optional[str]:
+        if v is None or isinstance(v, str):
+            return v
+        if isinstance(v, dict):
+            return v.get("modality") or next(
+                (str(val) for val in v.values() if val), None
+            )
+        return str(v)
 
 
 class TraceConfig(BaseModel):
