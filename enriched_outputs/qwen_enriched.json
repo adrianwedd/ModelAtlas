@@ -1,0 +1,3051 @@
+{
+  "name": "qwen",
+  "description": "Qwen 1.5 is a series of large language models by Alibaba Cloud spanning from 0.5B to 110B parameters",
+  "pull_count": 5600000,
+  "last_updated": "Apr 26, 2024 8:31 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p>Qwen 2 is now available <a href=\"https://ollama.com/library/qwen2\" rel=\"nofollow\">here</a>.</p>\n<p><img src=\"https://github.com/jmorganca/ollama/assets/251292/160726a3-a986-427d-b1df-3b75357903a4\" width=\"280\"/></p>\n<p>Qwen is a series of transformer-based large language models by Alibaba Cloud, pre-trained on a large volume of data, including web texts, books, code, etc.</p>\n<h3>New in Qwen 1.5</h3>\n<ul>\n<li>6 model sizes, including 0.5B, 1.8B, 4B (default), 7B, 14B, 32B (new) and 72B\n\n<ul>\n<li><code>ollama run qwen:0.5b</code></li>\n<li><code>ollama run qwen:1.8b</code></li>\n<li><code>ollama run qwen:4b</code></li>\n<li><code>ollama run qwen:7b</code></li>\n<li><code>ollama run qwen:14b</code></li>\n<li><code>ollama run qwen:32b</code></li>\n<li><code>ollama run qwen:72b</code></li>\n<li><code>ollama run qwen:110b</code></li>\n</ul></li>\n<li>Significant performance improvement in human preference for chat models</li>\n<li>Multilingual support of both base and chat models</li>\n<li>Stable support of 32K context length for models of all sizes</li>\n</ul>\n<p>The original Qwen model is offered in four different parameter sizes: 1.8B, 7B, 14B, and 72B.</p>\n<h2>Features</h2>\n<ul>\n<li><p><strong>Low-cost deployment</strong>: the minimum memory requirement for inference is less than 2GB.</p></li>\n<li><p><strong>Large-scale high-quality training corpora</strong>: Models are pre-trained on over 2.2 trillion tokens, including Chinese, English, multilingual texts, code, and mathematics, covering general and professional fields. The distribution of the pre-training corpus has been optimized through a large number of ablation experiments.</p></li>\n<li><p><strong>Good performance</strong>: Qwen supports long context lengths (8K on the <code>1.8b</code>, <code>7b</code> and <code>14b</code> parameter models, and 32K on the <code>72b</code> parameter model), and significantly surpasses existing open-source models of similar scale on multiple Chinese and English downstream evaluation tasks (including common-sense, reasoning, code, mathematics, etc.), and even surpasses some larger-scale models in several benchmarks.</p></li>\n<li><p><strong>More comprehensive vocabulary coverage</strong>: Compared with other open-source models based on Chinese and English vocabularies, Qwen uses a vocabulary of over 150K tokens. This vocabulary is more friendly to multiple languages, enabling users to directly further enhance the capability for certain languages without expanding the vocabulary.</p></li>\n<li><p><strong>System prompt</strong>: Qwen can realize role playing, language style transfer, task setting, and behavior-setting by using a system prompt.</p></li>\n</ul>\n<h2>Reference</h2>\n<p><a href=\"https://github.com/QwenLM/Qwen\" rel=\"nofollow\">GitHub</a></p>\n<p><a href=\"https://huggingface.co/Qwen\" rel=\"nofollow\">Hugging Face</a></p>\n</div>",
+  "readme_text": "\nQwen 2 is now available here.\n\nQwen is a series of transformer-based large language models by Alibaba Cloud, pre-trained on a large volume of data, including web texts, books, code, etc.\nNew in Qwen 1.5\n\n6 model sizes, including 0.5B, 1.8B, 4B (default), 7B, 14B, 32B (new) and 72B\n\n\nollama run qwen:0.5b\nollama run qwen:1.8b\nollama run qwen:4b\nollama run qwen:7b\nollama run qwen:14b\nollama run qwen:32b\nollama run qwen:72b\nollama run qwen:110b\n\nSignificant performance improvement in human preference for chat models\nMultilingual support of both base and chat models\nStable support of 32K context length for models of all sizes\n\nThe original Qwen model is offered in four different parameter sizes: 1.8B, 7B, 14B, and 72B.\nFeatures\n\nLow-cost deployment: the minimum memory requirement for inference is less than 2GB.\nLarge-scale high-quality training corpora: Models are pre-trained on over 2.2 trillion tokens, including Chinese, English, multilingual texts, code, and mathematics, covering general and professional fields. The distribution of the pre-training corpus has been optimized through a large number of ablation experiments.\nGood performance: Qwen supports long context lengths (8K on the 1.8b, 7b and 14b parameter models, and 32K on the 72b parameter model), and significantly surpasses existing open-source models of similar scale on multiple Chinese and English downstream evaluation tasks (including common-sense, reasoning, code, mathematics, etc.), and even surpasses some larger-scale models in several benchmarks.\nMore comprehensive vocabulary coverage: Compared with other open-source models based on Chinese and English vocabularies, Qwen uses a vocabulary of over 150K tokens. This vocabulary is more friendly to multiple languages, enabling users to directly further enhance the capability for certain languages without expanding the vocabulary.\nSystem prompt: Qwen can realize role playing, language style transfer, task setting, and behavior-setting by using a system prompt.\n\nReference\nGitHub\nHugging Face\n",
+  "page_hash": "f28ac38e0bf0",
+  "tags": [
+    {
+      "tag": "qwen:latestd53d04290064\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "d53d04290064",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5bb5dc5e784f2a\u2022",
+      "last_updated": "2 years ago",
+      "size": "395MB",
+      "digest": "b5dc5e784f2a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8bb6e8ec2e7126\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "b6e8ec2e7126",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4blatestd53d04290064\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "d53d04290064",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b2091ee8c8d8f\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "2091ee8c8d8f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b80362ced6553\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "80362ced6553",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b26e7e8447f5d\u2022",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "26e7e8447f5d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72be1c64582de5c\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "e1c64582de5c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b7fed4b7787da\u2022",
+      "last_updated": "1 year ago",
+      "size": "63GB",
+      "digest": "7fed4b7787da",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chatb5dc5e784f2a\u2022",
+      "last_updated": "2 years ago",
+      "size": "395MB",
+      "digest": "b5dc5e784f2a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q2_Ka16189bc79c0\u2022",
+      "last_updated": "2 years ago",
+      "size": "298MB",
+      "digest": "a16189bc79c0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q3_K_S0bcee5f34ad7\u2022",
+      "last_updated": "2 years ago",
+      "size": "333MB",
+      "digest": "0bcee5f34ad7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q3_K_Mb18e5c255a90\u2022",
+      "last_updated": "2 years ago",
+      "size": "350MB",
+      "digest": "b18e5c255a90",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q3_K_Ld184d2901228\u2022",
+      "last_updated": "2 years ago",
+      "size": "364MB",
+      "digest": "d184d2901228",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q4_0b5dc5e784f2a\u2022",
+      "last_updated": "2 years ago",
+      "size": "395MB",
+      "digest": "b5dc5e784f2a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q4_11bf15c40f38e\u2022",
+      "last_updated": "2 years ago",
+      "size": "424MB",
+      "digest": "1bf15c40f38e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q4_K_S5d85925638c3\u2022",
+      "last_updated": "2 years ago",
+      "size": "397MB",
+      "digest": "5d85925638c3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q4_K_Me1c9c6192a7e\u2022",
+      "last_updated": "2 years ago",
+      "size": "407MB",
+      "digest": "e1c9c6192a7e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q5_060ea3fa139a6\u2022",
+      "last_updated": "2 years ago",
+      "size": "453MB",
+      "digest": "60ea3fa139a6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q5_1a60a006869f5\u2022",
+      "last_updated": "2 years ago",
+      "size": "482MB",
+      "digest": "a60a006869f5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q5_K_S1cf5f7bb58c9\u2022",
+      "last_updated": "2 years ago",
+      "size": "453MB",
+      "digest": "1cf5f7bb58c9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q5_K_M743996dfe09d\u2022",
+      "last_updated": "2 years ago",
+      "size": "459MB",
+      "digest": "743996dfe09d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q6_K0d79ae8737db\u2022",
+      "last_updated": "2 years ago",
+      "size": "515MB",
+      "digest": "0d79ae8737db",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-q8_038781999773b\u2022",
+      "last_updated": "2 years ago",
+      "size": "665MB",
+      "digest": "38781999773b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-chat-v1.5-fp16967f7a3593ba\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "967f7a3593ba",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-textf92ac32068ca\u2022",
+      "last_updated": "2 years ago",
+      "size": "395MB",
+      "digest": "f92ac32068ca",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q2_K6be7d85c1f37\u2022",
+      "last_updated": "2 years ago",
+      "size": "298MB",
+      "digest": "6be7d85c1f37",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q3_K_S37eeb0d10fd8\u2022",
+      "last_updated": "2 years ago",
+      "size": "333MB",
+      "digest": "37eeb0d10fd8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q3_K_M7b641307e2fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "350MB",
+      "digest": "7b641307e2fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q3_K_L49837f2c5b03\u2022",
+      "last_updated": "2 years ago",
+      "size": "364MB",
+      "digest": "49837f2c5b03",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q4_0f92ac32068ca\u2022",
+      "last_updated": "2 years ago",
+      "size": "395MB",
+      "digest": "f92ac32068ca",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q4_18634f265be16\u2022",
+      "last_updated": "2 years ago",
+      "size": "424MB",
+      "digest": "8634f265be16",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q4_K_Sb0702a4235ed\u2022",
+      "last_updated": "2 years ago",
+      "size": "397MB",
+      "digest": "b0702a4235ed",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q4_K_Md8d0c86b10cd\u2022",
+      "last_updated": "2 years ago",
+      "size": "407MB",
+      "digest": "d8d0c86b10cd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q5_03822065b797a\u2022",
+      "last_updated": "2 years ago",
+      "size": "453MB",
+      "digest": "3822065b797a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q5_19f7ae5e6520b\u2022",
+      "last_updated": "2 years ago",
+      "size": "482MB",
+      "digest": "9f7ae5e6520b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q5_K_S4ea8ddc7c860\u2022",
+      "last_updated": "2 years ago",
+      "size": "453MB",
+      "digest": "4ea8ddc7c860",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q5_K_Mdcedf0beaf7e\u2022",
+      "last_updated": "2 years ago",
+      "size": "459MB",
+      "digest": "dcedf0beaf7e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q6_Kc8c2e4f579df\u2022",
+      "last_updated": "2 years ago",
+      "size": "515MB",
+      "digest": "c8c2e4f579df",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-q8_0c92fe3f525ea\u2022",
+      "last_updated": "2 years ago",
+      "size": "665MB",
+      "digest": "c92fe3f525ea",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:0.5b-text-v1.5-fp169cedb3d846db\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "9cedb3d846db",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chatb6e8ec2e7126\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "b6e8ec2e7126",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q2_K467dbacce487\u2022",
+      "last_updated": "2 years ago",
+      "size": "853MB",
+      "digest": "467dbacce487",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q2_K5ec5deec0331\u2022",
+      "last_updated": "2 years ago",
+      "size": "863MB",
+      "digest": "5ec5deec0331",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q3_K_S9c807784e6fb\u2022",
+      "last_updated": "2 years ago",
+      "size": "970MB",
+      "digest": "9c807784e6fb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q3_K_S45631575b031\u2022",
+      "last_updated": "2 years ago",
+      "size": "970MB",
+      "digest": "45631575b031",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q3_K_Mf7be0cbb0c5c\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "f7be0cbb0c5c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q3_K_M1e7a582ce4d6\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "1e7a582ce4d6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q3_K_Le3d057690a37\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "e3d057690a37",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q3_K_L7e69fb050fc6\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "7e69fb050fc6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q4_0ef087b004e83\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "ef087b004e83",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q4_0b6e8ec2e7126\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "b6e8ec2e7126",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q4_1e422a7c56e8a\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "e422a7c56e8a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q4_15520d901c708\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "5520d901c708",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q4_K_Sd04762cf1457\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "d04762cf1457",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q4_K_S318bbcfbbcb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "318bbcfbbcb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q4_K_M9c250efbd096\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "9c250efbd096",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q4_K_M27cd5d607aa3\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "27cd5d607aa3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q5_039b08d9c553f\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "39b08d9c553f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q5_0942791d6df80\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "942791d6df80",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q5_1ac833a41e88c\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "ac833a41e88c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q5_15cb573856803\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "5cb573856803",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q5_K_S857ae180d71f\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "857ae180d71f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q5_K_S63a97b074a77\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "63a97b074a77",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q5_K_M8341fb324ce5\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "8341fb324ce5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q5_K_Mc3c9b43d0ae7\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "c3c9b43d0ae7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q6_K6068eacf7eab\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "6068eacf7eab",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q6_K1b54bd2ede5d\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "1b54bd2ede5d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-q8_0761057adac8d\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.0GB",
+      "digest": "761057adac8d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-q8_02af802a8e3c4\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.0GB",
+      "digest": "2af802a8e3c4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-fp167b9c77c7b5b6\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.7GB",
+      "digest": "7b9c77c7b5b6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-chat-v1.5-fp16e3562f7740ef\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.7GB",
+      "digest": "e3562f7740ef",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text617cceb63756\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "617cceb63756",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q2_K25e8928e67d8\u2022",
+      "last_updated": "2 years ago",
+      "size": "853MB",
+      "digest": "25e8928e67d8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q2_K9fbae281c54a\u2022",
+      "last_updated": "2 years ago",
+      "size": "863MB",
+      "digest": "9fbae281c54a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q3_K_S6d276d0b0e4d\u2022",
+      "last_updated": "2 years ago",
+      "size": "970MB",
+      "digest": "6d276d0b0e4d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q3_K_Scfddca3d7609\u2022",
+      "last_updated": "2 years ago",
+      "size": "970MB",
+      "digest": "cfddca3d7609",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q3_K_M2d9bc3e28126\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "2d9bc3e28126",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q3_K_M1e00ca7ca1af\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "1e00ca7ca1af",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q3_K_Lb6d15127867d\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "b6d15127867d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q3_K_L55006f44ba8f\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "55006f44ba8f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q4_003dc8b7a4353\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "03dc8b7a4353",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q4_0617cceb63756\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.1GB",
+      "digest": "617cceb63756",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q4_19d03e4ff6283\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "9d03e4ff6283",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q4_19c3064af8a6a\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "9c3064af8a6a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q4_K_S35417f1033ba\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "35417f1033ba",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q4_K_S9de4291d63b0\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "9de4291d63b0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q4_K_M8f4011c63861\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "8f4011c63861",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q4_K_M2120d6a01bc3\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "2120d6a01bc3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q5_05dee62f8b270\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "5dee62f8b270",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q5_0fbc1dd7dbb3f\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "fbc1dd7dbb3f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q5_11ace6d0d6868\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "1ace6d0d6868",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q5_1110bb7065fe0\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "110bb7065fe0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q5_K_Sfc7b98d4110c\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "fc7b98d4110c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q5_K_Sb12f16343645\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "b12f16343645",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q5_K_Mba3f032feb07\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "ba3f032feb07",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q5_K_Me2aedf4a65d7\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "e2aedf4a65d7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q6_K60c274911b01\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "60c274911b01",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q6_Ke7be77cc89a1\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "e7be77cc89a1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-q8_0fb7576710ad5\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.0GB",
+      "digest": "fb7576710ad5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-q8_048d0284fc9fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.0GB",
+      "digest": "48d0284fc9fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-fp16f4bf3caa7f4c\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.7GB",
+      "digest": "f4bf3caa7f4c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:1.8b-text-v1.5-fp165b31a65f7476\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.7GB",
+      "digest": "5b31a65f7476",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chatd53d04290064\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "d53d04290064",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q2_Ke6c11802c6ad\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "e6c11802c6ad",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q3_K_Sd75968a2b37c\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.9GB",
+      "digest": "d75968a2b37c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q3_K_Mda9fe589f9b3\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.0GB",
+      "digest": "da9fe589f9b3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q3_K_L373625817e6f\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.2GB",
+      "digest": "373625817e6f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q4_0d53d04290064\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "d53d04290064",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q4_18d4b987199fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.6GB",
+      "digest": "8d4b987199fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q4_K_S1f33fcfdb4b1\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "1f33fcfdb4b1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q4_K_M84dd8780ab54\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.5GB",
+      "digest": "84dd8780ab54",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q5_01a7d31503b2a\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "1a7d31503b2a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q5_1061afe4b95b5\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.0GB",
+      "digest": "061afe4b95b5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q5_K_S4a434490ef35\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "4a434490ef35",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q5_K_M0f701078af82\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "0f701078af82",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q6_K13f15e36187d\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.2GB",
+      "digest": "13f15e36187d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-q8_07dfc4f0660c0\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "7dfc4f0660c0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-chat-v1.5-fp1686621ca225c4\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.9GB",
+      "digest": "86621ca225c4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-texta1332f1a62c4\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "a1332f1a62c4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q2_K9f5aaac70cb0\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "9f5aaac70cb0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q3_K_S8a41ec56a16b\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.9GB",
+      "digest": "8a41ec56a16b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q3_K_Mb446af0b99f1\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.0GB",
+      "digest": "b446af0b99f1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q3_K_L34cd35706e60\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.2GB",
+      "digest": "34cd35706e60",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q4_0a1332f1a62c4\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "a1332f1a62c4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q4_10139d9637b43\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.6GB",
+      "digest": "0139d9637b43",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q4_K_Sa569a7c9c36b\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "a569a7c9c36b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q4_K_Mba6453687014\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.5GB",
+      "digest": "ba6453687014",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q5_09c5c32de923f\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "9c5c32de923f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q5_133f576bd435a\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.0GB",
+      "digest": "33f576bd435a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q5_K_Sdc8f41c10a81\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "dc8f41c10a81",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q5_K_M55b9362ae113\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "55b9362ae113",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q6_Ke40c4d6f1e33\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.2GB",
+      "digest": "e40c4d6f1e33",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-q8_0e3bafc3eec84\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "e3bafc3eec84",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:4b-text-v1.5-fp16bd8bb0558fba\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.9GB",
+      "digest": "bd8bb0558fba",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat2091ee8c8d8f\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "2091ee8c8d8f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q2_Kb1e83e951244\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.0GB",
+      "digest": "b1e83e951244",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q2_Kfaee39b0b827\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.1GB",
+      "digest": "faee39b0b827",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q3_K_S6ee05062598c\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "6ee05062598c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q3_K_Sef462b8bc3ca\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "ef462b8bc3ca",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q3_K_M981740748bb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "981740748bb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q3_K_Mdfd589fd9f3b\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "dfd589fd9f3b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q3_K_L6c760e557c98\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.3GB",
+      "digest": "6c760e557c98",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q3_K_Lc78b559835da\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "c78b559835da",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q4_08a759e224c54\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "8a759e224c54",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q4_02091ee8c8d8f\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "2091ee8c8d8f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q4_1e70d79f49f09\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.0GB",
+      "digest": "e70d79f49f09",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q4_13dc4f8204e32\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.0GB",
+      "digest": "3dc4f8204e32",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q4_K_S670c5afa68d5\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "670c5afa68d5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q4_K_S1b769918d6f3\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "1b769918d6f3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q4_K_M6c6f9fb7cb7b\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.9GB",
+      "digest": "6c6f9fb7cb7b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q4_K_M315448cc7b99\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "315448cc7b99",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q5_0940f9af7bba7\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "940f9af7bba7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q5_076b41a9e206c\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "76b41a9e206c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q5_171556ed81da3\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.8GB",
+      "digest": "71556ed81da3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q5_180b5a8dd99a2\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.8GB",
+      "digest": "80b5a8dd99a2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q5_K_S82f7b355c834\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "82f7b355c834",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q5_K_S94f4b35970c7\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "94f4b35970c7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q5_K_Meb70368f4555\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "eb70368f4555",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q5_K_M44ca6b3fda9d\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "44ca6b3fda9d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q6_Kbe7c8c5aee85\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "be7c8c5aee85",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q6_K6b5b161d1076\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "6b5b161d1076",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-q8_075224d9ec839\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "75224d9ec839",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-q8_03985a6e61dfa\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "3985a6e61dfa",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-fp16496130f8bb9c\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "496130f8bb9c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-chat-v1.5-fp1639e2b1482d7d\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "39e2b1482d7d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text952dc7c77fea\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "952dc7c77fea",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q2_K7c798100fec5\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.1GB",
+      "digest": "7c798100fec5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q3_K_S59ff1e9f7a72\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "59ff1e9f7a72",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q3_K_Mfab4b0426e2d\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "fab4b0426e2d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q3_K_Lc103abc28f47\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "c103abc28f47",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q4_0952dc7c77fea\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "952dc7c77fea",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q4_11c67239d76ac\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.0GB",
+      "digest": "1c67239d76ac",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q4_K_S05bb240791f0\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "05bb240791f0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q4_K_Ma2e8ed289a56\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "a2e8ed289a56",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q5_02074857a59f8\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "2074857a59f8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q5_10945490c2698\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.8GB",
+      "digest": "0945490c2698",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q5_K_S6d3df3af15c9\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "6d3df3af15c9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q5_K_M4bf2de545437\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "4bf2de545437",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q6_K989f69b773a3\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "989f69b773a3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-q8_0968572e9757d\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "968572e9757d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-text-v1.5-fp16ba1ea7856323\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "ba1ea7856323",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q2_Kafe0b73c064a\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.0GB",
+      "digest": "afe0b73c064a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q3_K_Se770768ad724\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "e770768ad724",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q3_K_M407571073d23\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "407571073d23",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q3_K_L2a971f9c4019\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.3GB",
+      "digest": "2a971f9c4019",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q4_0a602ed3d295f\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "a602ed3d295f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q4_1aced3b622251\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.0GB",
+      "digest": "aced3b622251",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q4_K_S13660ea6e426\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "13660ea6e426",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q4_K_Me6124c271f88\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.9GB",
+      "digest": "e6124c271f88",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q5_082a77b5d2839\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "82a77b5d2839",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q5_13a554a4eca23\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.8GB",
+      "digest": "3a554a4eca23",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q5_K_S48ac7dcf12ec\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "48ac7dcf12ec",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q5_K_Mee14f131c864\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "ee14f131c864",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q6_K733a6dcda35a\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "733a6dcda35a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-q8_0ea380ed299dd\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "ea380ed299dd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:7b-fp16bdb4603ac3f3\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "bdb4603ac3f3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat80362ced6553\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "80362ced6553",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q2_Kfd1a3ccd26ec\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.0GB",
+      "digest": "fd1a3ccd26ec",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q2_K42f07244d30a\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.1GB",
+      "digest": "42f07244d30a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q3_K_S79c06fc56da4\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "79c06fc56da4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q3_K_S3ad40beca67d\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "3ad40beca67d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q3_K_Mf3e7aa8567ed\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.7GB",
+      "digest": "f3e7aa8567ed",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q3_K_M319f64f95f85\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "319f64f95f85",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q3_K_L8b5eb6ea106d\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.0GB",
+      "digest": "8b5eb6ea106d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q3_K_L0eca84ada344\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.8GB",
+      "digest": "0eca84ada344",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q4_0e5a75212c4d4\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "e5a75212c4d4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q4_080362ced6553\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "80362ced6553",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q4_1282ce204bb6b\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "282ce204bb6b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q4_14f50c5079631\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "4f50c5079631",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q4_K_Sdc341a2db63b\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.6GB",
+      "digest": "dc341a2db63b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q4_K_Se6c0570ce501\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.6GB",
+      "digest": "e6c0570ce501",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q4_K_Mf845925f8d90\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.4GB",
+      "digest": "f845925f8d90",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q4_K_M128a75c88e2f\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.2GB",
+      "digest": "128a75c88e2f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q5_0ee17956b87cc\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.9GB",
+      "digest": "ee17956b87cc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q5_0d06d5137e584\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.9GB",
+      "digest": "d06d5137e584",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q5_1248b0b25c47e\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "248b0b25c47e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q5_1a16ff3fb4f19\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "a16ff3fb4f19",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q5_K_S91f5698531f7\u2022",
+      "last_updated": "2 years ago",
+      "size": "10GB",
+      "digest": "91f5698531f7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q5_K_S85650ef588d4\u2022",
+      "last_updated": "2 years ago",
+      "size": "10GB",
+      "digest": "85650ef588d4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q5_K_M240a4381badd\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "240a4381badd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q5_K_Mba0e61d66b27\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "ba0e61d66b27",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q6_K5967f08cc189\u2022",
+      "last_updated": "2 years ago",
+      "size": "12GB",
+      "digest": "5967f08cc189",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q6_K9378d98cce24\u2022",
+      "last_updated": "2 years ago",
+      "size": "12GB",
+      "digest": "9378d98cce24",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-q8_066f562724bd2\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "66f562724bd2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-q8_0f1954a35f7ce\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "f1954a35f7ce",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-fp1613c401be87d4\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "13c401be87d4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-chat-v1.5-fp16cb20f077361d\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "cb20f077361d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text06e198d562c8\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "06e198d562c8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q2_K490383e818bc\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.0GB",
+      "digest": "490383e818bc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q2_Kb29e82a9291d\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.1GB",
+      "digest": "b29e82a9291d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q3_K_S7b6da3dbc02c\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "7b6da3dbc02c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q3_K_S79262f8761eb\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "79262f8761eb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q3_K_M35babf7c6752\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.7GB",
+      "digest": "35babf7c6752",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q3_K_M8ba10671f72c\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "8ba10671f72c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q3_K_Le706cfc43d67\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.0GB",
+      "digest": "e706cfc43d67",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q3_K_Le5feaa6b570f\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.8GB",
+      "digest": "e5feaa6b570f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q4_0856ff95ace9a\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "856ff95ace9a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q4_006e198d562c8\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "06e198d562c8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q4_1fb080c3f9385\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "fb080c3f9385",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q4_13514cc84da3f\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "3514cc84da3f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q4_K_S074ac9031894\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.6GB",
+      "digest": "074ac9031894",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q4_K_Sab6680a741b8\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.6GB",
+      "digest": "ab6680a741b8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q4_K_M9a20ad8849dc\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.4GB",
+      "digest": "9a20ad8849dc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q4_K_M4a22e598c7c9\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.2GB",
+      "digest": "4a22e598c7c9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q5_07f52ab937912\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.9GB",
+      "digest": "7f52ab937912",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q5_0c9413c9c81d5\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.9GB",
+      "digest": "c9413c9c81d5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q5_19a711abdb0ca\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "9a711abdb0ca",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q5_15f196042dc74\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "5f196042dc74",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q5_K_S8c818d039803\u2022",
+      "last_updated": "2 years ago",
+      "size": "10GB",
+      "digest": "8c818d039803",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q5_K_Sa31ed924fdab\u2022",
+      "last_updated": "2 years ago",
+      "size": "10GB",
+      "digest": "a31ed924fdab",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q5_K_M2acf4c66179b\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "2acf4c66179b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q5_K_M1564ba9fc84c\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "1564ba9fc84c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q6_Ke653065c8329\u2022",
+      "last_updated": "2 years ago",
+      "size": "12GB",
+      "digest": "e653065c8329",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q6_Kd65ba73d052f\u2022",
+      "last_updated": "2 years ago",
+      "size": "12GB",
+      "digest": "d65ba73d052f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-q8_03c3330be50fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "3c3330be50fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-q8_05cc57127891d\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "5cc57127891d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-fp16c49a8e18017a\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "c49a8e18017a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:14b-text-v1.5-fp166a5ff630639c\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "6a5ff630639c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat26e7e8447f5d\u2022",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "26e7e8447f5d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q2_Kcae8aaeddda8\u2022",
+      "last_updated": "1 year ago",
+      "size": "12GB",
+      "digest": "cae8aaeddda8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q3_K_S1d172657e5a4\u2022",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "1d172657e5a4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q3_K_Mecaa1f67c173\u2022",
+      "last_updated": "1 year ago",
+      "size": "16GB",
+      "digest": "ecaa1f67c173",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q3_K_Ld3bd7dde094e\u2022",
+      "last_updated": "1 year ago",
+      "size": "17GB",
+      "digest": "d3bd7dde094e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q4_026e7e8447f5d\u2022",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "26e7e8447f5d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q4_17fe1bf3d215e\u2022",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "7fe1bf3d215e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q4_K_S4016dd0cf4e1\u2022",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "4016dd0cf4e1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q4_K_M7975942ff0b1\u2022",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "7975942ff0b1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q5_0828e952fda6b\u2022",
+      "last_updated": "1 year ago",
+      "size": "22GB",
+      "digest": "828e952fda6b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q5_1f3d3a42b3783\u2022",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "f3d3a42b3783",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q5_K_Se67b35358286\u2022",
+      "last_updated": "1 year ago",
+      "size": "22GB",
+      "digest": "e67b35358286",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q5_K_M380f376a451a\u2022",
+      "last_updated": "1 year ago",
+      "size": "23GB",
+      "digest": "380f376a451a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q6_Kaf95b2a2409c\u2022",
+      "last_updated": "1 year ago",
+      "size": "27GB",
+      "digest": "af95b2a2409c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-q8_033c6cb647280\u2022",
+      "last_updated": "1 year ago",
+      "size": "35GB",
+      "digest": "33c6cb647280",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-chat-v1.5-fp16bb930ce340f6\u2022",
+      "last_updated": "1 year ago",
+      "size": "65GB",
+      "digest": "bb930ce340f6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-texte0618f6f0310\u2022",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "e0618f6f0310",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q2_K95302f736724\u2022",
+      "last_updated": "1 year ago",
+      "size": "12GB",
+      "digest": "95302f736724",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q3_K_S1d103fa3fd6e\u2022",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "1d103fa3fd6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q3_K_M24ea7d162ce2\u2022",
+      "last_updated": "1 year ago",
+      "size": "16GB",
+      "digest": "24ea7d162ce2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q3_K_L1a047023c341\u2022",
+      "last_updated": "1 year ago",
+      "size": "17GB",
+      "digest": "1a047023c341",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q4_0e0618f6f0310\u2022",
+      "last_updated": "1 year ago",
+      "size": "18GB",
+      "digest": "e0618f6f0310",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q4_1cefaaea22fea\u2022",
+      "last_updated": "1 year ago",
+      "size": "20GB",
+      "digest": "cefaaea22fea",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q4_K_Sb68f170dbfd9\u2022",
+      "last_updated": "1 year ago",
+      "size": "19GB",
+      "digest": "b68f170dbfd9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q5_08ab0ebc4b274\u2022",
+      "last_updated": "1 year ago",
+      "size": "22GB",
+      "digest": "8ab0ebc4b274",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q5_1577251d3ca12\u2022",
+      "last_updated": "1 year ago",
+      "size": "24GB",
+      "digest": "577251d3ca12",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:32b-text-v1.5-q8_060a90eb7a7da\u2022",
+      "last_updated": "1 year ago",
+      "size": "35GB",
+      "digest": "60a90eb7a7da",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chate1c64582de5c\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "e1c64582de5c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q2_K244e559ab857\u2022",
+      "last_updated": "2 years ago",
+      "size": "27GB",
+      "digest": "244e559ab857",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q2_K26d588038b9d\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "26d588038b9d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q3_K_Se69b5490aa6d\u2022",
+      "last_updated": "2 years ago",
+      "size": "32GB",
+      "digest": "e69b5490aa6d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q3_K_Sa3f91495a290\u2022",
+      "last_updated": "2 years ago",
+      "size": "33GB",
+      "digest": "a3f91495a290",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q3_K_M2142023c2267\u2022",
+      "last_updated": "2 years ago",
+      "size": "37GB",
+      "digest": "2142023c2267",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q3_K_M8c8712c6e79c\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "8c8712c6e79c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q3_K_L227bc5757311\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "227bc5757311",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q3_K_L1a4a7d398f67\u2022",
+      "last_updated": "2 years ago",
+      "size": "38GB",
+      "digest": "1a4a7d398f67",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q4_0bf2a98cf5f68\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "bf2a98cf5f68",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q4_0e1c64582de5c\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "e1c64582de5c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q4_14d7d270862ce\u2022",
+      "last_updated": "2 years ago",
+      "size": "45GB",
+      "digest": "4d7d270862ce",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q4_1a5a048009124\u2022",
+      "last_updated": "2 years ago",
+      "size": "45GB",
+      "digest": "a5a048009124",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q4_K_S5c65776c1c19\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "5c65776c1c19",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q4_K_S7e941773ce08\u2022",
+      "last_updated": "2 years ago",
+      "size": "42GB",
+      "digest": "7e941773ce08",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q4_K_Md1f376d8aaa7\u2022",
+      "last_updated": "2 years ago",
+      "size": "45GB",
+      "digest": "d1f376d8aaa7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q4_K_M92daf708b997\u2022",
+      "last_updated": "2 years ago",
+      "size": "44GB",
+      "digest": "92daf708b997",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q5_07363152de4ba\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "7363152de4ba",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q5_07ff940bf7ddc\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "7ff940bf7ddc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q5_1d3f70b712d5c\u2022",
+      "last_updated": "2 years ago",
+      "size": "54GB",
+      "digest": "d3f70b712d5c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q5_18432bf6237b9\u2022",
+      "last_updated": "2 years ago",
+      "size": "54GB",
+      "digest": "8432bf6237b9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q5_K_Sf9a9015181f4\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "f9a9015181f4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q5_K_Sf92117215877\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "f92117215877",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q5_K_M29453752b3f1\u2022",
+      "last_updated": "2 years ago",
+      "size": "53GB",
+      "digest": "29453752b3f1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q5_K_M13a773260811\u2022",
+      "last_updated": "2 years ago",
+      "size": "51GB",
+      "digest": "13a773260811",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q6_K5d2b88c19b53\u2022",
+      "last_updated": "2 years ago",
+      "size": "59GB",
+      "digest": "5d2b88c19b53",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q6_K5e3a83c19698\u2022",
+      "last_updated": "2 years ago",
+      "size": "59GB",
+      "digest": "5e3a83c19698",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-q8_0030f5b2af0ff\u2022",
+      "last_updated": "2 years ago",
+      "size": "77GB",
+      "digest": "030f5b2af0ff",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-q8_0d9fd9f90f55b\u2022",
+      "last_updated": "2 years ago",
+      "size": "77GB",
+      "digest": "d9fd9f90f55b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-fp16123c97eccf0d\u2022",
+      "last_updated": "2 years ago",
+      "size": "145GB",
+      "digest": "123c97eccf0d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-chat-v1.5-fp1628d7b95e342e\u2022",
+      "last_updated": "2 years ago",
+      "size": "145GB",
+      "digest": "28d7b95e342e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text641bc60e9274\u2022",
+      "last_updated": "1 year ago",
+      "size": "63GB",
+      "digest": "641bc60e9274",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q2_K23b4e03b0625\u2022",
+      "last_updated": "2 years ago",
+      "size": "27GB",
+      "digest": "23b4e03b0625",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q2_K197347e6f44a\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "197347e6f44a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q3_K_S325a8011ee4b\u2022",
+      "last_updated": "2 years ago",
+      "size": "32GB",
+      "digest": "325a8011ee4b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q3_K_S543046c80b47\u2022",
+      "last_updated": "2 years ago",
+      "size": "33GB",
+      "digest": "543046c80b47",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q3_K_M1c5d6fd01ff9\u2022",
+      "last_updated": "2 years ago",
+      "size": "37GB",
+      "digest": "1c5d6fd01ff9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q3_K_M0369ae92fbbb\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "0369ae92fbbb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q3_K_La7cdeaeb4dc6\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "a7cdeaeb4dc6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q3_K_L12d317b5786e\u2022",
+      "last_updated": "2 years ago",
+      "size": "38GB",
+      "digest": "12d317b5786e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q4_01cd3d5885ed6\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "1cd3d5885ed6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q4_0d5c16df7f831\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "d5c16df7f831",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q4_1b466cc1b68b6\u2022",
+      "last_updated": "2 years ago",
+      "size": "45GB",
+      "digest": "b466cc1b68b6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q4_1c43dd2a16f0f\u2022",
+      "last_updated": "2 years ago",
+      "size": "45GB",
+      "digest": "c43dd2a16f0f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q4_K_S66750638e89b\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "66750638e89b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q4_K_Sc395d71df009\u2022",
+      "last_updated": "2 years ago",
+      "size": "42GB",
+      "digest": "c395d71df009",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q4_K_M17d08105327a\u2022",
+      "last_updated": "2 years ago",
+      "size": "45GB",
+      "digest": "17d08105327a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q4_K_Mb6c1eefce0a6\u2022",
+      "last_updated": "2 years ago",
+      "size": "44GB",
+      "digest": "b6c1eefce0a6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q5_0d552a292aad1\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "d552a292aad1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q5_0ce956e731751\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "ce956e731751",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q5_1d8d15961dfea\u2022",
+      "last_updated": "2 years ago",
+      "size": "54GB",
+      "digest": "d8d15961dfea",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q5_1e61f727ecdb2\u2022",
+      "last_updated": "2 years ago",
+      "size": "54GB",
+      "digest": "e61f727ecdb2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q5_K_Sc47f6138bc77\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "c47f6138bc77",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q5_K_S8c427eabb6e1\u2022",
+      "last_updated": "2 years ago",
+      "size": "50GB",
+      "digest": "8c427eabb6e1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q5_K_M5a9b21fe4698\u2022",
+      "last_updated": "2 years ago",
+      "size": "53GB",
+      "digest": "5a9b21fe4698",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q5_K_Mea68416fee98\u2022",
+      "last_updated": "2 years ago",
+      "size": "51GB",
+      "digest": "ea68416fee98",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q6_K025578f7c6ba\u2022",
+      "last_updated": "2 years ago",
+      "size": "59GB",
+      "digest": "025578f7c6ba",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q6_Kc75eef5a9035\u2022",
+      "last_updated": "2 years ago",
+      "size": "59GB",
+      "digest": "c75eef5a9035",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-q8_05c8b151ce1ed\u2022",
+      "last_updated": "2 years ago",
+      "size": "77GB",
+      "digest": "5c8b151ce1ed",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-q8_0da7cc3b6659a\u2022",
+      "last_updated": "2 years ago",
+      "size": "77GB",
+      "digest": "da7cc3b6659a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-fp1634db8c6fcc66\u2022",
+      "last_updated": "2 years ago",
+      "size": "145GB",
+      "digest": "34db8c6fcc66",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:72b-text-v1.5-fp16e45fb69e7592\u2022",
+      "last_updated": "2 years ago",
+      "size": "145GB",
+      "digest": "e45fb69e7592",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat7fed4b7787da\u2022",
+      "last_updated": "1 year ago",
+      "size": "63GB",
+      "digest": "7fed4b7787da",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q2_K1e7acfd0a780\u2022",
+      "last_updated": "1 year ago",
+      "size": "41GB",
+      "digest": "1e7acfd0a780",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q3_K_Sa2f6e6c88111\u2022",
+      "last_updated": "1 year ago",
+      "size": "48GB",
+      "digest": "a2f6e6c88111",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q3_K_Me1dea48c9e67\u2022",
+      "last_updated": "1 year ago",
+      "size": "54GB",
+      "digest": "e1dea48c9e67",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q3_K_L38eec5a3a415\u2022",
+      "last_updated": "1 year ago",
+      "size": "58GB",
+      "digest": "38eec5a3a415",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q4_07fed4b7787da\u2022",
+      "last_updated": "1 year ago",
+      "size": "63GB",
+      "digest": "7fed4b7787da",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q4_16122c3a9ed71\u2022",
+      "last_updated": "1 year ago",
+      "size": "70GB",
+      "digest": "6122c3a9ed71",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q4_K_S89cc28d3008f\u2022",
+      "last_updated": "1 year ago",
+      "size": "63GB",
+      "digest": "89cc28d3008f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q4_K_Mb9cfda07d6f6\u2022",
+      "last_updated": "1 year ago",
+      "size": "67GB",
+      "digest": "b9cfda07d6f6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q5_034209c9810a9\u2022",
+      "last_updated": "1 year ago",
+      "size": "77GB",
+      "digest": "34209c9810a9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q5_1e74e5965cc23\u2022",
+      "last_updated": "1 year ago",
+      "size": "84GB",
+      "digest": "e74e5965cc23",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q5_K_S7ba26ace3df0\u2022",
+      "last_updated": "1 year ago",
+      "size": "77GB",
+      "digest": "7ba26ace3df0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q5_K_M98574b6ea163\u2022",
+      "last_updated": "1 year ago",
+      "size": "79GB",
+      "digest": "98574b6ea163",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q6_K1e57b2da94fa\u2022",
+      "last_updated": "1 year ago",
+      "size": "91GB",
+      "digest": "1e57b2da94fa",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-q8_0a7b94c2ca097\u2022",
+      "last_updated": "1 year ago",
+      "size": "118GB",
+      "digest": "a7b94c2ca097",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-chat-v1.5-fp16ba695125f554\u2022",
+      "last_updated": "1 year ago",
+      "size": "222GB",
+      "digest": "ba695125f554",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q2_K0c0dc39aeb62\u2022",
+      "last_updated": "1 year ago",
+      "size": "41GB",
+      "digest": "0c0dc39aeb62",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q3_K_Sf47bf7b34be3\u2022",
+      "last_updated": "1 year ago",
+      "size": "48GB",
+      "digest": "f47bf7b34be3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q3_K_M354ef171b532\u2022",
+      "last_updated": "1 year ago",
+      "size": "54GB",
+      "digest": "354ef171b532",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q3_K_Ld600eac4b5ea\u2022",
+      "last_updated": "1 year ago",
+      "size": "58GB",
+      "digest": "d600eac4b5ea",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q4_0641bc60e9274\u2022",
+      "last_updated": "1 year ago",
+      "size": "63GB",
+      "digest": "641bc60e9274",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q4_188fd1ce3561e\u2022",
+      "last_updated": "1 year ago",
+      "size": "70GB",
+      "digest": "88fd1ce3561e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q4_K_S29294418d682\u2022",
+      "last_updated": "1 year ago",
+      "size": "63GB",
+      "digest": "29294418d682",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q4_K_Mb66e1e01042f\u2022",
+      "last_updated": "1 year ago",
+      "size": "67GB",
+      "digest": "b66e1e01042f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q5_0818ee5b08aa2\u2022",
+      "last_updated": "1 year ago",
+      "size": "77GB",
+      "digest": "818ee5b08aa2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q5_119c32c34f04a\u2022",
+      "last_updated": "1 year ago",
+      "size": "84GB",
+      "digest": "19c32c34f04a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q5_K_S358e654339d6\u2022",
+      "last_updated": "1 year ago",
+      "size": "77GB",
+      "digest": "358e654339d6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q5_K_Mdb245b9a7f62\u2022",
+      "last_updated": "1 year ago",
+      "size": "79GB",
+      "digest": "db245b9a7f62",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q6_K446cabb2ebd6\u2022",
+      "last_updated": "1 year ago",
+      "size": "91GB",
+      "digest": "446cabb2ebd6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-q8_053bc7e72b768\u2022",
+      "last_updated": "1 year ago",
+      "size": "118GB",
+      "digest": "53bc7e72b768",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen:110b-text-v1.5-fp16db7af5aa87cf\u2022",
+      "last_updated": "1 year ago",
+      "size": "222GB",
+      "digest": "db7af5aa87cf",
+      "manifest": null,
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:08"
+  }
+}

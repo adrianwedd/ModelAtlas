@@ -64,9 +64,7 @@ function modelApp() {
       }
 
       if (this.sourceFilter !== 'all') {
-        result = result.filter(m =>
-          this.sourceFilter === 'hf' ? this.safeStr(m.name).includes('/') : !this.safeStr(m.name).includes('/')
-        );
+        result = result.filter(m => this.sourceKey(m) === this.sourceFilter);
       }
 
       if (this.licenseFilter !== 'all') {
@@ -107,12 +105,30 @@ function modelApp() {
         .slice(0, 4);
     },
 
+    sourceKey(model) {
+      const src = this.safeStr(model.source).toLowerCase();
+      if (src === 'huggingface' || src === 'hf') return 'hf';
+      if (src === 'ollama_cloud') return 'ollama_cloud';
+      if (src === 'openrouter') return 'openrouter';
+      if (src === 'ollama') return 'ollama';
+      // fallback: namespaced names (org/repo) are HF
+      return this.safeStr(model.name).includes('/') ? 'hf' : 'ollama';
+    },
+
     sourceLabel(model) {
-      return this.safeStr(model.name).includes('/') ? 'HF' : 'Ollama';
+      const k = this.sourceKey(model);
+      if (k === 'hf') return 'HF';
+      if (k === 'ollama_cloud') return 'Ollama Cloud';
+      if (k === 'openrouter') return 'OpenRouter';
+      return 'Ollama';
     },
 
     sourceBadgeClass(model) {
-      return this.safeStr(model.name).includes('/') ? 'source--hf' : 'source--ollama';
+      const k = this.sourceKey(model);
+      if (k === 'hf') return 'source--hf';
+      if (k === 'ollama_cloud') return 'source--ollama-cloud';
+      if (k === 'openrouter') return 'source--openrouter';
+      return 'source--ollama';
     },
 
     formatPopularity(model) {
@@ -145,9 +161,10 @@ function modelApp() {
     modelUrl(model) {
       const modelName = this.safeStr(model.name);
       if (!modelName) return '#';
-      if (modelName.includes('/')) {
-        return `https://huggingface.co/${modelName}`;
-      }
+      const k = this.sourceKey(model);
+      if (k === 'openrouter') return `https://openrouter.ai/models/${modelName}`;
+      if (k === 'ollama_cloud') return `https://ollama.com/library/${modelName.split(':')[0]}`;
+      if (k === 'hf') return `https://huggingface.co/${modelName}`;
       return `https://ollama.com/library/${modelName}`;
     },
 
@@ -162,10 +179,6 @@ function modelApp() {
     trustFilled(score) {
       const raw = parseFloat(score);
       return Number.isFinite(raw) ? Math.min(5, Math.max(0, Math.round(raw * 5))) : 0;
-    },
-
-    trustDots(score) {
-      return '';
     },
 
     // ── Charts ────────────────────────────────────────────────

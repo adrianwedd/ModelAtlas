@@ -104,15 +104,15 @@ def scrape_openrouter_models(
     for model in models:
         slug = model["name"].replace("/", "_").replace(":", "_")
         out_path = OPENROUTER_MODELS_DIR / f"{slug}.json"
-        out_path.write_text(json.dumps(model, indent=2), encoding="utf-8")
+        out_path.write_text(json.dumps(model, indent=2) + "\n", encoding="utf-8")
 
     # Write split indices
     all_index = OPENROUTER_MODELS_DIR / "_index.json"
-    all_index.write_text(json.dumps(models, indent=2), encoding="utf-8")
+    all_index.write_text(json.dumps(models, indent=2) + "\n", encoding="utf-8")
 
     free_models = [m for m in models if m["is_free"]]
     free_index = OPENROUTER_MODELS_DIR / "_free_index.json"
-    free_index.write_text(json.dumps(free_models, indent=2), encoding="utf-8")
+    free_index.write_text(json.dumps(free_models, indent=2) + "\n", encoding="utf-8")
 
     logger.info(
         "OpenRouter scrape complete — %d total (%d free) saved to %s",

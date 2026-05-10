@@ -136,6 +136,7 @@ def execute_hf_scraper(limit=None, use_cache=True):
                 )
                 with open(model_file_path, "w", encoding="utf-8") as mf:
                     json.dump(data, mf, indent=2)
+                    mf.write("\n")
 
             except Exception as model_e:
                 logger.error("Error processing model %s: %s", model_id, model_e)

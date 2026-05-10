@@ -2,6 +2,7 @@ import asyncio
 import glob
 import json
 import os
+import tempfile
 from pathlib import Path
 from typing import TypedDict
 
@@ -81,13 +82,22 @@ def enrich_node(state: TraceState) -> TraceState:
             )
             output_path = enriched_models_dir / f"{model_name_slug}_enriched.json"
             if output_path.exists():
-                logger.warning(
-                    "Enrichment file %s already exists; overwriting with data from %s",
+                logger.info(
+                    "Enrichment file %s already exists; skipping to preserve curated data.",
                     output_path.name,
-                    file_path,
                 )
-            with open(output_path, "w", encoding="utf-8") as f:
-                json.dump(enriched_data, f, indent=2)
+                continue
+            tmp_fd, tmp_path = tempfile.mkstemp(
+                dir=enriched_models_dir, suffix=".json.tmp"
+            )
+            try:
+                with os.fdopen(tmp_fd, "w", encoding="utf-8") as f:
+                    json.dump(enriched_data, f, indent=2)
+                    f.write("\n")
+                os.replace(tmp_path, output_path)
+            except Exception:
+                os.unlink(tmp_path)
+                raise
             logger.info(f"Enriched and saved: {output_path}")
         except Exception as e:
             logger.error(f"Error enriching model {file_path}: {e}")

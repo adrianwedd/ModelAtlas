@@ -1,0 +1,59 @@
+{
+  "name": "rnj-1",
+  "description": "Rnj-1 is a family of 8B parameter open-weight, dense models trained from scratch by Essential AI, optimized for code and STEM with capabilities on par with SOTA open-weight models.",
+  "pull_count": 332600,
+  "last_updated": "Dec 12, 2025 11:44 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"/assets/library/rnj-1/39181423-7841-47ee-bfe6-7b12966b45d1\" width=\"320\"/></p>\n<blockquote>\n<p>This model requires <a href=\"https://github.com/ollama/ollama/releases/tag/v0.13.3-rc0\" rel=\"nofollow\">Ollama 0.13.3</a> or later.</p>\n</blockquote>\n<p>Rnj-1 is a family of 8B parameter open-weight, dense models trained from scratch by Essential AI, optimized for code and STEM with capabilities on par with SOTA open-weight models. These models perform well across a range of programming languages and boast strong agentic capabilities (e.g., inside agentic frameworks like mini-SWE-agent), while also excelling at tool-calling. They additionally exhibit strong capabilities in math and science. Herein, rnj-1 refers to the base model, while rnj-1-instruct refers to the post-trained instruction tuned model.</p>\n<p><img alt=\"image.png\" src=\"/assets/library/rnj-1/d40fd93f-fe0c-4c6b-ac44-06b6c9b8ae8e\"/></p>\n<h3>Highlights of abilities</h3>\n<ul>\n<li><strong>Code generation:</strong> Both <code>rnj-1-instruct</code> and <code>rnj-1</code> demonstrate strong code generation abilities as measured on tasks like HumanEval+, MBPP+, BigCodeBench, and LiveCodeBench v6. Both models compete with the strongest open weight models, sometimes outperforming even larger models such as GPT OSS 20B. We measured code comprehension abilities using the task of predicting inputs given outputs and vice-versa, Crux-IO. We find our models outperform comparable baselines. For multi-lingual code generation capabilities across programming languages we measure MultiPL-E on 6 languages (C++, TypeScript, Java, JavaScript, Shell, PHP) and we find performance close to the strongest model.</li>\n<li><strong>Agentic and Tool Use:</strong> <code>rnj-1-instruct</code> dominates the pack on agentic coding, one of our target abilities. SWE-bench performance is indicative of the model\u2019s ability to tackle everyday software engineering tasks. The model is an order of magnitude stronger than comparably sized models on SWE-bench and approaches the capabilities available in much larger models. It scores <code>20.8%</code> on SWE-bench Verified in bash-only mode, which is higher than Gemini 2.0 flash and Qwen2.5-Coder 32B Instruct under the same agentic framework (<a href=\"https://www.swebench.com/bash-only.html\" rel=\"nofollow\">leaderboard</a>).<br/><br/>\nThere is a surge of interest in developing models\u2019 abilities to write performant code. <code>rnj-1-instruct</code> is able to use a profiler to iteratively improve the performance of the code it writes. For instance, on <a href=\"https://github.com/q-rz/enamel/tree/main\" rel=\"nofollow\">Enamel</a>, which measures abilities to write efficient solutions to algorithmic problems, the model outperforms all other models under the same setting.<br/><br/>\nFurthermore, <code>rnj-1-instruct</code> surpasses comparable models in tool use performance as measured by the Berkeley Functional Calling Leaderboard (BFCL).</li>\n<li><strong>Code Infilling</strong> : Having specifically been trained on FIM-ed pre-training data, <code>rnj-1</code> exhibits strong infilling abilities, which have been further enhanced during post-training. The base model <code>rnj-1</code> scores highly on HE-FIM-Python (avg) at 82.49% and <code>rnj-1-instruct</code> achieves 86.21%.</li>\n<li><strong>Mathematical Problem Solving:</strong> <code>rnj-1-instruct</code> shows strong mathematical abilities across several levels of difficulty from elementary math (GSM8k), high school and undergraduate math (Minerva-MATH), and competition math (AIME \u201824 and \u201825). On harder subjects, it outcompetes or is on par with the strongest model in the pack.</li>\n<li><strong>Scientific Reasoning:</strong> <code>rnj-1-instruct</code> exhibits long-context reasoning abilities that are needed to solve hard science and technical questions in GPQA-Diamond and SuperGPQA.</li>\n</ul>\n<h3>Reference</h3>\n<p><a href=\"https://www.essential.ai/research/rnj-1\" rel=\"nofollow\">rnj-1 blog post</a></p>\n</div>",
+  "readme_text": "\n\n\nThis model requires Ollama 0.13.3 or later.\n\nRnj-1 is a family of 8B parameter open-weight, dense models trained from scratch by Essential AI, optimized for code and STEM with capabilities on par with SOTA open-weight models. These models perform well across a range of programming languages and boast strong agentic capabilities (e.g., inside agentic frameworks like mini-SWE-agent), while also excelling at tool-calling. They additionally exhibit strong capabilities in math and science. Herein, rnj-1 refers to the base model, while rnj-1-instruct refers to the post-trained instruction tuned model.\n\nHighlights of abilities\n\nCode generation: Both rnj-1-instruct and rnj-1 demonstrate strong code generation abilities as measured on tasks like HumanEval+, MBPP+, BigCodeBench, and LiveCodeBench v6. Both models compete with the strongest open weight models, sometimes outperforming even larger models such as GPT OSS 20B. We measured code comprehension abilities using the task of predicting inputs given outputs and vice-versa, Crux-IO. We find our models outperform comparable baselines. For multi-lingual code generation capabilities across programming languages we measure MultiPL-E on 6 languages (C++, TypeScript, Java, JavaScript, Shell, PHP) and we find performance close to the strongest model.\nAgentic and Tool Use: rnj-1-instruct dominates the pack on agentic coding, one of our target abilities. SWE-bench performance is indicative of the model\u2019s ability to tackle everyday software engineering tasks. The model is an order of magnitude stronger than comparably sized models on SWE-bench and approaches the capabilities available in much larger models. It scores 20.8% on SWE-bench Verified in bash-only mode, which is higher than Gemini 2.0 flash and Qwen2.5-Coder 32B Instruct under the same agentic framework (leaderboard).\nThere is a surge of interest in developing models\u2019 abilities to write performant code. rnj-1-instruct is able to use a profiler to iteratively improve the performance of the code it writes. For instance, on Enamel, which measures abilities to write efficient solutions to algorithmic problems, the model outperforms all other models under the same setting.\nFurthermore, rnj-1-instruct surpasses comparable models in tool use performance as measured by the Berkeley Functional Calling Leaderboard (BFCL).\nCode Infilling : Having specifically been trained on FIM-ed pre-training data, rnj-1 exhibits strong infilling abilities, which have been further enhanced during post-training. The base model rnj-1 scores highly on HE-FIM-Python (avg) at 82.49% and rnj-1-instruct achieves 86.21%.\nMathematical Problem Solving: rnj-1-instruct shows strong mathematical abilities across several levels of difficulty from elementary math (GSM8k), high school and undergraduate math (Minerva-MATH), and competition math (AIME \u201824 and \u201825). On harder subjects, it outcompetes or is on par with the strongest model in the pack.\nScientific Reasoning: rnj-1-instruct exhibits long-context reasoning abilities that are needed to solve hard science and technical questions in GPQA-Diamond and SuperGPQA.\n\nReference\nrnj-1 blog post\n",
+  "page_hash": "7e8dc3254527",
+  "tags": [
+    {
+      "tag": "rnj-1:latestd20e29ab8d0f\u2022",
+      "last_updated": "2 months ago",
+      "size": "5.1GB",
+      "digest": "d20e29ab8d0f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "rnj-1:8blatestd20e29ab8d0f\u2022",
+      "last_updated": "2 months ago",
+      "size": "5.1GB",
+      "digest": "d20e29ab8d0f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "rnj-1:8b-cloudd8200a2fbf21\u2022",
+      "last_updated": "2 months ago",
+      "size": "-",
+      "digest": "d8200a2fbf21",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "rnj-1:8b-instruct-q4_K_Md20e29ab8d0f\u2022",
+      "last_updated": "2 months ago",
+      "size": "5.1GB",
+      "digest": "d20e29ab8d0f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "rnj-1:8b-instruct-q8_057eea2304a52\u2022",
+      "last_updated": "2 months ago",
+      "size": "8.8GB",
+      "digest": "57eea2304a52",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "rnj-1:8b-instruct-fp16cf0061bce5f2\u2022",
+      "last_updated": "2 months ago",
+      "size": "17GB",
+      "digest": "cf0061bce5f2",
+      "manifest": null,
+      "config": {}
+    }
+  ]
+}

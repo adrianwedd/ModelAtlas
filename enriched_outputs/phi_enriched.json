@@ -1,0 +1,163 @@
+{
+  "name": "phi",
+  "description": "Phi-2: a 2.7B language model by Microsoft Research that demonstrates outstanding reasoning and language understanding capabilities.",
+  "pull_count": 1100000,
+  "last_updated": "Jan 6, 2024 5:10 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/jmorganca/ollama/assets/251292/e06e1a36-97b2-417a-b2b2-028c980359b1\" width=\"240\"/></p>\n<p>Phi-2 is a small language model capable of common-sense reasoning and language understanding. It showcases \u201cstate-of-the-art performance\u201d among language models with less than 13 billion parameters.</p>\n<h3>Example prompt</h3>\n<p>By default, <code>phi</code> includes a chat prompt template designed for multi-turn conversations:</p>\n<pre><code>% ollama run phi\n&gt;&gt;&gt; Hello, can you help me find my way to Toronto?\n Certainly! What is the exact location in Toronto that you are looking for?\n\n&gt;&gt;&gt; Yonge &amp; Bloor\n Sure, Yonge and Bloor is a busy intersection in downtown Toronto. Would you like to take public transportation or drive there?\n\n&gt;&gt;&gt; Public transportation\n Great! The easiest way to get there is by taking the TTC subway. You can take Line 1, which runs along Yonge Street and passes through downtown Toronto.\n</code></pre>\n<p>Using Ollama\u2019s API:</p>\n<pre><code>curl http://localhost:11434/api/chat -d '{\n  \"model\": \"phi\",\n  \"messages\": [\n    { \"role\": \"user\", \"content\": \"why is the sky blue?\" }\n  ]\n}'\n</code></pre>\n<h3>Example prompts (raw mode)</h3>\n<p>Phi also responds well to a wide variety of prompt formats when using <a href=\"https://github.com/jmorganca/ollama/blob/main/docs/api.md#request-raw-mode\" rel=\"nofollow\">raw mode</a> in Ollama\u2019s API, which bypasses all default prompt templating:</p>\n<h4>Instruct</h4>\n<pre><code>curl http://localhost:11434/api/generate -d '{\n  \"model\": \"phi\",\n  \"prompt\": \"Instruct: Write a detailed analogy between mathematics and a lighthouse.\\nOutput:\",\n  \"options\": {\n    \"stop\": [\"Instruct:\", \"Output:\"]\n  },\n  \"raw\": true,\n  \"stream\": false\n}'\n</code></pre>\n<h4>Code Completion</h4>\n<pre><code>curl http://localhost:11434/api/generate -d '{\n  \"model\": \"phi\",\n  \"prompt\": \"def print_prime(n):\\n  \",\n  \"raw\": true,\n  \"stream\": false\n}'\n</code></pre>\n<h4>Text completion</h4>\n<pre><code>curl http://localhost:11434/api/generate -d '{\n  \"model\": \"phi\",\n  \"prompt\": \"There once was a mouse named\",\n  \"raw\": true,\n  \"stream\": false\n}'\n</code></pre>\n<h2>References</h2>\n<p><a href=\"https://huggingface.co/microsoft/phi-2\" rel=\"nofollow\">HuggingFace</a></p>\n<p><a href=\"https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/\" rel=\"nofollow\">Blog Post</a></p>\n</div>",
+  "readme_text": "\n\nPhi-2 is a small language model capable of common-sense reasoning and language understanding. It showcases \u201cstate-of-the-art performance\u201d among language models with less than 13 billion parameters.\nExample prompt\nBy default, phi includes a chat prompt template designed for multi-turn conversations:\n% ollama run phi\n>>> Hello, can you help me find my way to Toronto?\n Certainly! What is the exact location in Toronto that you are looking for?\n\n>>> Yonge & Bloor\n Sure, Yonge and Bloor is a busy intersection in downtown Toronto. Would you like to take public transportation or drive there?\n\n>>> Public transportation\n Great! The easiest way to get there is by taking the TTC subway. You can take Line 1, which runs along Yonge Street and passes through downtown Toronto.\n\nUsing Ollama\u2019s API:\ncurl http://localhost:11434/api/chat -d '{\n  \"model\": \"phi\",\n  \"messages\": [\n    { \"role\": \"user\", \"content\": \"why is the sky blue?\" }\n  ]\n}'\n\nExample prompts (raw mode)\nPhi also responds well to a wide variety of prompt formats when using raw mode in Ollama\u2019s API, which bypasses all default prompt templating:\nInstruct\ncurl http://localhost:11434/api/generate -d '{\n  \"model\": \"phi\",\n  \"prompt\": \"Instruct: Write a detailed analogy between mathematics and a lighthouse.\\nOutput:\",\n  \"options\": {\n    \"stop\": [\"Instruct:\", \"Output:\"]\n  },\n  \"raw\": true,\n  \"stream\": false\n}'\n\nCode Completion\ncurl http://localhost:11434/api/generate -d '{\n  \"model\": \"phi\",\n  \"prompt\": \"def print_prime(n):\\n  \",\n  \"raw\": true,\n  \"stream\": false\n}'\n\nText completion\ncurl http://localhost:11434/api/generate -d '{\n  \"model\": \"phi\",\n  \"prompt\": \"There once was a mouse named\",\n  \"raw\": true,\n  \"stream\": false\n}'\n\nReferences\nHuggingFace\nBlog Post\n",
+  "page_hash": "3ff8a2c96bea",
+  "tags": [
+    {
+      "tag": "phi:lateste2fd6321a5fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "e2fd6321a5fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:chate2fd6321a5fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "e2fd6321a5fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7blateste2fd6321a5fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "e2fd6321a5fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q2_Kc5f597fa19b3\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "c5f597fa19b3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q3_K_S4ceb511ce989\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.3GB",
+      "digest": "4ceb511ce989",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q3_K_M76bbe442aabe\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.5GB",
+      "digest": "76bbe442aabe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q3_K_Lf260bda13b81\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "f260bda13b81",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q4_0e2fd6321a5fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "e2fd6321a5fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q4_1012265cbf343\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.8GB",
+      "digest": "012265cbf343",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q4_K_Sf018d657187c\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.6GB",
+      "digest": "f018d657187c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q4_K_M79d7065d8c0f\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.8GB",
+      "digest": "79d7065d8c0f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q5_0ccb07c724975\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.9GB",
+      "digest": "ccb07c724975",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q5_1f322ed62bd81\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.1GB",
+      "digest": "f322ed62bd81",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q5_K_S4f3f9f884a09\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.9GB",
+      "digest": "4f3f9f884a09",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q5_K_M4dbc1775ae76\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.1GB",
+      "digest": "4dbc1775ae76",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q6_K170d96fc8084\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.3GB",
+      "digest": "170d96fc8084",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-q8_055ec39f0bcf9\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.0GB",
+      "digest": "55ec39f0bcf9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "phi:2.7b-chat-v2-fp166b283248a801\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.6GB",
+      "digest": "6b283248a801",
+      "manifest": null,
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:08"
+  }
+}

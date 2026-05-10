@@ -84,12 +84,12 @@ def scrape_ollama_cloud_models(dry_run: bool = False) -> list[dict]:
     for model in models:
         slug = model["name"].replace(":", "_").replace("/", "_")
         out_path = CLOUD_MODELS_DIR / f"{slug}.json"
-        out_path.write_text(json.dumps(model, indent=2), encoding="utf-8")
+        out_path.write_text(json.dumps(model, indent=2) + "\n", encoding="utf-8")
         saved += 1
 
     # Write a combined index for downstream consumers
     index_path = CLOUD_MODELS_DIR / "_index.json"
-    index_path.write_text(json.dumps(models, indent=2), encoding="utf-8")
+    index_path.write_text(json.dumps(models, indent=2) + "\n", encoding="utf-8")
 
     logger.info(
         "Ollama Cloud scrape complete — %d models saved to %s", saved, CLOUD_MODELS_DIR

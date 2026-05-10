@@ -1,0 +1,43 @@
+{
+  "name": "nomic-embed-text-v2-moe",
+  "description": "nomic-embed-text-v2-moe is a multilingual MoE text embedding model that excels at multilingual retrieval.",
+  "pull_count": 47300,
+  "last_updated": "Dec 10, 2025 10:09 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><code>nomic-embed-text-v2-moe</code> is a multilingual MoE text embedding model that excels at multilingual retrieval.</p>\n<ul>\n<li><strong>High Performance</strong>: SoTA Multilingual performance compared to ~300M parameter models, competitive with models 2x in size</li>\n<li><strong>Multilinguality</strong>: Supports ~100 languages and trained on over 1.6B pairs</li>\n<li><strong>Flexible Embedding Dimension</strong>: Trained with <a href=\"https://arxiv.org/abs/2205.13147\" rel=\"nofollow\">Matryoshka Embeddings</a> with 3x reductions in storage cost with minimal performance degradations</li>\n<li><strong>Fully Open-Source</strong>: Model weights, <a href=\"https://github.com/nomic-ai/contrastors\" rel=\"nofollow\">code</a>, and training data</li>\n</ul>\n<table>\n<thead>\n<tr>\n<th>Model</th>\n<th>Params (M)</th>\n<th>Emb Dim</th>\n<th>BEIR</th>\n<th>MIRACL</th>\n<th>Pretrain Data</th>\n<th>Finetune Data</th>\n<th>Code</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>Nomic Embed v2</strong></td>\n<td>305</td>\n<td>768</td>\n<td>52.86</td>\n<td><strong>65.80</strong></td>\n<td>\u2705</td>\n<td>\u2705</td>\n<td>\u2705</td>\n</tr>\n<tr>\n<td>mE5 Base</td>\n<td>278</td>\n<td>768</td>\n<td>48.88</td>\n<td>62.30</td>\n<td>\u274c</td>\n<td>\u274c</td>\n<td>\u274c</td>\n</tr>\n<tr>\n<td>mGTE Base</td>\n<td>305</td>\n<td>768</td>\n<td>51.10</td>\n<td>63.40</td>\n<td>\u274c</td>\n<td>\u274c</td>\n<td>\u274c</td>\n</tr>\n<tr>\n<td>Arctic Embed v2 Base</td>\n<td>305</td>\n<td>768</td>\n<td><strong>55.40</strong></td>\n<td>59.90</td>\n<td>\u274c</td>\n<td>\u274c</td>\n<td>\u274c</td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td>BGE M3</td>\n<td>568</td>\n<td>1024</td>\n<td>48.80</td>\n<td><strong>69.20</strong></td>\n<td>\u274c</td>\n<td>\u2705</td>\n<td>\u274c</td>\n</tr>\n<tr>\n<td>Arctic Embed v2 Large</td>\n<td>568</td>\n<td>1024</td>\n<td><strong>55.65</strong></td>\n<td>66.00</td>\n<td>\u274c</td>\n<td>\u274c</td>\n<td>\u274c</td>\n</tr>\n<tr>\n<td>mE5 Large</td>\n<td>560</td>\n<td>1024</td>\n<td>51.40</td>\n<td>66.50</td>\n<td>\u274c</td>\n<td>\u274c</td>\n<td>\u274c</td>\n</tr>\n</tbody>\n</table>\n<h3>Best practices</h3>\n<ul>\n<li>Add appropriate prefixes to your text:\n\n<ul>\n<li>For queries: \u201csearch_query: \u201c</li>\n<li>For documents: \u201csearch_document: \u201c- Maximum input length is 512 tokens</li>\n</ul></li>\n<li>For optimal efficiency, consider using the 256-dimension embeddings if storage/compute is a concern</li>\n</ul>\n<h3>Model Architecture</h3>\n<ul>\n<li><strong>Total Parameters</strong>: 475M</li>\n<li><strong>Active Parameters During Inference</strong>: 305M</li>\n<li><strong>Architecture Type</strong>: Mixture of Experts (MoE)</li>\n<li><strong>MoE Configuration</strong>: 8 experts with top-2 routing</li>\n<li><strong>Embedding Dimensions</strong>: Supports flexible dimension from 768 to 256 through Matryoshka representation learning</li>\n<li><strong>Maximum Sequence Length</strong>: 512 tokens</li>\n<li><strong>Languages</strong>: See below for supported languages and its training pairs per different languages</li>\n</ul>\n<p><img alt=\"image.png\" src=\"/assets/library/nomic-embed-text-v2-moe/f235fb9c-f5ee-407c-aaa1-54ea35d95e0e\"/></p>\n</div>",
+  "readme_text": "\nnomic-embed-text-v2-moe is a multilingual MoE text embedding model that excels at multilingual retrieval.\n\nHigh Performance: SoTA Multilingual performance compared to ~300M parameter models, competitive with models 2x in size\nMultilinguality: Supports ~100 languages and trained on over 1.6B pairs\nFlexible Embedding Dimension: Trained with Matryoshka Embeddings with 3x reductions in storage cost with minimal performance degradations\nFully Open-Source: Model weights, code, and training data\n\n\n\n\nModel\nParams (M)\nEmb Dim\nBEIR\nMIRACL\nPretrain Data\nFinetune Data\nCode\n\n\n\n\nNomic Embed v2\n305\n768\n52.86\n65.80\n\u2705\n\u2705\n\u2705\n\n\nmE5 Base\n278\n768\n48.88\n62.30\n\u274c\n\u274c\n\u274c\n\n\nmGTE Base\n305\n768\n51.10\n63.40\n\u274c\n\u274c\n\u274c\n\n\nArctic Embed v2 Base\n305\n768\n55.40\n59.90\n\u274c\n\u274c\n\u274c\n\n\n\n\n\n\n\n\n\n\n\n\nBGE M3\n568\n1024\n48.80\n69.20\n\u274c\n\u2705\n\u274c\n\n\nArctic Embed v2 Large\n568\n1024\n55.65\n66.00\n\u274c\n\u274c\n\u274c\n\n\nmE5 Large\n560\n1024\n51.40\n66.50\n\u274c\n\u274c\n\u274c\n\n\n\nBest practices\n\nAdd appropriate prefixes to your text:\n\n\nFor queries: \u201csearch_query: \u201c\nFor documents: \u201csearch_document: \u201c- Maximum input length is 512 tokens\n\nFor optimal efficiency, consider using the 256-dimension embeddings if storage/compute is a concern\n\nModel Architecture\n\nTotal Parameters: 475M\nActive Parameters During Inference: 305M\nArchitecture Type: Mixture of Experts (MoE)\nMoE Configuration: 8 experts with top-2 routing\nEmbedding Dimensions: Supports flexible dimension from 768 to 256 through Matryoshka representation learning\nMaximum Sequence Length: 512 tokens\nLanguages: See below for supported languages and its training pairs per different languages\n\n\n",
+  "page_hash": "cb7a52f54100",
+  "tags": [
+    {
+      "tag": "latest",
+      "last_updated": "2 months ago",
+      "size": "958MB",
+      "digest": "sha256:8e904df6dfe0c789a1aa634765a992996a67e32ec44141adc6dbbba89ceb072a",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:8e904df6dfe0c789a1aa634765a992996a67e32ec44141adc6dbbba89ceb072a",
+          "size": 283
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a5db3381f2e514d3490a3a31fe70eb1a65e95016c85c6c2c23223b810806594f",
+            "size": 957680480,
+            "from": "/Users/nicole/.ollama/models/blobs/sha256-a5db3381f2e514d3490a3a31fe70eb1a65e95016c85c6c2c23223b810806594f"
+          }
+        ]
+      },
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:08"
+  }
+}

@@ -239,7 +239,7 @@ async def process_model(
             tags = await scrape_tags_page(client, name)
             detail["tags"] = tags
             data = detail
-        model_file_path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+        model_file_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
         return data
 
 
