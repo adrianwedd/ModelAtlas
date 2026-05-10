@@ -181,6 +181,10 @@ function modelApp() {
       return Number.isFinite(raw) ? Math.min(5, Math.max(0, Math.round(raw * 5))) : 0;
     },
 
+    trustDots(score) {
+      return '';
+    },
+
     // ── Charts ────────────────────────────────────────────────
     initCharts() {
       this.initLicenseChart();
