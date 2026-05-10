@@ -48,14 +48,23 @@ def fetch_cloud_models(api_key: str) -> list[dict]:
 
 def normalize_model(raw: dict) -> dict:
     size_bytes = raw.get("size", 0)
+    details = raw.get("details", {}) or {}
+    added_at = raw.get("modified_at", "") or ""
     return {
         "name": raw["name"],
         "source": "ollama_cloud",
         "size_bytes": size_bytes,
         "size_gb": round(size_bytes / 1e9, 2) if size_bytes else None,
-        "added_at": raw.get("modified_at", ""),
+        "added_at": added_at,
+        "last_updated": added_at or None,
         "digest": raw.get("digest", ""),
-        "details": raw.get("details", {}),
+        "details": details,
+        "family": (
+            details.get("family")
+            or (details.get("families") or [None])[0]
+        ),
+        "architecture": details.get("parameter_size") or None,
+        "pull_count": None,
     }
 
 
@@ -90,7 +99,9 @@ def scrape_ollama_cloud_models(dry_run: bool = False) -> list[dict]:
     index_path.write_text(json.dumps(models, indent=2) + "\n", encoding="utf-8")
 
     logger.info(
-        "Ollama Cloud scrape complete — %d models saved to %s", saved, CLOUD_MODELS_DIR
+        "Ollama Cloud scrape complete — %d models saved to %s",
+        saved,
+        CLOUD_MODELS_DIR,
     )
     return models
 

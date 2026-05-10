@@ -19,6 +19,25 @@ CACHE_PATH = Path(settings.PROJECT_ROOT / ".cache" / "http")
 # OUTPUT_FILE = "data/models_raw.json" # Removed, as we're saving individual files
 
 
+def _extract_card_description(content: str, max_chars: int = 400) -> str:
+    """Return the first substantive paragraph from a model card markdown."""
+    in_frontmatter = False
+    for line in content.splitlines():
+        stripped = line.strip()
+        if stripped == "---":
+            in_frontmatter = not in_frontmatter
+            continue
+        if in_frontmatter:
+            continue
+        if not stripped or stripped.startswith("#") or stripped.startswith("<"):
+            continue
+        # Skip lines that look like table rows or badges
+        if stripped.startswith("|") or stripped.startswith("[!["):
+            continue
+        return stripped[:max_chars]
+    return ""
+
+
 def parse_pull_count(s):
     """Normalize text counts like '1.2M' or '650K' into integer counts."""
     if isinstance(s, (int, float)):
@@ -119,9 +138,13 @@ def execute_hf_scraper(limit=None, use_cache=True):
                             r"arxiv:([0-9]{4}\.[0-9]{5})", model_card.content
                         )
                         if arxiv_links:
-                            data["arxiv_ids"] = list(
-                                set(arxiv_links)
-                            )  # Use set to avoid duplicates
+                            data["arxiv_ids"] = list(set(arxiv_links))
+
+                        # Extract description from first substantive paragraph
+                        if not data.get("description"):
+                            data["description"] = _extract_card_description(
+                                model_card.content
+                            )
 
                 except Exception as mc_e:
                     logger.warning(
