@@ -172,6 +172,7 @@ def score_node(state: TraceState) -> TraceState:
     os.makedirs(final_output_file.parent, exist_ok=True)
     with open(final_output_file, "w", encoding="utf-8") as f:
         json.dump(scored_models, f, indent=2)
+        f.write("\n")
     logger.info(
         "Scored %s models, written to %s", len(scored_models), final_output_file
     )
