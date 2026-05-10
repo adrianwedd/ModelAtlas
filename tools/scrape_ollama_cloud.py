@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from atlas_schemas.config import settings  # noqa: E402
 from common.logging import logger  # noqa: E402
+from common.utils import normalize_date  # noqa: E402
 
 CLOUD_API_URL = "https://ollama.com/api/tags"
 CLOUD_MODELS_DIR = settings.MODELS_DIR / "ollama_cloud"
@@ -49,7 +50,7 @@ def fetch_cloud_models(api_key: str) -> list[dict]:
 def normalize_model(raw: dict) -> dict:
     size_bytes = raw.get("size", 0)
     details = raw.get("details", {}) or {}
-    added_at = raw.get("modified_at", "") or ""
+    added_at = normalize_date(raw.get("modified_at")) or ""
     return {
         "name": raw["name"],
         "source": "ollama_cloud",

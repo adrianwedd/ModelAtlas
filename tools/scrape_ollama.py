@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 
 from atlas_schemas.config import settings
 from common.logging import logger
+from common.utils import normalize_date
 
 LOG_FILE = settings.LOG_FILE
 OLLAMA_MODELS_DIR = settings.MODELS_DIR / "ollama"
@@ -127,7 +128,7 @@ async def scrape_tags_page(client: httpx.AsyncClient, model_name: str) -> list[d
         api_tag = tag_name.split(":")[-1].strip()
         tag_entry = {
             "tag": tag_name,
-            "last_updated": last_updated,
+            "last_updated": normalize_date(last_updated) or last_updated,
             "size": size.replace("·", "").strip(),
             "digest": digest,
             "manifest": None,
@@ -184,9 +185,11 @@ async def scrape_details(client: httpx.AsyncClient, model_name: str) -> dict:
         result["pull_count"] = parse_pull_count(pull_span.text.strip())
     last_span = soup.find("span", attrs={"x-test-updated": True})
     if last_span and last_span.parent and last_span.parent.has_attr("title"):
-        result["last_updated"] = last_span.parent["title"]
+        result["last_updated"] = normalize_date(last_span.parent["title"])
     else:
-        result["last_updated"] = last_span.text.strip() if last_span else ""
+        result["last_updated"] = normalize_date(
+            last_span.text.strip() if last_span else None
+        )
     prose = soup.find("div", class_="prose")
     result["readme_html"] = str(prose) if prose else ""
     content_txt = prose.get_text(" ") if prose else ""

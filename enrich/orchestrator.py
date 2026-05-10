@@ -3,28 +3,19 @@ import glob
 import json
 import os
 import tempfile
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import TypedDict
 
 from langgraph.graph import END, StateGraph
 
 from common.logging import logger
+from common.utils import normalize_date
 from tools.enrich_metadata import enrich_model_metadata
 from tools.scrape_hf import execute_hf_scraper
 from tools.scrape_ollama import scrape_ollama_models
 from tools.scrape_ollama_cloud import scrape_ollama_cloud_models
 from tools.scrape_openrouter import scrape_openrouter_models
 from tools.validate_all import validate_model_file
-
-
-def _unix_to_iso(ts) -> str | None:
-    if not ts:
-        return None
-    try:
-        return datetime.fromtimestamp(int(ts), tz=timezone.utc).isoformat()
-    except (ValueError, TypeError, OSError):
-        return None
 
 
 # Define the state for our graph
@@ -191,11 +182,12 @@ def score_node(state: TraceState) -> TraceState:
             # Map HF downloads → pull_count when absent
             if not data.get("pull_count") and data.get("downloads"):
                 data["pull_count"] = data["downloads"]
-            # Map source-specific timestamp fields → last_updated
-            if not data.get("last_updated"):
-                data["last_updated"] = data.get("added_at") or _unix_to_iso(
-                    data.get("created")
-                )
+            # Normalize last_updated to ISO 8601 (handles human-readable & Unix ts)
+            data["last_updated"] = (
+                normalize_date(data.get("last_updated"))
+                or normalize_date(data.get("added_at"))
+                or normalize_date(data.get("created"))
+            )
             # Skip routing alias entries (OpenRouter ~name convention)
             if (data.get("name") or "").startswith("~"):
                 continue

@@ -15,25 +15,16 @@ import json
 import sys
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from atlas_schemas.config import settings  # noqa: E402
 from common.logging import logger  # noqa: E402
+from common.utils import normalize_date  # noqa: E402
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/models"
 OPENROUTER_MODELS_DIR = settings.MODELS_DIR / "openrouter"
-
-
-def _unix_to_iso(ts) -> str | None:
-    if not ts:
-        return None
-    try:
-        return datetime.fromtimestamp(int(ts), tz=timezone.utc).isoformat()
-    except (ValueError, TypeError, OSError):
-        return None
 
 
 def fetch_openrouter_models(api_key: str | None = None) -> list[dict]:
@@ -84,7 +75,7 @@ def normalize_model(raw: dict) -> dict:
         "top_provider": raw.get("top_provider", {}),
         "description": raw.get("description", ""),
         "created": raw.get("created"),
-        "last_updated": _unix_to_iso(raw.get("created")),
+        "last_updated": normalize_date(raw.get("created")),
     }
 
 
