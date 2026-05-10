@@ -160,8 +160,12 @@ def score_node(state: TraceState) -> TraceState:
 
     # Fields not in the Model schema but useful for trust scoring
     EXTRA_ANNOTATION_FIELDS = {
-        "context_length", "is_free", "pricing", "provider",
-        "display_name", "downloads",
+        "context_length",
+        "is_free",
+        "pricing",
+        "provider",
+        "display_name",
+        "downloads",
     }
 
     scored_models = []
