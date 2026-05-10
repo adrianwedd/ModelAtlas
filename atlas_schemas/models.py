@@ -31,6 +31,9 @@ class Model(BaseModel):
     page_hash: Optional[str] = None
     tags: List[str] = Field(default_factory=list)
     annotations: Dict[str, Any] = Field(default_factory=dict)
+    quality_score: Dict[str, Any] = Field(default_factory=dict)
+    trust_score: Optional[float] = None
+    similar_models: List[Dict[str, Any]] = Field(default_factory=list)
 
     @field_validator("tags", mode="before")
     @classmethod
@@ -44,9 +47,6 @@ class Model(BaseModel):
             elif isinstance(item, dict) and "tag" in item:
                 result.append(str(item["tag"]))
         return result
-    quality_score: Dict[str, Any] = Field(default_factory=dict)
-    trust_score: Optional[float] = None
-    similar_models: List[Dict[str, Any]] = Field(default_factory=list)
 
 
 class TraceConfig(BaseModel):
