@@ -83,7 +83,7 @@ def enrich_node(state: TraceState) -> TraceState:
             output_path = enriched_models_dir / f"{model_name_slug}_enriched.json"
             if output_path.exists():
                 logger.info(
-                    "Enrichment file %s already exists; skipping to preserve curated data.",
+                    "Enrichment file %s exists; skipping to preserve curated data.",
                     output_path.name,
                 )
                 continue
