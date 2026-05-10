@@ -1,0 +1,836 @@
+{
+  "name": "deepseek-coder",
+  "description": "DeepSeek Coder is a capable coding model trained on two trillion code and natural language tokens.",
+  "pull_count": 3100000,
+  "last_updated": "Dec 28, 2023 1:05 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/jmorganca/ollama/assets/251292/0e18bfb4-2964-41e4-b01c-043670228690\" width=\"460\"/></p>\n<p>DeepSeek Coder is trained from scratch on both 87% code and 13% natural language in English and Chinese. Each of the models are pre-trained on 2 trillion tokens.</p>\n<h3>Models available</h3>\n<p>1.3 billion parameter model</p>\n<pre><code>ollama run deepseek-coder\n</code></pre>\n<p>6.7 billion parameter model</p>\n<pre><code>ollama run deepseek-coder:6.7b\n</code></pre>\n<p>33 billion parameter model</p>\n<pre><code>ollama run deepseek-coder:33b\n</code></pre>\n<h3>CLI</h3>\n<p>Open the terminal and run <code>ollama run deepseek-coder</code></p>\n<h3>API</h3>\n<p>Example using curl:</p>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"deepseek-coder\",\n  \"prompt\":\"Why is the sky blue?\"\n }'\n</code></pre>\n<p><a href=\"https://github.com/jmorganca/ollama/blob/main/docs/api.md\" rel=\"nofollow\">API documentation</a></p>\n<h2>References</h2>\n<p><a href=\"https://huggingface.co/deepseek-ai\" rel=\"nofollow\">HuggingFace</a></p>\n</div>",
+  "readme_text": "\n\nDeepSeek Coder is trained from scratch on both 87% code and 13% natural language in English and Chinese. Each of the models are pre-trained on 2 trillion tokens.\nModels available\n1.3 billion parameter model\nollama run deepseek-coder\n\n6.7 billion parameter model\nollama run deepseek-coder:6.7b\n\n33 billion parameter model\nollama run deepseek-coder:33b\n\nCLI\nOpen the terminal and run ollama run deepseek-coder\nAPI\nExample using curl:\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"deepseek-coder\",\n  \"prompt\":\"Why is the sky blue?\"\n }'\n\nAPI documentation\nReferences\nHuggingFace\n",
+  "page_hash": "439152c6457f",
+  "tags": [
+    {
+      "tag": "deepseek-coder:latest3ddd2d3fc8d2\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3ddd2d3fc8d2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:base3b417b786925\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3b417b786925",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:instruct3ddd2d3fc8d2\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3ddd2d3fc8d2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3blatest3ddd2d3fc8d2\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3ddd2d3fc8d2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7bce298d984115\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "ce298d984115",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33bacec7c0b0fd9\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "acec7c0b0fd9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base3b417b786925\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3b417b786925",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q2_Kb4f8c7285df8\u2022",
+      "last_updated": "2 years ago",
+      "size": "632MB",
+      "digest": "b4f8c7285df8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q3_K_S3a3c3bc11d11\u2022",
+      "last_updated": "2 years ago",
+      "size": "659MB",
+      "digest": "3a3c3bc11d11",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q3_K_M08722dd8ec98\u2022",
+      "last_updated": "2 years ago",
+      "size": "705MB",
+      "digest": "08722dd8ec98",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q3_K_L9884474f8e97\u2022",
+      "last_updated": "2 years ago",
+      "size": "745MB",
+      "digest": "9884474f8e97",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q4_03b417b786925\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3b417b786925",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q4_175c6c24f8b9a\u2022",
+      "last_updated": "2 years ago",
+      "size": "856MB",
+      "digest": "75c6c24f8b9a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q4_K_S2c83b95953cd\u2022",
+      "last_updated": "2 years ago",
+      "size": "815MB",
+      "digest": "2c83b95953cd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q4_K_M4e17652b15c5\u2022",
+      "last_updated": "2 years ago",
+      "size": "874MB",
+      "digest": "4e17652b15c5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q5_02d4798d07377\u2022",
+      "last_updated": "2 years ago",
+      "size": "936MB",
+      "digest": "2d4798d07377",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q5_12eb01ebad3f6\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "2eb01ebad3f6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q5_K_Sf2689d6fec98\u2022",
+      "last_updated": "2 years ago",
+      "size": "953MB",
+      "digest": "f2689d6fec98",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q5_K_M2940f35e76bc\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "2940f35e76bc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q6_K87397ba29cd4\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "87397ba29cd4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-q8_071f702eff852\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "71f702eff852",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-base-fp1602b95acb6d92\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.7GB",
+      "digest": "02b95acb6d92",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct3ddd2d3fc8d2\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3ddd2d3fc8d2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q2_K1ad28239dd09\u2022",
+      "last_updated": "2 years ago",
+      "size": "632MB",
+      "digest": "1ad28239dd09",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q3_K_S4c1eaf4c63f8\u2022",
+      "last_updated": "2 years ago",
+      "size": "659MB",
+      "digest": "4c1eaf4c63f8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q3_K_M1cd27a52ef39\u2022",
+      "last_updated": "2 years ago",
+      "size": "705MB",
+      "digest": "1cd27a52ef39",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q3_K_L0d2f32faf31e\u2022",
+      "last_updated": "2 years ago",
+      "size": "745MB",
+      "digest": "0d2f32faf31e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q4_03ddd2d3fc8d2\u2022",
+      "last_updated": "2 years ago",
+      "size": "776MB",
+      "digest": "3ddd2d3fc8d2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q4_1403b7eec078d\u2022",
+      "last_updated": "2 years ago",
+      "size": "856MB",
+      "digest": "403b7eec078d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q4_K_S47ca84afbf6d\u2022",
+      "last_updated": "2 years ago",
+      "size": "815MB",
+      "digest": "47ca84afbf6d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q4_K_Md84d8a173290\u2022",
+      "last_updated": "2 years ago",
+      "size": "874MB",
+      "digest": "d84d8a173290",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q5_05f4cd944cf61\u2022",
+      "last_updated": "2 years ago",
+      "size": "936MB",
+      "digest": "5f4cd944cf61",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q5_1334319021268\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "334319021268",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q5_K_Sca290ca9a10a\u2022",
+      "last_updated": "2 years ago",
+      "size": "953MB",
+      "digest": "ca290ca9a10a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q5_K_M2ff0e9282aba\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.0GB",
+      "digest": "2ff0e9282aba",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q6_Kce574ed6d34f\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.2GB",
+      "digest": "ce574ed6d34f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-q8_044e92342b6c8\u2022",
+      "last_updated": "2 years ago",
+      "size": "1.4GB",
+      "digest": "44e92342b6c8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:1.3b-instruct-fp1689aaa860fc95\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.7GB",
+      "digest": "89aaa860fc95",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base585a5cb3b219\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "585a5cb3b219",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q2_Ke13d22daf157\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "e13d22daf157",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q3_K_Sef853316467f\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.0GB",
+      "digest": "ef853316467f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q3_K_M22ce0a5b45b2\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.3GB",
+      "digest": "22ce0a5b45b2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q3_K_L29f806615022\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "29f806615022",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q4_0585a5cb3b219\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "585a5cb3b219",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q4_1a269275b3473\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "a269275b3473",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q4_K_Sb199f259ba9d\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "b199f259ba9d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q4_K_Mc12c864e1264\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "c12c864e1264",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q5_0bcea528a2f2f\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "bcea528a2f2f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q5_1c5ee75dc71c8\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.1GB",
+      "digest": "c5ee75dc71c8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q5_K_Sdcff193117f4\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "dcff193117f4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q5_K_M5d67f76f7c57\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "5d67f76f7c57",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q6_Kb91bf20f5a3c\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "b91bf20f5a3c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-q8_0570c490f997d\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.2GB",
+      "digest": "570c490f997d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-base-fp16bc2d4c7ea23e\u2022",
+      "last_updated": "2 years ago",
+      "size": "13GB",
+      "digest": "bc2d4c7ea23e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instructce298d984115\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "ce298d984115",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q2_K6fd7b2652ba7\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "6fd7b2652ba7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q3_K_S38bce866b00f\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.0GB",
+      "digest": "38bce866b00f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q3_K_M27c2e4ed6a59\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.3GB",
+      "digest": "27c2e4ed6a59",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q3_K_Lea00a885753e\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "ea00a885753e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q4_0ce298d984115\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "ce298d984115",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q4_14c147a2a4536\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "4c147a2a4536",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q4_K_Saa47b230dd4a\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "aa47b230dd4a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q4_K_Maf6da0444f84\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "af6da0444f84",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q5_024c6f279a2a3\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "24c6f279a2a3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q5_1e13a2f5b13e6\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.1GB",
+      "digest": "e13a2f5b13e6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q5_K_Sfa9d8a78ef0d\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "fa9d8a78ef0d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q5_K_Md6a1221fb5ff\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "d6a1221fb5ff",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q6_K5b1241961817\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "5b1241961817",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-q8_054b58e32d587\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.2GB",
+      "digest": "54b58e32d587",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:6.7b-instruct-fp165421a6319130\u2022",
+      "last_updated": "2 years ago",
+      "size": "13GB",
+      "digest": "5421a6319130",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-baseca50732c8ee1\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "ca50732c8ee1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q2_Kc1a84861e5df\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "c1a84861e5df",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q3_K_S29b391c03801\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "29b391c03801",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q3_K_Mfdb6068cec14\u2022",
+      "last_updated": "2 years ago",
+      "size": "16GB",
+      "digest": "fdb6068cec14",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q3_K_Le47bf0616d0d\u2022",
+      "last_updated": "2 years ago",
+      "size": "18GB",
+      "digest": "e47bf0616d0d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q4_0ca50732c8ee1\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "ca50732c8ee1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q4_1d09dd3fe1448\u2022",
+      "last_updated": "2 years ago",
+      "size": "21GB",
+      "digest": "d09dd3fe1448",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q4_K_S012e92746442\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "012e92746442",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q4_K_Ma205c1c80cf6\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "a205c1c80cf6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q5_0a6c33a2e9332\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "a6c33a2e9332",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q5_1ba34d0e6ade6\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "ba34d0e6ade6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q5_K_Sb9fef6f330c5\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "b9fef6f330c5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q5_K_M2260429a178c\u2022",
+      "last_updated": "2 years ago",
+      "size": "24GB",
+      "digest": "2260429a178c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q6_K4cb5c88ab035\u2022",
+      "last_updated": "2 years ago",
+      "size": "27GB",
+      "digest": "4cb5c88ab035",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-q8_01779efbb95d3\u2022",
+      "last_updated": "2 years ago",
+      "size": "35GB",
+      "digest": "1779efbb95d3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-base-fp16eed8d5b0dfcc\u2022",
+      "last_updated": "2 years ago",
+      "size": "67GB",
+      "digest": "eed8d5b0dfcc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instructacec7c0b0fd9\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "acec7c0b0fd9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q2_Kcb08fe026ad3\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "cb08fe026ad3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q3_K_Sa97a97b70cb4\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "a97a97b70cb4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q3_K_Me31fcc644c53\u2022",
+      "last_updated": "2 years ago",
+      "size": "16GB",
+      "digest": "e31fcc644c53",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q3_K_L070ae915fa23\u2022",
+      "last_updated": "2 years ago",
+      "size": "18GB",
+      "digest": "070ae915fa23",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q4_0acec7c0b0fd9\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "acec7c0b0fd9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q4_1d59c6d5d79ac\u2022",
+      "last_updated": "2 years ago",
+      "size": "21GB",
+      "digest": "d59c6d5d79ac",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q4_K_S8f5d0f5ef4e5\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "8f5d0f5ef4e5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q4_K_M92b0c569c0df\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "92b0c569c0df",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q5_0c41da1e19678\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "c41da1e19678",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q5_111fccea78dbe\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "11fccea78dbe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q5_K_Sf1d23826a886\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "f1d23826a886",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q5_K_Mbd4a96fb44c0\u2022",
+      "last_updated": "2 years ago",
+      "size": "24GB",
+      "digest": "bd4a96fb44c0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q6_Kd44c67a95e2a\u2022",
+      "last_updated": "2 years ago",
+      "size": "27GB",
+      "digest": "d44c67a95e2a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-q8_01b30ba8b1b95\u2022",
+      "last_updated": "2 years ago",
+      "size": "35GB",
+      "digest": "1b30ba8b1b95",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "deepseek-coder:33b-instruct-fp16b54904179335\u2022",
+      "last_updated": "2 years ago",
+      "size": "67GB",
+      "digest": "b54904179335",
+      "manifest": null,
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:07"
+  },
+  "source": "ollama"
+}

@@ -158,12 +158,30 @@ def score_node(state: TraceState) -> TraceState:
     from atlas_schemas.models import Model
     from trustforge import compute_score
 
+    # Fields not in the Model schema but useful for trust scoring
+    EXTRA_ANNOTATION_FIELDS = {
+        "context_length", "is_free", "pricing", "provider",
+        "display_name", "downloads",
+    }
+
     scored_models = []
     for file_path in glob.glob(str(validated_models_dir / "*.json")):
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
+            # Promote extra source-specific fields into annotations before Pydantic drops them
+            for field in EXTRA_ANNOTATION_FIELDS:
+                if field in data and field not in (data.get("annotations") or {}):
+                    data.setdefault("annotations", {})[field] = data[field]
+            # Map HF downloads → pull_count when pull_count absent
+            if not data.get("pull_count") and data.get("downloads"):
+                data["pull_count"] = data["downloads"]
+            # Skip routing alias entries (OpenRouter ~name convention)
+            if (data.get("name") or "").startswith("~"):
+                continue
             model = Model(**data)
+            # Strip junk tags: Ollama digest strings containing bullet char
+            model.tags = [t for t in model.tags if "•" not in t and t != "latest"]
             model.trust_score = compute_score(model)
             scored_models.append(model.model_dump())
         except Exception as e:

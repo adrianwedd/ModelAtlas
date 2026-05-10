@@ -1,0 +1,804 @@
+{
+  "name": "llava",
+  "description": "\ud83c\udf0b LLaVA is a novel end-to-end trained large multimodal model that combines a vision encoder and Vicuna for general-purpose visual and language understanding. Updated to version 1.6.",
+  "pull_count": 12900000,
+  "last_updated": "Feb 1, 2024 8:41 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<h1>\ud83c\udf0b LLaVA: Large Language and Vision Assistant</h1>\n<p>LLaVA is a multimodal model that combines a vision encoder and Vicuna for general-purpose visual and language understanding, achieving impressive chat capabilities mimicking spirits of the multimodal GPT-4.</p>\n<h3>New in LLaVA 1.6:</h3>\n<ul>\n<li>Increasing the input image resolution to up to 4x more pixels, supporting 672x672, 336x1344, 1344x336 resolutions.</li>\n<li>Better visual reasoning and OCR capability with an improved visual instruction tuning data mixture.</li>\n<li>Better visual conversation for more scenarios, covering different applications.</li>\n<li>Better world knowledge and logical reasoning.</li>\n</ul>\n<h3>CLI Usage</h3>\n<p>Run the model:</p>\n<pre><code>ollama run llava\n</code></pre>\n<p>Then at the prompt, include the path to your image in the prompt:</p>\n<pre><code>&gt;&gt;&gt; What's in this image? /Users/jmorgan/Desktop/smile.png\nThe image features a yellow smiley face, which is likely the central focus of the picture.\n</code></pre>\n<h3>API Usage</h3>\n<pre><code>curl http://localhost:11434/api/generate -d '{\n  \"model\": \"llava\",\n  \"prompt\":\"What is in this picture?\",\n  \"images\": [\"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\"]\n}'\n</code></pre>\n<h2>References</h2>\n<p><a href=\"https://llava-vl.github.io/\" rel=\"nofollow\">Website</a></p>\n<p><a href=\"https://github.com/haotian-liu/LLaVA\" rel=\"nofollow\">GitHub</a></p>\n<p><a href=\"https://huggingface.co/liuhaotian/llava-v1.5-7b\" rel=\"nofollow\">HuggingFace</a></p>\n</div>",
+  "readme_text": "\n\ud83c\udf0b LLaVA: Large Language and Vision Assistant\nLLaVA is a multimodal model that combines a vision encoder and Vicuna for general-purpose visual and language understanding, achieving impressive chat capabilities mimicking spirits of the multimodal GPT-4.\nNew in LLaVA 1.6:\n\nIncreasing the input image resolution to up to 4x more pixels, supporting 672x672, 336x1344, 1344x336 resolutions.\nBetter visual reasoning and OCR capability with an improved visual instruction tuning data mixture.\nBetter visual conversation for more scenarios, covering different applications.\nBetter world knowledge and logical reasoning.\n\nCLI Usage\nRun the model:\nollama run llava\n\nThen at the prompt, include the path to your image in the prompt:\n>>> What's in this image? /Users/jmorgan/Desktop/smile.png\nThe image features a yellow smiley face, which is likely the central focus of the picture.\n\nAPI Usage\ncurl http://localhost:11434/api/generate -d '{\n  \"model\": \"llava\",\n  \"prompt\":\"What is in this picture?\",\n  \"images\": [\"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\"]\n}'\n\nReferences\nWebsite\nGitHub\nHuggingFace\n",
+  "page_hash": "2a4586ba6bc0",
+  "tags": [
+    {
+      "tag": "llava:latest8dd30f6b0cb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "8dd30f6b0cb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:v1.68dd30f6b0cb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "8dd30f6b0cb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7blatest8dd30f6b0cb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "8dd30f6b0cb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b0d0eb4d7f485\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.0GB",
+      "digest": "0d0eb4d7f485",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b3d2d24f46674\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "3d2d24f46674",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q2_K33973d2589d1\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.5GB",
+      "digest": "33973d2589d1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q3_K_S605b68e0b568\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "605b68e0b568",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q3_K_M9d738df24288\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "9d738df24288",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q3_K_L057fefd59cdb\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "057fefd59cdb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q4_0cd3274b81a85\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "cd3274b81a85",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q4_1146a55d9df75\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.9GB",
+      "digest": "146a55d9df75",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q4_K_Sd8d545afa5f0\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "d8d545afa5f0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q4_K_M75a9333e75cd\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "75a9333e75cd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q5_0339249626980\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.3GB",
+      "digest": "339249626980",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q5_16d97e8715c53\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "6d97e8715c53",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q5_K_S34f9b24f2315\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.3GB",
+      "digest": "34f9b24f2315",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q5_K_M4fb097b9cfa3\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "4fb097b9cfa3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q6_Kdf0203e92f79\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.2GB",
+      "digest": "df0203e92f79",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-q8_0c684b68b3f34\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.8GB",
+      "digest": "c684b68b3f34",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.5-fp16337a5b25bada\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "337a5b25bada",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.68dd30f6b0cb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "8dd30f6b0cb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q2_K52e0ce44a5f5\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.3GB",
+      "digest": "52e0ce44a5f5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q3_K_S2b9c055fe6a2\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "2b9c055fe6a2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q3_K_M25a00600f8b4\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "25a00600f8b4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q3_K_La48bbc9b567b\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.4GB",
+      "digest": "a48bbc9b567b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q4_08dd30f6b0cb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "8dd30f6b0cb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q4_18da3213068e6\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.2GB",
+      "digest": "8da3213068e6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q4_K_S2878e8c79f6e\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "2878e8c79f6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q4_K_M8d3fbd6ad3f4\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.0GB",
+      "digest": "8d3fbd6ad3f4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q5_0b8f63553f521\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.6GB",
+      "digest": "b8f63553f521",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q5_1eda0b3f3b09b\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.1GB",
+      "digest": "eda0b3f3b09b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q5_K_S62dc434a7ae8\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.6GB",
+      "digest": "62dc434a7ae8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q5_K_M244b7e3d3d5a\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.8GB",
+      "digest": "244b7e3d3d5a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q6_K8781169d7f8f\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.6GB",
+      "digest": "8781169d7f8f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-q8_0c2973e390e84\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.3GB",
+      "digest": "c2973e390e84",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-mistral-fp169fd1e5417c5f\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "9fd1e5417c5f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q2_K6321163f3833\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.2GB",
+      "digest": "6321163f3833",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q3_K_S7701df672950\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "7701df672950",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q3_K_M7004e1f24eb1\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "7004e1f24eb1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q3_K_L0127d9087e07\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "0127d9087e07",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q4_0b6cbe07f1d5e\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "b6cbe07f1d5e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q4_1f8a27e237e97\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.9GB",
+      "digest": "f8a27e237e97",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q4_K_S5006a8a41d2b\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.5GB",
+      "digest": "5006a8a41d2b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q4_K_M15360a9e0fb9\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "15360a9e0fb9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q5_06a2bb61a611a\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.3GB",
+      "digest": "6a2bb61a611a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q5_11bd37032ec33\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "1bd37032ec33",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q5_K_S4aaa19502e34\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.3GB",
+      "digest": "4aaa19502e34",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q5_K_Mb22b0c041223\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "b22b0c041223",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q6_K11bd55683f9c\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.2GB",
+      "digest": "11bd55683f9c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-q8_06da20a71d9bb\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.8GB",
+      "digest": "6da20a71d9bb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:7b-v1.6-vicuna-fp16bb8da134bacb\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "bb8da134bacb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q2_K3cdd3869f154\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.1GB",
+      "digest": "3cdd3869f154",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q3_K_Sc860f869008d\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "c860f869008d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q3_K_M61441e82808c\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.0GB",
+      "digest": "61441e82808c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q3_K_L07b1b74ec398\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.6GB",
+      "digest": "07b1b74ec398",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q4_0e3b7997801dc\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.0GB",
+      "digest": "e3b7997801dc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q4_10ca30ff66062\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.8GB",
+      "digest": "0ca30ff66062",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q4_K_S16939c152bd9\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.1GB",
+      "digest": "16939c152bd9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q4_K_Md0a6a3f0e6c4\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.5GB",
+      "digest": "d0a6a3f0e6c4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q5_078e17026912a\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.6GB",
+      "digest": "78e17026912a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q5_1b11f33bc65fa\u2022",
+      "last_updated": "2 years ago",
+      "size": "10GB",
+      "digest": "b11f33bc65fa",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q5_K_Sc7f4b8076a0e\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.6GB",
+      "digest": "c7f4b8076a0e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q5_K_M48418b116e18\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.9GB",
+      "digest": "48418b116e18",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q6_K3c085b55f924\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "3c085b55f924",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-q8_04e00c435bb25\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "4e00c435bb25",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.5-fp16ce3bde71eaa7\u2022",
+      "last_updated": "2 years ago",
+      "size": "27GB",
+      "digest": "ce3bde71eaa7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.60d0eb4d7f485\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.0GB",
+      "digest": "0d0eb4d7f485",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q2_K87aecb135e2a\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "87aecb135e2a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q3_K_S54ef03322645\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "54ef03322645",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q3_K_M2e48f094b51a\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.0GB",
+      "digest": "2e48f094b51a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q3_K_La2b56a2b8e79\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.6GB",
+      "digest": "a2b56a2b8e79",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q4_00d0eb4d7f485\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.0GB",
+      "digest": "0d0eb4d7f485",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q4_10b97528b26b0\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.8GB",
+      "digest": "0b97528b26b0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q4_K_S5e4cf96dfc4c\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.1GB",
+      "digest": "5e4cf96dfc4c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q4_K_M0843119c3874\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.5GB",
+      "digest": "0843119c3874",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q5_06e06e1393058\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.6GB",
+      "digest": "6e06e1393058",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q5_131f1d78cb272\u2022",
+      "last_updated": "2 years ago",
+      "size": "10GB",
+      "digest": "31f1d78cb272",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q5_K_S53999e2c86c8\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.6GB",
+      "digest": "53999e2c86c8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q5_K_M446b10458a6a\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.9GB",
+      "digest": "446b10458a6a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q6_K1c0a91e1e4d9\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "1c0a91e1e4d9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-q8_0b25c4195f9e2\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "b25c4195f9e2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:13b-v1.6-vicuna-fp1681e28406a4e9\u2022",
+      "last_updated": "2 years ago",
+      "size": "27GB",
+      "digest": "81e28406a4e9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.63d2d24f46674\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "3d2d24f46674",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q2_K6326f59da4f1\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "6326f59da4f1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q3_K_Sa0376a205682\u2022",
+      "last_updated": "2 years ago",
+      "size": "16GB",
+      "digest": "a0376a205682",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q3_K_M89e924fed7d4\u2022",
+      "last_updated": "2 years ago",
+      "size": "17GB",
+      "digest": "89e924fed7d4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q3_K_L7f9889648d1a\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "7f9889648d1a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q4_03d2d24f46674\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "3d2d24f46674",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q4_196d20de28a1a\u2022",
+      "last_updated": "2 years ago",
+      "size": "22GB",
+      "digest": "96d20de28a1a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q4_K_S787b2213f0db\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "787b2213f0db",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q4_K_M538ff4c5a8b8\u2022",
+      "last_updated": "2 years ago",
+      "size": "21GB",
+      "digest": "538ff4c5a8b8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q5_0b239e218bdf0\u2022",
+      "last_updated": "2 years ago",
+      "size": "24GB",
+      "digest": "b239e218bdf0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q5_160926fd725ec\u2022",
+      "last_updated": "2 years ago",
+      "size": "27GB",
+      "digest": "60926fd725ec",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q5_K_Scdd8d5db3870\u2022",
+      "last_updated": "2 years ago",
+      "size": "24GB",
+      "digest": "cdd8d5db3870",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q5_K_M0eb2ab10d35c\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "0eb2ab10d35c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q6_K8f572ea02185\u2022",
+      "last_updated": "2 years ago",
+      "size": "29GB",
+      "digest": "8f572ea02185",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-q8_0959065f30849\u2022",
+      "last_updated": "2 years ago",
+      "size": "37GB",
+      "digest": "959065f30849",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llava:34b-v1.6-fp1689c50af82d5e\u2022",
+      "last_updated": "2 years ago",
+      "size": "69GB",
+      "digest": "89c50af82d5e",
+      "manifest": null,
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:07"
+  },
+  "source": "ollama"
+}

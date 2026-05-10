@@ -1,0 +1,492 @@
+{
+  "name": "qwen3-vl",
+  "description": "The most powerful vision-language model in the Qwen model family to date.",
+  "pull_count": 1700000,
+  "last_updated": "Oct 29, 2025 11:24 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img alt=\"Qwen 3 banner\" src=\"/assets/library/qwen3-vl/d784b840-5f70-4a60-86bc-f10ad6c0627f\"/></p>\n<blockquote>\n<p>Qwen3-VL models require <a href=\"https://github.com/ollama/ollama/releases\" rel=\"nofollow\">Ollama 0.12.7</a></p>\n</blockquote>\n<p>Qwen3-VL is the most powerful vision-language model in the Qwen family to date.</p>\n<p>In this generation, there are improvements to the model in many areas: its understanding and generating text, perceiving and reasoning about visual content, supporting longer context lengths, understanding spatial relationships and dynamic videos, or interacting with AI agents \u2014 Qwen3-VL shows clear and significant progress in every area.</p>\n<h3>Models</h3>\n<p><strong>2B</strong></p>\n<pre><code>ollama run qwen3-vl:2b\n</code></pre>\n<p><strong>4B</strong></p>\n<pre><code>ollama run qwen3-vl:4b\n</code></pre>\n<p><strong>8B</strong></p>\n<pre><code>ollama run qwen3-vl:8b\n</code></pre>\n<p><strong>30B</strong></p>\n<pre><code>ollama run qwen3-vl:30b\n</code></pre>\n<p><strong>32B</strong></p>\n<pre><code>ollama run qwen3-vl:32b\n</code></pre>\n<p><strong>235B</strong></p>\n<pre><code>ollama run qwen3-vl:235b\n</code></pre>\n<pre><code>ollama run qwen3-vl:235b-cloud\n</code></pre>\n<h3>Key features</h3>\n<p><strong>Visual Agent Capabilities</strong>: Qwen3-VL can operate computer and mobile interfaces \u2014 recognize GUI elements, understand button functions, call tools, and complete tasks. It achieves top global performance on benchmarks like OS World, and using tools significantly improves its performance on fine-grained perception tasks.</p>\n<p><strong>Superior Text-Centric Performance</strong>: Qwen3-VL employs early-stage joint pretraining of text and visual modalities, continuously strengthening its language capabilities. Its performance on text-based tasks matches that of Qwen3-235B-A22B-2507 \u2014 the flagship language model \u2014 making it a truly \u201ctext-grounded, multimodal powerhouse\u201d for the next generation of vision-language models.</p>\n<p><strong>Greatly Improved Visual Coding</strong>: It can now generate code from images or videos \u2014 for example, turning a design mockup into Draw.io, HTML, CSS, or JavaScript code \u2014 making \u201cwhat you see is what you get\u201d visual programming a reality.</p>\n<p><strong>Much Better Spatial Understanding</strong>: 2D grounding from absolute coordinates to relative coordinates. It can judge object positions, viewpoint changes, and occlusion relationships. It supports 3D grounding, laying the foundation for complex spatial reasoning and embodied AI applications.</p>\n<p><strong>Long Context &amp; Long Video Understanding</strong>: All models natively support 256K tokens of context, expandable up to 1 million tokens. This means you can input hundreds of pages of technical documents, entire textbooks, or even two-hour videos \u2014 and the model will remember everything and retrieve details accurately, down to the exact second in videos.</p>\n<p><strong>Stronger Multimodal Reasoning (Thinking Version)</strong>: The Thinking model is specially optimized for STEM and math reasoning. When facing complex subject questions, it can notice fine details, break down problems step by step, analyze cause and effect, and give logical, evidence-based answers. It achieves strong performance on reasoning benchmarks like MathVision, MMMU, and MathVista.</p>\n<p><strong>Upgraded Visual Perception &amp; Recognition</strong>: By improving the quality and diversity of pre-training data, the model can now recognize a much wider range of objects \u2014 from celebrities, anime characters, products, and landmarks, to animals and plants \u2014 covering both everyday life and professional \u201crecognize anything\u201d needs.</p>\n<p><strong>Better OCR Across More Languages &amp; Complex Scenes</strong>: OCR now supports 32 languages (up from 10), covering more countries and regions. It performs more reliably under challenging real-world conditions like poor lighting, blur, or tilted text. Recognition accuracy for rare characters, ancient scripts, and technical terms has also improved significantly. Its ability to understand long documents and reconstruct fine structures is further enhanced.</p>\n</div>",
+  "readme_text": "\n\n\nQwen3-VL models require Ollama 0.12.7\n\nQwen3-VL is the most powerful vision-language model in the Qwen family to date.\nIn this generation, there are improvements to the model in many areas: its understanding and generating text, perceiving and reasoning about visual content, supporting longer context lengths, understanding spatial relationships and dynamic videos, or interacting with AI agents \u2014 Qwen3-VL shows clear and significant progress in every area.\nModels\n2B\nollama run qwen3-vl:2b\n\n4B\nollama run qwen3-vl:4b\n\n8B\nollama run qwen3-vl:8b\n\n30B\nollama run qwen3-vl:30b\n\n32B\nollama run qwen3-vl:32b\n\n235B\nollama run qwen3-vl:235b\n\nollama run qwen3-vl:235b-cloud\n\nKey features\nVisual Agent Capabilities: Qwen3-VL can operate computer and mobile interfaces \u2014 recognize GUI elements, understand button functions, call tools, and complete tasks. It achieves top global performance on benchmarks like OS World, and using tools significantly improves its performance on fine-grained perception tasks.\nSuperior Text-Centric Performance: Qwen3-VL employs early-stage joint pretraining of text and visual modalities, continuously strengthening its language capabilities. Its performance on text-based tasks matches that of Qwen3-235B-A22B-2507 \u2014 the flagship language model \u2014 making it a truly \u201ctext-grounded, multimodal powerhouse\u201d for the next generation of vision-language models.\nGreatly Improved Visual Coding: It can now generate code from images or videos \u2014 for example, turning a design mockup into Draw.io, HTML, CSS, or JavaScript code \u2014 making \u201cwhat you see is what you get\u201d visual programming a reality.\nMuch Better Spatial Understanding: 2D grounding from absolute coordinates to relative coordinates. It can judge object positions, viewpoint changes, and occlusion relationships. It supports 3D grounding, laying the foundation for complex spatial reasoning and embodied AI applications.\nLong Context & Long Video Understanding: All models natively support 256K tokens of context, expandable up to 1 million tokens. This means you can input hundreds of pages of technical documents, entire textbooks, or even two-hour videos \u2014 and the model will remember everything and retrieve details accurately, down to the exact second in videos.\nStronger Multimodal Reasoning (Thinking Version): The Thinking model is specially optimized for STEM and math reasoning. When facing complex subject questions, it can notice fine details, break down problems step by step, analyze cause and effect, and give logical, evidence-based answers. It achieves strong performance on reasoning benchmarks like MathVision, MMMU, and MathVista.\nUpgraded Visual Perception & Recognition: By improving the quality and diversity of pre-training data, the model can now recognize a much wider range of objects \u2014 from celebrities, anime characters, products, and landmarks, to animals and plants \u2014 covering both everyday life and professional \u201crecognize anything\u201d needs.\nBetter OCR Across More Languages & Complex Scenes: OCR now supports 32 languages (up from 10), covering more countries and regions. It performs more reliably under challenging real-world conditions like poor lighting, blur, or tilted text. Recognition accuracy for rare characters, ancient scripts, and technical terms has also improved significantly. Its ability to understand long documents and reconstruct fine structures is further enhanced.\n",
+  "page_hash": "402b63d53ecc",
+  "tags": [
+    {
+      "tag": "qwen3-vl:latest901cae732162\u2022",
+      "last_updated": "4 months ago",
+      "size": "6.1GB",
+      "digest": "901cae732162",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b0635d9d857d4\u2022",
+      "last_updated": "4 months ago",
+      "size": "1.9GB",
+      "digest": "0635d9d857d4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b1343d82ebee3\u2022",
+      "last_updated": "4 months ago",
+      "size": "3.3GB",
+      "digest": "1343d82ebee3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8blatest901cae732162\u2022",
+      "last_updated": "4 months ago",
+      "size": "6.1GB",
+      "digest": "901cae732162",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30beda0be100877\u2022",
+      "last_updated": "4 months ago",
+      "size": "20GB",
+      "digest": "eda0be100877",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32bff2e46876908\u2022",
+      "last_updated": "4 months ago",
+      "size": "21GB",
+      "digest": "ff2e46876908",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235bdc44c5b88b17\u2022",
+      "last_updated": "4 months ago",
+      "size": "143GB",
+      "digest": "dc44c5b88b17",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-instructea422f1e7365\u2022",
+      "last_updated": "4 months ago",
+      "size": "1.9GB",
+      "digest": "ea422f1e7365",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-instruct-q4_K_Mea422f1e7365\u2022",
+      "last_updated": "4 months ago",
+      "size": "1.9GB",
+      "digest": "ea422f1e7365",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-instruct-q8_09674b2259d72\u2022",
+      "last_updated": "4 months ago",
+      "size": "2.6GB",
+      "digest": "9674b2259d72",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-instruct-bf16fc3633fe6782\u2022",
+      "last_updated": "4 months ago",
+      "size": "4.3GB",
+      "digest": "fc3633fe6782",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-thinking0635d9d857d4\u2022",
+      "last_updated": "4 months ago",
+      "size": "1.9GB",
+      "digest": "0635d9d857d4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-thinking-q4_K_M0635d9d857d4\u2022",
+      "last_updated": "4 months ago",
+      "size": "1.9GB",
+      "digest": "0635d9d857d4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-thinking-q8_0d73b897fb9aa\u2022",
+      "last_updated": "4 months ago",
+      "size": "2.6GB",
+      "digest": "d73b897fb9aa",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:2b-thinking-bf160d2c70920874\u2022",
+      "last_updated": "4 months ago",
+      "size": "4.3GB",
+      "digest": "0d2c70920874",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-instructee4b975b58c1\u2022",
+      "last_updated": "4 months ago",
+      "size": "3.3GB",
+      "digest": "ee4b975b58c1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-instruct-q4_K_Mee4b975b58c1\u2022",
+      "last_updated": "4 months ago",
+      "size": "3.3GB",
+      "digest": "ee4b975b58c1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-instruct-q8_03c4e71051a81\u2022",
+      "last_updated": "4 months ago",
+      "size": "5.1GB",
+      "digest": "3c4e71051a81",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-instruct-bf16a074ff293a12\u2022",
+      "last_updated": "4 months ago",
+      "size": "8.9GB",
+      "digest": "a074ff293a12",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-thinking1343d82ebee3\u2022",
+      "last_updated": "4 months ago",
+      "size": "3.3GB",
+      "digest": "1343d82ebee3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-thinking-q4_K_M1343d82ebee3\u2022",
+      "last_updated": "4 months ago",
+      "size": "3.3GB",
+      "digest": "1343d82ebee3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-thinking-q8_05b16d3ac6a65\u2022",
+      "last_updated": "4 months ago",
+      "size": "5.1GB",
+      "digest": "5b16d3ac6a65",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:4b-thinking-bf16b04bc96a3a84\u2022",
+      "last_updated": "4 months ago",
+      "size": "8.9GB",
+      "digest": "b04bc96a3a84",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-instruct0533d74300e4\u2022",
+      "last_updated": "4 months ago",
+      "size": "6.1GB",
+      "digest": "0533d74300e4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-instruct-q4_K_M0533d74300e4\u2022",
+      "last_updated": "4 months ago",
+      "size": "6.1GB",
+      "digest": "0533d74300e4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-instruct-q8_0eff3eb825b32\u2022",
+      "last_updated": "4 months ago",
+      "size": "9.8GB",
+      "digest": "eff3eb825b32",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-instruct-bf1655aa31bad4e2\u2022",
+      "last_updated": "4 months ago",
+      "size": "18GB",
+      "digest": "55aa31bad4e2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-thinking901cae732162\u2022",
+      "last_updated": "4 months ago",
+      "size": "6.1GB",
+      "digest": "901cae732162",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-thinking-q4_K_M901cae732162\u2022",
+      "last_updated": "4 months ago",
+      "size": "6.1GB",
+      "digest": "901cae732162",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-thinking-q8_09e9bbfc77186\u2022",
+      "last_updated": "4 months ago",
+      "size": "9.8GB",
+      "digest": "9e9bbfc77186",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:8b-thinking-bf16a86052dd9262\u2022",
+      "last_updated": "4 months ago",
+      "size": "18GB",
+      "digest": "a86052dd9262",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3beda0be100877\u2022",
+      "last_updated": "4 months ago",
+      "size": "20GB",
+      "digest": "eda0be100877",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-instructc871fc73fabc\u2022",
+      "last_updated": "4 months ago",
+      "size": "20GB",
+      "digest": "c871fc73fabc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-instruct-q4_K_Mc871fc73fabc\u2022",
+      "last_updated": "4 months ago",
+      "size": "20GB",
+      "digest": "c871fc73fabc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-instruct-q8_0e274c055d4d6\u2022",
+      "last_updated": "4 months ago",
+      "size": "34GB",
+      "digest": "e274c055d4d6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-instruct-bf16d4cad104e81d\u2022",
+      "last_updated": "4 months ago",
+      "size": "62GB",
+      "digest": "d4cad104e81d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-thinkingeda0be100877\u2022",
+      "last_updated": "4 months ago",
+      "size": "20GB",
+      "digest": "eda0be100877",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-thinking-q4_K_Meda0be100877\u2022",
+      "last_updated": "4 months ago",
+      "size": "20GB",
+      "digest": "eda0be100877",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-thinking-q8_01f8c2d354be6\u2022",
+      "last_updated": "4 months ago",
+      "size": "34GB",
+      "digest": "1f8c2d354be6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:30b-a3b-thinking-bf16ae3f9633ff7f\u2022",
+      "last_updated": "4 months ago",
+      "size": "62GB",
+      "digest": "ae3f9633ff7f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-instructc9a60b1a1a13\u2022",
+      "last_updated": "4 months ago",
+      "size": "21GB",
+      "digest": "c9a60b1a1a13",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-instruct-q4_K_Mc9a60b1a1a13\u2022",
+      "last_updated": "4 months ago",
+      "size": "21GB",
+      "digest": "c9a60b1a1a13",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-instruct-q8_02d0a26462393\u2022",
+      "last_updated": "4 months ago",
+      "size": "36GB",
+      "digest": "2d0a26462393",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-instruct-bf16b8e3027ef0f8\u2022",
+      "last_updated": "4 months ago",
+      "size": "67GB",
+      "digest": "b8e3027ef0f8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-thinkingff2e46876908\u2022",
+      "last_updated": "4 months ago",
+      "size": "21GB",
+      "digest": "ff2e46876908",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-thinking-q4_K_Mff2e46876908\u2022",
+      "last_updated": "4 months ago",
+      "size": "21GB",
+      "digest": "ff2e46876908",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-thinking-q8_076a7fcb8a3c0\u2022",
+      "last_updated": "4 months ago",
+      "size": "36GB",
+      "digest": "76a7fcb8a3c0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:32b-thinking-bf1611c4702a61b1\u2022",
+      "last_updated": "4 months ago",
+      "size": "67GB",
+      "digest": "11c4702a61b1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22bdc44c5b88b17\u2022",
+      "last_updated": "4 months ago",
+      "size": "143GB",
+      "digest": "dc44c5b88b17",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-instructf5a03319651d\u2022",
+      "last_updated": "4 months ago",
+      "size": "143GB",
+      "digest": "f5a03319651d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-instruct-q4_K_Mf5a03319651d\u2022",
+      "last_updated": "4 months ago",
+      "size": "143GB",
+      "digest": "f5a03319651d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-instruct-q8_09b028966853a\u2022",
+      "last_updated": "4 months ago",
+      "size": "251GB",
+      "digest": "9b028966853a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-instruct-bf16f9d397f6f0db\u2022",
+      "last_updated": "4 months ago",
+      "size": "471GB",
+      "digest": "f9d397f6f0db",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-thinkingdc44c5b88b17\u2022",
+      "last_updated": "4 months ago",
+      "size": "143GB",
+      "digest": "dc44c5b88b17",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-thinking-q4_K_Mdc44c5b88b17\u2022",
+      "last_updated": "4 months ago",
+      "size": "143GB",
+      "digest": "dc44c5b88b17",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-thinking-q8_001dc46352af0\u2022",
+      "last_updated": "4 months ago",
+      "size": "251GB",
+      "digest": "01dc46352af0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-a22b-thinking-bf16f78566ff0c56\u2022",
+      "last_updated": "4 months ago",
+      "size": "471GB",
+      "digest": "f78566ff0c56",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-cloud86b3322ec200\u2022",
+      "last_updated": "4 months ago",
+      "size": "-",
+      "digest": "86b3322ec200",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "qwen3-vl:235b-instruct-cloud2bf9522f6961\u2022",
+      "last_updated": "4 months ago",
+      "size": "-",
+      "digest": "2bf9522f6961",
+      "manifest": null,
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:07"
+  },
+  "source": "ollama"
+}

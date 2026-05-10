@@ -1,0 +1,152 @@
+{
+  "name": "functiongemma",
+  "description": "FunctionGemma is a specialized version of Google's Gemma 3 270M model fine-tuned explicitly for function calling.",
+  "pull_count": 77000,
+  "last_updated": "Dec 18, 2025 7:03 AM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<blockquote>\n<p>Requires Ollama v0.13.5 or later</p>\n</blockquote>\n<h3>FunctionGemma</h3>\n<p>FunctionGemma is a lightweight, open model from Google, built as a foundation for creating your own specialized function calling models. The model is well suited for text-only function calling. The uniquely small size makes it possible to deploy in environments with limited resources such as laptops, desktops or your own cloud infrastructure, democratizing access to state of the art AI models and helping foster innovation for everyone.</p>\n<p>FunctionGemma is not intended for use as a direct dialogue model, and is designed to be highly performant after further fine-tuning, as is typical of models this size.</p>\n<p>Built on the Gemma 3 270M model and with the same research and technology used to create the Gemini models, FunctionGemma has been trained specifically for function calling. The model has the same architecture as Gemma 3, but uses a different chat format.</p>\n<p>Furthermore, akin to the base Gemma 270M, the model has been optimized to be extremely versatile, performant on a variety of hardware in single turn scenarios, but should be finetuned on single turn or multiturn task specific data to achieve best accuracy in specific domains.</p>\n<h3>Examples</h3>\n<h4>Python</h4>\n<p>Run the python example with <code>uv run tool.py</code></p>\n<pre><code># /// script\n# requires-python = \"&gt;=3.11\"\n# dependencies = [\n#     \"ollama\",\n#     \"rich\",\n# ]\n# ///\n\"\"\"\nSingle tool, single turn example.\nRun with: uv run tool.py\n\"\"\"\n\nimport json\n\nfrom rich import print\n\nfrom ollama import chat\n\nmodel = 'functiongemma'\n\n\ndef get_weather(city: str) -&gt; str:\n  \"\"\"\n  Get the current weather for a city.\n\n  Args:\n    city: The name of the city\n\n  Returns:\n    A string describing the weather\n  \"\"\"\n  return json.dumps({'city': city, 'temperature': 22, 'unit': 'celsius', 'condition': 'sunny'})\n\n\nmessages = [{'role': 'user', 'content': 'What is the weather in Paris?'}]\nprint('Prompt:', messages[0]['content'])\n\nresponse = chat(model, messages=messages, tools=[get_weather])\n\nif response.message.tool_calls:\n  tool = response.message.tool_calls[0]\n  print(f'Calling: {tool.function.name}({tool.function.arguments})')\n\n  result = get_weather(**tool.function.arguments)\n  print(f'Result: {result}')\n\n  messages.append(response.message)\n  messages.append({'role': 'tool', 'content': result})\n\n  final = chat(model, messages=messages)\n  print('Response:', final.message.content)\nelse:\n  print('Response:', response.message.content)\n\n</code></pre>\n<h3>TypeScript</h3>\n<p>Run the TypeScript example with <code>bun run tool.ts</code> or <code>npx tsx tool.ts</code></p>\n<pre><code>/**\n * Single tool, single turn example.\n * Run with: bun run tool.ts or npx tsx tool.ts\n */\n\nconst OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost:11434';\nconst MODEL = 'functiongemma';\n\nfunction getWeather(city: string): string {\n  return JSON.stringify({ city, temperature: 22, unit: 'celsius', condition: 'sunny' });\n}\n\nconst tools = [\n  {\n    type: 'function',\n    function: {\n      name: 'get_weather',\n      description: 'Get the current weather for a city.',\n      parameters: {\n        type: 'object',\n        properties: {\n          city: { type: 'string', description: 'The name of the city' },\n        },\n        required: ['city'],\n      },\n    },\n  },\n];\n\ninterface Message {\n  role: string;\n  content: string;\n  tool_calls?: { function: { name: string; arguments: Record&lt;string, string&gt; } }[];\n}\n\ninterface ChatResponse {\n  message: Message;\n}\n\nasync function chat(messages: Message[]): Promise&lt;ChatResponse&gt; {\n  const response = await fetch(`${OLLAMA_HOST}/api/chat`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ model: MODEL, messages, tools, stream: false }),\n  });\n\n  if (!response.ok) {\n    throw new Error(`HTTP error: ${response.status} ${await response.text()}`);\n  }\n\n  return response.json();\n}\n\nasync function main() {\n  const messages: Message[] = [{ role: 'user', content: 'What is the weather in Paris?' }];\n  console.log('Prompt:', messages[0].content);\n\n  const response = await chat(messages);\n\n  if (response.message.tool_calls?.length) {\n    const tool = response.message.tool_calls[0];\n    console.log(`Calling: ${tool.function.name}(${JSON.stringify(tool.function.arguments)})\\n`);\n\n    const result = getWeather(tool.function.arguments.city);\n    console.log('Function Result:', result);\n\n    messages.push(response.message);\n    messages.push({ role: 'tool', content: result });\n\n    const final = await chat(messages);\n    console.log('Response:', final.message.content);\n  } else {\n    console.log('Response:', response.message.content);\n  }\n}\n\nmain().catch(console.error);\n</code></pre>\n<h3>Benchmark</h3>\n<table>\n<thead>\n<tr>\n<th><strong>Benchmark</strong></th>\n<th><strong>n-shot</strong></th>\n<th><strong>Function Gemma 270m</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>BFCL Simple</td>\n<td>0-shot</td>\n<td>61.6</td>\n</tr>\n<tr>\n<td>BFCL Multiple</td>\n<td>0-shot</td>\n<td>63.5</td>\n</tr>\n<tr>\n<td>BFCL Parallel</td>\n<td>0-shot</td>\n<td>39</td>\n</tr>\n<tr>\n<td>BFCL Parallel Multiple</td>\n<td>0-shot</td>\n<td>29.5</td>\n</tr>\n<tr>\n<td>BFCL Live Simple</td>\n<td>0-shot</td>\n<td>36.2</td>\n</tr>\n<tr>\n<td>BFCL Live Multiple</td>\n<td>0-shot</td>\n<td>25.7</td>\n</tr>\n<tr>\n<td>BFCL Live Parallel</td>\n<td>0-shot</td>\n<td>22.9</td>\n</tr>\n<tr>\n<td>BFCL Live Parallel Multiple</td>\n<td>0-shot</td>\n<td>20.8</td>\n</tr>\n<tr>\n<td>BFCL Relevance</td>\n<td>0-shot</td>\n<td>61.1</td>\n</tr>\n<tr>\n<td>BFCL Irrelevance</td>\n<td>0-shot</td>\n<td>73.7</td>\n</tr>\n</tbody>\n</table>\n<h3>Training Dataset</h3>\n<p>These models were trained on a dataset of text data that includes a wide variety of sources. The model was trained with 6T tokens. The knowledge cutoff date for the training data was August 2024. There are the key components:</p>\n<ul>\n<li>Public Tool Definitions - Common APIs found on the web</li>\n<li>Tool Use Interactions - These are a mix of prompts, function calls, function responses, and natural language responses from the model to summarise the function call response, or request clarifications when the prompt is ambiguous or incomplete.</li>\n</ul>\n<h3>Data Preprocessing</h3>\n<p>Here are the key data cleaning and filtering methods applied to the training data:</p>\n<ul>\n<li>CSAM Filtering: Rigorous CSAM (Child Sexual Abuse Material) filtering was applied at multiple stages in the data preparation process to ensure the exclusion of harmful and illegal content.</li>\n<li>Sensitive Data Filtering: As part of making Gemma pre-trained models safe and reliable, automated techniques were used to filter out certain personal information and other sensitive data from training sets.</li>\n<li>Additional methods: Filtering based on content quality and safety in line with Google\u2019s <a href=\"https://ai.google/static/documents/ai-responsibility-update-published-february-2025.pdf\" rel=\"nofollow\">policies</a>.</li>\n</ul>\n</div>",
+  "readme_text": "\n\nRequires Ollama v0.13.5 or later\n\nFunctionGemma\nFunctionGemma is a lightweight, open model from Google, built as a foundation for creating your own specialized function calling models. The model is well suited for text-only function calling. The uniquely small size makes it possible to deploy in environments with limited resources such as laptops, desktops or your own cloud infrastructure, democratizing access to state of the art AI models and helping foster innovation for everyone.\nFunctionGemma is not intended for use as a direct dialogue model, and is designed to be highly performant after further fine-tuning, as is typical of models this size.\nBuilt on the Gemma 3 270M model and with the same research and technology used to create the Gemini models, FunctionGemma has been trained specifically for function calling. The model has the same architecture as Gemma 3, but uses a different chat format.\nFurthermore, akin to the base Gemma 270M, the model has been optimized to be extremely versatile, performant on a variety of hardware in single turn scenarios, but should be finetuned on single turn or multiturn task specific data to achieve best accuracy in specific domains.\nExamples\nPython\nRun the python example with uv run tool.py\n# /// script\n# requires-python = \">=3.11\"\n# dependencies = [\n#     \"ollama\",\n#     \"rich\",\n# ]\n# ///\n\"\"\"\nSingle tool, single turn example.\nRun with: uv run tool.py\n\"\"\"\n\nimport json\n\nfrom rich import print\n\nfrom ollama import chat\n\nmodel = 'functiongemma'\n\n\ndef get_weather(city: str) -> str:\n  \"\"\"\n  Get the current weather for a city.\n\n  Args:\n    city: The name of the city\n\n  Returns:\n    A string describing the weather\n  \"\"\"\n  return json.dumps({'city': city, 'temperature': 22, 'unit': 'celsius', 'condition': 'sunny'})\n\n\nmessages = [{'role': 'user', 'content': 'What is the weather in Paris?'}]\nprint('Prompt:', messages[0]['content'])\n\nresponse = chat(model, messages=messages, tools=[get_weather])\n\nif response.message.tool_calls:\n  tool = response.message.tool_calls[0]\n  print(f'Calling: {tool.function.name}({tool.function.arguments})')\n\n  result = get_weather(**tool.function.arguments)\n  print(f'Result: {result}')\n\n  messages.append(response.message)\n  messages.append({'role': 'tool', 'content': result})\n\n  final = chat(model, messages=messages)\n  print('Response:', final.message.content)\nelse:\n  print('Response:', response.message.content)\n\n\nTypeScript\nRun the TypeScript example with bun run tool.ts or npx tsx tool.ts\n/**\n * Single tool, single turn example.\n * Run with: bun run tool.ts or npx tsx tool.ts\n */\n\nconst OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost:11434';\nconst MODEL = 'functiongemma';\n\nfunction getWeather(city: string): string {\n  return JSON.stringify({ city, temperature: 22, unit: 'celsius', condition: 'sunny' });\n}\n\nconst tools = [\n  {\n    type: 'function',\n    function: {\n      name: 'get_weather',\n      description: 'Get the current weather for a city.',\n      parameters: {\n        type: 'object',\n        properties: {\n          city: { type: 'string', description: 'The name of the city' },\n        },\n        required: ['city'],\n      },\n    },\n  },\n];\n\ninterface Message {\n  role: string;\n  content: string;\n  tool_calls?: { function: { name: string; arguments: Record<string, string> } }[];\n}\n\ninterface ChatResponse {\n  message: Message;\n}\n\nasync function chat(messages: Message[]): Promise<ChatResponse> {\n  const response = await fetch(`${OLLAMA_HOST}/api/chat`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ model: MODEL, messages, tools, stream: false }),\n  });\n\n  if (!response.ok) {\n    throw new Error(`HTTP error: ${response.status} ${await response.text()}`);\n  }\n\n  return response.json();\n}\n\nasync function main() {\n  const messages: Message[] = [{ role: 'user', content: 'What is the weather in Paris?' }];\n  console.log('Prompt:', messages[0].content);\n\n  const response = await chat(messages);\n\n  if (response.message.tool_calls?.length) {\n    const tool = response.message.tool_calls[0];\n    console.log(`Calling: ${tool.function.name}(${JSON.stringify(tool.function.arguments)})\\n`);\n\n    const result = getWeather(tool.function.arguments.city);\n    console.log('Function Result:', result);\n\n    messages.push(response.message);\n    messages.push({ role: 'tool', content: result });\n\n    const final = await chat(messages);\n    console.log('Response:', final.message.content);\n  } else {\n    console.log('Response:', response.message.content);\n  }\n}\n\nmain().catch(console.error);\n\nBenchmark\n\n\n\nBenchmark\nn-shot\nFunction Gemma 270m\n\n\n\n\nBFCL Simple\n0-shot\n61.6\n\n\nBFCL Multiple\n0-shot\n63.5\n\n\nBFCL Parallel\n0-shot\n39\n\n\nBFCL Parallel Multiple\n0-shot\n29.5\n\n\nBFCL Live Simple\n0-shot\n36.2\n\n\nBFCL Live Multiple\n0-shot\n25.7\n\n\nBFCL Live Parallel\n0-shot\n22.9\n\n\nBFCL Live Parallel Multiple\n0-shot\n20.8\n\n\nBFCL Relevance\n0-shot\n61.1\n\n\nBFCL Irrelevance\n0-shot\n73.7\n\n\n\nTraining Dataset\nThese models were trained on a dataset of text data that includes a wide variety of sources. The model was trained with 6T tokens. The knowledge cutoff date for the training data was August 2024. There are the key components:\n\nPublic Tool Definitions - Common APIs found on the web\nTool Use Interactions - These are a mix of prompts, function calls, function responses, and natural language responses from the model to summarise the function call response, or request clarifications when the prompt is ambiguous or incomplete.\n\nData Preprocessing\nHere are the key data cleaning and filtering methods applied to the training data:\n\nCSAM Filtering: Rigorous CSAM (Child Sexual Abuse Material) filtering was applied at multiple stages in the data preparation process to ensure the exclusion of harmful and illegal content.\nSensitive Data Filtering: As part of making Gemma pre-trained models safe and reliable, automated techniques were used to filter out certain personal information and other sensitive data from training sets.\nAdditional methods: Filtering based on content quality and safety in line with Google\u2019s policies.\n\n",
+  "page_hash": "27a9fc83751f",
+  "tags": [
+    {
+      "tag": "latest",
+      "last_updated": "2 months ago",
+      "size": "301MB",
+      "digest": "sha256:d087699a88291521d394cac6841bd30ce16c5ef16d54f16c94c003e5aee00e5f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d087699a88291521d394cac6841bd30ce16c5ef16d54f16c94c003e5aee00e5f",
+          "size": 468
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:415f8f959d807bd4d4da891f01225d7b330416947fb011a8473080ae4fd07885",
+            "size": 300796576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64c834d5c134577dc3e6b29bc8df5cd75f0e07bf8b9b03ee20a6e43dcc3808a0",
+            "size": 10087
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b536e845ddda12ebb432d680e2e79cfdcd2843db55274a8b33441ce981255073",
+            "size": 26
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "tag": "270m",
+      "last_updated": "2 months ago",
+      "size": "301MB",
+      "digest": "sha256:d087699a88291521d394cac6841bd30ce16c5ef16d54f16c94c003e5aee00e5f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d087699a88291521d394cac6841bd30ce16c5ef16d54f16c94c003e5aee00e5f",
+          "size": 468
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:415f8f959d807bd4d4da891f01225d7b330416947fb011a8473080ae4fd07885",
+            "size": 300796576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64c834d5c134577dc3e6b29bc8df5cd75f0e07bf8b9b03ee20a6e43dcc3808a0",
+            "size": 10087
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b536e845ddda12ebb432d680e2e79cfdcd2843db55274a8b33441ce981255073",
+            "size": 26
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "tag": "270m-it-q8_0",
+      "last_updated": "2 months ago",
+      "size": "301MB",
+      "digest": "sha256:d087699a88291521d394cac6841bd30ce16c5ef16d54f16c94c003e5aee00e5f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:d087699a88291521d394cac6841bd30ce16c5ef16d54f16c94c003e5aee00e5f",
+          "size": 468
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:415f8f959d807bd4d4da891f01225d7b330416947fb011a8473080ae4fd07885",
+            "size": 300796576
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64c834d5c134577dc3e6b29bc8df5cd75f0e07bf8b9b03ee20a6e43dcc3808a0",
+            "size": 10087
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b536e845ddda12ebb432d680e2e79cfdcd2843db55274a8b33441ce981255073",
+            "size": 26
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "tag": "270m-it-fp16",
+      "last_updated": "2 months ago",
+      "size": "552MB",
+      "digest": "sha256:a58cecbae416153d13062ec604ecc7ea82e1b3292c56a2156041ae322728504f",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:a58cecbae416153d13062ec604ecc7ea82e1b3292c56a2156041ae322728504f",
+          "size": 467
+        },
+        "layers": [
+          {
+            "mediaType": "Model Weights",
+            "digest": "sha256:a34dfb3d50e6bf8f2f2181863723dd638eb30e7cf9ee883a6b19fc21bff6f606",
+            "size": 552086112
+          },
+          {
+            "mediaType": "License",
+            "digest": "sha256:64c834d5c134577dc3e6b29bc8df5cd75f0e07bf8b9b03ee20a6e43dcc3808a0",
+            "size": 10087
+          },
+          {
+            "mediaType": "Parameters",
+            "digest": "sha256:b536e845ddda12ebb432d680e2e79cfdcd2843db55274a8b33441ce981255073",
+            "size": 26
+          }
+        ]
+      },
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:07"
+  },
+  "source": "ollama"
+}

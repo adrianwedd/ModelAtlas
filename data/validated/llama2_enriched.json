@@ -1,0 +1,836 @@
+{
+  "name": "llama2",
+  "description": "Llama 2 is a collection of foundation language models ranging from 7B to 70B parameters.",
+  "pull_count": 5600000,
+  "last_updated": "Dec 27, 2023 9:21 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/jmorganca/ollama/assets/3325447/286e4e13-0b2b-43a4-9b07-23a50d3a3d33\" width=\"360\"/></p>\n<p>Llama 2 is released by Meta Platforms, Inc. This model is trained on 2 trillion tokens, and by default supports a context length of 4096. Llama 2 Chat models are fine-tuned on over 1 million human annotations, and are made for chat.</p>\n<h3>CLI</h3>\n<p>Open the terminal and run <code>ollama run llama2</code></p>\n<h3>API</h3>\n<p>Example using curl:</p>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"llama2\",\n  \"prompt\":\"Why is the sky blue?\"\n }'\n</code></pre>\n<p><a href=\"https://github.com/jmorganca/ollama/blob/main/docs/api.md\" rel=\"nofollow\">API documentation</a></p>\n<h2>Memory requirements</h2>\n<ul>\n<li>7b models generally require at least 8GB of RAM</li>\n<li>13b models generally require at least 16GB of RAM</li>\n<li>70b models generally require at least 64GB of RAM</li>\n</ul>\n<p>If you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.</p>\n<h2>Model variants</h2>\n<p><strong>Chat</strong> is fine-tuned for chat/dialogue use cases. These are the default in Ollama, and for models tagged with -chat in the tags tab.</p>\n<p><em>Example: <code>ollama run llama2</code></em></p>\n<p><strong>Pre-trained</strong> is without the chat fine-tuning. This is tagged as -text in the tags tab.</p>\n<p><em>Example: <code>ollama run llama2:text</code></em></p>\n<p>By default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.</p>\n<h2>References</h2>\n<p><a href=\"https://arxiv.org/abs/2307.09288\" rel=\"nofollow\">Llama 2: Open Foundation and Fine-Tuned Chat Models</a></p>\n<p><a href=\"https://huggingface.co/meta-llama\" rel=\"nofollow\">Meta\u2019s Hugging Face repo</a></p>\n</div>",
+  "readme_text": "\n\nLlama 2 is released by Meta Platforms, Inc. This model is trained on 2 trillion tokens, and by default supports a context length of 4096. Llama 2 Chat models are fine-tuned on over 1 million human annotations, and are made for chat.\nCLI\nOpen the terminal and run ollama run llama2\nAPI\nExample using curl:\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"llama2\",\n  \"prompt\":\"Why is the sky blue?\"\n }'\n\nAPI documentation\nMemory requirements\n\n7b models generally require at least 8GB of RAM\n13b models generally require at least 16GB of RAM\n70b models generally require at least 64GB of RAM\n\nIf you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.\nModel variants\nChat is fine-tuned for chat/dialogue use cases. These are the default in Ollama, and for models tagged with -chat in the tags tab.\nExample: ollama run llama2\nPre-trained is without the chat fine-tuning. This is tagged as -text in the tags tab.\nExample: ollama run llama2:text\nBy default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.\nReferences\nLlama 2: Open Foundation and Fine-Tuned Chat Models\nMeta\u2019s Hugging Face repo\n",
+  "page_hash": "0f463861e5d9",
+  "tags": [
+    {
+      "tag": "llama2:latest78e26419b446\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "78e26419b446",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:chat78e26419b446\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "78e26419b446",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:text53b394a404fd\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "53b394a404fd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7blatest78e26419b446\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "78e26419b446",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13bd475bf4c50bc\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "d475bf4c50bc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70be7f6c06ffef4\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "e7f6c06ffef4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat78e26419b446\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "78e26419b446",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q2_K56baf05e3e67\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "56baf05e3e67",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q3_K_S3af967e4a825\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.9GB",
+      "digest": "3af967e4a825",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q3_K_M63ebc93e095e\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.3GB",
+      "digest": "63ebc93e095e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q3_K_Lc04042faafd0\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "c04042faafd0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q4_078e26419b446\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "78e26419b446",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q4_185eb4bc10598\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "85eb4bc10598",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q4_K_Sbec61ac554e8\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "bec61ac554e8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q4_K_Mfe3834f64df5\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "fe3834f64df5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q5_068cf22a36a37\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "68cf22a36a37",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q5_1ae646aad1ac9\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.1GB",
+      "digest": "ae646aad1ac9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q5_K_S4f771b179264\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "4f771b179264",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q5_K_M5918a2e3bb37\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "5918a2e3bb37",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q6_K7eabddae7b75\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "7eabddae7b75",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-q8_0fc35dd6c8370\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.2GB",
+      "digest": "fc35dd6c8370",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-chat-fp1650a12b7ddb9d\u2022",
+      "last_updated": "2 years ago",
+      "size": "13GB",
+      "digest": "50a12b7ddb9d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text53b394a404fd\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "53b394a404fd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q2_Kc581571a4e90\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "c581571a4e90",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q3_K_S2f3ee65fe92a\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.9GB",
+      "digest": "2f3ee65fe92a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q3_K_Mc1ddf19ff6db\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.3GB",
+      "digest": "c1ddf19ff6db",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q3_K_Ldf57d4d53dac\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "df57d4d53dac",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q4_053b394a404fd\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "53b394a404fd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q4_1189a0d0904e4\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "189a0d0904e4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q4_K_S1c2571d89f3b\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "1c2571d89f3b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q4_K_Mb50304b988e8\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "b50304b988e8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q5_07377932417e0\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "7377932417e0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q5_11a5e521c1e5c\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.1GB",
+      "digest": "1a5e521c1e5c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q5_K_S6dd64259f527\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "6dd64259f527",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q5_K_Meaa320e04479\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "eaa320e04479",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q6_K7e54061a4751\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "7e54061a4751",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-q8_0fd701415200a\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.2GB",
+      "digest": "fd701415200a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:7b-text-fp16f69718db483a\u2022",
+      "last_updated": "2 years ago",
+      "size": "13GB",
+      "digest": "f69718db483a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chatd475bf4c50bc\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "d475bf4c50bc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q2_K14d3396d4e1b\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "14d3396d4e1b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q3_K_S224005fe00d3\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "224005fe00d3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q3_K_M7a39765cf206\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "7a39765cf206",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q3_K_Ld0a4d669c0b5\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "d0a4d669c0b5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q4_0d475bf4c50bc\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "d475bf4c50bc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q4_18da45bab53a7\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "8da45bab53a7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q4_K_Sc9bc1759c3b8\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "c9bc1759c3b8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q4_K_M87727269f62c\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.9GB",
+      "digest": "87727269f62c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q5_02ceaa73b479a\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "2ceaa73b479a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q5_176c91147b201\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.8GB",
+      "digest": "76c91147b201",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q5_K_S25324e6a6e04\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "25324e6a6e04",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q5_K_M34471ad29e7c\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.2GB",
+      "digest": "34471ad29e7c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q6_Kdf2e3c78030b\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "df2e3c78030b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-q8_0303a83449a06\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "303a83449a06",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-chat-fp1683b0fe8fee34\u2022",
+      "last_updated": "2 years ago",
+      "size": "26GB",
+      "digest": "83b0fe8fee34",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-textd9ecf5544188\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "d9ecf5544188",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q2_K64ace2ba0375\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "64ace2ba0375",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q3_K_S959925e1415d\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "959925e1415d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q3_K_Mff280395c1b4\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "ff280395c1b4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q3_K_Lcc161efc495b\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "cc161efc495b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q4_0d9ecf5544188\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "d9ecf5544188",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q4_1ff9b7e23cab5\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "ff9b7e23cab5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q4_K_S2fadc16207a6\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "2fadc16207a6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q4_K_M74b8a493a98e\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.9GB",
+      "digest": "74b8a493a98e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q5_08f3886efc72d\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "8f3886efc72d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q5_12afbee63a3f1\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.8GB",
+      "digest": "2afbee63a3f1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q5_K_S1025495b5ee3\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "1025495b5ee3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q5_K_M4be0a0bc5acb\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.2GB",
+      "digest": "4be0a0bc5acb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q6_K376544bcd2db\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "376544bcd2db",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-q8_0604d6e23f647\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "604d6e23f647",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:13b-text-fp16d19bbe682374\u2022",
+      "last_updated": "2 years ago",
+      "size": "26GB",
+      "digest": "d19bbe682374",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chate7f6c06ffef4\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "e7f6c06ffef4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q2_K3cac2828f2b8\u2022",
+      "last_updated": "2 years ago",
+      "size": "29GB",
+      "digest": "3cac2828f2b8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q3_K_S051b27c23c3f\u2022",
+      "last_updated": "2 years ago",
+      "size": "30GB",
+      "digest": "051b27c23c3f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q3_K_Mf11f61dc9832\u2022",
+      "last_updated": "2 years ago",
+      "size": "33GB",
+      "digest": "f11f61dc9832",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q3_K_Le2275953b0b3\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "e2275953b0b3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q4_0e7f6c06ffef4\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "e7f6c06ffef4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q4_18618469361ea\u2022",
+      "last_updated": "2 years ago",
+      "size": "43GB",
+      "digest": "8618469361ea",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q4_K_Se202e9dd13cc\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "e202e9dd13cc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q4_K_M8f88029f07f8\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "8f88029f07f8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q5_06cb5828911b8\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "6cb5828911b8",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q5_19d1fbb3c4074\u2022",
+      "last_updated": "2 years ago",
+      "size": "52GB",
+      "digest": "9d1fbb3c4074",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q5_K_Seb071689d8e5\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "eb071689d8e5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q5_K_M2e12d2211dd5\u2022",
+      "last_updated": "2 years ago",
+      "size": "49GB",
+      "digest": "2e12d2211dd5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q6_Kb8bbc9a59804\u2022",
+      "last_updated": "2 years ago",
+      "size": "57GB",
+      "digest": "b8bbc9a59804",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-q8_0d91d0643f080\u2022",
+      "last_updated": "2 years ago",
+      "size": "73GB",
+      "digest": "d91d0643f080",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-chat-fp1618d69cd1de10\u2022",
+      "last_updated": "2 years ago",
+      "size": "138GB",
+      "digest": "18d69cd1de10",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-textb9b52e6b61c5\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "b9b52e6b61c5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q2_Kb45d7449cc92\u2022",
+      "last_updated": "2 years ago",
+      "size": "29GB",
+      "digest": "b45d7449cc92",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q3_K_S2227129bfc8a\u2022",
+      "last_updated": "2 years ago",
+      "size": "30GB",
+      "digest": "2227129bfc8a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q3_K_Mfbd62f5dcf16\u2022",
+      "last_updated": "2 years ago",
+      "size": "33GB",
+      "digest": "fbd62f5dcf16",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q3_K_Lb5bdb4982992\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "b5bdb4982992",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q4_0b9b52e6b61c5\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "b9b52e6b61c5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q4_192c3da1574b4\u2022",
+      "last_updated": "2 years ago",
+      "size": "43GB",
+      "digest": "92c3da1574b4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q4_K_S1197a01c76e7\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "1197a01c76e7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q4_K_Mbc70b8e5b4e5\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "bc70b8e5b4e5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q5_04ec9f6c43f82\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "4ec9f6c43f82",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q5_19cafaca2d2fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "52GB",
+      "digest": "9cafaca2d2fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q5_K_Seab38b764b5b\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "eab38b764b5b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q5_K_Mb365053e53fc\u2022",
+      "last_updated": "2 years ago",
+      "size": "49GB",
+      "digest": "b365053e53fc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q6_K78e480a0450b\u2022",
+      "last_updated": "2 years ago",
+      "size": "57GB",
+      "digest": "78e480a0450b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-q8_02aa27df56a63\u2022",
+      "last_updated": "2 years ago",
+      "size": "73GB",
+      "digest": "2aa27df56a63",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "llama2:70b-text-fp16dc03bc3a16cf\u2022",
+      "last_updated": "2 years ago",
+      "size": "138GB",
+      "digest": "dc03bc3a16cf",
+      "manifest": null,
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:07"
+  },
+  "source": "ollama"
+}

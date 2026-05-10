@@ -1,0 +1,1612 @@
+{
+  "name": "codellama",
+  "description": "A large language model that can use text prompts to generate and discuss code.",
+  "pull_count": 4400000,
+  "last_updated": "Jul 18, 2024 5:31 PM UTC",
+  "readme_html": "<div class=\"prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black\" id=\"display\">\n<p><img src=\"https://github.com/jmorganca/ollama/assets/3325447/286e4e13-0b2b-43a4-9b07-23a50d3a3d33\" width=\"360\"/></p>\n<p>Code Llama is a model for generating and discussing code, built on top of <a href=\"https://ollama.ai/library/llama2\" rel=\"nofollow\">Llama 2</a>. It\u2019s designed to make workflows faster and efficient for developers and make it easier for people to learn how to code. It can generate both code and natural language about code. Code Llama supports many of the most popular programming languages used today, including Python, C++, Java, PHP, Typescript (Javascript), C#, Bash and more.</p>\n<h2>Parameter counts</h2>\n<table>\n<thead>\n<tr>\n<th>Parameter Count</th>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>7 billion</td>\n<td><a href=\"/library/codellama:7b\" rel=\"nofollow\">View</a></td>\n<td><code>ollama run codellama:7b</code></td>\n</tr>\n<tr>\n<td>13 billion</td>\n<td><a href=\"/library/codellama:13b\" rel=\"nofollow\">View</a></td>\n<td><code>ollama run codellama:13b</code></td>\n</tr>\n<tr>\n<td>34 billion</td>\n<td><a href=\"/library/codellama:34b\" rel=\"nofollow\">View</a></td>\n<td><code>ollama run codellama:34b</code></td>\n</tr>\n<tr>\n<td>70 billion</td>\n<td><a href=\"/library/codellama:70b\" rel=\"nofollow\">View</a></td>\n<td><code>ollama run codellama:70b</code></td>\n</tr>\n</tbody>\n</table>\n<h2>Usage</h2>\n<h3>CLI</h3>\n<pre><code>ollama run codellama \"Write me a function that outputs the fibonacci sequence\"\n</code></pre>\n<h3>API</h3>\n<pre><code>curl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"codellama\",\n  \"prompt\": \"Write me a function that outputs the fibonacci sequence\"\n}'\n</code></pre>\n<h2>Variations</h2>\n<table>\n<thead>\n<tr>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>instruct</code></td>\n<td>Fine-tuned to generate helpful and safe answers in natural language</td>\n</tr>\n<tr>\n<td><code>python</code></td>\n<td>A specialized variation of Code Llama further fine-tuned on 100B tokens of Python code</td>\n</tr>\n<tr>\n<td><code>code</code></td>\n<td>Base model for code completion</td>\n</tr>\n</tbody>\n</table>\n<h2>Example prompts</h2>\n<h3>Ask questions</h3>\n<pre><code>ollama run codellama:7b-instruct 'You are an expert programmer that writes simple, concise code and explanations. Write a python function to generate the nth fibonacci number.'\n</code></pre>\n<h3>Fill-in-the-middle (FIM) or infill</h3>\n<pre><code>ollama run codellama:7b-code '&lt;PRE&gt; def compute_gcd(x, y): &lt;SUF&gt;return result &lt;MID&gt;'\n</code></pre>\n<p>Fill-in-the-middle (FIM) is a special prompt format supported by the code completion model can complete code between two already written code blocks. Code Llama expects a specific format for infilling code:</p>\n<pre><code>&lt;PRE&gt; {prefix} &lt;SUF&gt;{suffix} &lt;MID&gt;\n</code></pre>\n<p><code>&lt;PRE&gt;</code>, <code>&lt;SUF&gt;</code> and <code>&lt;MID&gt;</code> are special tokens that guide the model.</p>\n<h3>Code review</h3>\n<pre><code>ollama run codellama '\nWhere is the bug in this code?\n\ndef fib(n):\n    if n &lt;= 0:\n        return n\n    else:\n        return fib(n-1) + fib(n-2)\n'\n</code></pre>\n<h3>Writing tests</h3>\n<pre><code>ollama run codellama \"write a unit test for this function: $(cat example.py)\"\n</code></pre>\n<h3>Code completion</h3>\n<pre><code>ollama run codellama:7b-code '# A simple python function to remove whitespace from a string:'\n</code></pre>\n<h2>More information</h2>\n<ul>\n<li><a href=\"https://ollama.ai/blog/how-to-prompt-code-llama\" rel=\"nofollow\">How to prompt Code Llama</a></li>\n<li><a href=\"https://arxiv.org/abs/2308.12950\" rel=\"nofollow\">Whitepaper</a></li>\n<li><a href=\"https://github.com/facebookresearch/codellama\" rel=\"nofollow\">CodeLlama GitHub</a></li>\n<li><a href=\"https://huggingface.co/codellama\" rel=\"nofollow\">Hugging Face</a></li>\n</ul>\n</div>",
+  "readme_text": "\n\nCode Llama is a model for generating and discussing code, built on top of Llama 2. It\u2019s designed to make workflows faster and efficient for developers and make it easier for people to learn how to code. It can generate both code and natural language about code. Code Llama supports many of the most popular programming languages used today, including Python, C++, Java, PHP, Typescript (Javascript), C#, Bash and more.\nParameter counts\n\n\n\nParameter Count\n\n\n\n\n\n\n7 billion\nView\nollama run codellama:7b\n\n\n13 billion\nView\nollama run codellama:13b\n\n\n34 billion\nView\nollama run codellama:34b\n\n\n70 billion\nView\nollama run codellama:70b\n\n\n\nUsage\nCLI\nollama run codellama \"Write me a function that outputs the fibonacci sequence\"\n\nAPI\ncurl -X POST http://localhost:11434/api/generate -d '{\n  \"model\": \"codellama\",\n  \"prompt\": \"Write me a function that outputs the fibonacci sequence\"\n}'\n\nVariations\n\n\n\n\n\n\n\n\n\ninstruct\nFine-tuned to generate helpful and safe answers in natural language\n\n\npython\nA specialized variation of Code Llama further fine-tuned on 100B tokens of Python code\n\n\ncode\nBase model for code completion\n\n\n\nExample prompts\nAsk questions\nollama run codellama:7b-instruct 'You are an expert programmer that writes simple, concise code and explanations. Write a python function to generate the nth fibonacci number.'\n\nFill-in-the-middle (FIM) or infill\nollama run codellama:7b-code '<PRE> def compute_gcd(x, y): <SUF>return result <MID>'\n\nFill-in-the-middle (FIM) is a special prompt format supported by the code completion model can complete code between two already written code blocks. Code Llama expects a specific format for infilling code:\n<PRE> {prefix} <SUF>{suffix} <MID>\n\n<PRE>, <SUF> and <MID> are special tokens that guide the model.\nCode review\nollama run codellama '\nWhere is the bug in this code?\n\ndef fib(n):\n    if n <= 0:\n        return n\n    else:\n        return fib(n-1) + fib(n-2)\n'\n\nWriting tests\nollama run codellama \"write a unit test for this function: $(cat example.py)\"\n\nCode completion\nollama run codellama:7b-code '# A simple python function to remove whitespace from a string:'\n\nMore information\n\nHow to prompt Code Llama\nWhitepaper\nCodeLlama GitHub\nHugging Face\n\n",
+  "page_hash": "fd98dca28ace",
+  "tags": [
+    {
+      "tag": "codellama:latest8fdf8f752f6e\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "8fdf8f752f6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:code8df0a30bb1e6\u2022",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "8df0a30bb1e6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:instruct8fdf8f752f6e\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "8fdf8f752f6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:python120ca3419eae\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "120ca3419eae",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7blatest8fdf8f752f6e\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "8fdf8f752f6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b9f438cb9cd58\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "9f438cb9cd58",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b685be00e1532\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "685be00e1532",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70be59b580dfce7\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "e59b580dfce7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code8df0a30bb1e6\u2022",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "8df0a30bb1e6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q2_K91ff9867e158\u2022",
+      "last_updated": "1 year ago",
+      "size": "2.8GB",
+      "digest": "91ff9867e158",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q3_K_Sa53cf3fbfba9\u2022",
+      "last_updated": "1 year ago",
+      "size": "2.9GB",
+      "digest": "a53cf3fbfba9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q3_K_Mfeb1d9b1793b\u2022",
+      "last_updated": "1 year ago",
+      "size": "3.3GB",
+      "digest": "feb1d9b1793b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q3_K_L28f2ce50aa95\u2022",
+      "last_updated": "1 year ago",
+      "size": "3.6GB",
+      "digest": "28f2ce50aa95",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q4_08df0a30bb1e6\u2022",
+      "last_updated": "1 year ago",
+      "size": "3.8GB",
+      "digest": "8df0a30bb1e6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q4_1537584c9d430\u2022",
+      "last_updated": "1 year ago",
+      "size": "4.2GB",
+      "digest": "537584c9d430",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q4_K_S87013da043fc\u2022",
+      "last_updated": "1 year ago",
+      "size": "3.9GB",
+      "digest": "87013da043fc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q4_K_Me0f44d809bb4\u2022",
+      "last_updated": "1 year ago",
+      "size": "4.1GB",
+      "digest": "e0f44d809bb4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q5_0d7bab15b429c\u2022",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "d7bab15b429c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q5_1a38c1ce2f694\u2022",
+      "last_updated": "1 year ago",
+      "size": "5.1GB",
+      "digest": "a38c1ce2f694",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q5_K_S1854c84f9cd6\u2022",
+      "last_updated": "1 year ago",
+      "size": "4.7GB",
+      "digest": "1854c84f9cd6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q5_K_M19a534f2e7ca\u2022",
+      "last_updated": "1 year ago",
+      "size": "4.8GB",
+      "digest": "19a534f2e7ca",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q6_Ke3d8d04437e4\u2022",
+      "last_updated": "1 year ago",
+      "size": "5.5GB",
+      "digest": "e3d8d04437e4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-q8_0b5c402bcc7d9\u2022",
+      "last_updated": "1 year ago",
+      "size": "7.2GB",
+      "digest": "b5c402bcc7d9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-code-fp1649e540e808cb\u2022",
+      "last_updated": "1 year ago",
+      "size": "13GB",
+      "digest": "49e540e808cb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct8fdf8f752f6e\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "8fdf8f752f6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q2_K28ee56afb6a5\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "28ee56afb6a5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q3_K_S69d540497dc3\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.9GB",
+      "digest": "69d540497dc3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q3_K_Mddae88ac7060\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.3GB",
+      "digest": "ddae88ac7060",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q3_K_L74aea2ff4240\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "74aea2ff4240",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q4_08fdf8f752f6e\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "8fdf8f752f6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q4_182177b511b42\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "82177b511b42",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q4_K_S7e7d9567e2be\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "7e7d9567e2be",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q4_K_Mdfd9bbf35961\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "dfd9bbf35961",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q5_01fe20720c90b\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "1fe20720c90b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q5_196ebcc6283ac\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.1GB",
+      "digest": "96ebcc6283ac",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q5_K_S0a9dfb4ddb84\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "0a9dfb4ddb84",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q5_K_M4f6dbd70addc\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "4f6dbd70addc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q6_K3a5b549ceb36\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "3a5b549ceb36",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-q8_0e371f415ddec\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.2GB",
+      "digest": "e371f415ddec",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-instruct-fp166d0772f2d7d0\u2022",
+      "last_updated": "2 years ago",
+      "size": "13GB",
+      "digest": "6d0772f2d7d0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python120ca3419eae\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "120ca3419eae",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q2_K90537ffccfc3\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.8GB",
+      "digest": "90537ffccfc3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q3_K_S32abf4fb831c\u2022",
+      "last_updated": "2 years ago",
+      "size": "2.9GB",
+      "digest": "32abf4fb831c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q3_K_Mf78512a1494b\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.3GB",
+      "digest": "f78512a1494b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q3_K_L89bd2bcbe688\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.6GB",
+      "digest": "89bd2bcbe688",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q4_0120ca3419eae\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.8GB",
+      "digest": "120ca3419eae",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q4_1229914b4c95a\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.2GB",
+      "digest": "229914b4c95a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q4_K_S3e2981f24208\u2022",
+      "last_updated": "2 years ago",
+      "size": "3.9GB",
+      "digest": "3e2981f24208",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q4_K_M82469243d8df\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.1GB",
+      "digest": "82469243d8df",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q5_0ca3bea54d322\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "ca3bea54d322",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q5_1973c0b9ff6f2\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.1GB",
+      "digest": "973c0b9ff6f2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q5_K_S33d5fb72706b\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.7GB",
+      "digest": "33d5fb72706b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q5_K_Mcf2d34d45cf5\u2022",
+      "last_updated": "2 years ago",
+      "size": "4.8GB",
+      "digest": "cf2d34d45cf5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q6_Kd03cee358f2e\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.5GB",
+      "digest": "d03cee358f2e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-q8_09989aa9990d5\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.2GB",
+      "digest": "9989aa9990d5",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:7b-python-fp16c586d7593fc9\u2022",
+      "last_updated": "2 years ago",
+      "size": "13GB",
+      "digest": "c586d7593fc9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code61b6aa1b3d0f\u2022",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "61b6aa1b3d0f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q2_K15030cfe1222\u2022",
+      "last_updated": "1 year ago",
+      "size": "5.4GB",
+      "digest": "15030cfe1222",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q3_K_S19a8f7d27f99\u2022",
+      "last_updated": "1 year ago",
+      "size": "5.7GB",
+      "digest": "19a8f7d27f99",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q3_K_M89cf92af026f\u2022",
+      "last_updated": "1 year ago",
+      "size": "6.3GB",
+      "digest": "89cf92af026f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q3_K_Lba5706a5838b\u2022",
+      "last_updated": "1 year ago",
+      "size": "6.9GB",
+      "digest": "ba5706a5838b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q4_061b6aa1b3d0f\u2022",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "61b6aa1b3d0f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q4_157327f6dcb54\u2022",
+      "last_updated": "1 year ago",
+      "size": "8.2GB",
+      "digest": "57327f6dcb54",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q4_K_S87379a37e4aa\u2022",
+      "last_updated": "1 year ago",
+      "size": "7.4GB",
+      "digest": "87379a37e4aa",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q4_K_M0aa12f0144e3\u2022",
+      "last_updated": "1 year ago",
+      "size": "7.9GB",
+      "digest": "0aa12f0144e3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q5_01a8f4c7a3c5f\u2022",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "1a8f4c7a3c5f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q5_11044f602e601\u2022",
+      "last_updated": "1 year ago",
+      "size": "9.8GB",
+      "digest": "1044f602e601",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q5_K_S638856bc2a70\u2022",
+      "last_updated": "1 year ago",
+      "size": "9.0GB",
+      "digest": "638856bc2a70",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q5_K_M2ed5f2d821a0\u2022",
+      "last_updated": "1 year ago",
+      "size": "9.2GB",
+      "digest": "2ed5f2d821a0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q6_Kbbf97c457aa3\u2022",
+      "last_updated": "1 year ago",
+      "size": "11GB",
+      "digest": "bbf97c457aa3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-q8_003674985089a\u2022",
+      "last_updated": "1 year ago",
+      "size": "14GB",
+      "digest": "03674985089a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-code-fp16d2d1857cd78a\u2022",
+      "last_updated": "1 year ago",
+      "size": "26GB",
+      "digest": "d2d1857cd78a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct9f438cb9cd58\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "9f438cb9cd58",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q2_K8fb59331633d\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "8fb59331633d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q3_K_Sc67eb99f3c22\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "c67eb99f3c22",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q3_K_Mb6cfa4228952\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "b6cfa4228952",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q3_K_Lbce5c62dfd7d\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "bce5c62dfd7d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q4_09f438cb9cd58\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "9f438cb9cd58",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q4_1e41f7cfb904d\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "e41f7cfb904d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q4_K_Sea05ed122e9e\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "ea05ed122e9e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q4_K_M96b64dad9259\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.9GB",
+      "digest": "96b64dad9259",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q5_0272076d850ca\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "272076d850ca",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q5_1c314aa11a40d\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.8GB",
+      "digest": "c314aa11a40d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q5_K_S88522b510fcb\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "88522b510fcb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q5_K_Md4a5d7a6ca94\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.2GB",
+      "digest": "d4a5d7a6ca94",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q6_Kd0a67452c242\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "d0a67452c242",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-q8_0196822804b09\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "196822804b09",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-instruct-fp16220d80e5d12b\u2022",
+      "last_updated": "2 years ago",
+      "size": "26GB",
+      "digest": "220d80e5d12b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-pythonac95ebf45ada\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "ac95ebf45ada",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q2_Kc9b35dd8cb12\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.4GB",
+      "digest": "c9b35dd8cb12",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q3_K_S0b5b459ae6ac\u2022",
+      "last_updated": "2 years ago",
+      "size": "5.7GB",
+      "digest": "0b5b459ae6ac",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q3_K_M97d666909551\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.3GB",
+      "digest": "97d666909551",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q3_K_Lf499608bd8fc\u2022",
+      "last_updated": "2 years ago",
+      "size": "6.9GB",
+      "digest": "f499608bd8fc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q4_0ac95ebf45ada\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "ac95ebf45ada",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q4_1a7e755ca330e\u2022",
+      "last_updated": "2 years ago",
+      "size": "8.2GB",
+      "digest": "a7e755ca330e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q4_K_Sefca725ae5a6\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.4GB",
+      "digest": "efca725ae5a6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q4_K_M897d6f158bff\u2022",
+      "last_updated": "2 years ago",
+      "size": "7.9GB",
+      "digest": "897d6f158bff",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q5_04310a4450fac\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "4310a4450fac",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q5_1d896d2264b62\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.8GB",
+      "digest": "d896d2264b62",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q5_K_S23198bde3624\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.0GB",
+      "digest": "23198bde3624",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q5_K_Mbee3e1199c6e\u2022",
+      "last_updated": "2 years ago",
+      "size": "9.2GB",
+      "digest": "bee3e1199c6e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q6_Ka156022a735c\u2022",
+      "last_updated": "2 years ago",
+      "size": "11GB",
+      "digest": "a156022a735c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-q8_0651a360f8207\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "651a360f8207",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:13b-python-fp1646a84a4b71b0\u2022",
+      "last_updated": "2 years ago",
+      "size": "26GB",
+      "digest": "46a84a4b71b0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-coded42f383a80dd\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "d42f383a80dd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q2_Ka9cbbaa0bc9f\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "a9cbbaa0bc9f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q3_K_S3c90e44e0e1a\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "3c90e44e0e1a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q3_K_Mb2341adf3f23\u2022",
+      "last_updated": "2 years ago",
+      "size": "16GB",
+      "digest": "b2341adf3f23",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q3_K_Laedf79bb4b36\u2022",
+      "last_updated": "2 years ago",
+      "size": "18GB",
+      "digest": "aedf79bb4b36",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q4_0d42f383a80dd\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "d42f383a80dd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q4_19fa15ea27404\u2022",
+      "last_updated": "2 years ago",
+      "size": "21GB",
+      "digest": "9fa15ea27404",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q4_K_S74265e6ee37b\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "74265e6ee37b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q4_K_Mab557c194836\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "ab557c194836",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q5_01024c60168c2\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "1024c60168c2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q5_153011c2b63fa\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "53011c2b63fa",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q5_K_S31fd37f72149\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "31fd37f72149",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q5_K_M64ead69c55e3\u2022",
+      "last_updated": "2 years ago",
+      "size": "24GB",
+      "digest": "64ead69c55e3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q6_K16cab6eea3fc\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "16cab6eea3fc",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-code-q8_09002fe264a7a\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "9002fe264a7a",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct685be00e1532\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "685be00e1532",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q2_K1dd65b85730e\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "1dd65b85730e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q3_K_S97ab8a9c3b5b\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "97ab8a9c3b5b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q3_K_Mf534f618ea64\u2022",
+      "last_updated": "2 years ago",
+      "size": "16GB",
+      "digest": "f534f618ea64",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q3_K_Lddb843faeaf7\u2022",
+      "last_updated": "2 years ago",
+      "size": "18GB",
+      "digest": "ddb843faeaf7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q4_0685be00e1532\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "685be00e1532",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q4_15493004f889d\u2022",
+      "last_updated": "2 years ago",
+      "size": "21GB",
+      "digest": "5493004f889d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q4_K_S9ed594b9bf24\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "9ed594b9bf24",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q4_K_Me12e86e65362\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "e12e86e65362",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q5_044c793b41643\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "44c793b41643",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q5_1b0615499241e\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "b0615499241e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q5_K_Scd41440962fd\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "cd41440962fd",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q5_K_M93723cb9e26c\u2022",
+      "last_updated": "2 years ago",
+      "size": "24GB",
+      "digest": "93723cb9e26c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q6_Ke93676fdc8e4\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "e93676fdc8e4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-q8_0df46def864c6\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "df46def864c6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-instruct-fp1663f5f2314d06\u2022",
+      "last_updated": "2 years ago",
+      "size": "67GB",
+      "digest": "63f5f2314d06",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-pythona9991b91af79\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "a9991b91af79",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q2_K804f8d3619ca\u2022",
+      "last_updated": "2 years ago",
+      "size": "14GB",
+      "digest": "804f8d3619ca",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q3_K_S7d04d3730258\u2022",
+      "last_updated": "2 years ago",
+      "size": "15GB",
+      "digest": "7d04d3730258",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q3_K_M4d1f7919eac7\u2022",
+      "last_updated": "2 years ago",
+      "size": "16GB",
+      "digest": "4d1f7919eac7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q3_K_L9a0962344498\u2022",
+      "last_updated": "2 years ago",
+      "size": "18GB",
+      "digest": "9a0962344498",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q4_0a9991b91af79\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "a9991b91af79",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q4_1a1d4355844ab\u2022",
+      "last_updated": "2 years ago",
+      "size": "21GB",
+      "digest": "a1d4355844ab",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q4_K_Sdbf6c5ef8774\u2022",
+      "last_updated": "2 years ago",
+      "size": "19GB",
+      "digest": "dbf6c5ef8774",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q4_K_M4c63b99ce6e0\u2022",
+      "last_updated": "2 years ago",
+      "size": "20GB",
+      "digest": "4c63b99ce6e0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q5_0a8afc91dd7c1\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "a8afc91dd7c1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q5_12d27ad19cb5e\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "2d27ad19cb5e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q5_K_S893daae3384e\u2022",
+      "last_updated": "2 years ago",
+      "size": "23GB",
+      "digest": "893daae3384e",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q5_K_Mc6a7e8f2a374\u2022",
+      "last_updated": "2 years ago",
+      "size": "24GB",
+      "digest": "c6a7e8f2a374",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q6_K4c08957e57e2\u2022",
+      "last_updated": "2 years ago",
+      "size": "28GB",
+      "digest": "4c08957e57e2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-q8_053a286016fd9\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "53a286016fd9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:34b-python-fp16a12bdba154f9\u2022",
+      "last_updated": "2 years ago",
+      "size": "67GB",
+      "digest": "a12bdba154f9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-codef51f75d243f2\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "f51f75d243f2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q2_Ka971fcfd33e2\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "a971fcfd33e2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q3_K_S6f9fcc129873\u2022",
+      "last_updated": "2 years ago",
+      "size": "30GB",
+      "digest": "6f9fcc129873",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q3_K_Md29df36f0809\u2022",
+      "last_updated": "2 years ago",
+      "size": "33GB",
+      "digest": "d29df36f0809",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q3_K_L4bfb484bdd00\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "4bfb484bdd00",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q4_0f51f75d243f2\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "f51f75d243f2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q4_1f4f87b75ed5f\u2022",
+      "last_updated": "2 years ago",
+      "size": "43GB",
+      "digest": "f4f87b75ed5f",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q4_K_S6eb3eed1c7d7\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "6eb3eed1c7d7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q4_K_Maf49f7163a95\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "af49f7163a95",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q5_06c13a8df97a6\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "6c13a8df97a6",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q5_1d81dfb4ec245\u2022",
+      "last_updated": "2 years ago",
+      "size": "52GB",
+      "digest": "d81dfb4ec245",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q5_K_Sf7a6b036969c\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "f7a6b036969c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q5_K_Ma6de2758bbb4\u2022",
+      "last_updated": "2 years ago",
+      "size": "49GB",
+      "digest": "a6de2758bbb4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q6_K8fe5090ef2aa\u2022",
+      "last_updated": "2 years ago",
+      "size": "57GB",
+      "digest": "8fe5090ef2aa",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-q8_011ccdd14d3a7\u2022",
+      "last_updated": "2 years ago",
+      "size": "73GB",
+      "digest": "11ccdd14d3a7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-code-fp16068561d5fd67\u2022",
+      "last_updated": "2 years ago",
+      "size": "138GB",
+      "digest": "068561d5fd67",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instructe59b580dfce7\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "e59b580dfce7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q2_Kcfb9810598f2\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "cfb9810598f2",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q3_K_S9eaafc67a1e9\u2022",
+      "last_updated": "2 years ago",
+      "size": "30GB",
+      "digest": "9eaafc67a1e9",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q3_K_M97d27e87a494\u2022",
+      "last_updated": "2 years ago",
+      "size": "33GB",
+      "digest": "97d27e87a494",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q3_K_L9b7b348bd092\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "9b7b348bd092",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q4_0e59b580dfce7\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "e59b580dfce7",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q4_13a050fe20496\u2022",
+      "last_updated": "2 years ago",
+      "size": "43GB",
+      "digest": "3a050fe20496",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q4_K_S5e6f76df85f1\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "5e6f76df85f1",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q4_K_Mfd3eb0359236\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "fd3eb0359236",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q5_0b22318ff25f3\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "b22318ff25f3",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q5_15606d0558a97\u2022",
+      "last_updated": "2 years ago",
+      "size": "52GB",
+      "digest": "5606d0558a97",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q5_K_S486ce7f5c313\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "486ce7f5c313",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q5_K_M796aa29c1e74\u2022",
+      "last_updated": "2 years ago",
+      "size": "49GB",
+      "digest": "796aa29c1e74",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q6_K2b057a1a5fcb\u2022",
+      "last_updated": "2 years ago",
+      "size": "57GB",
+      "digest": "2b057a1a5fcb",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-q8_0df2a96247c0c\u2022",
+      "last_updated": "2 years ago",
+      "size": "73GB",
+      "digest": "df2a96247c0c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-instruct-fp16bbea3b24dc4b\u2022",
+      "last_updated": "2 years ago",
+      "size": "138GB",
+      "digest": "bbea3b24dc4b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python33bc097b32fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "33bc097b32fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q2_K8925059dfc69\u2022",
+      "last_updated": "2 years ago",
+      "size": "25GB",
+      "digest": "8925059dfc69",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q3_K_S5e2c02668fd0\u2022",
+      "last_updated": "2 years ago",
+      "size": "30GB",
+      "digest": "5e2c02668fd0",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q3_K_M130b1c22d82c\u2022",
+      "last_updated": "2 years ago",
+      "size": "33GB",
+      "digest": "130b1c22d82c",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q3_K_L91ac3677083b\u2022",
+      "last_updated": "2 years ago",
+      "size": "36GB",
+      "digest": "91ac3677083b",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q4_033bc097b32fe\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "33bc097b32fe",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q4_18a1b64a13e07\u2022",
+      "last_updated": "2 years ago",
+      "size": "43GB",
+      "digest": "8a1b64a13e07",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q4_K_S58f06c520da4\u2022",
+      "last_updated": "2 years ago",
+      "size": "39GB",
+      "digest": "58f06c520da4",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q4_K_M157bddfb9b58\u2022",
+      "last_updated": "2 years ago",
+      "size": "41GB",
+      "digest": "157bddfb9b58",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q5_0e91924e35649\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "e91924e35649",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q5_1726a52d85424\u2022",
+      "last_updated": "2 years ago",
+      "size": "52GB",
+      "digest": "726a52d85424",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q5_K_Sb1f1fd5a9237\u2022",
+      "last_updated": "2 years ago",
+      "size": "47GB",
+      "digest": "b1f1fd5a9237",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q5_K_M46e0203b5440\u2022",
+      "last_updated": "2 years ago",
+      "size": "49GB",
+      "digest": "46e0203b5440",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q6_K0d2f71fce49d\u2022",
+      "last_updated": "2 years ago",
+      "size": "57GB",
+      "digest": "0d2f71fce49d",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-q8_080366d5e2306\u2022",
+      "last_updated": "2 years ago",
+      "size": "73GB",
+      "digest": "80366d5e2306",
+      "manifest": null,
+      "config": {}
+    },
+    {
+      "tag": "codellama:70b-python-fp1632aef34ce6d1\u2022",
+      "last_updated": "2 years ago",
+      "size": "138GB",
+      "digest": "32aef34ce6d1",
+      "manifest": null,
+      "config": {}
+    }
+  ],
+  "summary": "",
+  "use_cases": [],
+  "strengths": [],
+  "weaknesses": [],
+  "meta": {
+    "rated_by": "placeholder",
+    "timestamp": "2026-03-04 17:54:08"
+  },
+  "source": "ollama"
+}

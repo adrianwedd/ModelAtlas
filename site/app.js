@@ -2,7 +2,11 @@
 const TAG_BLOCKLIST = new Set([
   'region:us', 'transformers', 'endpoints_compatible',
   'autotrain_compatible', 'safetensors', 'pytorch', 'tf', 'jax',
+  'latest',  // Ollama version tag, not semantic
 ]);
+
+// Exclude models that are routing aliases, not distinct models
+const NAME_BLOCKLIST_PREFIX = ['~'];
 
 function modelApp() {
   return {
@@ -54,7 +58,7 @@ function modelApp() {
 
     // ── Filtering ─────────────────────────────────────────────
     applyFilters() {
-      let result = [...this.models];
+      let result = this.models.filter(m => !NAME_BLOCKLIST_PREFIX.some(p => this.safeStr(m.name).startsWith(p)));
 
       if (this.search.trim()) {
         const q = this.search.trim().toLowerCase();
@@ -107,7 +111,7 @@ function modelApp() {
     // ── Row helpers ───────────────────────────────────────────
     topTags(model) {
       return (Array.isArray(model.tags) ? model.tags : [])
-        .filter(t => typeof t === 'string' && !TAG_BLOCKLIST.has(t))
+        .filter(t => typeof t === 'string' && !TAG_BLOCKLIST.has(t) && !t.includes('•'))
         .slice(0, 4);
     },
 
