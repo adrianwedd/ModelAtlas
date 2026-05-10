@@ -169,7 +169,7 @@ def score_node(state: TraceState) -> TraceState:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            # Promote extra source-specific fields into annotations before Pydantic drops them
+            # Promote extra fields into annotations before Pydantic drops them
             ann = data.setdefault("annotations", {})
             for field in EXTRA_ANNOTATION_FIELDS:
                 if field in data and field not in ann:
