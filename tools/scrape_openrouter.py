@@ -93,7 +93,9 @@ def scrape_openrouter_models(
     if dry_run:
         free_count = sum(1 for m in models if m["is_free"])
         logger.info(
-            "Dry run — %d total, %d free. Skipping file writes.", len(models), free_count
+            "Dry run — %d total, %d free. Skipping file writes.",
+            len(models),
+            free_count,
         )
         for m in models:
             tag = " [FREE]" if m["is_free"] else ""
@@ -130,7 +132,11 @@ if __name__ == "__main__":
         action="store_true",
         help="Only save free-tier models",
     )
-    parser.add_argument("--dry-run", action="store_true", help="Fetch but do not write files")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Fetch but do not write files",
+    )
     args = parser.parse_args()
     result = scrape_openrouter_models(free_only=args.free_only, dry_run=args.dry_run)
     free = sum(1 for m in result if m["is_free"])

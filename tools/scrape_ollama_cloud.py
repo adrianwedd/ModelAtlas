@@ -62,9 +62,7 @@ def normalize_model(raw: dict) -> dict:
 def scrape_ollama_cloud_models(dry_run: bool = False) -> list[dict]:
     api_key = settings.OLLAMA_CLOUD_API_KEY
     if not api_key:
-        logger.error(
-            "OLLAMA_CLOUD_API_KEY not set. Add it to .env and re-run."
-        )
+        logger.error("OLLAMA_CLOUD_API_KEY not set. Add it to .env and re-run.")
         return []
 
     raw_models = fetch_cloud_models(api_key)
