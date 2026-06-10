@@ -12,6 +12,8 @@ function modelApp() {
   return {
     models: [],
     filtered: [],
+    corpusAsr: null,         // loaded from corpus_asr.json
+    asrSortDir: 'desc',      // 'asc' | 'desc'
     search: '',
     licenseFilter: 'all',
     typeFilter: 'all',
@@ -30,6 +32,14 @@ function modelApp() {
         console.error('Failed to load model data:', err);
         this.loadError = true;
       }
+
+      try {
+        const resp = await fetch('./corpus_asr.json');
+        if (resp.ok) this.corpusAsr = await resp.json();
+      } catch (err) {
+        console.warn('corpus_asr.json not available:', err);
+      }
+
       this.applyFilters();
 
       // Watch reactive properties and re-filter on change
@@ -54,6 +64,29 @@ function modelApp() {
       if (!this.models.length) return '—';
       const avg = this.models.reduce((s, m) => s + (parseFloat(m.trust_score) || 0), 0) / this.models.length;
       return avg.toFixed(2);
+    },
+
+    get corpusModelCount() {
+      return this.corpusAsr ? this.corpusAsr.model_count : 0;
+    },
+
+    get corpusAvgAsr() {
+      if (!this.corpusAsr || !this.corpusAsr.models.length) return '—';
+      const avg = this.corpusAsr.models.reduce((s, m) => s + (m.asr_pct || 0), 0) / this.corpusAsr.models.length;
+      return avg.toFixed(1) + '%';
+    },
+
+    get sortedCorpusModels() {
+      if (!this.corpusAsr) return [];
+      return [...this.corpusAsr.models].sort((a, b) =>
+        this.asrSortDir === 'desc' ? b.asr_pct - a.asr_pct : a.asr_pct - b.asr_pct
+      );
+    },
+
+    asrTierClass(asr) {
+      if (asr >= 70) return 'asr-tier--high';
+      if (asr >= 40) return 'asr-tier--mid';
+      return 'asr-tier--low';
     },
 
     // ── Filtering ─────────────────────────────────────────────

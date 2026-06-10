@@ -31,10 +31,10 @@
       <span class="stat-value" x-text="avgTrust"></span>
       <span class="stat-label">avg trust</span>
     </div>
-    <div class="stat-chip stat-chip--pending"
-         title="Attack Success Rate from empirical adversarial benchmarks (source: Failure-First). Data pending.">
-      <span class="stat-value">ASR</span>
-      <span class="stat-label">coming soon</span>
+    <div class="stat-chip"
+         title="Average Attack Success Rate across corpus-benchmarked models (source: Failure-First FLIP-graded corpus).">
+      <span class="stat-value" x-text="corpusModelCount || '—'"></span>
+      <span class="stat-label">benchmarked</span>
     </div>
   </section>
 
@@ -169,6 +169,48 @@
     <div class="empty-state empty-state--error" x-show="loadError">
       Failed to load model data. Please refresh.
     </div>
+  </section>
+
+  <!-- Adversarial benchmark results -->
+  <section class="corpus-section" x-show="corpusAsr" x-cloak>
+    <div class="corpus-header">
+      <h2>Adversarial Benchmark Results</h2>
+      <p class="corpus-meta">
+        <span x-text="corpusModelCount"></span> models tested ·
+        avg ASR <span x-text="corpusAvgAsr"></span> ·
+        grading: <strong>LLM/FLIP</strong> ·
+        source: <a href="https://failurefirst.org" target="_blank" rel="noopener noreferrer">Failure-First corpus</a> ·
+        generated <span x-text="corpusAsr && corpusAsr.generated_at ? corpusAsr.generated_at.slice(0,10) : ''"></span>
+      </p>
+      <button class="sort-btn" @click="asrSortDir = asrSortDir === 'desc' ? 'asc' : 'desc'"
+              :title="'Sort ASR ' + (asrSortDir === 'desc' ? 'ascending' : 'descending')">
+        ASR <span x-text="asrSortDir === 'desc' ? '↓' : '↑'"></span>
+      </button>
+    </div>
+    <table class="corpus-table">
+      <thead>
+        <tr>
+          <th scope="col" class="col-rank">#</th>
+          <th scope="col" class="col-model">Model</th>
+          <th scope="col" class="col-asr-val">ASR %</th>
+          <th scope="col" class="col-n">n</th>
+          <th scope="col" class="col-classifier">Classifier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template x-for="(m, idx) in sortedCorpusModels" :key="m.model_name">
+          <tr>
+            <td class="rank-cell" x-text="idx + 1"></td>
+            <td class="model-name-cell" x-text="m.model_name"></td>
+            <td class="asr-val-cell">
+              <span class="asr-pill" :class="asrTierClass(m.asr_pct)" x-text="m.asr_pct.toFixed(1) + '%'"></span>
+            </td>
+            <td class="n-cell" x-text="m.numerator + '/' + m.denominator"></td>
+            <td class="classifier-cell" x-text="(m.classifiers_used || []).join(', ')"></td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
   </section>
 
   <!-- Footer -->
